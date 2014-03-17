@@ -1,0 +1,43 @@
+<h1>Applications</h1>
+
+<p class="right-aligned" ng-show="rInvoked == true && rErrorMsg == ''">
+	<a href="#/new"><button type="button" class="btn btn-primary" title="Load a new application">New Application</button></a>
+</p>
+
+<p>
+	This page lists all the applications handled by the same Deployment Manager.<br /> 
+	This deployment manager is hosted at {{ rootUrl }}.
+</p>
+
+<p class="clear"></p>
+
+<p class="r-error-msg" ng-show="rInvoked == true && rErrorMsg != ''">
+	An error occurred.<br />
+	{{ rErrorMsg }}
+</p>
+
+<table class="table table-condensed" ng-show="rInvoked == true && rErrorMsg == ''">
+	<thead>
+		<tr>
+			<th class="r-counter">#</th>
+			<th>Application</th>
+			<th>Qualifier</th>
+			<th>Description</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		 <tr ng-repeat="app in apps">
+		 	<td class="r-counter"><strong> &nbsp </strong></td> <!-- FIXME: add a counter here -->
+			<td><a href="#/app/{{ app.name }}">{{ app.name }}</a></td>
+			<td>{{ app.qualifier }}</td>
+			<td>{{ app.description }}</td>
+			<td>
+				<button type="button" class="btn btn-default" ng-click="deleteApp( app.name )">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
