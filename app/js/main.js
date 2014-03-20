@@ -9,22 +9,22 @@ rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
 	$routeProvider
 
 	.when('/', {
-		templateUrl : 'pages/apps.html',
+		templateUrl : '/pages/apps.html',
 		controller  : 'mainController'
 	})
 	
 	.when('/new', {
-		templateUrl : 'pages/upload.html',
+		templateUrl : '/pages/upload.html',
 		controller  : 'uploadController'
 	})
 	
 	.when('/settings', {
-		templateUrl : 'pages/settings.html',
+		templateUrl : '/pages/settings.html',
 		controller  : 'settingsController'
 	})
 
 	.when('/app/:appName', {
-		templateUrl : 'pages/app.html',
+		templateUrl : '/pages/app.html',
 		controller  : 'appController'
 	})
 	
@@ -38,10 +38,16 @@ rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
 
 rcfApp.run( function( $rootScope ) {
 	var obj = localStorage.getItem( 'preferences' );
-	if( obj != "undefined" )
-		$rootScope.restUrl = angular.fromJson( obj ).dm.rest.location;
-	else
+
+  if (obj) {
+    if (angular.fromJson( obj ).dm) {
+      $rootScope.restUrl = angular.fromJson( obj ).dm.rest.location;
+    } else {
+      $rootScope.restUrl = '';
+    }
+  } else {
 		$rootScope.restUrl = '';
+  }
 })
 
 // Create the controller and inject Angular's $scope.

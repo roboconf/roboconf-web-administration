@@ -1,0 +1,17 @@
+{
+  "name": "roboconf-web-administration",
+  "version": "0.0.0",
+  "description": "Web administration for Roboconf",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~3.4.7"
+  },
+  "devDependencies": {
+    "bower": "~1.2.8"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "author": "Linagora",
+  "license": "Apache v2.0"
+}
