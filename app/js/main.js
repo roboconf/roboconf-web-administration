@@ -38,7 +38,7 @@ rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
 
 rcfApp.run( function( $rootScope ) {
 	var obj = localStorage.getItem( 'preferences' );
-	if( obj != "undefined" )
+	if( obj != 'undefined' && obj != null )
 		$rootScope.restUrl = angular.fromJson( obj ).dm.rest.location;
 	else
 		$rootScope.restUrl = '';
@@ -84,7 +84,7 @@ rcfApp.controller( 'settingsController', function( $scope, $rootScope, Restangul
 	Restangular.setBaseUrl( $rootScope.restUrl );
 	$scope.restorePrefs = function() {
     	var obj = localStorage.getItem( 'preferences' );
-    	if( obj != "undefined" )
+    	if( obj != 'undefined' && obj != null )
     		$scope.preferences = angular.fromJson( obj );
     };
     
