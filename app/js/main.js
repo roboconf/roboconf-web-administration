@@ -100,7 +100,7 @@ rcfApp.controller( 'settingsController', function( $scope, $rootScope, Restangul
     
     $scope.initializeDm = function( msgServerLoc ) {
 		Restangular.setBaseUrl( $rootScope.restUrl );
-		Restangular.one( 'init' ).post( 'amqp', msgServerLoc ).then( 
+		Restangular.one( 'init' ).post( '', msgServerLoc ).then( 
 			function() {
 				$scope.message = 'The deployment manager was (re)initialized.';
 			}, function() {
