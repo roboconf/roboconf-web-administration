@@ -2,7 +2,6 @@
 
 // Create the application.
 var rcfApp = angular.module( 'rcfApp', [ 'ngRoute', 'restangular' ]);
-// var rcfUrl = 'http://localhost:9998/'; //'http://localhost:8080/roboconf-dm/rest/';
 
 // Configure our routes.
 rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
@@ -38,10 +37,17 @@ rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
 
 rcfApp.run( function( $rootScope ) {
 	var obj = localStorage.getItem( 'preferences' );
-	if( obj != 'undefined' && obj != null )
-		$rootScope.restUrl = angular.fromJson( obj ).dm.rest.location;
-	else
+	if( obj != 'undefined' && obj != null ) {
+		
+		var tempUrl = angular.fromJson( obj ).dm.rest.location;
+		if( tempUrl.match("/$") == "/" )
+			$rootScope.restUrl = tempUrl.substr( 0, tempUrl.length -1 );
+		else
+			$rootScope.restUrl = tempUrl;
+		
+	} else {
 		$rootScope.restUrl = '';
+	}
 })
 
 // Create the controller and inject Angular's $scope.
