@@ -76,6 +76,15 @@ rcfApp.controller( 'mainController', function( $scope, $rootScope, $route, Resta
 	        });
 	    }, 2000);
     };
+    
+    $scope.shutdownApp = function( appName ) {
+		Restangular.one( 'applications/' + appName + "/shutdown" ).post();
+		setTimeout(function () {
+	        $scope.$apply(function () {
+	        	$route.reload();
+	        });
+	    }, 2000);
+    };
 });
 
 rcfApp.controller( 'uploadController', function( $scope, $rootScope ) {

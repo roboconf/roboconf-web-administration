@@ -200,6 +200,14 @@ table > tbody > tr > td.r-inst-3 {
 	padding-left: 60px;
 }
 
+td button {
+	margin: 0 4px;
+}
+
+.r-danger span {
+	color: red;
+}
+
 .r-prefs-buttons {
 	text-align: right;
 	padding-right: 10%;

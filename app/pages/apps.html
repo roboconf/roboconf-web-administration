@@ -34,8 +34,12 @@
 			<td>{{ app.qualifier }}</td>
 			<td>{{ app.description }}</td>
 			<td>
-				<button type="button" class="btn btn-default" ng-click="deleteApp( app.name )">
+				<button type="button" class="btn btn-default" ng-click="deleteApp( app.name )" title="Remove the Application from the List">
 					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+				
+				<button type="button" class="btn btn-default r-danger" ng-click="shutdownApp( app.name )" title="Shutdown the Application">
+					<span class="glyphicon glyphicon-screenshot"></span>
 				</button>
 			</td>
 		</tr>
