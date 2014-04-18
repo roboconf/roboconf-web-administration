@@ -27,7 +27,7 @@
 	</thead>
 	
 	<tbody>
-		 <tr ng-repeat="instance in instances">
+		 <tr ng-repeat="instance in instances | orderBy: 'path'">
 		 	<td class="r-counter"><strong> &nbsp </strong></td> <!-- FIXME: add a counter here -->
 			<td class="{{ 'r-inst-' + findPosition( instance.path )}}"><a href="#">{{ instance.name }}</a></td>
 			<td>{{ instance.component.name }}</td>
