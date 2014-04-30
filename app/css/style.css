@@ -217,23 +217,3 @@ td button {
 	padding-right: 40px;
 	color: #ff0000;
 }
-
-/* Footer */
-
-#footer {
-	position: absolute;
-	bottom: 0;
-	height: 3em;
-	width: 100%;
-	border-top: solid #d5dce0 1px;
-	text-align: center;
-}
-
-#footer p {
-	font-size: 1em;
-	padding: 0.7em 0 0 0;
-}
-
-#footer a, #footer a:hover {
-	color: #ff0000;
-}
