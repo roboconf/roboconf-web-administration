@@ -1,10 +1,32 @@
+# Roboconf Web Administration
+
 A web application to interact with Roboconf's Deployment Manager.  
-It was developed with Angular JS and Restangular.
 
-You can run it on any web server.  
-You can also run it locally with Node JS.
+## Install
 
-	cd app/
-	node ../web-scripts/web-server.js
+You will need node, npm and bower to be available on your system to install the web application.
 
-Then, open your browser to http://localhost:8000/index.html
+*from the npm repository* (not available for now)
+
+    npm install roboconf-web-administration
+
+*from the sources*
+
+    git clone https://github.com/roboconf/roboconf-web-administration.git
+	npm install
+
+## Running
+
+Run the application with node as node and open your browser on http://localhost:8000
+
+    node server.js
+    # or
+    npm start
+
+## License
+
+Copyright 2012-2014 Linagora, Université Joseph Fourier
+
+This product includes software developed under the Apache License v2.0
+(visit the Apache Software Foundation at http://www.apache.org/).
+

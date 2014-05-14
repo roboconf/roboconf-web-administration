@@ -3,18 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<title>Roboconf :: Web Administration</title>
-	
+
+	<link href="components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen" />
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="all"  />
-	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen" />
-	
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<script src="lib/bootstrap.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js"></script>
-		 
-	<script src="http://underscorejs.org/underscore-min.js"></script>
-	<script src="http://cdn.jsdelivr.net/restangular/1.1.3/restangular.min.js"></script>
-	
+
+	<script src="components/jquery/jquery.min.js"></script>
+	<script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="components/angular/angular.min.js"></script>
+	<script src="components/angular-route/angular-route.min.js"></script>
+	<script src="components/underscore/underscore.js"></script>
+	<script src="components/restangular/dist/restangular.min.js"></script>
+
 	<script src="js/main.js"></script>
 </head>
 
@@ -22,18 +21,18 @@
 
 	<!-- Menu -->
 	<nav class="navbar-rbcf" role="navigation">
-		<a href="index.html"><img id="header-img" src="img/roboconf.png" alt="Roboconf" /></a>
-				
+		<a href="/"><img id="header-img" src="img/roboconf.png" alt="Roboconf" /></a>
+
 		<ul class="nav navbar-nav navbar-right" id="top-menu">
 			<li><a href="#/" class="ep">
 				<span class="glyphicon glyphicon-th-list"></span> Applications </a></li>
-		
+
 			<li><a href="#/settings" class="ep">
 				<span class="glyphicon glyphicon-wrench"></span> Settings </a></li>
-			
+
 			<li class="dropdown">
 				<a class="dropdown-toggle ep" data-toggle="dropdown" href="#">
-					<span class="glyphicon glyphicon-globe"></span> Language 
+					<span class="glyphicon glyphicon-globe"></span> Language
 					<span class="glyphicon glyphicon-chevron-down little"></span>
 				</a>
 				<ul class="dropdown-menu">
@@ -41,7 +40,7 @@
 				</ul>
 			</li>
 		</ul>
-		
+
 		<p style="clear: both; display: inline;"></p>
 	</nav>
 

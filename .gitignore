@@ -1,0 +1,7 @@
+node_modules/
+app/components
+tmp/
+.idea
+.project
+target/
+.bowerrc

@@ -1,0 +1,32 @@
+{
+  "name": "Roboconf Web Administration",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Vincent Zurczak",
+    "Christophe Hamerling"
+  ],
+  "description": "Web admin for Roboconf",
+  "keywords": [
+    "cloud",
+    "deployment"
+  ],
+  "license": "Apache v2.0",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "angular": "~1.2.13",
+    "angular-route": "~1.2.13",
+    "bootstrap": "~3.0.3",
+    "font-awesome": "~4.0.3",
+    "restangular": "~1.3.1",
+    "underscore": "~1.6.0"
+  }
+}
