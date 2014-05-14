@@ -6,11 +6,11 @@ A web application to interact with Roboconf's Deployment Manager.
 
 You will need node, npm and bower to be available on your system to install the web application.
 
-*from the npm repository* (not available for now)
+*From the npm repository* (not available for now)
 
     npm install roboconf-web-administration
 
-*from the sources*
+*From the sources*
 
     git clone https://github.com/roboconf/roboconf-web-administration.git
 	npm install
@@ -29,4 +29,3 @@ Copyright 2012-2014 Linagora, Université Joseph Fourier
 
 This product includes software developed under the Apache License v2.0
 (visit the Apache Software Foundation at http://www.apache.org/).
-
