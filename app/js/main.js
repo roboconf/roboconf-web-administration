@@ -3,6 +3,21 @@
 // Create the application.
 var rcfApp = angular.module( 'rcfApp', [ 'ngRoute', 'restangular' ]);
 
+// Add directives
+var directives = angular.module('directives', []);
+directives.directive('showOnHoverParent', function() {
+      return {
+         link : function(scope, element, attrs) {
+            element.parent().bind('mouseenter', function() {
+                element.show();
+            });
+            element.parent().bind('mouseleave', function() {
+                 element.hide();
+            });
+       }
+   };
+});
+
 // Configure our routes.
 rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
 	$routeProvider
@@ -141,6 +156,7 @@ rcfApp.controller( 'settingsController', function( $scope, $rootScope, Restangul
     $scope.checkDm();
 });
 
+// Controller for a single application
 rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $routeParams, Restangular ) {
 	$scope.rInvoked = false;
 	$scope.appName = $routeParams.appName;
@@ -149,12 +165,56 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	Restangular.all( 'app/' + $scope.appName + '/all-children' ).getList().then( function( instances ) {
 		$scope.rInvoked = true;
 		$scope.rErrorMsg = '';
-		$scope.instances = instances;
+		$scope.rootNodes = $scope.buildInstancesGraph( instances );
 		
 	}, function() {
 		$scope.rInvoked = true;
 		$scope.rErrorMsg = 'Communication with the server failed.';
 	})
+	
+	
+	// Sort and format instances
+	$scope.buildInstancesGraph = function( instances ) {
+		var rootNodes = [];		
+		if( instances ) {
+			
+			var currentParentNode;
+			var lastInstancePathLength = 1;
+			
+			for( index = 0; index < instances.length; ++index ) {
+				
+				// Create the current node and see the instance path's length
+				var currentNode = { instance: instances[ index ], children: []};
+				var pathLength = $scope.findPosition( currentNode.instance.path );
+
+				// New root instance
+				if( pathLength == 1 ) {
+					currentParentNode = currentNode;
+					rootNodes.push( currentNode );	
+				}
+				
+				// If the child is at the same or the previous level, restore the parent.
+				// The previous node does not have any child.
+				else if( lastInstancePathLength >= pathLength ) {
+					currentParentNode = currentParentNode.parent;
+					currentNode.parent = currentParentNode;
+					currentParentNode.children.push( currentNode );
+				}
+				
+				// If the child is a level after, change the parent
+				else if( lastInstancePathLength < pathLength ) {
+					currentNode.parent = currentParentNode;
+					currentParentNode.children.push( currentNode );
+					currentParentNode = currentNode;
+				}
+				
+				// Remember the last path length
+				lastInstancePathLength = pathLength;
+			}
+		}
+		
+		return rootNodes;
+	};
 	
 	
 	// Call-backs for ng-clicks
@@ -171,5 +231,28 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     
     $scope.findPosition = function( instancePath ) {
     	return instancePath.match(/\|/g).length;
+    }
+    
+    $scope.displayStatus = function( status ) {
+    	var result = '';
+    	
+    	if( status === 'NOT_DEPLOYED' )
+    		result = 'is not deployed';
+    	else if( status === 'STARTING' )
+    		result = 'is starting and/or waiting for its dependencies to be started.';
+    	else if( status === 'DEPLOYING' )
+    		result = 'is being deployed.';
+    	else if( status === 'UNDEPLOYING' )
+    		result = 'is being undeployed.';
+    	else if( status === 'STOPPING' )
+    		result = 'is stopping';
+    	else if( status === 'DEPLOYED_STOPPED' )
+    		result = 'is deployed but stopped';
+    	else if( status === 'DEPLOYED_STARTED' )
+    		result = 'is deployed and started';
+    	else if( status === 'PROBLEM' )
+    		result = 'encountered a problem. Its state cannot be precisely determined.';
+    	
+    	return result;
     }
 });

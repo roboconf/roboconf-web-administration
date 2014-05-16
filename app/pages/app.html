@@ -1,34 +1,34 @@
 <h1>{{ appName }}</h1>
 
-<p class="right-aligned" ng-show="rInvoked == true && rErrorMsg == ''">
-	<a href="#/new"><button type="button" class="btn btn-primary" title="Create a new instance">New Instance</button></a>
-</p>
-
 <p>
 	This page lists all the instances of the application <strong>{{ appName }}</strong>.<br />
 </p>
 
-<p class="clear"></p>
+<script type="text/ng-template" id="my-tmpl">
+    <p>
+		<strong>{{ childNode.instance.name }}</strong> {{ displayStatus( childNode.instance.status )}}.
+	</p>
+    <ul>
+        <li ng-repeat="childNode in childNode.children" ng-include="'my-tmpl'"></li>
+    </ul>
+</script>
 
 <p class="r-error-msg" ng-show="rInvoked == true && rErrorMsg != ''">
 	An error occurred.<br />
 	{{ rErrorMsg }}
 </p>
 
-<table class="table table-condensed" ng-show="rInvoked == true && rErrorMsg == ''">
-	<thead>
-		<tr>
-			<th class="r-counter">#</th>
-			<th>Instance Name</th>
-			<th>Component</th>
-			<th>Status</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
+<div ng-repeat="rootNode in rootNodes" class="root-instance">
+	<p>{{ rootNode.instance.name }}</p>
 	
-	<tbody>
-		 <tr ng-repeat="instance in instances">
-		 	<td class="r-counter"><strong> &nbsp </strong></td> <!-- FIXME: add a counter here -->
+	<ul>
+		<li ng-repeat="childNode in rootNode.children" ng-include="'my-tmpl'"></li>
+	</ul>
+</div>
+
+
+<!-- 
+	 	<td class="r-counter"><strong> &nbsp </strong></td>
 			<td class="{{ 'r-inst-' + findPosition( instance.path )}}"><a href="#">{{ instance.name }}</a></td>
 			<td>{{ instance.component.name }}</td>
 			<td>{{ instance.status }}</td>
@@ -48,6 +48,4 @@
 					</button>
 				</div>
 			</td>
-		</tr>
-	</tbody>
-</table>
+ -->
