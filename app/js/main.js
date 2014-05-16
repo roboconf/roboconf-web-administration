@@ -186,16 +186,26 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 				// Create the current node and see the instance path's length
 				var currentNode = { instance: instances[ index ], children: []};
 				var pathLength = $scope.findPosition( currentNode.instance.path );
-
+				
 				// New root instance
 				if( pathLength == 1 ) {
 					currentParentNode = currentNode;
 					rootNodes.push( currentNode );	
 				}
 				
+				// The child is at the same level than the previous element.
+				// Do we have to update the parent?
+				else if( lastInstancePathLength === pathLength ) {
+					if( $scope.findPosition( currentParentNode.instance.path ) === pathLength )
+						currentParentNode = currentParentNode.parent;
+					
+					currentNode.parent = currentParentNode;
+					currentParentNode.children.push( currentNode );
+				}
+				
 				// If the child is at the same or the previous level, restore the parent.
 				// The previous node does not have any child.
-				else if( lastInstancePathLength >= pathLength ) {
+				else if( lastInstancePathLength > pathLength ) {
 					currentParentNode = currentParentNode.parent;
 					currentNode.parent = currentParentNode;
 					currentParentNode.children.push( currentNode );
@@ -233,25 +243,37 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     	return instancePath.match(/\|/g).length;
     }
     
-    $scope.displayStatus = function( status ) {
+    $scope.setSelectedInstance = function( instance ) {
+    	$scope.selectedInstance = instance;
+    }
+    
+    $scope.formatInstancePath = function( instance ) {
+    	var result = '';
+    	if( instance )
+    		result = instance.path.replace( new RegExp( '\\|', 'g' ), '/' );
+    	
+    	return result;
+    }
+    
+    $scope.formatStatus = function( status ) {
     	var result = '';
     	
     	if( status === 'NOT_DEPLOYED' )
-    		result = 'is not deployed';
+    		result = 'not deployed';
     	else if( status === 'STARTING' )
-    		result = 'is starting and/or waiting for its dependencies to be started.';
+    		result = 'starting and/or waiting for its dependencies to be started.';
     	else if( status === 'DEPLOYING' )
-    		result = 'is being deployed.';
+    		result = 'being deployed.';
     	else if( status === 'UNDEPLOYING' )
-    		result = 'is being undeployed.';
+    		result = 'being undeployed.';
     	else if( status === 'STOPPING' )
-    		result = 'is stopping';
+    		result = 'stopping';
     	else if( status === 'DEPLOYED_STOPPED' )
-    		result = 'is deployed but stopped';
+    		result = 'deployed but stopped';
     	else if( status === 'DEPLOYED_STARTED' )
-    		result = 'is deployed and started';
+    		result = 'deployed and started';
     	else if( status === 'PROBLEM' )
-    		result = 'encountered a problem. Its state cannot be precisely determined.';
+    		result = 'undetermined.';
     	
     	return result;
     }

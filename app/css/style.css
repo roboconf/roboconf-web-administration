@@ -45,39 +45,7 @@ html, body {
 	margin: 14px 0 30px 0;
 }
 
-/* Both Welcome and Top Menu */
-
-.ep {
-	background-color: white;
-	color: #ff0000;
-}
-
-.ep span.glyphicon {
-	padding-left: 7px;
-	padding-right: 18px;
-	color: black;
-}
-
-.ep:hover, .ep:hover span, .ep-selected {
-	background-color: #ff0000 !important;
-	border-bottom: solid #ff0000 2px;
-	color: white;
-	text-decoration: none;
-}
-
-.ep-selected:hover {
-	background-color: #ff0000 !important;
-	border-bottom: solid #ff0000 2px;
-	color: white;
-	text-decoration: underline !important;
-}
-
-.ep > .caret {
-	border-top-color: transparent;
-	border-bottom-color: transparent;
-}
-
-/* Top Menu */
+/* Top of the Pages */
 
 #header-img {
 	height: 90px;
@@ -88,12 +56,44 @@ html, body {
 
 .navbar-rbcf {
 	margin: 0 0 28px 0;
+	padding-right: 24px;
+}
+
+.navbar-rbcf > ul {
+	position: fixed;
+	top: 2px;
+	right: 24px;
 }
 
 .navbar-rbcf li.active {
-	background-color: #ff0000 !important;
-	border-bottom: solid #ff0000 2px;
+	background-color: #b23e4b !important;
+	border-bottom: solid #b23e4b 2px;
 	color: white !important;
+}
+
+.ep {
+	background-color: white;
+	color: #b23e4b;
+	min-width: 140px;
+}
+
+.ep span.glyphicon {
+	padding-right: 18px;
+	color: black;
+}
+
+.ep:hover, .ep:hover span, .ep-selected {
+	background-color: #b23e4b !important;
+	border-bottom: solid #b23e4b 2px;
+	color: white;
+	text-decoration: none;
+}
+
+.ep-selected:hover {
+	background-color: #b23e4b !important;
+	border-bottom: solid #b23e4b 2px;
+	color: white;
+	text-decoration: underline !important;
 }
 
 /* Other Pages */
@@ -103,7 +103,7 @@ html, body {
 }
 
 .content a, .content a:hover {
-	color: #ff0000;
+	color: #b23e4b;
 }
 
 .content h1 {
@@ -140,7 +140,7 @@ html, body {
 
 .r-dm-state {
 	padding-right: 40px;
-	color: #ff0000;
+	color: #b23e4b;
 }
 
 /*
@@ -238,3 +238,32 @@ div.root-instance > p {
 .root-instance ul li p {
 	padding: 6px 0 6px 4px;
 }
+
+/* Hover list items */
+.root-instance ul li p:hover {
+	background-color: #eee;
+}
+
+
+/*
+ * Instance Overview
+ */
+
+ #instance-overview {
+ 	border-radius: 10px;
+	border: solid #b23e4b 2px;
+	position: fixed;
+	right: 24px;
+	left: 53%;
+	top: 226px;
+	padding: 8px 18px 20px;
+ }
+ 
+ #instance-overview > h3 {
+ 	margin: 0 0 24px;
+ 	padding: 0;
+ 	text-align: center;
+ 	font-weight: bold;
+ 	font-size: 16px;
+ }
+ 

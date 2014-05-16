@@ -5,8 +5,8 @@
 </p>
 
 <script type="text/ng-template" id="my-tmpl">
-    <p>
-		<strong>{{ childNode.instance.name }}</strong> {{ displayStatus( childNode.instance.status )}}.
+    <p ng-click="setSelectedInstance( childNode.instance )">
+		<strong>{{ childNode.instance.name }}</strong> is {{ formatStatus( childNode.instance.status )}}.
 	</p>
     <ul>
         <li ng-repeat="childNode in childNode.children" ng-include="'my-tmpl'"></li>
@@ -26,26 +26,9 @@
 	</ul>
 </div>
 
-
-<!-- 
-	 	<td class="r-counter"><strong> &nbsp </strong></td>
-			<td class="{{ 'r-inst-' + findPosition( instance.path )}}"><a href="#">{{ instance.name }}</a></td>
-			<td>{{ instance.component.name }}</td>
-			<td>{{ instance.status }}</td>
-			<td>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default" ng-click="perform( appName, 'deploy', instance.path )" title="deploy">
-						<span class="glyphicon glyphicon-share-alt"></span>
-					</button>
-					<button type="button" class="btn btn-default" ng-click="perform( appName, 'start', instance.path )" title="start">
-						<span class="glyphicon glyphicon-play"></span>
-					</button>
-					<button type="button" class="btn btn-default" ng-click="perform( appName, 'stop', instance.path )" title="stop">
-						<span class="glyphicon glyphicon-stop"></span>
-					</button>
-					<button type="button" class="btn btn-default" ng-click="perform( appName, 'undeploy', instance.path )" title="undeploy">
-						<span class="glyphicon glyphicon-flash"></span>
-					</button>
-				</div>
-			</td>
- -->
+<div id="instance-overview" ng-show="selectedInstance">
+	<h3>{{ selectedInstance.name }}</h3>
+	
+	<strong>Instance Path:</strong> {{ formatInstancePath( selectedInstance )}}<br />
+	<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}
+</div>
