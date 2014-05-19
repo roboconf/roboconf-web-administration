@@ -1,7 +1,7 @@
 <h1>{{ appName }}</h1>
 
 <p>
-	This page lists all the instances of the application <strong>{{ appName }}</strong>.<br />
+	Check all the instances of the application <strong>{{ appName }}</strong>.<br />
 </p>
 
 <script type="text/ng-template" id="my-tmpl">
@@ -18,7 +18,7 @@
 	{{ rErrorMsg }}
 </p>
 
-<div ng-repeat="rootNode in rootNodes" class="root-instance">
+<div ng-repeat="rootNode in rootNodes" class="block short-block">
 	<p>{{ rootNode.instance.name }}</p>
 	
 	<ul>

@@ -51,18 +51,11 @@ rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
 });
 
 rcfApp.run( function( $rootScope ) {
-	var obj = localStorage.getItem( 'preferences' );
-	if( obj ) {
-		
-		var tempUrl = angular.fromJson( obj ).dm.rest.location;
-		if( tempUrl.match("/$") == "/" )
-			$rootScope.restUrl = tempUrl.substr( 0, tempUrl.length -1 );
-		else
-			$rootScope.restUrl = tempUrl;
-		
-	} else {
+	var obj = localStorage.getItem( 'rest-location' );
+	if( obj )
+		$rootScope.restUrl = angular.fromJson( obj );
+	else
 		$rootScope.restUrl = '';
-	}
 });
 
 // Create the controller and inject Angular's $scope.
@@ -103,58 +96,24 @@ rcfApp.controller( 'mainController', function( $scope, $rootScope, $route, Resta
 });
 
 rcfApp.controller( 'uploadController', function( $scope, $rootScope ) {
-	// FIXME: check whether the '/' must be added or not!
 	$scope.actionUrl = $rootScope.restUrl + '/applications';
 });
 
+
+// Controller for the settings
 rcfApp.controller( 'settingsController', function( $scope, $rootScope, Restangular ) {
-	$scope.preferences = '';
-	$scope.message = '';
+	$scope.restLocation = $rootScope.restUrl;
 	
-	Restangular.setBaseUrl( $rootScope.restUrl );
-	$scope.restorePrefs = function() {
-    	var obj = localStorage.getItem( 'preferences' );
-    	if( obj != 'undefined' && obj != null )
-    		$scope.preferences = angular.fromJson( obj );
+    $scope.saveRestLocation = function( location ) {
+		if( location.match("/$") == "/" )
+			$rootScope.restUrl = location.substr( 0, location.length -1 );
+		else
+			$rootScope.restUrl = location;
+    	
+		localStorage.setItem( 'rest-location', angular.toJson( $rootScope.restUrl ));
     };
-    
-    $scope.checkDm = function() {
-		Restangular.setBaseUrl( $rootScope.restUrl );
-		Restangular.one( 'init' ).get().then( 
-			function( result ) {
-				$scope.dmState = result == "true" ? "Initialized" : "Not initialized";
-			}, function() {
-				$scope.dmState = 'Unknown';
-		});
-    }
-    
-    $scope.initializeDm = function( msgServerLoc ) {
-		Restangular.setBaseUrl( $rootScope.restUrl );
-		Restangular.one( 'init' ).post( '', msgServerLoc ).then( 
-			function() {
-				$scope.message = 'The deployment manager was (re)initialized.';
-			}, function() {
-				$scope.message = 'The deployment manager could not be (re)initialized.';
-			}
-		);
-		
-		setTimeout( function() {
-			$scope.message = '';
-			$scope.$apply();
-		}, 4000 );	
-    }
-    
-    $scope.savePrefs = function( prefs ) {
-		$rootScope.restUrl = prefs.dm.rest.location;
-		localStorage.setItem( 'preferences', angular.toJson( prefs ));
-		$scope.preferences = angular.copy( prefs );
-		
-		this.checkDm();
-    };
-    
-    $scope.restorePrefs();
-    $scope.checkDm();
 });
+
 
 // Controller for a single application
 rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $routeParams, Restangular ) {

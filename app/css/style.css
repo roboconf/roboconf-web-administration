@@ -144,25 +144,28 @@ html, body {
 }
 
 /*
- * app.html
+ * Blocks
  */
 
 /* The block for a root instance. */
-div.root-instance {
+div.block {
 	border-radius: 10px;
 	border: solid #b23e4b 1px;
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 	margin-bottom: 24px;
 	padding-bottom: 6px;
+}
+
+div.short-block {
 	width: 50%;
 }
 
-div.root-instance p {
+div.block p {
 	margin: 0;
 }
 
 /* The name of a root instance's block */
-div.root-instance > p {
+div.block > p {
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 	background-color: #b23e4b;
@@ -171,20 +174,33 @@ div.root-instance > p {
 	padding: 6px 0 6px 18px;
 }
 
+/* The content for blocks */
+div.block-content {
+	padding: 14px 14px 10px;
+}
+
+div.block-content > p {
+	margin-bottom: 16px;
+}
+
+/*
+ * app.html
+ */
+
 /* Nested instances rely on lists. */
-.root-instance ul {
+.block ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0 0 0 30px;
 }
 
 /* The first list leaves space below. */
-.root-instance > ul {
+.block > ul {
 	padding-bottom: 14px;
 }
 
 /* The lists have a left border. */
-.root-instance ul:before {
+.block ul:before {
 	content: "";
 	display: block;
 	width: 0;
@@ -196,7 +212,7 @@ div.root-instance > p {
 }
 
 /* Put list items in relative position. */
-.root-instance ul li {
+.block ul li {
 	padding: 0 16px;
 	font-size: 14px;
 	line-height: 20px;
@@ -204,7 +220,7 @@ div.root-instance > p {
 }
 
 /* List items have a top border. */
-.root-instance ul li:before {
+.block ul li:before {
 	content: "";
 	display: block;
 	width: 12px; /* same with indentation */
@@ -216,12 +232,12 @@ div.root-instance > p {
 }
 
 /* The FIRST list item (call it the main root) has a more important padding top (branch tree). */
-.root-instance > ul > li:first-child:before {
+.block > ul > li:first-child:before {
 	top: 25px !important;
 }
 
 /* The last item in a list hides the left border (smooth effect). */
-.root-instance ul li:last-child:before {
+.block ul li:last-child:before {
 	height:auto;
 	top: 16px; /* (line-height/2) */
 	bottom: 0;
@@ -230,17 +246,17 @@ div.root-instance > p {
 }
 
 /* The FIRST list item has a more important padding top. */
-.root-instance > ul > li:first-child {
+.block > ul > li:first-child {
 	padding-top: 10px;
 }
 
 /* Define the padding of list items. */
-.root-instance ul li p {
+.block ul li p {
 	padding: 6px 0 6px 4px;
 }
 
 /* Hover list items */
-.root-instance ul li p:hover {
+.block ul li p:hover {
 	background-color: #eee;
 }
 
@@ -266,4 +282,14 @@ div.root-instance > p {
  	font-weight: bold;
  	font-size: 16px;
  }
+ 
+ 
+/*
+ * settings.html
+ */
+
+input.form-control {
+	display: inline;
+	width: 70%;
+}
  
