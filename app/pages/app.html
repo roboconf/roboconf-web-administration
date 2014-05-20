@@ -29,6 +29,7 @@
 <div id="instance-overview" ng-show="selectedInstance">
 	<h3>{{ selectedInstance.name }}</h3>
 	
-	<strong>Instance Path:</strong> {{ formatInstancePath( selectedInstance )}}<br />
-	<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}
+	<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />
+	<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}<br />
+	<strong>Component:</strong> {{ selectedInstance.component.name }}
 </div>

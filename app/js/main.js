@@ -134,7 +134,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	
 	// Sort and format instances
 	$scope.buildInstancesGraph = function( instances ) {
-		var rootNodes = [];		
+		var rootNodes = [];
 		if( instances ) {
 			
 			var currentParentNode;
@@ -189,7 +189,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	// Call-backs for ng-clicks
 	$scope.perform = function( appName, actionName, instancePath ) {
 		var escapedPath = instancePath.replace( new RegExp( '\\|', 'g' ), '%7C' );
-		var noChild = angular.toJson( false );
+		var noChild = {'apply-to-children':'false'}; //angular.toJson( false );
 		Restangular.one( 'app/' + appName + '/' + actionName + '/instance/' + escapedPath ).post( '', noChild );
 		setTimeout(function () {
 	        $scope.$apply(function () {
@@ -199,19 +199,11 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     };
     
     $scope.findPosition = function( instancePath ) {
-    	return instancePath.match(/\|/g).length;
+    	return instancePath.match(/\//g).length;
     }
     
     $scope.setSelectedInstance = function( instance ) {
     	$scope.selectedInstance = instance;
-    }
-    
-    $scope.formatInstancePath = function( instance ) {
-    	var result = '';
-    	if( instance )
-    		result = instance.path.replace( new RegExp( '\\|', 'g' ), '/' );
-    	
-    	return result;
     }
     
     $scope.formatStatus = function( status ) {
