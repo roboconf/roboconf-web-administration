@@ -32,4 +32,6 @@
 	<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />
 	<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}<br />
 	<strong>Component:</strong> {{ selectedInstance.component.name }}
+	
+	<div class="instance-actions" ng-include="template"></div>
 </div>

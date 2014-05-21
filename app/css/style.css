@@ -213,7 +213,7 @@ div.block-content > p {
 
 /* Put list items in relative position. */
 .block ul li {
-	padding: 0 16px;
+	padding: 0 0 0 16px;
 	font-size: 14px;
 	line-height: 20px;
 	position: relative;
@@ -252,7 +252,7 @@ div.block-content > p {
 
 /* Define the padding of list items. */
 .block ul li p {
-	padding: 6px 0 6px 4px;
+	padding: 6px 0 6px 7px;
 }
 
 /* Hover list items */
@@ -281,7 +281,50 @@ div.block-content > p {
  	text-align: center;
  	font-weight: bold;
  	font-size: 16px;
- }
+}
+
+div.instance-actions > img {
+	display: block;
+	margin: 12px 0 22px;
+}
+
+div.instance-actions > label {
+	margin-right: 6px;
+}
+
+div.instance-actions > select {
+	border-radius: 8px;
+	appearance: none;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+div.instance-actions option {
+	text-align: center;
+	padding: 2px 4px;
+	border: none;
+}
+
+button.btn-roboconf {
+	border: solid #b23e4b 2px;
+	color: #b23e4b;
+}
+
+button.btn-roboconf:hover {
+	color: #b23e4b;
+}
+
+button.btn-confirm {
+	border: solid #5cb85c 2px;
+	background-color: #5cb85c;
+	color: #ffffff;
+}
+
+button.btn-confirm:hover {
+  color: #ffffff;
+  background-color: #47a447;
+  border: solid #47a447 2px;
+}
  
  
 /*

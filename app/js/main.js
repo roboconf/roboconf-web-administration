@@ -1,22 +1,14 @@
-// 'use strict';
+'use strict';
+
+// Add a substring function to String
+if (typeof String.prototype.endsWith !== 'function') {
+	String.prototype.endsWith = function(suffix) {
+		return this.indexOf(suffix, this.length - suffix.length) !== -1;
+	};
+}
 
 // Create the application.
 var rcfApp = angular.module( 'rcfApp', [ 'ngRoute', 'restangular' ]);
-
-// Add directives
-var directives = angular.module('directives', []);
-directives.directive('showOnHoverParent', function() {
-      return {
-         link : function(scope, element, attrs) {
-            element.parent().bind('mouseenter', function() {
-                element.show();
-            });
-            element.parent().bind('mouseleave', function() {
-                 element.hide();
-            });
-       }
-   };
-});
 
 // Configure our routes.
 rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
@@ -78,20 +70,10 @@ rcfApp.controller( 'mainController', function( $scope, $rootScope, $route, Resta
 	// Call-backs for ng-clicks    
     $scope.deleteApp = function( appName ) {
 		Restangular.one( 'applications/' + appName ).remove();
-		setTimeout(function () {
-	        $scope.$apply(function () {
-	        	$route.reload();
-	        });
-	    }, 2000);
     };
     
     $scope.shutdownApp = function( appName ) {
 		Restangular.one( 'applications/' + appName + "/shutdown" ).post();
-		setTimeout(function () {
-	        $scope.$apply(function () {
-	        	$route.reload();
-	        });
-	    }, 2000);
     };
 });
 
@@ -119,17 +101,21 @@ rcfApp.controller( 'settingsController', function( $scope, $rootScope, Restangul
 rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $routeParams, Restangular ) {
 	$scope.rInvoked = false;
 	$scope.appName = $routeParams.appName;
+	$scope.template = '';
+	$scope.actionId = '';
+	$scope.actionIdLabel = '';
 	Restangular.setBaseUrl( $rootScope.restUrl );
 	
 	Restangular.all( 'app/' + $scope.appName + '/all-children' ).getList().then( function( instances ) {
 		$scope.rInvoked = true;
 		$scope.rErrorMsg = '';
 		$scope.rootNodes = $scope.buildInstancesGraph( instances );
+		setTimeout( $scope.updateFromServer(), 10000 );
 		
 	}, function() {
 		$scope.rInvoked = true;
 		$scope.rErrorMsg = 'Communication with the server failed.';
-	})
+	});
 	
 	
 	// Sort and format instances
@@ -140,7 +126,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 			var currentParentNode;
 			var lastInstancePathLength = 1;
 			
-			for( index = 0; index < instances.length; ++index ) {
+			for( var index = 0; index < instances.length; ++index ) {
 				
 				// Create the current node and see the instance path's length
 				var currentNode = { instance: instances[ index ], children: []};
@@ -186,17 +172,24 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	};
 	
 	
-	// Call-backs for ng-clicks
-	$scope.perform = function( appName, actionName, instancePath ) {
-		var escapedPath = instancePath.replace( new RegExp( '\\|', 'g' ), '%7C' );
-		var noChild = {'apply-to-children':'false'}; //angular.toJson( false );
-		Restangular.one( 'app/' + appName + '/' + actionName + '/instance/' + escapedPath ).post( '', noChild );
-		setTimeout(function () {
-	        $scope.$apply(function () {
-	        	$route.reload();
-	        });
-	    }, 2000);
+	// Perform an action on a given instances
+	$scope.perform = function() {
+		var realAction = $scope.actionId.split( '-' )[ 0 ];
+		var instancePath = $scope.selectedInstance.path;
+		var applyToChildren = $scope.actionId.endsWith( 'all' );
+		
+		var requestBody = angular.toJson({'apply-to-children':applyToChildren.toString(), 'instance-path':instancePath});
+		Restangular.one( 'app', $scope.appName ).post( realAction, requestBody );
     };
+    
+    // Regularly poll the server
+    $scope.updateFromServer = function() {
+    	Restangular.all( 'app/' + $scope.appName + '/all-children' ).getList().then( function( instances ) {
+    		$scope.rootNodes = $scope.buildInstancesGraph( instances );
+    	});
+    	
+    	setTimeout( $scope.updateFromServer(), 5000 );
+    }
     
     $scope.findPosition = function( instancePath ) {
     	return instancePath.match(/\//g).length;
@@ -204,6 +197,13 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     
     $scope.setSelectedInstance = function( instance ) {
     	$scope.selectedInstance = instance;
+    	$scope.actionId = '';
+    	$scope.template = $scope.findTemplateUrl( instance.status );
+    }
+    
+    $scope.setActionId = function( actionId ) {
+    	$scope.actionId = actionId;
+    	$scope.actionIdLabel = $scope.buildActionIdLabel( actionId );
     }
     
     $scope.formatStatus = function( status ) {
@@ -228,4 +228,32 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     	
     	return result;
     }
+    
+    $scope.findTemplateUrl = function( status ) {
+    	var result = '';
+    	
+    	if( status === 'NOT_DEPLOYED' )
+    		result = 'app-not-deployed.html';
+    	else if( status === 'STARTING' )
+    		result = 'app-starting.html';
+    	else if( status === 'DEPLOYING' )
+    		result = 'app-deploying.html';
+    	else if( status === 'UNDEPLOYING' )
+    		result = 'app-undeploying.html';
+    	else if( status === 'STOPPING' )
+    		result = 'app-stopping.html';
+    	else if( status === 'DEPLOYED_STOPPED' )
+    		result = 'app-deployed-started.html';
+    	else if( status === 'DEPLOYED_STARTED' )
+    		result = 'app-deployed-stopped.html';
+    	else if( status === 'PROBLEM' )
+    		result = 'app-problem.html';
+    	
+    	return 'pages/' + result;
+    };
+    
+    $scope.buildActionIdLabel = function( actionId ) {
+    	var result = actionId.replace( /-/g, " " ).toLowerCase().replace( /(^| )(\w)/g, function(x){return x.toUpperCase();});
+    	return result;
+    };
 });
