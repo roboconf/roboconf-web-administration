@@ -19,7 +19,10 @@
 </p>
 
 <div ng-repeat="rootNode in rootNodes" class="block short-block">
-	<p class="root-instance-name" ng-click="setSelectedInstance( rootNode.instance )">{{ rootNode.instance.name }}</p>
+	<p class="root-instance-name" ng-click="setSelectedInstance( rootNode.instance )">
+		{{ rootNode.instance.name }}
+		<span class="root-instance-status">{{ formatStatus( rootNode.instance.status )}}</span>
+	</p>
 	
 	<ul>
 		<li ng-repeat="childNode in rootNode.children" ng-include="'my-tmpl'"></li>

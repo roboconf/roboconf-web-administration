@@ -257,13 +257,20 @@ div.block-content > p {
 
 /* Hover list items */
 .block ul li p:hover {
-	background-color: #eee;
+	color: #b23e4b;
 	cursor: pointer;
 }
 
 p.root-instance-name:hover {
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+span.root-instance-status {
+	display: inline-block;
+	float: right;
+	padding-right: 24px;
+	font-weight: normal;
 }
 
 
@@ -314,6 +321,7 @@ div.instance-actions option {
 button.btn-roboconf {
 	border: solid #b23e4b 2px;
 	color: #b23e4b;
+	background-color: #ffffff;
 }
 
 button.btn-roboconf:hover {
