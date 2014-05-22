@@ -258,6 +258,12 @@ div.block-content > p {
 /* Hover list items */
 .block ul li p:hover {
 	background-color: #eee;
+	cursor: pointer;
+}
+
+p.root-instance-name:hover {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 
@@ -285,7 +291,7 @@ div.block-content > p {
 
 div.instance-actions > img {
 	display: block;
-	margin: 12px 0 22px;
+	margin: 12px auto;
 }
 
 div.instance-actions > label {
