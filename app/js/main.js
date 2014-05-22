@@ -244,7 +244,11 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	    	for( var index = 0; index < rawInstances.length; index ++ ) {
 	    		var instance = rawInstances[ index ];
 	    		if( instance.path === $scope.selectedInstance.path  ) {
-	    			$scope.setSelectedInstance( instance );
+	    			if( instance.status != $scope.selectedInstance.status ) {
+	    				console.log( "hop" )
+	    				$scope.setSelectedInstance( instance );
+	    		}
+	    			
 	    			break;
 	    		}
 	    	}
