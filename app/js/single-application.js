@@ -107,6 +107,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     
     $scope.setSelectedInstance = function( instance ) {
     	$scope.selectedInstance = instance;
+    	console.log( instance.data );
     	$scope.actionId = '';
     	var isRoot = $scope.findPosition( instance.path ) == 1;
     	$scope.template = $scope.findTemplateUrl( instance.status, isRoot );
@@ -136,6 +137,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     		result = 'deployed and started';
     	else if( status === 'PROBLEM' )
     		result = 'undetermined';
+    	else if( status === 'RESTORING' )
+    		result = 'being restored';
     	else if( status === 'CUSTOM' )
     		result = 'being updated..';
     	
@@ -148,10 +151,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	    	for( var index = 0; index < rawInstances.length; index ++ ) {
 	    		var instance = rawInstances[ index ];
 	    		if( instance.path === $scope.selectedInstance.path  ) {
-	    			if( instance.status != $scope.selectedInstance.status ) {
-	    				console.log( "hop" )
+	    			if( instance.status != $scope.selectedInstance.status )
 	    				$scope.setSelectedInstance( instance );
-	    		}
 	    			
 	    			break;
 	    		}
@@ -176,6 +177,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     		result = 'app-deployed-stopped.html';
     	else if( status === 'PROBLEM' )
     		result = 'app-problem.html';
+    	else if( status === 'RESTORING' )
+    		result = 'app-restoring.html';
     	else if( status === 'DEPLOYED_STARTED' ) {
     		if( isRoot )
     			result = 'app-deployed-started-root.html';
