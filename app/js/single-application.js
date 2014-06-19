@@ -10,7 +10,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	$scope.actionIdLabel = '';
 	Restangular.setBaseUrl( $rootScope.restUrl );
 	
-	Restangular.all( 'app/' + $scope.appName + '/all-children' ).getList().then( function( instances ) {
+	Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
 		$scope.rInvoked = true;
 		$scope.rErrorMsg = '';
 		$scope.rootNodes = $scope.buildInstancesGraph( instances );
