@@ -1,53 +1,40 @@
 <h1>{{ appName }}</h1>
 
-<p class="right-aligned" ng-show="rInvoked == true && rErrorMsg == ''">
-	<a href="#/new"><button type="button" class="btn btn-primary" title="Create a new instance">New Instance</button></a>
-</p>
-
 <p>
-	This page lists all the instances of the application <strong>{{ appName }}</strong>.<br />
+	Check all the instances of the application <strong>{{ appName }}</strong>.<br />
 </p>
 
-<p class="clear"></p>
+<script type="text/ng-template" id="my-tmpl">
+    <p ng-click="setSelectedInstance( childNode.instance )">
+		<strong>{{ childNode.instance.name }}</strong> is {{ formatStatus( childNode.instance.status )}}.
+	</p>
+    <ul>
+        <li ng-repeat="childNode in childNode.children" ng-include="'my-tmpl'"></li>
+    </ul>
+</script>
 
 <p class="r-error-msg" ng-show="rInvoked == true && rErrorMsg != ''">
 	An error occurred.<br />
 	{{ rErrorMsg }}
 </p>
 
-<table class="table table-condensed" ng-show="rInvoked == true && rErrorMsg == ''">
-	<thead>
-		<tr>
-			<th class="r-counter">#</th>
-			<th>Instance Name</th>
-			<th>Component</th>
-			<th>Status</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
+<div ng-repeat="rootNode in rootNodes" class="block short-block">
+	<p class="root-instance-name" ng-click="setSelectedInstance( rootNode.instance )">
+		{{ rootNode.instance.name }}
+		<span class="root-instance-status">{{ formatStatus( rootNode.instance.status )}}</span>
+	</p>
 	
-	<tbody>
-		 <tr ng-repeat="instance in instances">
-		 	<td class="r-counter"><strong> &nbsp </strong></td> <!-- FIXME: add a counter here -->
-			<td class="{{ 'r-inst-' + findPosition( instance.path )}}"><a href="#">{{ instance.name }}</a></td>
-			<td>{{ instance.component.name }}</td>
-			<td>{{ instance.status }}</td>
-			<td>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default" ng-click="perform( appName, 'deploy', instance.path )" title="deploy">
-						<span class="glyphicon glyphicon-share-alt"></span>
-					</button>
-					<button type="button" class="btn btn-default" ng-click="perform( appName, 'start', instance.path )" title="start">
-						<span class="glyphicon glyphicon-play"></span>
-					</button>
-					<button type="button" class="btn btn-default" ng-click="perform( appName, 'stop', instance.path )" title="stop">
-						<span class="glyphicon glyphicon-stop"></span>
-					</button>
-					<button type="button" class="btn btn-default" ng-click="perform( appName, 'undeploy', instance.path )" title="undeploy">
-						<span class="glyphicon glyphicon-flash"></span>
-					</button>
-				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+	<ul>
+		<li ng-repeat="childNode in rootNode.children" ng-include="'my-tmpl'"></li>
+	</ul>
+</div>
+
+<div id="instance-overview" ng-show="selectedInstance">
+	<h3>{{ selectedInstance.name }}</h3>
+	
+	<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />
+	<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}<br />
+	<strong>Component:</strong> {{ selectedInstance.component.name }}
+	
+	<div class="instance-actions" ng-include="template"></div>
+</div>

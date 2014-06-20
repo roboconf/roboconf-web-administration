@@ -1,5 +1,5 @@
 //
-// Web administration server
+// Web Administration Server
 //
 
 var express = require('express');
@@ -13,5 +13,5 @@ app.use(app.router);
 
 var server = require("http").createServer(app);
 server.listen(app.get("port"), function() {
-  return console.log("Roboconf Web Management server listening on port " + app.get("port"));
+  return console.log("Roboconf Web Management server is listening on port " + app.get("port"));
 });

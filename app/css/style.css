@@ -41,78 +41,59 @@ html, body {
 	font-size: 1.0em;
 }
 
-/* Both Welcome and Top Menu */
+.content > div > p {
+	margin: 14px 0 30px 0;
+}
+
+/* Top of the Pages */
+
+#header-img {
+	height: 90px;
+	margin: 8px 0 0 10px;
+	padding: 0 34px 14px 18px;
+	border-bottom: solid black 3px;
+}
+
+.navbar-rbcf {
+	margin: 0 0 28px 0;
+	padding-right: 24px;
+}
+
+.navbar-rbcf > ul {
+	position: fixed;
+	top: 2px;
+	right: 24px;
+}
+
+.navbar-rbcf li.active {
+	background-color: #b23e4b !important;
+	border-bottom: solid #b23e4b 2px;
+	color: white !important;
+}
 
 .ep {
 	background-color: white;
-	color: #ff0000;
+	color: #b23e4b;
+	min-width: 140px;
 }
 
 .ep span.glyphicon {
-	padding-left: 7px;
 	padding-right: 18px;
 	color: black;
 }
 
 .ep:hover, .ep:hover span, .ep-selected {
-	background-color: #ff0000 !important;
-	border-bottom: solid #ff0000 2px;
+	background-color: #b23e4b !important;
+	border-bottom: solid #b23e4b 2px;
 	color: white;
 	text-decoration: none;
 }
 
 .ep-selected:hover {
-	background-color: #ff0000 !important;
-	border-bottom: solid #ff0000 2px;
+	background-color: #b23e4b !important;
+	border-bottom: solid #b23e4b 2px;
 	color: white;
 	text-decoration: underline !important;
-}
-
-.ep > .caret {
-	border-top-color: transparent;
-	border-bottom-color: transparent;
-}
-
-/* Top Menu */
-
-#header-img {
-	height: 40px;
-	margin: 7px 10px 5px 22px;
-}
-
-.dd-lang {
-	padding-right: 15px;
-}
-
-img.flag {
-	margin-bottom: 2px;
-	margin-right: 4px;
-}
-
-.navbar-rbcf {
-	border-bottom: solid #ff0000 3px;
-	margin: 0 0 28px 0;
-}
-
-.navbar-rbcf li.active {
-	background-color: #ff0000 !important;
-	border-bottom: solid #ff0000 2px;
-	color: white !important;
-}
-
-.little {
-	font-size: 5px;
-	vertical-align: middle;
-	padding-left: 4px !important;
-}
-
-.dropdown-toggle {
-	border-color: transparent !important;
-}
-
-.dropdown-menu > li > a:hover {
-	background-color: #ff0000 !important;
-	color: white !important;
 }
 
 /* Other Pages */
@@ -122,7 +103,7 @@ img.flag {
 }
 
 .content a, .content a:hover {
-	color: #ff0000;
+	color: #b23e4b;
 }
 
 .content h1 {
@@ -141,47 +122,6 @@ img.flag {
 	font-weight: normal;
 	margin: 2px 0 14px 0;
 }
-
-.content p {
-	margin-top: 20px;
-	margin-bottom: 24px;
-}
-
-.content ul {
-	list-style-type: square;
-	padding-left: 40px;
-}
-
-.r-inline {
-	display: inline-block !important;
-	width: 90px;
-	padding: 4px 0 3px !important;
-	vertical-align: bottom;
-}
-
-td > .btn {
-	padding-top: 4px;
-	padding-bottom: 4px;
- }
- 
- p.right-aligned {
- 	float: right;
- 	margin-right: 10px;
- }
- 
- p.right-aligned > button {
- 	margin-top: -10px;
- }
- 
- table > tbody > tr:hover {
- 	background-color: #f5f5f5;
- 	border-left: solid #ff0000 1px;
- }
- 
- table > tbody > tr > td.r-counter,
- table > thead > tr > th.r-counter {
- 	padding-left: 17px;
- }
  
  .r-error-msg {
  	background: red;
@@ -192,22 +132,6 @@ td > .btn {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
  }
- 
-table > tbody > tr > td.r-inst-2 {
-	padding-left: 30px;
-}
-
-table > tbody > tr > td.r-inst-3 {
-	padding-left: 60px;
-}
-
-td button {
-	margin: 0 4px;
-}
-
-.r-danger span {
-	color: red;
-}
 
 .r-prefs-buttons {
 	text-align: right;
@@ -216,5 +140,213 @@ td button {
 
 .r-dm-state {
 	padding-right: 40px;
-	color: #ff0000;
+	color: #b23e4b;
 }
+
+/*
+ * Blocks
+ */
+
+/* The block for a root instance. */
+div.block {
+	border-radius: 10px;
+	border: solid #b23e4b 1px;
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+	margin-bottom: 24px;
+	padding-bottom: 6px;
+}
+
+div.short-block {
+	width: 50%;
+}
+
+div.block p {
+	margin: 0;
+}
+
+/* The name of a root instance's block */
+div.block > p {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	background-color: #b23e4b;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 6px 0 6px 18px;
+}
+
+/* The content for blocks */
+div.block-content {
+	padding: 14px 14px 10px;
+}
+
+div.block-content > p {
+	margin-bottom: 16px;
+}
+
+/*
+ * app.html
+ */
+
+/* Nested instances rely on lists. */
+.block ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 0 30px;
+}
+
+/* The first list leaves space below. */
+.block > ul {
+	padding-bottom: 14px;
+}
+
+/* The lists have a left border. */
+.block ul:before {
+	content: "";
+	display: block;
+	width: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	border-left: 2px #b23e4b solid;
+}
+
+/* Put list items in relative position. */
+.block ul li {
+	padding: 0 0 0 16px;
+	font-size: 14px;
+	line-height: 20px;
+	position: relative;
+}
+
+/* List items have a top border. */
+.block ul li:before {
+	content: "";
+	display: block;
+	width: 12px; /* same with indentation */
+	height: 0;
+	border-top: 2px #b23e4b solid;
+	position: absolute;
+	top: 14px;
+	left: 0;
+}
+
+/* The FIRST list item (call it the main root) has a more important padding top (branch tree). */
+.block > ul > li:first-child:before {
+	top: 25px !important;
+}
+
+/* The last item in a list hides the left border (smooth effect). */
+.block ul li:last-child:before {
+	height:auto;
+	top: 16px; /* (line-height/2) */
+	bottom: 0;
+	background:white;
+	z-index: 11;
+}
+
+/* The FIRST list item has a more important padding top. */
+.block > ul > li:first-child {
+	padding-top: 10px;
+}
+
+/* Define the padding of list items. */
+.block ul li p {
+	padding: 6px 0 6px 7px;
+}
+
+/* Hover list items */
+.block ul li p:hover {
+	color: #b23e4b;
+	cursor: pointer;
+}
+
+p.root-instance-name:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+span.root-instance-status {
+	display: inline-block;
+	float: right;
+	padding-right: 24px;
+	font-weight: normal;
+}
+
+
+/*
+ * Instance Overview
+ */
+
+ #instance-overview {
+ 	border-radius: 10px;
+	border: solid #b23e4b 2px;
+	position: fixed;
+	right: 24px;
+	left: 53%;
+	top: 226px;
+	padding: 8px 18px 20px;
+ }
+ 
+ #instance-overview > h3 {
+ 	margin: 0 0 24px;
+ 	padding: 0;
+ 	text-align: center;
+ 	font-weight: bold;
+ 	font-size: 16px;
+}
+
+div.instance-actions > img {
+	display: block;
+	margin: 12px auto;
+}
+
+div.instance-actions > label {
+	margin-right: 6px;
+}
+
+div.instance-actions > select {
+	border-radius: 8px;
+	appearance: none;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+div.instance-actions option {
+	text-align: center;
+	padding: 2px 4px;
+	border: none;
+}
+
+button.btn-roboconf {
+	border: solid #b23e4b 2px;
+	color: #b23e4b;
+	background-color: #ffffff;
+}
+
+button.btn-roboconf:hover {
+	color: #b23e4b;
+}
+
+button.btn-confirm {
+	border: solid #5cb85c 2px;
+	background-color: #5cb85c;
+	color: #ffffff;
+}
+
+button.btn-confirm:hover {
+  color: #ffffff;
+  background-color: #47a447;
+  border: solid #47a447 2px;
+}
+ 
+ 
+/*
+ * settings.html
+ */
+
+input.form-control {
+	display: inline;
+	width: 70%;
+}
+ 
