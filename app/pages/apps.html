@@ -1,47 +1,108 @@
 <h1>Applications</h1>
 
-<p class="right-aligned" ng-show="rInvoked == true && rErrorMsg == ''">
-	<a href="#/new"><button type="button" class="btn btn-primary" title="Load a new application">New Application</button></a>
+<!-- Application Upload button -->
+<p class="right-aligned" ng-show="noError && apps.length > 0 ">
+	<button type="button" class="btn btn-roboconf" title="Load a new application" data-toggle="modal" data-target="#apps-modal">
+		New Application
+	</button>
 </p>
 
-<p>
+<p ng-show="noError">
 	This page lists all the applications handled by the same Deployment Manager.<br /> 
-	This deployment manager is hosted at {{ rootUrl }}.
+	The deployment manager is hosted at {{ rootUrl }}.
 </p>
 
 <p class="clear"></p>
 
-<p class="r-error-msg" ng-show="rInvoked == true && rErrorMsg != ''">
-	An error occurred.<br />
-	{{ rErrorMsg }}
-</p>
-
-<table class="table table-condensed" ng-show="rInvoked == true && rErrorMsg == ''">
-	<thead>
-		<tr>
-			<th class="r-counter">#</th>
-			<th>Application</th>
-			<th>Qualifier</th>
-			<th>Description</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
+<!-- No connection to the server -->
+<div class="block" ng-show="! noError && rootUrl != ''">
+	<p class="block-title">Oops</p>
 	
-	<tbody>
-		 <tr ng-repeat="app in apps">
-		 	<td class="r-counter"><strong> &nbsp </strong></td> <!-- FIXME: add a counter here -->
-			<td><a href="#/app/{{ app.name }}">{{ app.name }}</a></td>
-			<td>{{ app.qualifier }}</td>
-			<td>{{ app.description }}</td>
-			<td>
-				<button type="button" class="btn btn-default" ng-click="deleteApp( app.name )" title="Remove the Application from the List">
-					<span class="glyphicon glyphicon-trash"></span>
-				</button>
+	<div class="block-content">
+		<p>
+			An error occurred.<br />
+			Communication with the server failed. Make sure the Deployment Manager is started.
+		</p>
+		<p>
+			The Deployment Manager is hosted at <strong>{{ rootUrl }}</strong>.<br />
+			This URL can be changed in <a href="#/settings">the settings page</a>.
+		</p>
+	</div>
+</div>
+
+<!-- No default URL -->
+<div class="block" ng-show="rootUrl == ''">
+	<p class="block-title">Welcome</p>
+	
+	<div class="block-content">
+		<p>
+			This is the administration interface for Roboconf's Deployment Manager.<br />
+			Before going further, you need to set the URL of the Deployment Manager in <a href="#/settings">the settings page</a>.
+		</p>
+		<p>
+			This URL defines the location of Roboconf's administration REST API.
+		</p>
+	</div>
+</div>
+
+<!-- Modal Definition -->
+<div ng-include="'pages/upload-application.html'"></div>
+
+<!-- No application? -->
+<div class="block" ng-show="noError && apps.length == 0">
+	<p class="block-title">Welcome</p>
+
+	<div class="block-content">
+		<p>
+			No application has been deployed so far.<br />
+			You can deploy a new application by uploading a ZIP file. The archive's structure must be the one of a Roboconf application.
+			<br />It must contain the following directories: <strong>descriptor</strong>, <strong>graph</strong> and <strong>instances</strong>.
+			See <a href="http://roboconf.net/en/user-guide/user-guide.html">Roboconf's web site</a> for more information.
+		</p>
+		<p>
+			<a href="#" class="welcome" data-toggle="modal" data-target="#apps-modal">Upload your first application.</a>
+		</p>
+	</div>
+</div>
+
+<!-- Applications List -->
+<div ng-repeat="app in apps" class="block">
+	<p class="block-title" ng-click="goToApplication( app.name )">
+		{{ app.name }}
+		<span class="block-annotation">{{ app.qualifier }}</span>
+	</p>
+	
+	<div class="block-content">
+		<p>{{ app.desc }}</p>
+	</div>
+</div>
+
+<!-- <table class="table table-condensed" ng-show="rInvoked == true && rErrorMsg == ''"> -->
+<!-- 	<thead> -->
+<!-- 		<tr> -->
+<!-- 			<th class="r-counter">#</th> -->
+<!-- 			<th>Application</th> -->
+<!-- 			<th>Qualifier</th> -->
+<!-- 			<th>Description</th> -->
+<!-- 			<th>Actions</th> -->
+<!-- 		</tr> -->
+<!-- 	</thead> -->
+	
+<!-- 	<tbody> -->
+<!-- 		 <tr ng-repeat=""> -->
+<!-- 		 	<td class="r-counter"><strong> &nbsp </strong></td> FIXME: add a counter here -->
+<!-- 			<td><a href="#/app/{{ app.name }}">{{ app.name }}</a></td> -->
+<!-- 			<td></td> -->
+<!-- 			<td>{{ app.description }}</td> -->
+<!-- 			<td> -->
+<!-- 				<button type="button" class="btn btn-default" ng-click="deleteApp( app.name )" title="Remove the Application from the List"> -->
+<!-- 					<span class="glyphicon glyphicon-trash"></span> -->
+<!-- 				</button> -->
 				
-				<button type="button" class="btn btn-default r-danger" ng-click="shutdownApp( app.name )" title="Shutdown the Application">
-					<span class="glyphicon glyphicon-screenshot"></span>
-				</button>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<!-- 				<button type="button" class="btn btn-default r-danger" ng-click="shutdownApp( app.name )" title="Shutdown the Application"> -->
+<!-- 					<span class="glyphicon glyphicon-screenshot"></span> -->
+<!-- 				</button> -->
+<!-- 			</td> -->
+<!-- 		</tr> -->
+<!-- 	</tbody> -->
+<!-- </table> -->

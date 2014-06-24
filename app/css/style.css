@@ -24,6 +24,10 @@ html, body {
 	text-decoration: none;
 }
 
+.right-aligned {
+	float: right;
+}
+
 .clear {
 	clear: both;
 }
@@ -78,7 +82,7 @@ html, body {
 }
 
 .ep span.glyphicon {
-	padding-right: 18px;
+	padding-right: 4px;
 	color: black;
 }
 
@@ -132,16 +136,11 @@ html, body {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
  }
-
-.r-prefs-buttons {
-	text-align: right;
-	padding-right: 10%;
-}
-
-.r-dm-state {
-	padding-right: 40px;
-	color: #b23e4b;
-}
+ 
+ a.welcome {
+ 	font-size: 14px;
+ 	font-weight: bold;
+ }
 
 /*
  * Blocks
@@ -153,7 +152,6 @@ div.block {
 	border: solid #b23e4b 1px;
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 	margin-bottom: 24px;
-	padding-bottom: 6px;
 }
 
 div.short-block {
@@ -165,7 +163,8 @@ div.block p {
 }
 
 /* The name of a root instance's block */
-div.block > p {
+
+p.block-title {
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 	background-color: #b23e4b;
@@ -174,14 +173,28 @@ div.block > p {
 	padding: 6px 0 6px 18px;
 }
 
-/* The content for blocks */
-div.block-content {
-	padding: 14px 14px 10px;
+p.block-title:hover {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 div.block-content > p {
 	margin-bottom: 16px;
 }
+
+span.block-annotation {
+	display: inline-block;
+	float: right;
+	padding-right: 24px;
+	font-weight: normal;
+}
+
+/* The content for blocks */
+
+div.block-content {
+	padding: 14px 14px 0 14px;
+}
+
 
 /*
  * app.html
@@ -196,7 +209,7 @@ div.block-content > p {
 
 /* The first list leaves space below. */
 .block > ul {
-	padding-bottom: 14px;
+	padding-bottom: 11px;
 }
 
 /* The lists have a left border. */
@@ -261,18 +274,6 @@ div.block-content > p {
 	cursor: pointer;
 }
 
-p.root-instance-name:hover {
-	text-decoration: underline;
-	cursor: pointer;
-}
-
-span.root-instance-status {
-	display: inline-block;
-	float: right;
-	padding-right: 24px;
-	font-weight: normal;
-}
-
 
 /*
  * Instance Overview
@@ -318,13 +319,13 @@ div.instance-actions option {
 	border: none;
 }
 
-button.btn-roboconf {
+.btn-roboconf {
 	border: solid #b23e4b 2px;
 	color: #b23e4b;
 	background-color: #ffffff;
 }
 
-button.btn-roboconf:hover {
+.btn-roboconf:hover {
 	color: #b23e4b;
 }
 

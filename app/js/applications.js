@@ -3,22 +3,13 @@
 
 // Create the controller and inject Angular's $scope.
 rcfApp.controller( 'mainController', function( $scope, $rootScope, $route, Restangular ) {
-	$scope.rInvoked = false;
 	$scope.rootUrl = $rootScope.restUrl;
 	Restangular.setBaseUrl( $rootScope.restUrl );
-		
-	Restangular.all( 'applications' ).getList().then( function( applications ) {
-		$scope.rInvoked = true;
-		$scope.rErrorMsg = '';
-		$scope.apps = applications;
-		
-	}, function() {
-		$scope.rInvoked = true;
-		$scope.rErrorMsg = 'Communication with the server failed.';
-	})
+	$scope.noError = true;
+	$scope.apps = [];
 	
 	
-	// Call-backs for ng-clicks    
+	// Define call-backs for ng-clicks    
     $scope.deleteApp = function( appName ) {
 		Restangular.one( 'applications/' + appName ).remove();
     };
@@ -26,4 +17,28 @@ rcfApp.controller( 'mainController', function( $scope, $rootScope, $route, Resta
     $scope.shutdownApp = function( appName ) {
 		Restangular.one( 'applications/' + appName + "/shutdown" ).post();
     };
+    
+    $scope.goToApplication = function( appName ) {
+    	window.location.href = "#/app/" + appName;
+    };
+    
+    $scope.closeUploadDialog = function() {
+    	$( "#upload-result" ).text( "" );
+		$( "#file-input-container" ).fileinput( 'clear' );
+		updateProgressBar( 0 );
+		$scope.refreshApplications();
+    }
+    
+    $scope.refreshApplications = function() {
+    	Restangular.all( 'applications' ).getList().then( function( applications ) {
+    		$scope.apps = applications;
+    		
+    	}, function() {
+    		$scope.noError = false;
+    	});
+    }
+    
+    
+    // Initialize the page
+    $scope.refreshApplications();
 });

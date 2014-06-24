@@ -4,6 +4,7 @@
 	Check all the instances of the application <strong>{{ appName }}</strong>.<br />
 </p>
 
+<!-- A dynamic template to build a tree with AngularJS -->
 <script type="text/ng-template" id="my-tmpl">
     <p ng-click="setSelectedInstance( childNode.instance )">
 		<strong>{{ childNode.instance.name }}</strong> is {{ formatStatus( childNode.instance.status )}}.
@@ -13,15 +14,27 @@
     </ul>
 </script>
 
-<p class="r-error-msg" ng-show="rInvoked == true && rErrorMsg != ''">
-	An error occurred.<br />
-	{{ rErrorMsg }}
-</p>
+<!-- No connection to the server -->
+<div class="block" ng-show="! noError && rootUrl != ''">
+	<p class="block-title">Oops</p>
+	
+	<div class="block-content">
+		<p>
+			An error occurred.<br />
+			Communication with the server failed. Make sure the Deployment Manager is started.
+		</p>
+		<p>
+			The Deployment Manager is hosted at <strong>{{ rootUrl }}</strong>.<br />
+			This URL can be changed in <a href="#/settings">the settings page</a>.
+		</p>
+	</div>
+</div>
 
+<!-- Display the hierarchy of instances -->
 <div ng-repeat="rootNode in rootNodes" class="block short-block">
-	<p class="root-instance-name" ng-click="setSelectedInstance( rootNode.instance )">
+	<p class="block-title" ng-click="setSelectedInstance( rootNode.instance )">
 		{{ rootNode.instance.name }}
-		<span class="root-instance-status">{{ formatStatus( rootNode.instance.status )}}</span>
+		<span class="block-annotation">{{ formatStatus( rootNode.instance.status )}}</span>
 	</p>
 	
 	<ul>
@@ -29,6 +42,7 @@
 	</ul>
 </div>
 
+<!-- Display the details of an instance -->
 <div id="instance-overview" ng-show="selectedInstance">
 	<h3>{{ selectedInstance.name }}</h3>
 	

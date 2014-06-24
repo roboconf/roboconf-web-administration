@@ -12,15 +12,17 @@
 
 	<!-- REST Server -->
 	<div class="block">
-		<p>REST Server</p>
+		<p class="block-title">REST Server</p>
 		
 		<div class="block-content">
 			<p>
 				Specify the location (URL and port) of the REST API exposed by Roboconf's deployment manager.
 			</p>
 			
-			<input type="text" class="form-control" id="rest-location" ng-model="restLocation" required />
+			<input type="text" class="form-control" id="rest-location" ng-model="restLocation" />
 			<button type="submit" class="btn btn-default" ng-click="saveRestLocation( restLocation )">Save</button>
+			<br /><br />
+			<p id="settings-result"></p>
 		</div>
 	</div>
 </form>

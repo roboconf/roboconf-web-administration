@@ -3,7 +3,8 @@
 
 // Controller for a single application
 rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $routeParams, Restangular ) {
-	$scope.rInvoked = false;
+	$scope.rootUrl = $rootScope.restUrl;
+	$scope.noError = true;
 	$scope.appName = $routeParams.appName;
 	$scope.template = '';
 	$scope.actionId = '';
@@ -11,14 +12,11 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	Restangular.setBaseUrl( $rootScope.restUrl );
 	
 	Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
-		$scope.rInvoked = true;
 		$scope.rErrorMsg = '';
 		$scope.rootNodes = $scope.buildInstancesGraph( instances );
-		setTimeout( $scope.updateFromServer(), 10000 );
 		
 	}, function() {
-		$scope.rInvoked = true;
-		$scope.rErrorMsg = 'Communication with the server failed.';
+		$scope.noError = false;
 	});
 	
 	
@@ -80,10 +78,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	$scope.perform = function() {
 		var realAction = $scope.actionId.split( '-' )[ 0 ];
 		var instancePath = $scope.selectedInstance.path;
-		var applyToChildren = $scope.actionId.endsWith( 'all' );
 		
-		var requestBody = angular.toJson({'apply-to-children':applyToChildren.toString(), 'instance-path':instancePath});
-		Restangular.one( 'app', $scope.appName ).post( realAction, requestBody );
+		Restangular.one( 'app/' + $scope.appName + "/" + realAction + "?instance-path=" + instancePath ).post();
 		$scope.actionId = '';
 		$scope.selectedInstance.status = 'CUSTOM';
     };
@@ -93,7 +89,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     $scope.updateFromServer = function() {
     	setTimeout( 
     		function() {
-    			Restangular.all( 'app/' + $scope.appName + '/all-children' ).getList().then( function( instances ) {
+    			
+    			Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
     				$scope.rootNodes = $scope.buildInstancesGraph( instances );
     				$scope.updateSelectedInstance( instances );
     				$scope.updateFromServer();
@@ -107,7 +104,6 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     
     $scope.setSelectedInstance = function( instance ) {
     	$scope.selectedInstance = instance;
-    	console.log( instance.data );
     	$scope.actionId = '';
     	var isRoot = $scope.findPosition( instance.path ) == 1;
     	$scope.template = $scope.findTemplateUrl( instance.status, isRoot );
@@ -137,8 +133,6 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     		result = 'deployed and started';
     	else if( status === 'PROBLEM' )
     		result = 'undetermined';
-    	else if( status === 'RESTORING' )
-    		result = 'being restored';
     	else if( status === 'CUSTOM' )
     		result = 'being updated..';
     	
@@ -177,8 +171,6 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     		result = 'app-deployed-stopped.html';
     	else if( status === 'PROBLEM' )
     		result = 'app-problem.html';
-    	else if( status === 'RESTORING' )
-    		result = 'app-restoring.html';
     	else if( status === 'DEPLOYED_STARTED' ) {
     		if( isRoot )
     			result = 'app-deployed-started-root.html';
