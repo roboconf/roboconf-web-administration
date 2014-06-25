@@ -7,6 +7,12 @@ if (typeof String.prototype.endsWith !== 'function') {
 	};
 }
 
+if (typeof String.prototype.startsWith !== 'function') {
+	String.prototype.startsWith = function(prefix) {
+		return this.indexOf( prefix ) == 0;
+	};
+}
+
 // Create the application.
 var rcfApp = angular.module( 'rcfApp', [ 'ngRoute', 'restangular' ]);
 
@@ -47,5 +53,5 @@ rcfApp.run( function( $rootScope ) {
 	if( obj )
 		$rootScope.restUrl = angular.fromJson( obj );
 	else
-		$rootScope.restUrl = '';
+		$rootScope.restUrl = 'http://localhost:8080/roboconf-dm-webapp/rest';
 });

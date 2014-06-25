@@ -1,0 +1,24 @@
+<strong>IP Address:</strong> {{ selectedInstance.data["ip.address"] }}<br />
+<strong>Machine ID:</strong> {{ selectedInstance.data["machine.id"] }}<br />
+
+<img src="img/state-deployed-started.jpg" alt="Deployed and Started" />
+
+<p class="instance-status-description">Description</p>
+
+The instance is started. It can only be stopped and undeployed.<br />
+The life cycle of this instance is handled by Roboconf's <strong>{{ selectedInstance.component.installer }}</strong> installer.
+
+<!-- <div class="btn-group"> -->
+<!-- 	<button type="button" class="btn btn-lg btn-roboconf dropdown-toggle" data-toggle="dropdown"> -->
+<!-- 		Available Actions  -->
+<!-- 		<span class="caret"></span> -->
+<!-- 	</button> -->
+	
+<!-- 	<ul class="dropdown-menu" role="menu"> -->
+<!-- 		<li><a href="" ng-click="setActionId( 'undeploy' )">Undeploy it</a></li> -->
+<!-- 	</ul> -->
+<!-- </div> -->
+
+<!-- <div class="btn-group" ng-show="actionId !== ''" ng-click="perform()"> -->
+<!-- 	<button type="button" class="btn btn-lg btn-confirm">{{ 'Confirm - ' + actionIdLabel }}</button> -->
+<!-- </div> -->

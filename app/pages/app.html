@@ -1,8 +1,31 @@
-<h1>{{ appName }}</h1>
+<h1>
+	{{ appName }}
+	<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked && noError" />
+</h1>
 
-<p>
-	Check all the instances of the application <strong>{{ appName }}</strong>.<br />
+<!--Global Actions -->
+<div class="btn-group right-aligned" ng-show="noError">
+	<button type="button" class="btn btn-roboconf dropdown-toggle" data-toggle="dropdown">
+		<span class="glyphicon glyphicon-cog"></span>
+		Global Actions <span class="caret"></span>
+	</button>
+
+	<ul class="dropdown-menu" role="menu">
+		<li ng-click="performAll( 'deploy-all' )"><a href="">Deploy and Start All</a></li>
+		<li ng-click="performAll( 'stop-all' )"><a href="">Stop All</a></li>
+		<li ng-click="performAll( 'undeploy-all' )"><a href="">Undeploy All</a></li>
+		<li class="divider"></li>
+		<li><a href="">Create a New Instance</a></li>
+		<li><a href="">Delete Instances</a></li>
+	</ul>
+</div>
+
+<p ng-show="invoked && noError">
+	This page lists all the instances of the <strong>{{ appName }}</strong> application.<br />
+	Here, you can control their life cycle.
 </p>
+
+<p class="clear"></p>
 
 <!-- A dynamic template to build a tree with AngularJS -->
 <script type="text/ng-template" id="my-tmpl">
@@ -31,7 +54,7 @@
 </div>
 
 <!-- Display the hierarchy of instances -->
-<div ng-repeat="rootNode in rootNodes" class="block short-block">
+<div ng-repeat="rootNode in rootNodes" class="{{ findBlockClass( rootNode.instance.path )}}">
 	<p class="block-title" ng-click="setSelectedInstance( rootNode.instance )">
 		{{ rootNode.instance.name }}
 		<span class="block-annotation">{{ formatStatus( rootNode.instance.status )}}</span>

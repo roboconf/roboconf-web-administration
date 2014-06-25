@@ -1,13 +1,18 @@
-<h1>Applications</h1>
+<h1>
+	Applications
+	<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked && noError" />
+</h1>
+
 
 <!-- Application Upload button -->
-<p class="right-aligned" ng-show="noError && apps.length > 0 ">
+<p class="right-aligned" ng-show="noError && apps.length > 0">
 	<button type="button" class="btn btn-roboconf" title="Load a new application" data-toggle="modal" data-target="#apps-modal">
+		<span class="glyphicon glyphicon-cloud-upload"></span>
 		New Application
 	</button>
 </p>
 
-<p ng-show="noError">
+<p ng-show="invoked && noError">
 	This page lists all the applications handled by the same Deployment Manager.<br /> 
 	The deployment manager is hosted at {{ rootUrl }}.
 </p>
@@ -46,10 +51,10 @@
 </div>
 
 <!-- Modal Definition -->
-<div ng-include="'pages/upload-application.html'"></div>
+<div ng-include="'pages/includes/upload-application.html'"></div>
 
 <!-- No application? -->
-<div class="block" ng-show="noError && apps.length == 0">
+<div class="block" ng-show="invoked && noError && apps.length == 0">
 	<p class="block-title">Welcome</p>
 
 	<div class="block-content">
@@ -67,42 +72,16 @@
 
 <!-- Applications List -->
 <div ng-repeat="app in apps" class="block">
-	<p class="block-title" ng-click="goToApplication( app.name )">
-		{{ app.name }}
-		<span class="block-annotation">{{ app.qualifier }}</span>
+	<p class="block-title">
+		<span ng-click="goToApplication( app.name )">{{ app.name }} &nbsp; :: &nbsp; {{ app.qualifier }}</span>
+		<span class="block-annotation">
+			<span class="glyphicon glyphicon-screenshot" title="Shutdown the Application" ng-click="shutdownApp( app.name )"></span>
+			&nbsp;
+			<span class="glyphicon glyphicon-trash" title="Remove the Application from the List" ng-click="deleteApp( app.name )"></span>
+		</span>
 	</p>
 	
 	<div class="block-content">
 		<p>{{ app.desc }}</p>
 	</div>
 </div>
-
-<!-- <table class="table table-condensed" ng-show="rInvoked == true && rErrorMsg == ''"> -->
-<!-- 	<thead> -->
-<!-- 		<tr> -->
-<!-- 			<th class="r-counter">#</th> -->
-<!-- 			<th>Application</th> -->
-<!-- 			<th>Qualifier</th> -->
-<!-- 			<th>Description</th> -->
-<!-- 			<th>Actions</th> -->
-<!-- 		</tr> -->
-<!-- 	</thead> -->
-	
-<!-- 	<tbody> -->
-<!-- 		 <tr ng-repeat=""> -->
-<!-- 		 	<td class="r-counter"><strong> &nbsp </strong></td> FIXME: add a counter here -->
-<!-- 			<td><a href="#/app/{{ app.name }}">{{ app.name }}</a></td> -->
-<!-- 			<td></td> -->
-<!-- 			<td>{{ app.description }}</td> -->
-<!-- 			<td> -->
-<!-- 				<button type="button" class="btn btn-default" ng-click="deleteApp( app.name )" title="Remove the Application from the List"> -->
-<!-- 					<span class="glyphicon glyphicon-trash"></span> -->
-<!-- 				</button> -->
-				
-<!-- 				<button type="button" class="btn btn-default r-danger" ng-click="shutdownApp( app.name )" title="Shutdown the Application"> -->
-<!-- 					<span class="glyphicon glyphicon-screenshot"></span> -->
-<!-- 				</button> -->
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<!-- 	</tbody> -->
-<!-- </table> -->

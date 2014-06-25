@@ -5,20 +5,14 @@
 rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $routeParams, Restangular ) {
 	$scope.rootUrl = $rootScope.restUrl;
 	$scope.noError = true;
+	$scope.invoked = false;
 	$scope.appName = $routeParams.appName;
 	$scope.template = '';
 	$scope.actionId = '';
 	$scope.actionIdLabel = '';
 	Restangular.setBaseUrl( $rootScope.restUrl );
 	
-	Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
-		$scope.rErrorMsg = '';
-		$scope.rootNodes = $scope.buildInstancesGraph( instances );
-		
-	}, function() {
-		$scope.noError = false;
-	});
-	
+
 	
 	// Sort and format instances
 	$scope.buildInstancesGraph = function( instances ) {
@@ -82,6 +76,12 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 		Restangular.one( 'app/' + $scope.appName + "/" + realAction + "?instance-path=" + instancePath ).post();
 		$scope.actionId = '';
 		$scope.selectedInstance.status = 'CUSTOM';
+    };
+    
+    $scope.performAll = function( action ) {
+    	Restangular.one( 'app/' + $scope.appName + "/" + action ).post().then( function() {
+    		$scope.loadInstances();
+    	});
     };
     
     // Regularly poll the server
@@ -178,11 +178,36 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     			result = 'app-deployed-started.html';
     	}
     	
-    	return 'pages/' + result;
+    	return 'pages/includes/' + result;
+    };
+    
+    $scope.findBlockClass = function( instancePath ) {
+    	var result = "block short-block";
+    	if( $scope.selectedInstance ) {
+    		if( ! $scope.selectedInstance.path.startsWith( instancePath ))
+        		result += " block-faded";
+    	}
+    	
+    	return result;
     };
     
     $scope.buildActionIdLabel = function( actionId ) {
     	var result = actionId.replace( /-/g, " " ).toLowerCase().replace( /(^| )(\w)/g, function(x){return x.toUpperCase();});
     	return result;
     };
+    
+    $scope.loadInstances = function() {
+    	Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
+    		$scope.rErrorMsg = '';
+    		$scope.rootNodes = $scope.buildInstancesGraph( instances );
+    		$scope.invoked = true;
+    		
+    	}, function() {
+    		$scope.noError = false;
+    	});
+    };
+    
+    
+    // Initialize the page
+    $scope.loadInstances();
 });
