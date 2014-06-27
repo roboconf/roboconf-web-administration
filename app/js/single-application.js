@@ -154,29 +154,22 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     $scope.findTemplateUrl = function( status, isRoot ) {
     	var result = '';
     	
-    	if( status === 'NOT_DEPLOYED' ) {
-    		if( isRoot )
-    			result = 'app-root-not-deployed.html';
-    		else
-    			result = 'app-not-deployed.html';
-    	} else if( status === 'STARTING' ) {
+    	if( status === 'NOT_DEPLOYED' )
+    		result = isRoot ? 'app-root-not-deployed.html' : 'app-not-deployed.html';
+    	 else if( status === 'STARTING' )
     		result = 'app-starting.html';
-    	} else if( status === 'DEPLOYING' ) {
-    		result = 'app-deploying.html';
-    	} else if( status === 'UNDEPLOYING' ) {
-    		result = 'app-undeploying.html';
-    	} else if( status === 'STOPPING' ) {
+    	 else if( status === 'DEPLOYING' )
+    		result = isRoot ? 'app-root-deploying.html' : 'app-deploying.html';
+    	 else if( status === 'UNDEPLOYING' )
+    		result = isRoot ? 'app-root-undeploying.html' : 'app-undeploying.html';
+    	 else if( status === 'STOPPING' )
     		result = 'app-stopping.html';
-    	} else if( status === 'DEPLOYED_STOPPED' ) {
+    	 else if( status === 'DEPLOYED_STOPPED' )
     		result = 'app-deployed-stopped.html';
-    	} else if( status === 'PROBLEM' ) {
+    	 else if( status === 'PROBLEM' )
     		result = 'app-problem.html';
-    	} else if( status === 'DEPLOYED_STARTED' ) {
-    		if( isRoot )
-    			result = 'app-root-deployed-started.html';
-    		else
-    			result = 'app-deployed-started.html';
-    	}
+    	 else if( status === 'DEPLOYED_STARTED' )
+    		result = isRoot ? 'app-root-deployed-started.html' : 'app-deployed-started.html';
     	
     	return 'pages/includes/' + result;
     };
