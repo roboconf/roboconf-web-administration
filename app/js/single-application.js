@@ -8,8 +8,6 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	$scope.invoked = false;
 	$scope.appName = $routeParams.appName;
 	$scope.template = '';
-	$scope.actionId = '';
-	$scope.actionIdLabel = '';
 	Restangular.setBaseUrl( $rootScope.restUrl );
 	
 
@@ -69,19 +67,23 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	
 	
 	// Perform an action on a given instances
-	$scope.perform = function() {
-		var realAction = $scope.actionId.split( '-' )[ 0 ];
-		var instancePath = $scope.selectedInstance.path;
-		
-		Restangular.one( 'app/' + $scope.appName + "/" + realAction + "?instance-path=" + instancePath ).post();
-		$scope.actionId = '';
+	$scope.perform = function( action ) {
+		var path = 'app/' + $scope.appName + "/" + action + "?instance-path=" + $scope.selectedInstance.path;
+		Restangular.one( path ).post();
 		$scope.selectedInstance.status = 'CUSTOM';
     };
     
-    $scope.performAll = function( action ) {
-    	Restangular.one( 'app/' + $scope.appName + "/" + action ).post().then( function() {
+    $scope.performAll = function( action, useInstance ) {
+    	var path = 'app/' + $scope.appName + "/" + action;
+    	if( useInstance )
+    		path += "?instance-path=" + $scope.selectedInstance.path;
+    	
+    	Restangular.one( path ).post().then( function() {
     		$scope.loadInstances();
     	});
+    	
+    	if( useInstance )
+    		$scope.selectedInstance.status = 'CUSTOM';
     };
     
     // Regularly poll the server
@@ -109,11 +111,6 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     	$scope.template = $scope.findTemplateUrl( instance.status, isRoot );
     }
     
-    $scope.setActionId = function( actionId ) {
-    	$scope.actionId = actionId;
-    	$scope.actionIdLabel = $scope.buildActionIdLabel( actionId );
-    }
-    
     $scope.formatStatus = function( status ) {
     	var result = '';
     	
@@ -134,7 +131,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     	else if( status === 'PROBLEM' )
     		result = 'undetermined';
     	else if( status === 'CUSTOM' )
-    		result = 'being updated..';
+    		result = 'being updated...';
     	
     	return result;
     }
@@ -157,23 +154,26 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     $scope.findTemplateUrl = function( status, isRoot ) {
     	var result = '';
     	
-    	if( status === 'NOT_DEPLOYED' )
-    		result = 'app-not-deployed.html';
-    	else if( status === 'STARTING' )
-    		result = 'app-starting.html';
-    	else if( status === 'DEPLOYING' )
-    		result = 'app-deploying.html';
-    	else if( status === 'UNDEPLOYING' )
-    		result = 'app-undeploying.html';
-    	else if( status === 'STOPPING' )
-    		result = 'app-stopping.html';
-    	else if( status === 'DEPLOYED_STOPPED' )
-    		result = 'app-deployed-stopped.html';
-    	else if( status === 'PROBLEM' )
-    		result = 'app-problem.html';
-    	else if( status === 'DEPLOYED_STARTED' ) {
+    	if( status === 'NOT_DEPLOYED' ) {
     		if( isRoot )
-    			result = 'app-deployed-started-root.html';
+    			result = 'app-root-not-deployed.html';
+    		else
+    			result = 'app-not-deployed.html';
+    	} else if( status === 'STARTING' ) {
+    		result = 'app-starting.html';
+    	} else if( status === 'DEPLOYING' ) {
+    		result = 'app-deploying.html';
+    	} else if( status === 'UNDEPLOYING' ) {
+    		result = 'app-undeploying.html';
+    	} else if( status === 'STOPPING' ) {
+    		result = 'app-stopping.html';
+    	} else if( status === 'DEPLOYED_STOPPED' ) {
+    		result = 'app-deployed-stopped.html';
+    	} else if( status === 'PROBLEM' ) {
+    		result = 'app-problem.html';
+    	} else if( status === 'DEPLOYED_STARTED' ) {
+    		if( isRoot )
+    			result = 'app-root-deployed-started.html';
     		else
     			result = 'app-deployed-started.html';
     	}
@@ -191,11 +191,6 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     	return result;
     };
     
-    $scope.buildActionIdLabel = function( actionId ) {
-    	var result = actionId.replace( /-/g, " " ).toLowerCase().replace( /(^| )(\w)/g, function(x){return x.toUpperCase();});
-    	return result;
-    };
-    
     $scope.loadInstances = function() {
     	Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
     		$scope.rErrorMsg = '';
@@ -210,4 +205,5 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     
     // Initialize the page
     $scope.loadInstances();
+    $scope.updateFromServer();
 });

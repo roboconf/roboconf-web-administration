@@ -1,13 +1,12 @@
-<img src="img/state-not-deployed.jpg" alt="Not Deployed" />
+<img src="img/state-root-not-deployed.jpg" alt="Not Deployed" />
 <p>The following actions can be undertaken.</p>
 
 <div class="btn-group btn-group-justified">
 	<div class="btn-group" ng-click="perform( 'deploy' )">
 		<button class="btn btn-roboconf" title="Deploy"> <span class="glyphicon glyphicon-tower"></span> &nbsp; Deploy this Instance</button>
 	</div>
-	<!-- FIXME: should be perform and start... -->
-	<div class="btn-group" ng-click="perform( 'deploy' )">
-		<button class="btn btn-roboconf" title="Deploy and Start"> <span class="glyphicon glyphicon-play"></span> &nbsp; Deploy and Start It</button>
+	<div class="btn-group" ng-click="performAll( 'deploy-all', true )">
+		<button class="btn btn-roboconf" title="Deploy and Start Everything"> <span class="glyphicon glyphicon-gift"></span> &nbsp; Deploy and Start Everything</button>
 	</div>
 </div>
 
@@ -16,4 +15,5 @@
 <br />
 
 The instance is not deployed. It can only be deployed.<br />
+You can also deploy and start this instance with all its children in one click.
 The life cycle of this instance is handled by Roboconf's <strong>{{ selectedInstance.component.installer }}</strong> installer.

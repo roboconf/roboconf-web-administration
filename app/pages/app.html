@@ -4,16 +4,16 @@
 </h1>
 
 <!--Global Actions -->
-<div class="btn-group right-aligned" ng-show="noError">
+<div class="btn-group right-aligned" ng-show="invoked && noError">
 	<button type="button" class="btn btn-roboconf dropdown-toggle" data-toggle="dropdown">
 		<span class="glyphicon glyphicon-cog"></span>
 		Global Actions <span class="caret"></span>
 	</button>
 
 	<ul class="dropdown-menu" role="menu">
-		<li ng-click="performAll( 'deploy-all' )"><a href="">Deploy and Start All</a></li>
-		<li ng-click="performAll( 'stop-all' )"><a href="">Stop All</a></li>
-		<li ng-click="performAll( 'undeploy-all' )"><a href="">Undeploy All</a></li>
+		<li ng-click="performAll( 'deploy-all', false )"><a href="">Deploy and Start All</a></li>
+		<li ng-click="performAll( 'stop-all', false )"><a href="">Stop All</a></li>
+		<li ng-click="performAll( 'undeploy-all', false )"><a href="">Undeploy All</a></li>
 		<li class="divider"></li>
 		<li><a href="">Create a New Instance</a></li>
 		<li><a href="">Delete Instances</a></li>
@@ -68,7 +68,7 @@
 <!-- Display the details of an instance -->
 <div id="instance-overview" ng-show="selectedInstance">
 	<h3>{{ selectedInstance.name }}</h3>
-	
+		
 	<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />
 	<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}<br />
 	<strong>Component:</strong> {{ selectedInstance.component.name }}

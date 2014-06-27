@@ -59,7 +59,7 @@ img.spinner {
 }
 
 .navbar-rbcf > ul {
-	position: fixed;
+	position: absolute;
 	top: 2px;
 	right: 24px;
 }
@@ -269,17 +269,17 @@ div.block-content {
  * Instance Overview
  */
 
- #instance-overview {
+#instance-overview {
  	border-radius: 10px;
 	border: solid #b23e4b 2px;
-	position: fixed;
+	position: absolute;
 	right: 44px;
 	left: 51%;
 	top: 247px;
 	padding: 8px 18px 20px;
- }
+}
  
- #instance-overview > h3 {
+#instance-overview h3 {
  	margin: 0 0 24px;
  	padding: 0;
  	text-align: center;
@@ -287,32 +287,16 @@ div.block-content {
  	font-size: 16px;
 }
 
-p.instance-status-description {
-	font-weight: bold;
-}
-
-div.instance-actions > img {
+div.instance-actions img {
 	display: block;
 	margin: 12px auto;
+	max-width: 100%;
 }
 
-div.instance-actions > label {
-	margin-right: 6px;
-}
 
-div.instance-actions > select {
-	border-radius: 8px;
-	appearance: none;
-	-webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-div.instance-actions option {
-	text-align: center;
-	padding: 2px 4px;
-	border: none;
-}
-
+/*
+ * Buttons
+ */
 .btn-roboconf {
 	border: solid #b23e4b 2px;
 	color: #b23e4b;
@@ -321,19 +305,7 @@ div.instance-actions option {
 
 .btn-roboconf:hover {
 	color: #b23e4b;
-}
-
-button.btn-confirm {
-	border: solid #5cb85c 2px;
-	background-color: #5cb85c;
-	color: #ffffff;
-}
-
-button.btn-confirm:hover {
-  color: #ffffff;
-  background-color: #47a447;
-  border: solid #47a447 2px;
-}
+} 
  
  
 /*
