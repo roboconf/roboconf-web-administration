@@ -177,7 +177,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     $scope.findBlockClass = function( instancePath ) {
     	var result = "block short-block";
     	if( $scope.selectedInstance ) {
-    		if( ! $scope.selectedInstance.path.startsWith( instancePath ))
+    		if( $scope.selectedInstance.path != instancePath
+    				&& ! $scope.selectedInstance.path.startsWith( instancePath + "/" ))
         		result += " block-faded";
     	}
     	
