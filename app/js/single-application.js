@@ -107,8 +107,10 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     $scope.setSelectedInstance = function( instance ) {
     	$scope.selectedInstance = instance;
     	$scope.actionId = '';
+    	
     	var isRoot = $scope.findPosition( instance.path ) == 1;
-    	$scope.template = $scope.findTemplateUrl( instance.status, isRoot );
+    	var parentNotDeployed = $scope.isParentNotDeployed( instance );
+    	$scope.template = $scope.findTemplateUrl( instance.status, isRoot, parentNotDeployed );
     }
     
     $scope.formatStatus = function( status ) {
@@ -151,11 +153,20 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     	}
     };
     
-    $scope.findTemplateUrl = function( status, isRoot ) {
+    $scope.isParentNotDeployed = function( instance ) {
+    	
+    	var inst = instance;
+    	while( inst.parent )
+    		inst = inst.parent;
+    	
+    	return inst.status === "NOT_DEPLOYED";
+    };
+    
+    $scope.findTemplateUrl = function( status, isRoot, isParentNotDeployed ) {
     	var result = '';
     	
     	if( status === 'NOT_DEPLOYED' )
-    		result = isRoot ? 'app-root-not-deployed.html' : 'app-not-deployed.html';
+    		result = isRoot ? 'app-root-not-deployed.html' : isParentNotDeployed ? 'app-not-deployed-no-action.html' : 'app-not-deployed.html';
     	 else if( status === 'STARTING' )
     		result = 'app-starting.html';
     	 else if( status === 'DEPLOYING' )
