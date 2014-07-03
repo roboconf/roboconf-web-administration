@@ -24,6 +24,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 				
 				// Create the current node and see the instance path's length
 				var currentNode = { instance: instances[ index ], children: []};
+				instances[ index ].treeNode = currentNode;
 				var pathLength = $scope.findPosition( currentNode.instance.path );
 				
 				// New root instance
@@ -155,11 +156,11 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     
     $scope.isParentNotDeployed = function( instance ) {
     	
-    	var inst = instance;
-    	while( inst.parent )
-    		inst = inst.parent;
+    	var node = instance.treeNode;
+    	while( node.parent )
+    		node = node.parent;
     	
-    	return inst.status === "NOT_DEPLOYED";
+    	return node.instance.status === "NOT_DEPLOYED";
     };
     
     $scope.findTemplateUrl = function( status, isRoot, isParentNotDeployed ) {
