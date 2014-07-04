@@ -21,22 +21,17 @@ rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
 	$routeProvider
 
 	.when('/', {
-		templateUrl : '/pages/apps.html',
+		templateUrl : 'pages/apps.html',
 		controller  : 'mainController'
 	})
 	
-	.when('/new', {
-		templateUrl : '/pages/upload.html',
-		controller  : 'uploadController'
-	})
-	
 	.when('/settings', {
-		templateUrl : '/pages/settings.html',
+		templateUrl : 'pages/settings.html',
 		controller  : 'settingsController'
 	})
 
 	.when('/app/:appName', {
-		templateUrl : '/pages/app.html',
+		templateUrl : 'pages/app.html',
 		controller  : 'appController'
 	})
 	
