@@ -68,8 +68,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	
 	
 	// Perform an action on a given instances
-	$scope.perform = function( action ) {
-		var path = 'app/' + $scope.appName + "/" + action + "?instance-path=" + $scope.selectedInstance.path;
+	$scope.changeState = function( newState ) {
+		var path = 'app/' + $scope.appName + "/change-state?new-state=" + newState + "&instance-path=" + $scope.selectedInstance.path;
 		Restangular.one( path ).post();
 		$scope.selectedInstance.status = 'CUSTOM';
     };

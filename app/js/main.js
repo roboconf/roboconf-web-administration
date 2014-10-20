@@ -48,5 +48,5 @@ rcfApp.run( function( $rootScope ) {
 	if( obj )
 		$rootScope.restUrl = angular.fromJson( obj );
 	else
-		$rootScope.restUrl = 'http://localhost:8080/roboconf-dm-webapp/rest';
+		$rootScope.restUrl = 'http://localhost:8181/roboconf-dm';
 });
