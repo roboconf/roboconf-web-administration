@@ -17,9 +17,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 		var rootNodes = [];
 		if( instances ) {
 			
-			var currentParentNode;
-			var lastInstancePathLength = 1;
-			
+			var lastProcessedInstance = null;
 			for( var index = 0; index < instances.length; ++index ) {
 				
 				// Create the current node and see the instance path's length
@@ -29,37 +27,42 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 				
 				// New root instance
 				if( pathLength == 1 ) {
-					currentParentNode = currentNode;
 					rootNodes.push( currentNode );	
 				}
 				
-				// The child is at the same level than the previous element.
-				// Do we have to update the parent?
-				else if( lastInstancePathLength === pathLength ) {
-					if( $scope.findPosition( currentParentNode.instance.path ) === pathLength )
-						currentParentNode = currentParentNode.parent;
+				// Otherwise, count the segments.
+				// Predicate: levels are incremented one by one, but can be decremented from several units at once.
+				else {
+					var sameSegmentsCount = 0;
+					var old = lastProcessedInstance.instance.path.split( "/" );
+					var curr = currentNode.instance.path.split( "/" );
+					for( var i=0; i<old.length; i++ ) {
+						if( old[ i ] === curr[ i ])
+							sameSegmentsCount ++;
+						else 
+							break;
+					}
 					
-					currentNode.parent = currentParentNode;
-					currentParentNode.children.push( currentNode );
+					// Case: the current node is a (direct) child of the previous node.
+					// Indirect child does not make sense in the Roboconf scope.
+					if( sameSegmentsCount === old.length ) {
+						currentNode.parent = lastProcessedInstance;
+						lastProcessedInstance.children.push( currentNode );
+					}
+					
+					// Case: sameSegmentsCount < old.length => there are common ancestors...
+					else {
+						var parentNode = lastProcessedInstance;
+						for( var i=0; i < old.length - sameSegmentsCount; i++ )
+							parentNode = parentNode.parent;
+						
+						currentNode.parent = parentNode;
+						parentNode.children.push( currentNode );
+					}
 				}
 				
-				// If the child is at the same or the previous level, restore the parent.
-				// The previous node does not have any child.
-				else if( lastInstancePathLength > pathLength ) {
-					currentParentNode = currentParentNode.parent;
-					currentNode.parent = currentParentNode;
-					currentParentNode.children.push( currentNode );
-				}
-				
-				// If the child is a level after, change the parent
-				else if( lastInstancePathLength < pathLength ) {
-					currentNode.parent = currentParentNode;
-					currentParentNode.children.push( currentNode );
-					currentParentNode = currentNode;
-				}
-				
-				// Remember the last path length
-				lastInstancePathLength = pathLength;
+				// Prepare the next iteration
+				lastProcessedInstance = currentNode;
 			}
 		}
 		
