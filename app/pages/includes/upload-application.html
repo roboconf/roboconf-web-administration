@@ -101,7 +101,7 @@
 				$( "#upload-result" ).text( "The application was succesfully uploaded." );
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				$( "#upload-result" ).text( "An error occured: " + jqXHR.responseText + " Error code: " + jqXHR.status + "." );
+				$( "#upload-result" ).html( jqXHR.responseText );
 			}
 		});
 			
