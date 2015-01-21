@@ -203,7 +203,7 @@ div.block-content {
 }
 
 /* The lists have a left border. */
-.block ul:before {
+.block > ul ul:before {
 	content: "";
 	display: block;
 	width: 0;
