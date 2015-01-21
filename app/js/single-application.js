@@ -123,13 +123,15 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     	if( status === 'NOT_DEPLOYED' )
     		result = 'not deployed';
     	else if( status === 'STARTING' )
-    		result = 'starting and/or waiting for its dependencies to be started';
+    		result = 'starting';
     	else if( status === 'DEPLOYING' )
     		result = 'being deployed.';
     	else if( status === 'UNDEPLOYING' )
     		result = 'being undeployed.';
     	else if( status === 'STOPPING' )
     		result = 'stopping';
+    	else if( status === 'UNRESOLVED' )
+    		result = 'waiting for its dependencies to be resolved';
     	else if( status === 'DEPLOYED_STOPPED' )
     		result = 'deployed but stopped';
     	else if( status === 'DEPLOYED_STARTED' )
@@ -183,6 +185,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     		result = 'app-deployed-stopped.html';
     	 else if( status === 'PROBLEM' )
     		result = 'app-problem.html';
+    	 else if( status === 'UNRESOLVED' )
+     		result = 'app-unresolved.html';
     	 else if( status === 'DEPLOYED_STARTED' )
     		result = isRoot ? 'app-root-deployed-started.html' : 'app-deployed-started.html';
     	
