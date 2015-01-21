@@ -293,6 +293,11 @@ div.instance-actions img {
 	max-width: 100%;
 }
 
+/* The spinner image on the right of the instane name */
+#instance-overview > img {
+	float:right;
+}
+
 
 /*
  * Buttons

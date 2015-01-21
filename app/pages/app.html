@@ -67,6 +67,7 @@
 
 <!-- Display the details of an instance -->
 <div id="instance-overview" ng-show="selectedInstance">
+	<img src="img/spinner.gif" class="spinner" alt="..." ng-show="actionInProgress" />
 	<h3>{{ selectedInstance.name }}</h3>
 		
 	<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />

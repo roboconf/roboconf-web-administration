@@ -6,6 +6,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	$scope.rootUrl = $rootScope.restUrl;
 	$scope.noError = true;
 	$scope.invoked = false;
+	$scope.actionInProgress = false;
 	$scope.appName = $routeParams.appName;
 	$scope.template = '';
 	Restangular.setBaseUrl( $rootScope.restUrl );
@@ -27,7 +28,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 				
 				// New root instance
 				if( pathLength == 1 ) {
-					rootNodes.push( currentNode );	
+					rootNodes.push( currentNode );
 				}
 				
 				// Otherwise, count the segments.
@@ -73,6 +74,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	// Perform an action on a given instances
 	$scope.changeState = function( newState ) {
 		var path = 'app/' + $scope.appName + "/change-state?new-state=" + newState + "&instance-path=" + $scope.selectedInstance.path;
+		$scope.actionInProgress = true;
 		Restangular.one( path ).post();
 		$scope.selectedInstance.status = 'CUSTOM';
     };
@@ -97,8 +99,15 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     		function() {
     			
     			Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
+    				
+    				// Update the model
     				$scope.rootNodes = $scope.buildInstancesGraph( instances );
     				$scope.updateSelectedInstance( instances );
+    				
+    				// If the user clicked before, stop displaying the spinner
+    				$scope.actionInProgress = false;
+    				
+    				// Refresh in 5 s
     				$scope.updateFromServer();
     			})
     		}, 5000 );
