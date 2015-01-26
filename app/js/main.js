@@ -25,6 +25,12 @@ rcfApp.config( function( $routeProvider, $sceDelegateProvider ) {
 		controller  : 'mainController'
 	})
 	
+	// Just for safety, see #25
+	.when('/upload', {
+		templateUrl : 'pages/upload.html',
+		controller  : 'mainController'
+	})
+	
 	.when('/settings', {
 		templateUrl : 'pages/settings.html',
 		controller  : 'settingsController'
