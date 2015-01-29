@@ -6,7 +6,7 @@
 
 <!-- Application Upload button -->
 <p class="right-aligned" ng-show="noError && apps.length > 0">
-	<button type="button" class="btn btn-roboconf" title="Load a new application" data-toggle="modal" data-target="#apps-modal">
+	<button type="button" class="btn btn-roboconf" title="Load a new application" onClick="window.location='#/upload'">
 		<span class="glyphicon glyphicon-cloud-upload"></span>
 		New Application
 	</button>
@@ -50,9 +50,6 @@
 	</div>
 </div>
 
-<!-- Modal Definition -->
-<div ng-include="'pages/includes/upload-application.html'"></div>
-
 <!-- No application? -->
 <div class="block" ng-show="invoked && noError && apps.length == 0">
 	<p class="block-title">Welcome</p>
@@ -65,7 +62,7 @@
 			See <a href="http://roboconf.net/en/user-guide/user-guide.html">Roboconf's web site</a> for more information.
 		</p>
 		<p>
-			<a href="#" class="welcome" data-toggle="modal" data-target="#apps-modal">Upload your first application.</a>
+			<a href="#/upload" class="welcome">Upload your first application.</a>
 		</p>
 	</div>
 </div>
