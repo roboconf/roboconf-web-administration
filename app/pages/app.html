@@ -76,3 +76,11 @@
 	
 	<div class="instance-actions" ng-include="template"></div>
 </div>
+
+<script type="text/javascript">
+$( window ).scroll( function() {
+	var scrollTop = $( window ).scrollTop();
+	var newTop = Math.max( scrollTop + 24, 247 );
+	$( "#instance-overview" ).css( 'top', newTop );
+});
+</script>
