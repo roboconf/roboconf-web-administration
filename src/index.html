@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="roboconf">
+<head>
+	<meta charset="utf-8">
+	<title>Roboconf :: Web Administration</title>
+	
+	<!-- bower:css -->
+  	<!-- endbower -->
+  	
+  	<!-- inject:css -->
+  	<!-- endinject -->
+
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+
+<body>
+
+	<!-- Menu -->
+	<nav class="navbar-rbcf" role="navigation">
+		<a href="#/"><img id="header-img" src="img/logo_roboconf_2.jpg" alt="Roboconf" /></a>
+
+		<ul class="nav navbar-nav navbar-right" id="top-menu">
+			<li><a href="#/" class="ep">
+				<span class="glyphicon glyphicon-th-list"></span> Applications </a></li>
+
+			<li><a href="#/settings" class="ep">
+				<span class="glyphicon glyphicon-wrench"></span> Settings </a></li>
+		</ul>
+
+		<p style="clear: both; display: inline;"></p>
+	</nav>
+
+
+	<!-- Content -->
+	<div class="content">
+		<!-- This is where content will be injected. -->
+		<div ng-view></div>
+	</div>
+	
+	<!-- Scripts -->
+	<!-- bower:js -->
+  	<!-- endbower -->
+  	
+	<!-- inject:js -->
+  	<!-- endinject -->
+</body>
+</html>

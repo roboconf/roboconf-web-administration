@@ -1,26 +1,16 @@
 <h1>
 	Applications
-	<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked && noError" />
+	<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 </h1>
 
-
-<!-- Application Upload button -->
-<p class="right-aligned" ng-show="noError && apps.length > 0">
-	<button type="button" class="btn btn-roboconf" title="Load a new application" onClick="window.location='#/upload'">
-		<span class="glyphicon glyphicon-cloud-upload"></span>
-		New Application
-	</button>
-</p>
-
+<!-- Information Message -->
 <p ng-show="invoked && noError">
 	This page lists all the applications handled by the same Deployment Manager.<br /> 
 	The deployment manager is hosted at {{ rootUrl }}.
 </p>
 
-<p class="clear"></p>
-
-<!-- No connection to the server -->
-<div class="block" ng-show="! noError && rootUrl != ''">
+<!-- Error message: no connection to the server -->
+<div class="block" ng-show="! noError">
 	<p class="block-title">Oops</p>
 	
 	<div class="block-content">
@@ -35,21 +25,6 @@
 	</div>
 </div>
 
-<!-- No default URL -->
-<div class="block" ng-show="rootUrl == ''">
-	<p class="block-title">Welcome</p>
-	
-	<div class="block-content">
-		<p>
-			This is the administration interface for Roboconf's Deployment Manager.<br />
-			Before going further, you need to set the URL of the Deployment Manager in <a href="#/settings">the settings page</a>.
-		</p>
-		<p>
-			This URL defines the location of Roboconf's administration REST API.
-		</p>
-	</div>
-</div>
-
 <!-- No application? -->
 <div class="block" ng-show="invoked && noError && apps.length == 0">
 	<p class="block-title">Welcome</p>
@@ -57,9 +32,7 @@
 	<div class="block-content">
 		<p>
 			No application has been deployed so far.<br />
-			You can deploy a new application by uploading a ZIP file. The archive's structure must be the one of a Roboconf application.
-			<br />It must contain the following directories: <strong>descriptor</strong>, <strong>graph</strong> and <strong>instances</strong>.
-			See <a href="http://roboconf.net/en/user-guide/user-guide.html">Roboconf's web site</a> for more information.
+			You can deploy a new application by uploading a ZIP file.
 		</p>
 		<p>
 			<a href="#/upload" class="welcome">Upload your first application.</a>

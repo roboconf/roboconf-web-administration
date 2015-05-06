@@ -1,0 +1,26 @@
+<h1>Preferences</h1>
+
+<p>
+	Manage your settings and preferences.<br />
+</p>
+
+<form role="form">
+
+	<!-- REST Server -->
+	<div class="block">
+		<p class="block-title">REST Server</p>
+		
+		<div class="block-content">
+			<p>
+				Specify the location (URL and port) of the REST API exposed by Roboconf's deployment manager.<br />
+				Example: http://localhost:8181/roboconf-dm
+			</p>
+			
+			<input type="text" class="form-control" id="rest-location" ng-model="url" />
+			<button type="submit" class="btn btn-default" ng-click="saveUrl( url )">
+				Save <span id="rprefs-ok" class="glyphicon glyphicon-ok"></span>
+			</button>
+			<br /><br />
+		</div>
+	</div>
+</form>

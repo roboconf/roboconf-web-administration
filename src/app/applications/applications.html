@@ -1,0 +1,57 @@
+<h1>
+	Applications
+	<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
+</h1>
+
+<!-- Information Message -->
+<p ng-show="invoked && noError">
+	This page lists all the applications handled by the same Deployment Manager.<br /> 
+	The deployment manager is hosted at {{ rootUrl }}.
+</p>
+
+<!-- Error message: no connection to the server -->
+<div class="block" ng-show="! noError">
+	<p class="block-title">Oops</p>
+	
+	<div class="block-content">
+		<p>
+			An error occurred.<br />
+			Communication with the server failed. Make sure the Deployment Manager is started.
+		</p>
+		<p>
+			The Deployment Manager is hosted at <strong>{{ rootUrl }}</strong>.<br />
+			This URL can be changed in <a href="#/settings">the settings page</a>.
+		</p>
+	</div>
+</div>
+
+<!-- No application? -->
+<div class="block" ng-show="invoked && noError && apps.length == 0">
+	<p class="block-title">Welcome</p>
+
+	<div class="block-content">
+		<p>
+			No application has been deployed so far.<br />
+			You can deploy a new application by uploading a ZIP file.
+		</p>
+		<p>
+			<a href="#/upload" class="welcome">Upload your first application.</a>
+		</p>
+	</div>
+</div>
+
+<!-- Applications List -->
+<div ng-repeat="app in apps" class="block">
+	<p class="block-title">
+		<span ng-click="goToApplication( app.name )">{{ app.name }} &nbsp; :: &nbsp; {{ app.qualifier }}</span>
+		<span class="block-annotation">
+			<span class="glyphicon glyphicon-screenshot" title="Shutdown the Application" ng-click="shutdownApp( app.name )"></span>
+			&nbsp;
+			<span class="glyphicon glyphicon-trash" title="Remove the Application from the List" ng-click="deleteApp( app.name )"></span>
+		</span>
+	</p>
+	
+	<div class="block-content">
+		<p>{{ app.desc }}</p>
+	</div>
+</div>
