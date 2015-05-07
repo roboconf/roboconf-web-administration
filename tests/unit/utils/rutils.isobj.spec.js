@@ -15,14 +15,14 @@ describe( 'Roboconf Utilities :: isObj', function() {
 
 	// Run the tests
 	it( 'should recognize objects', function() {
-		expect( rutils.isObj( "this is a test" )).toBeTruthy();
-		expect( rutils.isObj( {} )).toBeTruthy();
-		expect( rutils.isObj( [] )).toBeTruthy();
-		expect( rutils.isObj( ['item1', 'item2'] )).toBeTruthy();
-		expect( rutils.isObj( true )).toBeTruthy();
-		expect( rutils.isObj( 54 )).toBeTruthy();
+		rutils.isObj( "this is a test" ).should.equal( true );
+		rutils.isObj( {} ).should.equal( true );
+		rutils.isObj( [] ).should.equal( true );
+		rutils.isObj( ['item1', 'item2'] ).should.equal( true );
+		rutils.isObj( true ).should.equal( true );
+		rutils.isObj( 54 ).should.equal( true );
 		
-		expect( rutils.isObj( null )).not.toBeTruthy();
-		expect( rutils.isObj( undefined )).not.toBeTruthy();
+		rutils.isObj( null ).should.equal( false );
+		rutils.isObj( undefined ).should.equal( false );
 	});
 });

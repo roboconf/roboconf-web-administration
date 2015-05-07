@@ -2,14 +2,14 @@
 
 describe('ApplicationsController', function() {
 
-	//beforeEach( module( 'roboconf.applications' ));
-
-	it('should be initialized correctly', function( $controller ) {
-		var ctrl = $controller('ApplicationsController', {});
-
-		expect( ctrl.invoked ).toBe( false );
-		expect( ctrl.noError ).toBe( true );
-		expect( ctrl.apps.length ).toBe( 0 );
-	});
+//	beforeEach( module( 'roboconf.applications' ));
+//
+//	it('should be initialized correctly', function( $controller ) {
+//		var ctrl = $controller('ApplicationsController', {});
+//
+//		ctrl.invoked.should.equal( false );
+//		ctrl.noError.should.equal( true );
+//		ctrl.apps.should.have.length( 0 );
+//	});
 
 });

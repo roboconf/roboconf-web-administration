@@ -8,13 +8,15 @@
 
     // Declare the controller functions then.
     // Specify the injection to prevent errors on minification.
-    applicationTemplatesController.$inject = [ 'Restangular', 'rprefs', '$scope' ];
+    applicationTemplatesController.$inject = [ 'Restangular', '$scope' ];
     
     // Then comes the function...
-    function applicationTemplatesController( Restangular, rprefs, $scope ) {
+    function applicationTemplatesController( Restangular, $scope ) {
     	
     	// Fields
     	$scope.appTemplates = [];
+    	$scope.invoked = false;
+    	$scope.error = false;
     	
     	// Initial actions
     	listApplicationTemplates();
@@ -28,7 +30,13 @@
         
         function listApplicationTemplates() {
         	Restangular.all( 'applications/templates' ).getList().then( function( appTemplates ) {
-        		$scope.appTemplates = appTemplates;	
+        		$scope.appTemplates = appTemplates;
+        		$scope.invoked = true;
+        		$scope.error = false;
+        		
+        	}, function() {
+        		$scope.invoked = true;
+        		$scope.error = true;
         	});
         }
     }

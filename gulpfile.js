@@ -18,6 +18,7 @@ var inject = require('gulp-inject');
 var copy = require('gulp-copy');
 var watch = require('gulp-watch');
 var webserver = require('gulp-webserver');
+var merge = require('merge-stream');
 
 // Configuration
 var minifyOnDev = false;
@@ -79,41 +80,41 @@ gulp.task( 'all', [ 'clean', 'lint', 'unit-tests', 'scripts', 'inject-scripts-fo
  * These tasks are used to build a dev directory with the right scripts
  * and CSS files. There should be used in development mode. Their output is used
  * to build the final distribution.
+ * 
+ * Tasks workflow:
+ * 
+ * 1. clean-dev
+ * 2. build-dev
+ * 3. inject-dev
  */
 
-
 // Clean all the output directories
-gulp.task('clean-dev', function() {
-  
-  gutil.log('Cleaning: ' + gutil.colors.blue( "target/dev" ));
-  del.sync([ 'target/dev/js', 'target/dev/css', 'target/dev/templates', 'target/dev/index.html' ]);
-});
-
-// Watch the files and update the DEV directory
-gulp.task('watch-dev', function () {
-	
-	// Rebuild the DEV directory
-	refreshDev();
-	
-	// Run a web server
-	gulp.src('./target/dev')
-    .pipe( webserver());
-	
-    // Watch changes in our SRC directory and update the DEV one
-	watch([ 'src/**/*' ], refreshDev );
+gulp.task('clean-dev', function( cb ) {
+	del([
+	     './target/dev/js',
+	     './target/dev/css',
+	     './target/dev/templates',
+	     './target/dev/img',
+	     './target/dev/index.html'
+	], cb);
 });
 
 // Shortcut for all the DEV tasks
-gulp.task('dev', refreshDev )
+gulp.task('build-dev', [ 'clean-dev' ], buildDevDirectory )
+gulp.task('inject-dev', [ 'build-dev' ], injectScriptsInDev )
+
+// Watch the files and update the DEV directory
+gulp.task('watch-dev', [ 'inject-dev' ], function () {
+		
+	// Run a web server
+	gulp.src('./target/dev').pipe( webserver());
+	
+    // Watch changes in our SRC directory and update the DEV one
+	gulp.watch( 'src/**/*', [ 'inject-dev' ]);
+});
 
 
 // DEV functions
-function refreshDev() {
-	buildDevDirectory();
-	injectScriptsInDev();
-}
-
-
 function injectScriptsInDev() {
   // It is not necessary to read the files (will speed up things).
   // And load module definitions first!
@@ -122,7 +123,7 @@ function injectScriptsInDev() {
                  './target/dev/js/**/*.js', 
                  './target/dev/css/**/*.css'], {read: false});
   
-  gulp.src('./target/dev/index.html')
+  return gulp.src('./target/dev/index.html')
     .pipe( wiredep())
     .pipe( inject( sources, {relative: true}))
     .pipe( gulp.dest('./target/dev'));
@@ -130,19 +131,13 @@ function injectScriptsInDev() {
 
 
 function buildDevDirectory() {
-  
-	gulp.src( './src/index.html' )
-	.pipe( gulp.dest( './target/dev/' ));
 	
-	gulp.src([ './src/app/**/*.js' ])
-    .pipe( copy('./target/dev/js', {'prefix': 2}));
+	var html = gulp.src( './src/index.html' ).pipe( gulp.dest( './target/dev/' ));
+	var favicon = gulp.src( './src/favicon.ico' ).pipe( gulp.dest( './target/dev/' ));
+	var js = gulp.src([ './src/app/**/*.js' ]).pipe( copy('./target/dev/js', {'prefix': 2}));
+	var css = gulp.src([ './src/**/*.css' ]).pipe( copy('./target/dev/css', {'prefix': 2}));
+	var tpl = gulp.src([ './src/app/**/*.html' ]).pipe( copy('./target/dev/templates', {'prefix': 2}));
+	var img = gulp.src([ './src/img/*' ]).pipe( copy('./target/dev/img', {'prefix': 2}));
 	
-	gulp.src([ './src/app/**/*.html' ])
-    .pipe( copy('./target/dev/templates', {'prefix': 2}));
-	
-	gulp.src([ './src/img/*' ])
-    .pipe( copy('./target/dev/img', {'prefix': 2}));
-	
-	gulp.src([ './src/**/*.css' ])
-    .pipe( copy('./target/dev/css', {'prefix': 2}));
+	return merge( html, favicon, js, tpl, img, css )
 }

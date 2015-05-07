@@ -26,7 +26,7 @@ module.exports = function(config) {
             'src/app/**/*.js',
             
             // Load our unit tests in last
-            'tests/unit/pref*/**/*.spec.js'
+            'tests/unit/**/*.spec.js'
     ),
 
 

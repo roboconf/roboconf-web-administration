@@ -1,33 +1,30 @@
 <h1>
-	Application Templates
+	Applications
 	<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 </h1>
 
 <!-- Information Message -->
 <p>
-	This page lists all the application templates handled by the Deployment Manager.
+	This page lists all the applications handled by the Deployment Manager.
 </p>
 
 <!-- Error message -->
 <div rbcf-error-message ng-show="error"></div>
 
 <!-- No application? -->
-<div class="block" ng-show="! error && invoked && appTemplates.length == 0">
+<div class="block" ng-show="! error && invoked && apps.length == 0">
 	<p class="block-title">Welcome</p>
 
 	<div class="block-content">
 		<p>
-			No application template has been deployed so far.<br />
-			You can deploy a new application template by uploading a ZIP file.
-		</p>
-		<p>
-			<a href="#/upload" class="welcome">Upload your first application.</a>
+			No application has been created so far.<br />
+			<a href="#/upload" class="welcome">Create your first application.</a>
 		</p>
 	</div>
 </div>
 
 <!-- Applications List -->
-<div ng-repeat="app in appTemplates" class="block">
+<div ng-repeat="app in apps" class="block">
 	<p class="block-title">
 		<span ng-click="goToApplication( app.name )">{{ app.name }} &nbsp; :: &nbsp; {{ app.qualifier }}</span>
 		<span class="block-annotation">

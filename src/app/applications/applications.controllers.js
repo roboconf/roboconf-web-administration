@@ -14,12 +14,12 @@
     function applicationsController( Restangular, $scope ) {
     	
     	// Fields
-    	$scope.noError = true;
     	$scope.invoked = false;
+    	$scope.error = false;
     	$scope.apps = [];
     	
     	// Initial actions
-    	refreshApplications();
+    	listApplications();
     	
     	// Function definitions
     	function shutdownApp( appName ) {
@@ -32,18 +32,19 @@
         
         function deleteApp( appName ) {
     		Restangular.one( 'applications/' + appName + '/delete' ).remove().then( function() {
-    			refreshApplications();
+    			listApplications();
         	});
         }
         
-        function refreshApplications() {
+        function listApplications() {
         	Restangular.all( 'applications' ).getList().then( function( applications ) {
         		$scope.apps = applications;
         		$scope.invoked = true;
+        		$scope.error = false;
         		
         	}, function() {
         		$scope.invoked = true;
-        		$scope.noError = false;
+        		$scope.error = true;
         	});
         }
     }

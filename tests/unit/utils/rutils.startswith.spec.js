@@ -15,32 +15,32 @@ describe( 'Roboconf Utilities :: startsWith', function() {
 
 	// Run the tests
 	it( 'should recognize the prefix', function() {
-		expect( rutils.startsWith( "this is a test", "t" )).toBe( true );
-		expect( rutils.startsWith( "this is a test", "this" )).toBe( true );
-		expect( rutils.startsWith( "this is a test", "this is a test" )).toBe( true );
+		rutils.startsWith( "this is a test", "t" ).should.equal( true );
+		rutils.startsWith( "this is a test", "this" ).should.equal( true );
+		rutils.startsWith( "this is a test", "this is a test" ).should.equal( true );
 	});
 
 	it( 'should not recognize this prefix', function() {
-		expect( rutils.startsWith( "this is a test", "this..." )).toBe( false );
-		expect( rutils.startsWith( "this is a test", "this isa" )).toBe( false );
+		rutils.startsWith( "this is a test", "this..." ).should.equal( false );
+		rutils.startsWith( "this is a test", "this isa" ).should.equal( false );
 	});
 	
 	it( 'should return false when no prefix', function() {
-		expect( rutils.startsWith( "this is a test", undefined )).toBe( false );
-		expect( rutils.startsWith( "this is a test", null )).toBe( false );
+		rutils.startsWith( "this is a test", undefined ).should.equal( false );
+		rutils.startsWith( "this is a test", null ).should.equal( false );
 	});
 	
 	it( 'should work correctly when the string is invalid', function() {
-		expect( rutils.startsWith( undefined, "prefix" )).toBe( false );
-		expect( rutils.startsWith( null, "prefix" )).toBe( false );
+		rutils.startsWith( undefined, "prefix" ).should.equal( false );
+		rutils.startsWith( null, "prefix" ).should.equal( false );
 	});
 	
 	it( 'should be case-sensitive', function() {
-		expect( rutils.startsWith( "this is a test", "This" )).toBe( false );
+		rutils.startsWith( "this is a test", "This" ).should.equal( false );
 	});
 	
 	it( 'should work correctly with empty strings', function() {
-		expect( rutils.startsWith( "whatever", "" )).toBe( true );
-		expect( rutils.startsWith( "", "prefix" )).toBe( false );
+		rutils.startsWith( "whatever", "" ).should.equal( true );
+		rutils.startsWith( "", "prefix" ).should.equal( false );
 	});
 });

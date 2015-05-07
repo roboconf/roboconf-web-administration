@@ -3,5 +3,5 @@
 
     angular.module(
     		'roboconf.application.templates', 
-    		[ 'ngRoute', 'restangular', 'roboconf.preferences' ]);
+    		[ 'ngRoute', 'restangular', 'roboconf.utils' ]);
 })();

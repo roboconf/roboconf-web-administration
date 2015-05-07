@@ -1,5 +1,5 @@
 (function () {
     'use strict';
 
-    angular.module( 'roboconf.utils', []);
+    angular.module( 'roboconf.utils', [ 'roboconf.preferences' ]);
 })();

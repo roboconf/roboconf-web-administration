@@ -15,32 +15,32 @@ describe( 'Roboconf Utilities :: endsWith', function() {
 
 	// Run the tests
 	it( 'should recognize the suffix', function() {
-		expect( rutils.endsWith( "this is a test", "a test" )).toBe( true );
-		expect( rutils.endsWith( "this is a test", "test" )).toBe( true );
-		expect( rutils.endsWith( "this is a test", "this is a test" )).toBe( true );
+		rutils.endsWith( "this is a test", "a test" ).should.equal( true );
+		rutils.endsWith( "this is a test", "test" ).should.equal( true );
+		rutils.endsWith( "this is a test", "this is a test" ).should.equal( true );
 	});
 
 	it( 'should not recognize this suffix', function() {
-		expect( rutils.endsWith( "this is a test", "a test!!!!" )).toBe( false );
-		expect( rutils.endsWith( "this is a test", "atest" )).toBe( false );
+		rutils.endsWith( "this is a test", "a test!!!!" ).should.equal( false );
+		rutils.endsWith( "this is a test", "atest" ).should.equal( false );
 	});
 	
 	it( 'should return false when no prefix', function() {
-		expect( rutils.endsWith( "this is a test", undefined )).toBe( false );
-		expect( rutils.endsWith( "this is a test", null )).toBe( false );
+		rutils.endsWith( "this is a test", undefined ).should.equal( false );
+		rutils.endsWith( "this is a test", null ).should.equal( false );
 	});
 	
 	it( 'should work correctly when the string is invalid', function() {
-		expect( rutils.endsWith( undefined, "suffix" )).toBe( false );
-		expect( rutils.endsWith( null, "suffix" )).toBe( false );
+		rutils.endsWith( undefined, "suffix" ).should.equal( false );
+		rutils.endsWith( null, "suffix" ).should.equal( false );
 	});
 	
 	it( 'should be case-sensitive', function() {
-		expect( rutils.endsWith( "this is a test", "a TEST" )).toBe( false );
+		rutils.endsWith( "this is a test", "a TEST" ).should.equal( false );
 	});
 	
 	it( 'should work correctly with empty strings', function() {
-		expect( rutils.endsWith( "this is a test", "" )).toBe( true );
-		expect( rutils.endsWith( "", "suffix" )).toBe( false );
+		rutils.endsWith( "this is a test", "" ).should.equal( true );
+		rutils.endsWith( "", "suffix" ).should.equal( false );
 	});
 });
