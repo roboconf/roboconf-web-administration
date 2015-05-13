@@ -16,21 +16,7 @@
 <body>
 
 	<!-- Menu -->
-	<nav class="navbar-rbcf" role="navigation">
-		<a href="#/"><img id="header-img" src="img/logo_roboconf_2.jpg" alt="Roboconf" /></a>
-
-		<ul class="nav navbar-nav navbar-right" id="top-menu">
-			<li><a href="#/" class="ep">
-				<span class="glyphicon glyphicon-th-list"></span> Applications </a></li>
-			
-			<li><a href="#/application-templates" class="ep">
-				<span class="glyphicon glyphicon-education"></span> Application Templates </a></li>
-
-			<li><a href="#/preferences" class="ep">
-				<span class="glyphicon glyphicon-wrench"></span> Preferences </a></li>
-		</ul>
-
-		<p style="clear: both; display: inline;"></p>
+	<nav class="navbar-rbcf" role="navigation" ng-include="'templates/menu/menu.html'" ng-controller="MenuController">
 	</nav>
 
 	<!-- Content -->

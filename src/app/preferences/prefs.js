@@ -4,6 +4,8 @@
     angular
         .module('roboconf.preferences')
         .service('rprefs', rprefs);
+    
+    // FIXME: reconfigure Restangular when we change the URL?
 
     /* @ngInject */
     function rprefs() {
@@ -37,7 +39,8 @@
         	
         	return result;
         }
-        
+
+        // FIXME: is it useful?
         function isInvalidUrl() {
         	var url = getUrl();
         	return url == undefined || url == null || url.trim().length == 0; 

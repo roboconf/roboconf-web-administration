@@ -13,7 +13,17 @@
 
     	.when('/', {
     		templateUrl : 'templates/applications/html-list.html',
-    		controller  : 'ApplicationsController'
+    		controller  : 'ApplicationsListingController'
+    	})
+    	
+    	.when('/applications', {
+    		templateUrl : 'templates/applications/html-list.html',
+    		controller  : 'ApplicationsListingController'
+    	})
+    	
+    	.when('/applications/new', {
+    		templateUrl : 'templates/applications/html-new.html',
+    		controller  : 'ApplicationsNewController'
     	});
     }
 })();

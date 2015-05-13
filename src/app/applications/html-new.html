@@ -1,0 +1,34 @@
+
+<p>
+	This page allows you to create a new application from a template.
+</p>
+
+<form>
+	<div class="form-group">
+		<label for="applicationName">Application name</label><br />
+		<input type="text" class="form-control" id="applicationName" placeholder="a name">
+	</div>
+	
+	<div class="form-group">
+		<label for="applicationDescription">Password</label><br />
+		<textarea class="form-control" rows="5" id="applicationDescription" placeholder="a description"></textarea>
+	</div>
+	
+	<div class="form-group">
+		<label>
+			Please, <a href="" ng-click="fromExisting = true">select an existing template</a> to create the application,
+			or <a href="" ng-click="fromExisting = false">upload a new template</a> first.
+		</label>
+		
+		<select class="form-control" id="applicationTemplate" ng-show="fromExisting">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+		</select>
+		
+		<rbcf-zip-upload ng-show="! fromExisting"></rbcf-zip-upload>
+	</div>
+
+	<button type="submit" class="btn btn-default" ng-show="fromExisting">Submit</button>
+</form>

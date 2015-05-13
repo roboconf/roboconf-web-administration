@@ -15,7 +15,7 @@
     		templateUrl : 'templates/application.templates/html-list.html',
     		controller  : 'ApplicationTemplatesController'
     	})
-    	.when('/new-application-template', {
+    	.when('/application-templates/new', {
     		templateUrl : 'templates/application.templates/html-upload.html',
     		controller  : 'ApplicationTemplatesController'
     	});

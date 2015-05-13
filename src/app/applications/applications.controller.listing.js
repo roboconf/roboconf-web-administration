@@ -4,19 +4,19 @@
     // Declare the controllers first
     angular
         .module( 'roboconf.applications' )
-        .controller( 'ApplicationsController', applicationsController );
+        .controller( 'ApplicationsListingController', applicationsListingController );
 
     // Declare the controller functions then
     // Specify the injection to prevent errors on minification
-    applicationsController.$inject = [ 'Restangular', '$scope' ];
+    applicationsListingController.$inject = [ 'Restangular', '$scope' ];
     
     // Then comes the function
-    function applicationsController( Restangular, $scope ) {
+    function applicationsListingController( Restangular, $scope ) {
     	
     	// Fields
     	$scope.invoked = false;
     	$scope.error = false;
-    	$scope.apps = [];
+    	$scope.apps = []; 
     	
     	// Initial actions
     	listApplications();
@@ -31,7 +31,7 @@
         }
         
         function deleteApp( appName ) {
-    		Restangular.one( 'applications/' + appName + '/delete' ).remove().then( function() {
+        	Restangular.one( 'applications/' + appName + '/delete' ).remove().then( function() {
     			listApplications();
         	});
         }

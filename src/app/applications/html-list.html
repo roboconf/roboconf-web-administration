@@ -18,13 +18,13 @@
 	<div class="block-content">
 		<p>
 			No application has been created so far.<br />
-			<a href="#/upload" class="welcome">Create your first application.</a>
+			You can <a href="#/applications/new" class="welcome">create your first application.</a>
 		</p>
 	</div>
 </div>
 
 <!-- Applications List -->
-<div ng-repeat="app in apps" class="block">
+<div ng-repeat="app in apps | filter:$rootScope.rbcfFilter" class="block">
 	<p class="block-title">
 		<span ng-click="goToApplication( app.name )">{{ app.name }} &nbsp; :: &nbsp; {{ app.qualifier }}</span>
 		<span class="block-annotation">
