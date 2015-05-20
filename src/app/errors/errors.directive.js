@@ -8,7 +8,7 @@
     /* @ngInject */
     function rbcfErrorMessage() {
     	return {
-    		restrict: 'A',
+    		restrict: 'E',
     		templateUrl: 'templates/errors/error-message.html'
     	};
     }

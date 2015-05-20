@@ -10,9 +10,12 @@
     	return {
     		restrict: 'E',
     		templateUrl: 'templates/application.templates/html-upload-directive.html',
-    		scope: {
-    			uc: "=uc"
-    		}
+    		controller: rbcfZipUpload_controller
     	};
+    }
+    
+    rbcfZipUpload_controller.$inject = [ 'rprefs', '$scope' ];
+    function rbcfZipUpload_controller( rprefs, $scope ) {
+    	$scope.restUrl = rprefs.getUrl() + '/applications/templates';
     }
 })();

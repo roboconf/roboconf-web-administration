@@ -24,17 +24,18 @@
 </div>
 
 <!-- Applications List -->
-<div ng-repeat="app in apps | filter:$rootScope.rbcfFilter" class="block">
+<div ng-repeat="app in apps | filter:searchFilter" class="block">
 	<p class="block-title">
-		<span ng-click="goToApplication( app.name )">{{ app.name }} &nbsp; :: &nbsp; {{ app.qualifier }}</span>
+		<span ng-click="goToApplication( app.name )">{{ app.name }}</span>
 		<span class="block-annotation">
-			<span class="glyphicon glyphicon-screenshot" title="Shutdown the Application" ng-click="shutdownApp( app.name )"></span>
-			&nbsp;
 			<span class="glyphicon glyphicon-trash" title="Remove the Application from the List" ng-click="deleteApp( app.name )"></span>
 		</span>
 	</p>
 	
 	<div class="block-content">
-		<p>{{ app.desc }}</p>
+		<p>
+			Created from <b>{{ app.tpl.name }} - {{ app.tpl.qualifier }}</b>
+			<br />{{ app.desc }}
+		</p>
 	</div>
 </div>

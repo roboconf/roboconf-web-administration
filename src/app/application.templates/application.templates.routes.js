@@ -5,10 +5,10 @@
         .module( 'roboconf.application.templates' )
         .config( appConfig );
     
-    appConfig.$inject = [ '$routeProvider', '$sceDelegateProvider' ];
+    appConfig.$inject = [ '$routeProvider' ];
 
     /* @ngInject */
-    function appConfig( $routeProvider, $sceDelegateProvider ) {
+    function appConfig( $routeProvider ) {
     	$routeProvider
 
     	.when('/application-templates', {
@@ -19,10 +19,5 @@
     		templateUrl : 'templates/application.templates/html-upload.html',
     		controller  : 'ApplicationTemplatesController'
     	});
-    		
-    	// Required because the upload form MAY target another domain.
-    	$sceDelegateProvider.resourceUrlWhitelist([
-    		'self',	// Allow same origin resource loads.
-    		'**']);
     }
 })();

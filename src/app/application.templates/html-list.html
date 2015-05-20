@@ -9,7 +9,7 @@
 </p>
 	
 <!-- Error message -->
-<div rbcf-error-message ng-show="error"></div>
+<rbcf-error-message ng-show="error"></rbcf-error-message>
 	
 <!-- No application? -->
 <div class="block" ng-show="! error && invoked && appTemplates.length == 0">
@@ -27,11 +27,11 @@
 </div>
 	
 <!-- Applications List -->
-<div ng-repeat="app in appTemplates" class="block">
+<div ng-repeat="app in appTemplates | filter:searchFilter" class="block">
 	<p class="block-title">
 		<span ng-click="goToApplication( app.name )">{{ app.name }} &nbsp; :: &nbsp; {{ app.qualifier }}</span>
 		<span class="block-annotation">
-			<span class="glyphicon glyphicon-trash" title="Remove the Application from the List" ng-click="deleteApp( app.name )"></span>
+			<span class="glyphicon glyphicon-trash" title="Remove the Application from the List" ng-click="deleteAppTemplate( app.name, app.qualifier )"></span>
 		</span>
 	</p>
 	

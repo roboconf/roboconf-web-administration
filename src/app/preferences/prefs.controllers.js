@@ -17,6 +17,9 @@
     	$scope.url = rprefs.getUrl();
     	$scope.saveUrl = saveUrl;
     	
+    	// Initial actions
+    	initializeSearch();
+    	
     	// Functions
     	function saveUrl( url ) {
     		$scope.url = url;
@@ -27,5 +30,11 @@
     			$( '#rprefs-ok' ).fadeOut();
     	    }, 4000 );
     	}
+    	
+    	function initializeSearch() {
+    		// Hide the search elements
+        	$( '#Finder' ).parent().hide();
+        	$( '#Finder-Companion' ).hide();
+        }
     }
 })();

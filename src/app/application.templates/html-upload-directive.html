@@ -80,17 +80,16 @@
 			// Callbacks on success or failure
 			success : function(data, textStatus, jqXHR) {
 				var content = 'The application was succesfully uploaded.';
-				content += '<br />';
-				// "uc.msg" references an isolate scope's variable in the directive.
-				//content += {{uc.msg}};
-				
 				$( "#upload-result" ).html( content );
+				$( "#upload-result-details" ).fadeIn();
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				var content = jqXHR.responseText;
-				content += '<br />';
-				// "uc.msg" references an isolate scope's variable in the directive.
-				//content += {{uc.msg}};
+				if( ! content ) {
+					content = "The upload failed. The server is either offline or your settings are incorrect.";
+				} else {
+					$( "#upload-result-details" ).fadeIn();
+				}
 				
 				$( "#upload-result" ).html( content );
 			}

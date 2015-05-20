@@ -8,32 +8,64 @@
 
     // Declare the controller functions then
     // Specify the injection to prevent errors on minification
-    applicationsNewController.$inject = [ 'Restangular', '$scope', 'rprefs' ];
+    applicationsNewController.$inject = [ 'Restangular', '$scope', 'rAppTemplates', '$timeout' ];
     
     // Then comes the function
-    function applicationsNewController( Restangular, $scope, rprefs ) {
+    function applicationsNewController( Restangular, $scope, rAppTemplates, $timeout ) {
     	
     	// Fields
     	$scope.appTemplates = [];
+    	$scope.newAppTemplate = {};
     	$scope.fromExisting = true;
-    	$scope.restUrl = rprefs.getUrl() + '/applications/templates';
+    	$scope.app = {};
+    	$scope.errorMessage = '';
     	
-    	// Customize the message in the "upload" directive
-    	$scope.newApp = {};
-    	$scope.newApp.msg = '<a href="">List the available templates</a>'
-    							+ ' or <a href="" onClick="window.location.reload()">upload a new application template</a>.';
+    	// Functions declaration
+    	$scope.showFromExisting = showFromExisting;
+    	$scope.showUpload = showUpload;
+    	$scope.createNewApplication = createNewApplication;
+    	$scope.formatTpl = formatTpl;
     	
-    	// Function definitions
-    	function listApplications() {
-        	Restangular.all( 'applications' ).getList().then( function( applications ) {
-        		$scope.apps = applications;
-        		$scope.invoked = true;
-        		$scope.error = false;
+    	// Initialize the list of templates
+    	rAppTemplates.refreshTemplates().then( function() {
+    		$scope.appTemplates = rAppTemplates.getTemplates();
+    	});
+    	
+    	// Functions
+    	function showFromExisting() {
+        	$scope.fromExisting = true;
+        	$( "#upload-result-details" ).css( 'display', 'none' );
+        }
+        
+        function showUpload() {
+        	$scope.fromExisting = false;
+        }
+        
+        function createNewApplication( app ) {
+        	var newApp = {
+        		name: app.name,
+        		desc: app.description,
+        		tpl: {
+        			name: app.tpl.name,
+        			qualifier: app.tpl.qualifier
+        		}
+        	};
+        	
+        	Restangular.one( 'applications' ).post( '', newApp ).then( function() {
+        		window.location = '#/application/' + app.name;
         		
-        	}, function() {
-        		$scope.invoked = true;
-        		$scope.error = true;
+        	}, function( response ) {
+        		$scope.errorMessage = 'An error occured. ' + response.data.reason;
+        		$timeout( resetErrorMessage, 6000 );
         	});
+        }
+        
+        function formatTpl( tpl ) {
+        	return tpl.name + ' - ' + tpl.qualifier;
+        }
+        
+        function resetErrorMessage() {
+        	$scope.errorMessage = '';
         }
     }
 })();

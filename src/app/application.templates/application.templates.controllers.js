@@ -8,24 +8,20 @@
 
     // Declare the controller functions then.
     // Specify the injection to prevent errors on minification.
-    applicationTemplatesController.$inject = [ 'Restangular', '$scope', 'rprefs' ];
+    applicationTemplatesController.$inject = [ 'Restangular', '$scope', 'rAppTemplates' ];
     
     // Then comes the function...
-    function applicationTemplatesController( Restangular, $scope, rprefs ) {
+    function applicationTemplatesController( Restangular, $scope, rAppTemplates ) {
     	
     	// Fields
     	$scope.appTemplates = [];
     	$scope.invoked = false;
     	$scope.error = false;
-    	$scope.restUrl = rprefs.getUrl() + '/applications/templates';
-    	
-    	// Customize the message in the "upload" directive
-    	$scope.templates = {};
-    	$scope.templates.msg = 'You can <a href="#/appplication-templates">list the deployed applications</a>'
-    							+ ' or <a href="#/application-templates/new" onClick="window.location.reload()">upload a new application</a>.';
+    	$scope.searchFilter = '';
     	
     	// Initial actions
     	listApplicationTemplates();
+    	initializeSearch();
     	
     	// Function definitions
         function deleteAppTemplate( name, qualifier ) {
@@ -35,14 +31,26 @@
         }
         
         function listApplicationTemplates() {
-        	Restangular.all( 'applications/templates' ).getList().then( function( appTemplates ) {
-        		$scope.appTemplates = appTemplates;
+        	rAppTemplates.refreshTemplates().then( function() {
         		$scope.invoked = true;
-        		$scope.error = false;
+            	$scope.appTemplates = rAppTemplates.getTemplates();
+        		$scope.error = rAppTemplates.gotErrors();
+        	});
+        }
+        
+        function initializeSearch() {
+        	
+        	// Show the search elements
+        	$( '#Finder' ).parent().show();
+        	$( '#Finder-Companion' ).show();
+        	
+        	// We just listen to text changes in the search box
+        	// to update our local search filter.
+        	$( '#Finder' ).bind( 'input', function() {
+        		$scope.searchFilter = $( this ).val();
         		
-        	}, function() {
-        		$scope.invoked = true;
-        		$scope.error = true;
+        		// Force the update in the view
+        		$scope.$apply();
         	});
         }
     }

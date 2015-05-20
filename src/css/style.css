@@ -302,8 +302,41 @@ div.instance-actions img {
 
 .btn-roboconf:hover {
 	color: #b23e4b;
-} 
- 
+}
+
+
+/*
+ * Uploads
+ */
+#upload-result {
+	margin-bottom: 0;
+}
+
+#upload-result-details {
+	margin-top: 0;
+	display: none;
+}
+
+#upload-result-details > ul {
+	margin: 6px 0 0 36px;
+}
+
+
+/*
+ * Applications
+ */
+span.r-help {
+	font-style: italic;
+}
+
+option {
+	padding: 0 4px 1px;
+}
+
+#new-application-error {
+	padding: 8px 12px;
+}
+
  
 /*
  * settings.html

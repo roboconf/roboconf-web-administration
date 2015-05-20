@@ -16,17 +16,19 @@
     	// Fields
     	$scope.invoked = false;
     	$scope.error = false;
-    	$scope.apps = []; 
+    	$scope.apps = [];
+    	$scope.searchFilter = '';
+    	
+    	// Functions declaration
+    	$scope.goToApplication = goToApplication;
+    	$scope.deleteApp = deleteApp;
     	
     	// Initial actions
     	listApplications();
+    	initializeSearch();
     	
     	// Function definitions
-    	function shutdownApp( appName ) {
-    		Restangular.one( 'applications/' + appName + '/shutdown' ).post();
-        }
-        
-        function goToApplication( appName ) {
+    	function goToApplication( appName ) {
         	window.location.href = '#/app/' + appName;
         }
         
@@ -45,6 +47,22 @@
         	}, function() {
         		$scope.invoked = true;
         		$scope.error = true;
+        	});
+        }
+        
+        function initializeSearch() {
+        	
+        	// Show the search elements
+        	$( '#Finder' ).parent().show();
+        	$( '#Finder-Companion' ).show();
+        	
+        	// We just listen to text changes in the search box
+        	// to update our local search filter.
+        	$( '#Finder' ).bind( 'input', function() {
+        		$scope.searchFilter = $( this ).val();
+        		
+        		// Force the update in the view
+        		$scope.$apply();
         	});
         }
     }
