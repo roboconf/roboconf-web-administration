@@ -8,13 +8,13 @@
 
     // Declare the controller functions then
     // Specify the injection to prevent errors on minification
-    preferencesController.$inject = [ 'rprefs', '$scope' ];
+    preferencesController.$inject = [ 'rPrefs', '$scope' ];
     
     // Then comes the function
-    function preferencesController( rprefs, $scope ) {
+    function preferencesController( rPrefs, $scope ) {
     	
     	// Scope fields and operations
-    	$scope.url = rprefs.getUrl();
+    	$scope.url = rPrefs.getUrl();
     	$scope.saveUrl = saveUrl;
     	
     	// Initial actions
@@ -23,11 +23,11 @@
     	// Functions
     	function saveUrl( url ) {
     		$scope.url = url;
-    		rprefs.saveUrl( url );
+    		rPrefs.saveUrl( url );
     		
-    		$( '#rprefs-ok' ).show();
+    		$( '#rPrefs-ok' ).show();
     		setTimeout( function() {
-    			$( '#rprefs-ok' ).fadeOut();
+    			$( '#rPrefs-ok' ).fadeOut();
     	    }, 4000 );
     	}
     	

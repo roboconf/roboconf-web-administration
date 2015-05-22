@@ -1,7 +1,6 @@
 {
   "name": "Roboconf Web Administration",
-  "main": "index.js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "authors": [
     "Vincent Zurczak",
     "Christophe Hamerling"
@@ -9,7 +8,8 @@
   "description": "Web administration for Roboconf",
   "keywords": [
     "cloud",
-    "deployment"
+    "deployment",
+    "orchestration"
   ],
   "license": "Apache v2.0",
   "private": false,

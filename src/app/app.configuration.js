@@ -5,9 +5,9 @@
     		.run( configureRun )
     		.config( configureCors );
 
-    configureRun.$inject = [ 'Restangular', 'rprefs' ];
-    function configureRun( Restangular, rprefs ) {
-    	Restangular.setBaseUrl( rprefs.getUrl());
+    configureRun.$inject = [ 'Restangular', 'rPrefs' ];
+    function configureRun( Restangular, rPrefs ) {
+    	Restangular.setBaseUrl( rPrefs.getUrl());
     }
     
     configureCors.$inject = [ '$sceDelegateProvider' ];

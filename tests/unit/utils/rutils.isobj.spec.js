@@ -10,7 +10,7 @@ describe( 'Roboconf Utilities :: isObj', function() {
 
 	// Instantiate the service
 	beforeEach( inject( function( $injector ) {
-		rutils = $injector.get( 'rutils' );
+		rutils = $injector.get( 'rUtils' );
 	}));
 
 	// Run the tests

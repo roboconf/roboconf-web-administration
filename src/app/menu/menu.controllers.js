@@ -8,17 +8,17 @@
 
     // Declare the controller functions then
     // Specify the injection to prevent errors on minification
-    menuController.$inject = [ 'MenuActions', '$scope' ];
+    menuController.$inject = [ '$scope' ];
     
     // Then comes the functions
-    function menuController( MenuActions, $scope ) {
-    	$scope.menuActions = MenuActions.getMenuActions();
+    function menuController( $scope ) {
     	$scope.showSearchInput = showSearchInput;
     }
     
     function showSearchInput() {
     	$( '#Finder' ).toggle();
-    	if( $( '#Finder' ).is( ':visible' ))
+    	if( $( '#Finder' ).is( ':visible' )) {
     		$( '#Finder' ).focus();
+    	}
     }
 })();

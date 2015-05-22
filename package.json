@@ -1,21 +1,31 @@
 {
   "name": "roboconf-web-administration",
   "version": "0.0.0",
+  "homepage": "http://roboconf.net",
   "description": "Web administration for Roboconf",
-  "main": "index.js",
+  "keywords": [
+    "cloud",
+    "deployment",
+    "orchestration"
+  ],
   "dependencies": {
     "express": "~3.4.7"
   },
   "devDependencies": {
     "bower": "~1.3.8",
+    "bower-main": "^0.2.14",
     "chai": "^2.3.0",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
+    "gulp-changed": "^1.2.1",
     "gulp-concat": "^2.5.2",
     "gulp-copy": "0.0.2",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-ignore": "^1.2.1",
     "gulp-inject": "^1.2.0",
     "gulp-jshint": "^1.10.0",
     "gulp-karma": "0.0.4",
+    "gulp-minify-html": "^1.0.2",
     "gulp-mocha": "^2.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-task-listing": "^1.0.0",
@@ -29,14 +39,28 @@
     "karma-mocha": "^0.1.10",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-spec-reporter": "0.0.19",
+    "main-bower-files": "^2.8.0",
     "merge-stream": "^0.1.7",
     "mocha": "^2.2.4",
+    "path-exists": "^1.0.0",
     "phantomjs": "1.9.9",
     "wiredep": "^2.1.0"
   },
   "scripts": {
     "postinstall": "node ./node_modules/bower/bin/bower install"
   },
+  "license": "Apache v2.0",
+  "bugs": {
+    "url": "https://github.com/roboconf/roboconf-web-administration/issues/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roboconf/roboconf-web-administration"
+  },
   "author": "Linagora",
-  "license": "Apache v2.0"
+  "contributors": [{
+    "name": "Vincent Zurczak"
+  }, {
+    "name": "Christophe Hamerling"
+  }]
 }

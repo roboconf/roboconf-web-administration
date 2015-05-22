@@ -15,7 +15,7 @@ describe( 'Roboconf Utilities :: URL management', function() {
 
 	// Instantiate the service
 	beforeEach( inject( function( $injector ) {
-		rprefs = $injector.get( 'rprefs' );
+		rprefs = $injector.get( 'rPrefs' );
 	}));
 	
 	// Run the tests
@@ -43,30 +43,6 @@ describe( 'Roboconf Utilities :: URL management', function() {
 		// Remove surrounding white characters
 		rprefs.saveUrl( ' http://something/   ' );
 		rprefs.getUrl().should.equal( 'http://something' );
-	});
-	
-	it( 'should.equal recognize invalid URL', function() {
-		
-		// Default value is returned by getUrl
-		rprefs.saveUrl( undefined );
-		rprefs.isInvalidUrl().should.equal( false );
-		
-		rprefs.saveUrl( null );
-		rprefs.isInvalidUrl().should.equal( false );
-		
-		// Non-default values, but invalid URL
-		rprefs.saveUrl( '' );
-		rprefs.isInvalidUrl().should.equal( false );
-		
-		rprefs.saveUrl( '    ' );
-		rprefs.isInvalidUrl().should.equal( false );
-		
-		// Valid URL
-		rprefs.saveUrl( '  not empty  ' );
-		rprefs.isInvalidUrl().should.equal( false );
-		
-		rprefs.saveUrl( 'http://something' );
-		rprefs.isInvalidUrl().should.equal( false );
 	});
 	
 	// Restore the storage after the tests

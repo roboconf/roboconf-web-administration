@@ -337,6 +337,14 @@ option {
 	padding: 8px 12px;
 }
 
+.css-form input.ng-invalid.ng-touched {
+	background-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-touched {
+	background-color: #78FA89;
+}
+
  
 /*
  * settings.html
@@ -345,5 +353,10 @@ option {
 input.form-control {
 	display: inline;
 	width: 70%;
+}
+
+#rprefs-ok {
+	color: green;
+	display: none;
 }
  

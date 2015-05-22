@@ -35,8 +35,8 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 				// Predicate: levels are incremented one by one, but can be decremented from several units at once.
 				else {
 					var sameSegmentsCount = 0;
-					var old = lastProcessedInstance.instance.path.split( "/" );
-					var curr = currentNode.instance.path.split( "/" );
+					var old = lastProcessedInstance.instance.path.split( '/' );
+					var curr = currentNode.instance.path.split( '/' );
 					for( var i=0; i<old.length; i++ ) {
 						if( old[ i ] === curr[ i ])
 							sameSegmentsCount ++;
@@ -73,16 +73,16 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
 	
 	// Perform an action on a given instances
 	$scope.changeState = function( newState ) {
-		var path = 'app/' + $scope.appName + "/change-state?new-state=" + newState + "&instance-path=" + $scope.selectedInstance.path;
+		var path = 'app/' + $scope.appName + '/change-state?new-state=' + newState + '&instance-path=' + $scope.selectedInstance.path;
 		$scope.actionInProgress = true;
 		Restangular.one( path ).post();
 		$scope.selectedInstance.status = 'CUSTOM';
     };
     
     $scope.performAll = function( action, useInstance ) {
-    	var path = 'app/' + $scope.appName + "/" + action;
+    	var path = 'app/' + $scope.appName + '/' + action;
     	if( useInstance )
-    		path += "?instance-path=" + $scope.selectedInstance.path;
+    		path += '?instance-path=' + $scope.selectedInstance.path;
     	
     	Restangular.one( path ).post().then( function() {
     		$scope.loadInstances();
@@ -174,7 +174,7 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     	while( node.parent )
     		node = node.parent;
     	
-    	return node.instance.status === "NOT_DEPLOYED";
+    	return node.instance.status === 'NOT_DEPLOYED';
     };
     
     $scope.findTemplateUrl = function( status, isRoot, isParentNotDeployed ) {
@@ -203,11 +203,11 @@ rcfApp.controller( 'appController', function( $scope, $rootScope, $route, $route
     };
     
     $scope.findBlockClass = function( instancePath ) {
-    	var result = "block short-block";
+    	var result = 'block short-block';
     	if( $scope.selectedInstance ) {
     		if( $scope.selectedInstance.path != instancePath
-    				&& ! $scope.selectedInstance.path.startsWith( instancePath + "/" ))
-        		result += " block-faded";
+    				&& ! $scope.selectedInstance.path.startsWith( instancePath + '/' ))
+        		result += ' block-faded';
     	}
     	
     	return result;

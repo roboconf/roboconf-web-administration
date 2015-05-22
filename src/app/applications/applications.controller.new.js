@@ -34,7 +34,7 @@
     	// Functions
     	function showFromExisting() {
         	$scope.fromExisting = true;
-        	$( "#upload-result-details" ).css( 'display', 'none' );
+        	$( '#upload-result-details' ).css( 'display', 'none' );
         }
         
         function showUpload() {

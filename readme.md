@@ -1,5 +1,7 @@
 # Roboconf Web Administration
+[![Build Status](http://travis-ci.org/roboconf/roboconf-web-administration.png?branch=master)](http://travis-ci.org/roboconf/roboconf-web-administration)
 [![License](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Built with Gulp](https://lh4.googleusercontent.com/BOSb6RREbojTWzbkaLhkW8D5vmROlaRvWpgAEbnzJ989HvIquF6r2c2_BPkqULYWgKq1yg=s190)](http://gulpjs.com)
 
 Website: [http://roboconf.net](http://roboconf.net)  
 Licensed under the terms of the **Apache License v2**.
@@ -13,27 +15,45 @@ User documentation can be found on Roboconf's web site.
 General guidelines about Roboconf's development are described on the web site.  
 This read-me only lists specific items for the web console and Javascript development.
 
-You need NPM installed on your machine.  
+You need [NPM](https://www.npmjs.com/) installed on your machine.  
 The primary thing to do is to execute...
 
 ```
 npm install
+sudo npm install gulp -g
 ```
 
-To develop and test the application locally, execute...
+Like Maven, this will download the required Javascript libraries.  
+We then use another tool called [Gulp](http://gulpjs.com/) to manage build actions. You should not have to install it,
+it was downloaded by **npm**.
 
-```
-gulp watch-dev
-```
 
-Then, open your web browser at http://localhost:8000.  
-You can also use Gulp to execute advanced tasks. Here is a list.
+## Gulp Tasks
 
-* **gulp all** cleans output files, validates code quality, runs tests, minifies the scripts and packages a distribution.
-* **gulp clean** cleans output files.
-* **gulp lint** validates code quality with JS Hint.
-* **gulp scripts** minifies and concatenates the JS scripts.
-* **gulp** lists the available tasks.
+This section lists the Gulp tasks you can use.  
+To use them, simply type them in your shell. Use...
+
+* **gulp watch-dev** to develop and test the application locally (http://localhost:8000).
+* **gulp clean-dev** to delete the generated content in the **dev** directory (it preserves Bower dependencies).
+* **gulp lint** to verify quality rules in the JS scripts.
+* **gulp unit-tests** to run unit tests with Mocha (coverage report under **target/coverage**).
+* **gulp dist** to create the final distribution (minimal dependencies, minification, etc).
+* **gulp clean-dist** to delete the **dist** directory.
+* **gulp watch-dist** to test the distribution locally (http://localhost:8000).
+* **gulp help** to list all the available tasks.
+
+Other tasks do not aim at being invoked manually.
+
+About the way these tasks were implemented, they were done this way because most of
+the Roboconf team is familiar with Maven and Java development but not with Javascript.
+So, to work similarly to Maven, we created a **target** directory. Here is how it is organized.
+
+* **target/dependencies**: the Bower dependencies (or dependencies for the front-end).
+* **target/dev**: the development directory, with non-minified files but with a clear structure.
+* **target/dist**: the distribution directory, with minified files and another structure.
+* **target/coverage**: the directory with coverage reports after the unit tests were run.
+
+> **target/dist** is the thing to embed in Roboconf distributions.
 
 
 ## Files Description
@@ -42,10 +62,15 @@ The following files are used at some moment during development or build phases.
 
 * **gulpfile.js**: the file that controls the build tasks.
 * **package.json**: the NPM configuration (package identification and DEV dependencies management).
-* **bower.json**: the Bower configuration (package identification and Front-End dependencies management).
+* **bower.json**: the Bower configuration (package identification and **Front-End** dependencies management).
 * **.bowerrc**: additional configuration for Bower.
 * **.jshintrc**: configuration for JS Hint (code quality).
+* **karma.conf.js**: the configuration for Karma, the tool that runs tests.
 * **.gitignore**: the usual file to list the files Git should not manage.
+* **node_modules**: the Javascript modules used for the build, tests and server tasks (no front-end).
+* **src**: the sources directory of our application.
+* **tests**: the tests directory for our application.
+* **.travis.yml**: the file that configures the build on Travis CI.
 
 The following files are mainly for documentation.
 
@@ -58,8 +83,6 @@ The following files are mainly for documentation.
 
 This web applications comes with tests.  
 Unit tests run with [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/). Mainly services are tested unitly.  
-Most of the tests are "end-to-end" (functional) tests. They are run with [protractor](http://angular.github.io/protractor).
-These tests use real web browsers and mimic user actions. They also rely (indirectly) on [Selenium](http://www.seleniumhq.org/).
 
 To run unit tests, either use...
 
@@ -70,5 +93,19 @@ To run unit tests, either use...
 	karma start --single-run
 
 Gulp is the build tool.  
-It runs Karma to run tests during the build chain.
-So, you can use both of them.
+It runs Karma to run tests during the build chain. So, you can use both of them.
+
+
+## Code organization
+
+Under **src**, the code is organized in functional modules.  
+Such a module contains all the JS scripts and HTML templates for a given feature (applications templates,
+preferences, etc).
+
+Under **target/dev**, we group things according to their type.  
+All the JS files go under **js**. All the HTML templates go under **templates**. Notice that Gulp injects
+all the JS and CSS scripts automatically in the index.html file.
+
+Under **target/dist**, we group things differently.  
+Bower dependencies are filtered and copied under **lib**. All the application's JS scripts
+are merged into **roboconf.min.js**. And the CSS as well as the index files are minified too.  

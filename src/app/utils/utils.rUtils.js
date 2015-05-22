@@ -3,10 +3,10 @@
 
     angular
         .module('roboconf.utils')
-        .service('rutils', rutils);
+        .service('rUtils', rUtils);
 
     /* @ngInject */
-    function rutils() {
+    function rUtils() {
         var service = {
             endsWith: endsWith,
             startsWith: startsWith,
@@ -17,7 +17,7 @@
         /////////////////////
 
         function startsWith( string, prefix ) {
-        	return isObj( string ) && isObj( prefix ) && string.indexOf( prefix ) == 0;
+        	return isObj( string ) && isObj( prefix ) && string.indexOf( prefix ) === 0;
         }
 
         function endsWith( string, suffix ) {

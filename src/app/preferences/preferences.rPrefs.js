@@ -3,16 +3,15 @@
 
     angular
         .module('roboconf.preferences')
-        .service('rprefs', rprefs);
+        .service('rPrefs', rPrefs);
     
     // FIXME: reconfigure Restangular when we change the URL?
 
     /* @ngInject */
-    function rprefs() {
+    function rPrefs() {
         var service = {
             saveUrl: saveUrl,
-            getUrl: getUrl,
-            isInvalidUrl: isInvalidUrl
+            getUrl: getUrl
         };
 
         return service;
@@ -21,29 +20,29 @@
         function saveUrl( url ) {
         	
         	var toSave = url ? url.trim() : url;
-        	if( toSave && toSave.match("/$") == "/" )
-    			toSave = toSave.substr( 0, toSave.length -1 );
+        	if( toSave ) {
+        		var m = toSave.match('/$');
+        		if( m && m[ 0 ] === '/' ) {
+        			toSave = toSave.substr( 0, toSave.length -1 );
+        		}
+        	}
         	
-        	if( ! toSave || toSave.trim().length == 0 )
+        	if( ! toSave || toSave.trim().length === 0 ) {
         		localStorage.removeItem( 'rest-location' );
-        	else
+        	} else {
         		localStorage.setItem( 'rest-location', angular.toJson( toSave ));
+        	}
         }
 
         function getUrl() {
         	
         	var result = 'http://localhost:8181/roboconf-dm';
         	var obj = localStorage.getItem( 'rest-location' );
-        	if( obj )
+        	if( obj ) {
         		result = angular.fromJson( obj );
+        	}
         	
         	return result;
-        }
-
-        // FIXME: is it useful?
-        function isInvalidUrl() {
-        	var url = getUrl();
-        	return url == undefined || url == null || url.trim().length == 0; 
         }
     }
 }());
