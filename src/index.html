@@ -11,18 +11,24 @@
   	<!-- endinject -->
 
 	<link rel="shortcut icon" href="favicon.ico" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 </head>
 
 <body>
 
 	<!-- Menu -->
-	<nav class="navbar-rbcf" role="navigation" ng-include="'templates/menu/menu.html'" ng-controller="MenuController">
+	<nav class="navbar-rbcf" role="navigation" ng-include="'templates/menu/_menu.html'" ng-controller="MenuController">
 	</nav>
 
 	<!-- Content -->
 	<div class="content">
 		<!-- This is where content will be injected. -->
 		<div ng-view></div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div id="footer">
+		Copyright &copy; 2013-2015, Linagora, Université Joseph Fourier, Floralis
 	</div>
 	
 	<!-- Scripts -->

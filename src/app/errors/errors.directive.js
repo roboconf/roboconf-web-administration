@@ -9,7 +9,7 @@
     function rbcfErrorMessage() {
     	return {
     		restrict: 'E',
-    		templateUrl: 'templates/errors/error-message.html'
+    		templateUrl: 'templates/errors/_error-message.html'
     	};
     }
 })();

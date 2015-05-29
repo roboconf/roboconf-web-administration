@@ -131,7 +131,7 @@ function buildDevDirectory() {
 				.pipe( changed( './target/dev/' ))
 				.pipe( gulp.dest( './target/dev/' ));
 	
-	var css = gulp.src([ './src/roboconf.css' ])
+	var css = gulp.src([ './src/roboconf*.css' ])
 				.pipe( changed( './target/dev/css' ))
 				.pipe( copy('./target/dev/css', {'prefix': 1}));
 	

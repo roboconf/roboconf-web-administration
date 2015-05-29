@@ -1,0 +1,83 @@
+<h1>
+	Applications <span ng-show="isTpl">Templates</span>
+	<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
+</h1>
+
+<!-- Information Message -->
+<p>
+	This page lists all the applications <span ng-show="isTpl">templates</span> handled by the Deployment Manager.
+</p>
+
+<!-- Error message -->
+<rbcf-error-message ng-show="error"></rbcf-error-message>
+
+<!-- No application? -->
+<div class="block" ng-show="! error && invoked && apps.length == 0">
+		<p class="block-title">Welcome</p>
+	
+		<div class="block-content" ng-show="isTpl">
+			<p>
+				No application has been created so far.<br />
+				You can <a href="#/applications/new" class="welcome">create your first application.</a>
+			</p>
+		</div>
+		
+		<div class="block-content" ng-show="! isTpl">
+			<p>
+				No application template has been deployed so far.<br />
+				You can deploy a new application template by uploading a ZIP file.
+			</p>
+			<p>
+				<a href="#/application-templates/new" class="welcome">Upload your first application template.</a>
+			</p>
+		</div>
+	</div>
+
+<!-- Applications List -->
+<div id="left-block">
+	<div ng-repeat="app in apps | filter:searchFilter" class="{{ findBlockClass( app ) }}">
+		<p class="block-title" ng-click="showApplication( app, 1000 )">
+			<span ng-click="showApplication( app, 1000 )">{{ app.name }}</span>
+		</p>
+		
+		<div class="block-content">
+			<p>
+				<span class="formatted">{{ app.desc }}</span>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div id="right-block">
+	<p class="block-controls">
+		<button type="button" class="close" aria-label="Close" ng-click="hideApplication()"><span aria-hidden="true">&times;</span></button>
+	</p>
+	<p class="avatar">
+		<img src="72k4d3n.gif" alt="oops" />
+	</p>
+	<div class="details">
+		<h3>
+			{{ selectedApp.name }}
+		</h3>
+					
+		<span class="formatted">{{ selectedApp.desc }}</span>
+		<br /><br />
+		
+		<p ng-show="! isTpl">
+			<strong>Template Name:</strong> <a href="/#/application-templates">{{ selectedApp.tpl.name }}</a><br />
+			<strong>Template Qualifier:</strong> {{ selectedApp.tpl.qualifier }}
+		</p>
+		<p ng-show="isTpl">
+			<strong>Template Qualifier:</strong> {{ selectedApp.qualifier }}
+		</p>
+	</div>
+	<div class="clearfix"></div>
+	
+	<br />
+	<strong>The following links are available:</strong><br />
+	<ul>
+		<li><a href="/#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/instances" ng-click"">Manage the instances</a></li>
+		<li><a href="/#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/commands" ng-click"">Access the commands page</a></li>
+		<li><a href="/#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/details" ng-click"">Browse details</a></li>
+	</ul>
+</div>

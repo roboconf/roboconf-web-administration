@@ -6,8 +6,8 @@
         'roboconf.preferences',
         'roboconf.menu',
         'roboconf.errors',
-        'roboconf.application.templates',
-        'roboconf.applications'
+        'roboconf.applications',
+        'roboconf.instances'
     ]);
 
 })();

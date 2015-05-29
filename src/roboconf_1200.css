@@ -1,0 +1,15 @@
+
+@media (min-width: 1200px) {
+
+	#right-block > div.details {
+		padding-left: 210px;
+	}
+	
+	#right-block > p.avatar {
+		float: left;
+	}
+	
+	#right-block > h3 {
+		margin: 0 0 24px;
+	}
+}

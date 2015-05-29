@@ -5,8 +5,9 @@
 	padding: 0;
 }
 
-html, body {
-	height: 100%;
+html {
+	position: relative;
+  	min-height: 100%;
 }
 
 a:hover, a:active, a:focus, a:visited {
@@ -43,6 +44,10 @@ a:hover, a:active, a:focus, a:visited {
 
 img.spinner {
 	padding-left: 40px;
+}
+
+span.formatted {
+	white-space: pre-wrap;
 }
 
 /* Top of the Pages */
@@ -90,7 +95,7 @@ ul.navbar-nav > li.underlined:hover {
 /* Other Pages */
 
 .content {
-	margin: 0 80px 4em 80px;
+	margin: 0 20px 4em 20px;
 }
 
 .content a, .content a:hover {
@@ -132,8 +137,8 @@ div.block {
 }
 
 .block-faded {
-	opacity: 0.5;
-	transition: opacity 2s;
+	opacity: 0.4;
+	transition: opacity 1s;
 }
 
 div.short-block {
@@ -345,6 +350,92 @@ option {
 	background-color: #78FA89;
 }
 
+
+/*
+ * Master-Details: details
+ */
+#right-block {
+	float: left;
+	width: 47%;
+	border-radius: 10px;
+	border: solid #b23e4b 1px;
+	padding: 16px;
+	margin-left: 16px;
+	
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1s;
+	
+	/* 
+		We use the position to prevent scroll bars from appearing when this block is not visible.
+		The position is restored to static when the block is made visible (handled in our Angular code).
+	 */
+	position: absolute;
+}
+
+#right-block h3 {
+ 	padding: 0;
+ 	text-align: center;
+ 	font-weight: bold;
+ 	font-size: 16px;
+}
+
+#right-block > .block-controls {
+	float: right;
+	margin: -4px 0 0 0;
+	padding: 0;
+}
+
+#right-block > p.avatar {
+	width: 190px;
+	height: 190px;
+	overflow: hidden;
+}
+
+#right-block > p.avatar > img {
+	width: 190px;
+	height: 190px;
+	border-radius: 10px;
+	-webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+#right-block > p.avatar > img:hover {
+	width: 280px;
+	height: 280px;
+	margin-left: -25%;
+}
+
+#right-block > ul {
+	margin-left: 50px;
+	margin-top: 6px;
+}
+
+#left-block {
+	float: left;
+	width: 100%;
+	-webkit-transition: width 1s; /* Safari */
+    transition: width 1s;
+}
+
+.r-close {
+	color: #000 !important;
+	margin-right: 10px;
+	font-size: 14px;
+	padding: 0;
+	opacity: 0.5;
+}
+
+.r-close:hover {
+	font-weight: bold;
+	background-color: transparent;
+	color: #ffffff !important;
+	opacity: 1.0;
+}
+
  
 /*
  * settings.html
@@ -358,5 +449,18 @@ input.form-control {
 #rprefs-ok {
 	color: green;
 	display: none;
+}
+
+/*
+ * Footer
+ */
+
+#footer {
+	padding: 7px 0;
+	font-size: 11px;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
  

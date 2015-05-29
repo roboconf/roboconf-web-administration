@@ -8,14 +8,13 @@
 
     // Declare the controller functions then
     // Specify the injection to prevent errors on minification
-    applicationsNewController.$inject = [ 'Restangular', '$scope', 'rAppTemplates', '$timeout' ];
+    applicationsNewController.$inject = [ 'Restangular', '$scope', 'rAppTemplates', '$timeout', 'rShare' ];
     
     // Then comes the function
-    function applicationsNewController( Restangular, $scope, rAppTemplates, $timeout ) {
+    function applicationsNewController( Restangular, $scope, rAppTemplates, $timeout, rShare ) {
     	
     	// Fields
     	$scope.appTemplates = [];
-    	$scope.newAppTemplate = {};
     	$scope.fromExisting = true;
     	$scope.app = {};
     	$scope.errorMessage = '';
@@ -25,6 +24,7 @@
     	$scope.showUpload = showUpload;
     	$scope.createNewApplication = createNewApplication;
     	$scope.formatTpl = formatTpl;
+    	$scope.completeCreation = completeCreation;
     	
     	// Initialize the list of templates
     	rAppTemplates.refreshTemplates().then( function() {
@@ -52,7 +52,8 @@
         	};
         	
         	Restangular.one( 'applications' ).post( '', newApp ).then( function() {
-        		window.location = '#/application/' + app.name;
+        		rShare.feedLastItem( newApp );
+        		window.location = '#/';
         		
         	}, function( response ) {
         		$scope.errorMessage = 'An error occured. ' + response.data.reason;
@@ -66,6 +67,20 @@
         
         function resetErrorMessage() {
         	$scope.errorMessage = '';
+        }
+        
+        function completeCreation() {
+        	
+        	var last = rShare.eatLastItem();
+        	if( last ) {
+        		$scope.appTemplates.push( last );
+        		$scope.app.tpl = last;
+        		showFromExisting();
+        		
+        		// Reset the upload form
+        		$( '.fileinput' ).fileinput('clear');
+            	$( '#upload-result-details' ).hide();
+        	}
         }
     }
 })();

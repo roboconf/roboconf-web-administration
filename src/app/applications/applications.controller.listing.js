@@ -8,35 +8,58 @@
 
     // Declare the controller functions then
     // Specify the injection to prevent errors on minification
-    applicationsListingController.$inject = [ 'Restangular', '$scope' ];
+    applicationsListingController.$inject = [ 'Restangular', '$scope', 'rUtils', 'rShare', '$route', 'rAppTemplates' ];
     
     // Then comes the function
-    function applicationsListingController( Restangular, $scope ) {
+    function applicationsListingController( Restangular, $scope, rUtils, rShare, $route, rAppTemplates ) {
     	
     	// Fields
+    	$scope.isTpl = $route.current.tpl;
     	$scope.invoked = false;
     	$scope.error = false;
     	$scope.apps = [];
     	$scope.searchFilter = '';
+    	$scope.selectedApp = null;
     	
     	// Functions declaration
-    	$scope.goToApplication = goToApplication;
-    	$scope.deleteApp = deleteApp;
+    	$scope.showApplication = showApplication;
+    	$scope.hideApplication = hideApplication;
+    	$scope.findBlockClass = findBlockClass;
     	
     	// Initial actions
-    	listApplications();
     	initializeSearch();
     	
+    	if( $scope.isTpl ) {
+    		listApplicationTemplates();
+    	} else {
+    		listApplications();
+    	}
+    	
+    	var tmp = rShare.eatLastItem();
+    	if( tmp ) {
+    		$scope.selectedApp = tmp;
+    		rUtils.showRightBlock( 200 );
+    	}
+    	
     	// Function definitions
-    	function goToApplication( appName ) {
-        	window.location.href = '#/app/' + appName;
+    	function showApplication( app, t ) {
+    		$scope.selectedApp = app;
+    		rUtils.showRightBlock( t );
         }
-        
-        function deleteApp( appName ) {
-        	Restangular.one( 'applications/' + appName + '/delete' ).remove().then( function() {
-    			listApplications();
-        	});
+    	
+    	function hideApplication() {
+    		$scope.selectedApp = null;
+    		rUtils.hideRightBlock();
         }
+    	
+    	function findBlockClass( app ) {
+    		var result = 'block';
+    		if( $scope.selectedApp && app !== $scope.selectedApp ) {
+    			result = 'block block-faded';
+    		}
+    		
+    		return result;
+    	}
         
         function listApplications() {
         	Restangular.all( 'applications' ).getList().then( function( applications ) {
@@ -47,6 +70,14 @@
         	}, function() {
         		$scope.invoked = true;
         		$scope.error = true;
+        	});
+        }
+        
+        function listApplicationTemplates() {
+        	rAppTemplates.refreshTemplates().then( function() {
+        		$scope.invoked = true;
+            	$scope.apps = rAppTemplates.getTemplates();
+        		$scope.error = rAppTemplates.gotErrors();
         	});
         }
         

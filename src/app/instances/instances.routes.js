@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module( 'roboconf.applications' )
+        .module( 'roboconf.instances' )
         .config( appConfig );
     
     appConfig.$inject = [ '$routeProvider' ];
@@ -11,9 +11,9 @@
     function appConfig( $routeProvider ) {
     	$routeProvider
 
-    	.when('/preferences', {
-    		templateUrl : 'templates/preferences/preferences.html',
-    		controller  : 'PreferencesController'
+    	.when('/app/:appName/instances', {
+    		templateUrl : 'templates/instances/app.html',
+    		controller  : 'InstancesListingController'
     	});
     }
 })();

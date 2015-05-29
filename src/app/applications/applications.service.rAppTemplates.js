@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('roboconf.application.templates')
+        .module('roboconf.applications')
         .service('rAppTemplates', rAppTemplates);
 
     rAppTemplates.$inject = [ 'Restangular' ];

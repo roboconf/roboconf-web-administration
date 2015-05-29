@@ -3,10 +3,10 @@
 
     angular
         .module('roboconf.menu')
-        .service('rmenu', rmenu);
+        .service('rMenu', rMenu);
 
     /* @ngInject */
-    function rmenu() {
+    function rMenu() {
     	var filter = '';
     	
         var service = {
