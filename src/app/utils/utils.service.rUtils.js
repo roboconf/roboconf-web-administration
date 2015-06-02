@@ -1,118 +1,89 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('roboconf.utils')
-        .service('rUtils', rUtils);
+  angular
+  .module('roboconf.utils')
+  .service('rUtils', rUtils);
 
-    rUtils.$inject = [ '$timeout' ];
-    
-    /* @ngInject */
-    function rUtils( $timeout ) {
-        var service = {
-            endsWith: endsWith,
-            startsWith: startsWith,
-            isObj: isObj,
-            sortInstances: sortInstances,
-            findPosition: findPosition,
-            showRightBlock: showRightBlock,
-            hideRightBlock: hideRightBlock
-        };
+  rUtils.$inject = ['$timeout'];
+  function rUtils($timeout) {
 
-        return service;
-        /////////////////////
+    // Fields
+    var service = {
+        endsWith: endsWith,
+        startsWith: startsWith,
+        buildInstancesTree: buildInstancesTree,
+        findPosition: findPosition,
+        showRightBlock: showRightBlock,
+        hideRightBlock: hideRightBlock
+    };
 
-        function startsWith( string, prefix ) {
-        	return isObj( string ) && isObj( prefix ) && string.indexOf( prefix ) === 0;
-        }
+    return service;
 
-        function endsWith( string, suffix ) {
-        	return isObj( string ) && isObj( suffix ) && string.indexOf( suffix, string.length - suffix.length ) !== -1;
-        }
-        
-        function isObj( obj ) {
-        	return obj !== undefined && obj !== null; 
-        }
-        
-        function showRightBlock( delay ) {
-        	$( '#left-block' ).css( 'width', '50%' );
-    		$timeout( function() {
-    			$( '#right-block' ).css( 'visibility', 'visible' );
-    			$( '#right-block' ).css( 'position', 'static' );
-    			$( '#right-block' ).css( 'opacity', '1.0' );
-    		}, delay );
-        }
-        
-        function hideRightBlock() {
-        	$( '#right-block' ).css( 'visibility', 'hidden' );
-    		$( '#right-block' ).css( 'opacity', '0' );
-    		
-    		$timeout( function() {
-    			$( '#left-block' ).css( 'width', '100%' );
-    			$( '#right-block' ).css( 'position', 'absolute' );
-    		}, 1000 );
-        }
-        
-        function sortInstances( instances ) {
-    		var rootNodes = [];
-    		if( instances ) {
-    			
-    			var lastProcessedInstance = null;
-    			for( var index = 0; index < instances.length; ++index ) {
-    				
-    				// Create the current node and see the instance path's length
-    				var currentNode = { instance: instances[ index ], children: []};
-    				instances[ index ].treeNode = currentNode;
-    				var pathLength = findPosition( currentNode.instance.path );
-    				
-    				// New root instance
-    				if( pathLength === 1 ) {
-    					rootNodes.push( currentNode );
-    				}
-    				
-    				// Otherwise, count the segments.
-    				// Predicate: levels are incremented one by one, but can be decremented from several units at once.
-    				else {
-    					var sameSegmentsCount = 0;
-    					var old = lastProcessedInstance.instance.path.split( '/' );
-    					var curr = currentNode.instance.path.split( '/' );
-    					for( var i=0; i<old.length; i++ ) {
-    						if( old[ i ] === curr[ i ]) {
-    							sameSegmentsCount ++;
-    						} else { 
-    							break;
-    						}
-    					}
-    					
-    					// Case: the current node is a (direct) child of the previous node.
-    					// Indirect child does not make sense in the Roboconf scope.
-    					if( sameSegmentsCount === old.length ) {
-    						currentNode.parent = lastProcessedInstance;
-    						lastProcessedInstance.children.push( currentNode );
-    					}
-    					
-    					// Case: sameSegmentsCount < old.length => there are common ancestors...
-    					else {
-    						var parentNode = lastProcessedInstance;
-    						for( var j=0; j < old.length - sameSegmentsCount; j++ ) {
-    							parentNode = parentNode.parent;
-    						}
-    						
-    						currentNode.parent = parentNode;
-    						parentNode.children.push( currentNode );
-    					}
-    				}
-    				
-    				// Prepare the next iteration
-    				lastProcessedInstance = currentNode;
-    			}
-    		}
-    		
-    		return rootNodes;
-    	}
-    
-        function findPosition( instancePath ) {
-        	return instancePath.match(/\//g).length;
-        }
+    // Functions
+    function startsWith(string, prefix) {
+      return typeof string === 'string' &&
+          typeof prefix === 'string' &&
+          string.indexOf(prefix) === 0;
     }
+
+    function endsWith(string, suffix) {
+      return typeof string === 'string' &&
+          typeof suffix === 'string' &&
+          string.indexOf(suffix, string.length - suffix.length) !== -1;
+    }
+
+    function showRightBlock(delay) {
+      $('#left-block').css('width', '50%');
+      $timeout(function() {
+        $('#right-block').css('visibility', 'visible');
+        $('#right-block').css('position', 'static');
+        $('#right-block').css('opacity', '1.0');
+      }, delay);
+    }
+
+    function hideRightBlock() {
+      $('#right-block').css('visibility', 'hidden');
+      $('#right-block').css('opacity', '0');
+
+      $timeout(function() {
+        $('#left-block').css('width', '100%');
+        $('#right-block').css('position', 'absolute');
+      }, 1000);
+    }
+
+    function buildInstancesTree(instances) {
+
+      var rootInstances = [];
+      if (angular.isArray(instances)) {
+
+        var myMap = {};
+        instances.map(function(val, index, array) {
+          // Reference time: associate an instance with its path
+          myMap[val.path] = { instance: val, children: []};
+          return val;
+
+        }).forEach(function(val, index, array) {
+          // Association time: for every instance, find its parent
+          var current = myMap[val.path],
+          parentPath = val.path.replace(/\/([^/]+)$/g, ''),
+          parent = myMap[parentPath];
+
+          current.instance.treeNode = current;
+          if (parent) {
+            parent.children.push(current);
+            current.parent = parent;
+          } else {
+            rootInstances.push(current);
+          }
+        });
+      }
+
+      return rootInstances;
+    }
+
+    function findPosition(instancePath) {
+      return instancePath.match(/\//g).length;
+    }
+  }
 }());

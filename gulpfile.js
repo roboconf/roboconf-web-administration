@@ -6,6 +6,7 @@ var gulp = require('gulp');
 
 // Include our Plug-ins
 var jshint = require('gulp-jshint');
+var gjslint = require('gulp-gjslint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
@@ -43,7 +44,9 @@ gulp.task('lint', function() {
 	
     return gulp.src( './src/app/**/*.js' )
         .pipe( jshint())
-        .pipe( jshint.reporter('default'));
+        .pipe( jshint.reporter('default'))
+        .pipe( gjslint())
+        .pipe( gjslint.reporter('console'));
 });
 
 

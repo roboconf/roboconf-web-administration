@@ -1,48 +1,48 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('roboconf.preferences')
-        .service('rPrefs', rPrefs);
-    
-    // FIXME: reconfigure Restangular when we change the URL?
+  angular
+  .module('roboconf.preferences')
+  .service('rPrefs', rPrefs);
 
-    /* @ngInject */
-    function rPrefs() {
-        var service = {
-            saveUrl: saveUrl,
-            getUrl: getUrl
-        };
+  rPrefs.$inject = ['ROBOCONF_DEFAULT_URL'];
+  function rPrefs(ROBOCONF_DEFAULT_URL) {
 
-        return service;
-        /////////////////////
+    // Fields
+    var service = {
+        saveUrl: saveUrl,
+        getUrl: getUrl
+    };
 
-        function saveUrl( url ) {
-        	
-        	var toSave = url ? url.trim() : url;
-        	if( toSave ) {
-        		var m = toSave.match('/$');
-        		if( m && m[ 0 ] === '/' ) {
-        			toSave = toSave.substr( 0, toSave.length -1 );
-        		}
-        	}
-        	
-        	if( ! toSave || toSave.trim().length === 0 ) {
-        		localStorage.removeItem( 'rest-location' );
-        	} else {
-        		localStorage.setItem( 'rest-location', angular.toJson( toSave ));
-        	}
+    return service;
+
+    // Functions
+    function saveUrl(url) {
+
+      var toSave = url ? url.trim() : url;
+      if (toSave) {
+        var m = toSave.match('/$');
+        if (m && m[0] === '/') {
+          toSave = toSave.substr(0, toSave.length - 1);
         }
+      }
 
-        function getUrl() {
-        	
-        	var result = 'http://localhost:8181/roboconf-dm';
-        	var obj = localStorage.getItem( 'rest-location' );
-        	if( obj ) {
-        		result = angular.fromJson( obj );
-        	}
-        	
-        	return result;
-        }
+      if (! toSave || toSave.trim().length === 0) {
+        localStorage.removeItem('rest-location');
+      } else {
+        localStorage.setItem('rest-location', angular.toJson(toSave));
+      }
     }
+
+    function getUrl() {
+
+      var result = ROBOCONF_DEFAULT_URL;
+      var obj = localStorage.getItem('rest-location');
+      if (obj) {
+        result = angular.fromJson(obj);
+      }
+
+      return result;
+    }
+  }
 }());

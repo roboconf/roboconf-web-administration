@@ -1,46 +1,45 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('roboconf.applications')
-        .service('rAppTemplates', rAppTemplates);
+  angular
+  .module('roboconf.applications')
+  .service('rAppTemplates', rAppTemplates);
 
-    rAppTemplates.$inject = [ 'Restangular' ];
-    
-    /* @ngInject */
-    function rAppTemplates( Restangular ) {
-        
-    	var appTemplates = [];
-        var error = false;
-    	
-    	var service = {
-        	getTemplates: getTemplates,
-            refreshTemplates: refreshTemplates,
-            gotErrors: gotErrors
-        };
+  rAppTemplates.$inject = ['Restangular'];
+  function rAppTemplates(Restangular) {
 
-        return service;
-        
-        /////////////////////
-        function gotErrors() {
-        	return error;
-        }
-        
-        function getTemplates( url ) {
-        	return appTemplates;
-        }
+    // Fields
+    var appTemplates = [];
+    var error = false;
 
-        function refreshTemplates() {
+    var service = {
+        getTemplates: getTemplates,
+        refreshTemplates: refreshTemplates,
+        gotErrors: gotErrors
+    };
 
-        	// Return a promise
-        	return Restangular.all( 'applications/templates' ).getList().then( function( _appTemplates ) {
-        		appTemplates = _appTemplates;
-        		error = false;
-        		
-        	}, function() {
-        		appTemplates = [];
-        		error = true;
-        	});
-        }
+    return service;
+
+    // Functions
+    function gotErrors() {
+      return error;
     }
+
+    function getTemplates() {
+      return appTemplates;
+    }
+
+    function refreshTemplates() {
+
+      return Restangular.all('applications/templates').getList()
+      .then(function(_appTemplates) {
+        appTemplates = _appTemplates;
+        error = false;
+
+      }, function() {
+        appTemplates = [];
+        error = true;
+      });
+    }
+  }
 }());

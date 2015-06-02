@@ -1,19 +1,17 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module( 'roboconf.instances' )
-        .config( appConfig );
-    
-    appConfig.$inject = [ '$routeProvider' ];
+  angular
+  .module('roboconf.instances')
+  .config(appConfig);
 
-    /* @ngInject */
-    function appConfig( $routeProvider ) {
-    	$routeProvider
+  appConfig.$inject = ['$routeProvider'];
+  function appConfig($routeProvider) {
 
-    	.when('/app/:appName/instances', {
-    		templateUrl : 'templates/instances/app.html',
-    		controller  : 'InstancesListingController'
-    	});
-    }
+    $routeProvider
+    .when('/app/:appName/instances', {
+      templateUrl: 'templates/instances/_instances.html',
+      controller: 'InstancesListingController'
+    });
+  }
 })();

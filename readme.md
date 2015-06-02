@@ -2,6 +2,7 @@
 [![Build Status](http://travis-ci.org/roboconf/roboconf-web-administration.png?branch=master)](http://travis-ci.org/roboconf/roboconf-web-administration)
 [![License](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Built with Gulp](http://roboconf.net/resources/img/gulp.png)](http://gulpjs.com)
+[![Join us on Gitter.im](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/roboconf/roboconf)
 
 Website: [http://roboconf.net](http://roboconf.net)  
 Licensed under the terms of the **Apache License v2**.

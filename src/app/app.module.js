@@ -1,13 +1,10 @@
-(function () {
-    'use strict';
+'use strict';
 
-    angular.module('roboconf', [
-        'roboconf.utils',
-        'roboconf.preferences',
-        'roboconf.menu',
-        'roboconf.errors',
-        'roboconf.applications',
-        'roboconf.instances'
-    ]);
-
-})();
+angular.module('roboconf', [
+    'roboconf.utils',
+    'roboconf.menu',
+    'roboconf.preferences',
+    'roboconf.errors',
+    'roboconf.applications',
+    'roboconf.instances'
+]);

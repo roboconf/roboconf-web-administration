@@ -16,17 +16,10 @@
 
 <body>
 
-	<!-- Menu -->
-	<nav class="navbar-rbcf" role="navigation" ng-include="'templates/menu/_menu.html'" ng-controller="MenuController">
-	</nav>
-
-	<!-- Content -->
-	<div class="content">
-		<!-- This is where content will be injected. -->
-		<div ng-view></div>
-		<div class="clearfix"></div>
-	</div>
+	<!-- This is where content will be injected. -->
+	<div ng-view></div>
 	
+	<!-- Footer -->
 	<div id="footer">
 		Copyright &copy; 2013-2015, Linagora, Université Joseph Fourier, Floralis
 	</div>
@@ -37,5 +30,13 @@
 	
 	<!-- roboconf:js -->
   	<!-- endinject -->
+  	
+  	<script type="text/javascript">
+	$( window ).scroll( function() {
+		var scrollTop = $( window ).scrollTop();
+		var newTop = scrollTop > 200 ? (scrollTop - 190) : 0;
+		$( "#right-block" ).css( 'margin-top', newTop );
+	});
+	</script>
 </body>
 </html>

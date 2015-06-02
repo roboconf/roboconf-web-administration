@@ -1,46 +1,50 @@
 
-<h1>
-	New Application
-</h1>
+<rbcf-menu></rbcf-menu>
 
-<p>
-	This page allows you to create a new application from a template.
-</p>
-
-<form novalidate name="newAppForm">
-	<div class="form-group" ng-class="{'has-error': newAppForm.name.$invalid && newAppForm.name.$dirty}">
-		<label for="name" class="control-label">Application name</label>
-		<span class="r-help" ng-show="newAppForm.name.$error.required">(required)</span><br />
-		<input type="text" class="form-control" name="name" placeholder="a name" ng-model="app.name" required>
-	</div>
+<div class="content">
+	<h1>
+		New Application
+	</h1>
 	
-	<div class="form-group" ng-class="{'has-error': newAppForm.description.$invalid && newAppForm.description.$dirty}">
-		<label for="description" class="control-label">Description</label>
-		<span class="r-help" ng-show="newAppForm.description.$error.required">(required)</span><br />
-		<textarea class="form-control" rows="5" placeholder="a description" name="description" ng-model="app.description" required></textarea>
-	</div>
+	<p>
+		This page allows you to create a new application from a template.
+	</p>
 	
-	<div class="form-group">
-		<label>
-			Please, <a href="" ng-click="showFromExisting()">select an existing template</a> to create an application
-			or <a href="" ng-click="showUpload()">upload a new template</a> first.
-		</label>
+	<form novalidate name="newAppForm">
+		<div class="form-group" ng-class="{'has-error': newAppForm.name.$invalid && newAppForm.name.$dirty}">
+			<label for="name" class="control-label">Application name</label>
+			<span class="r-help" ng-show="newAppForm.name.$error.required">(required)</span><br />
+			<input type="text" class="form-control" name="name" placeholder="a name" ng-model="app.name" required>
+		</div>
 		
-		<select class="form-control" id="applicationTemplate" required 
-				ng-show="fromExisting" 
-				ng-model="app.tpl" 
-				ng-options="formatTpl( tpl ) for tpl in appTemplates">
-		</select>
-	</div>
-
-	<p id="new-application-error" class="bg-danger" ng-show="errorMessage">{{ errorMessage }}</p>
-	<button type="submit" class="btn btn-default pull-right" ng-show="fromExisting" ng-disabled="! newAppForm.$valid" ng-click="createNewApplication( app )">
-		Submit
-	</button>
-</form>
-
-<!-- No nested form, keep the ZIP upload after the form -->
-<rbcf-zip-upload ng-show="! fromExisting"></rbcf-zip-upload>
-<p id="upload-result-details">
-	You can <a href="" ng-click="completeCreation()">complete the creation of your new application</a>.
-</p>
+		<div class="form-group" ng-class="{'has-error': newAppForm.description.$invalid && newAppForm.description.$dirty}">
+			<label for="description" class="control-label">Description</label>
+			<span class="r-help" ng-show="newAppForm.description.$error.required">(required)</span><br />
+			<textarea class="form-control" rows="5" placeholder="a description" name="description" ng-model="app.description" required></textarea>
+		</div>
+		
+		<div class="form-group">
+			<label>
+				Please, <a href="" ng-click="showFromExisting()">select an existing template</a> to create an application
+				or <a href="" ng-click="showUpload()">upload a new template</a> first.
+			</label>
+			
+			<select class="form-control" id="applicationTemplate" required 
+					ng-show="fromExisting" 
+					ng-model="app.tpl" 
+					ng-options="formatTpl( tpl ) for tpl in appTemplates">
+			</select>
+		</div>
+	
+		<p id="new-application-error" class="bg-danger" ng-show="errorMessage">{{ errorMessage }}</p>
+		<button type="submit" class="btn btn-default pull-right" ng-show="fromExisting" ng-disabled="! newAppForm.$valid" ng-click="createNewApplication( app )">
+			Submit
+		</button>
+	</form>
+	
+	<!-- No nested form, keep the ZIP upload after the form -->
+	<rbcf-zip-upload ng-show="! fromExisting"></rbcf-zip-upload>
+	<p id="upload-result-details">
+		You can <a href="" ng-click="completeCreation()">complete the creation of your new application</a>.
+	</p>
+</div>

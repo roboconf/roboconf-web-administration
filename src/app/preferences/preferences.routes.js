@@ -1,19 +1,17 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module( 'roboconf.applications' )
-        .config( appConfig );
-    
-    appConfig.$inject = [ '$routeProvider' ];
+  angular
+  .module('roboconf.applications')
+  .config(appConfig);
 
-    /* @ngInject */
-    function appConfig( $routeProvider ) {
-    	$routeProvider
+  appConfig.$inject = ['$routeProvider'];
+  function appConfig($routeProvider) {
 
-    	.when('/preferences', {
-    		templateUrl : 'templates/preferences/_preferences.html',
-    		controller  : 'PreferencesController'
-    	});
-    }
+    $routeProvider
+    .when('/preferences', {
+      templateUrl: 'templates/preferences/_preferences.html',
+      controller: 'PreferencesController'
+    });
+  }
 })();

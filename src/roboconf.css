@@ -26,20 +26,8 @@ a:hover, a:active, a:focus, a:visited {
 	padding: 6px 19px;
 }
 
-.right-aligned {
-	float: right;
-}
-
-.clear {
-	clear: both;
-}
-
 .r-red {
 	color: #b23e4b;
-}
-
-.content > div > p {
-	margin: 14px 0 30px 0;
 }
 
 img.spinner {
@@ -84,7 +72,7 @@ ul.navbar-nav > li.underlined:hover {
 	background-color: #fff !important;
 }
 
-#Finder {
+#search-bar {
 	display: none;
 	width: 200px;
 	transition: all .5s ease;
@@ -96,6 +84,10 @@ ul.navbar-nav > li.underlined:hover {
 
 .content {
 	margin: 0 20px 4em 20px;
+}
+
+.content > p {
+	margin-bottom: 32px;
 }
 
 .content a, .content a:hover {
@@ -139,10 +131,6 @@ div.block {
 .block-faded {
 	opacity: 0.4;
 	transition: opacity 1s;
-}
-
-div.short-block {
-	width: 48%;
 }
 
 div.block p {
@@ -263,40 +251,6 @@ div.block-content {
 
 
 /*
- * Instance Overview
- */
-
-#instance-overview {
- 	border-radius: 10px;
-	border: solid #b23e4b 2px;
-	position: absolute;
-	right: 44px;
-	left: 51%;
-	top: 247px;
-	padding: 8px 18px 20px;
-}
- 
-#instance-overview h3 {
- 	margin: 0 0 24px;
- 	padding: 0;
- 	text-align: center;
- 	font-weight: bold;
- 	font-size: 16px;
-}
-
-div.instance-actions img {
-	display: block;
-	margin: 12px auto;
-	max-width: 100%;
-}
-
-/* The spinner image on the right of the instane name */
-#instance-overview > img {
-	float:right;
-}
-
-
-/*
  * Buttons
  */
 .btn-roboconf {
@@ -352,7 +306,7 @@ option {
 
 
 /*
- * Master-Details: details
+ * Master-Details
  */
 #right-block {
 	float: left;
@@ -421,21 +375,6 @@ option {
     transition: width 1s;
 }
 
-.r-close {
-	color: #000 !important;
-	margin-right: 10px;
-	font-size: 14px;
-	padding: 0;
-	opacity: 0.5;
-}
-
-.r-close:hover {
-	font-weight: bold;
-	background-color: transparent;
-	color: #ffffff !important;
-	opacity: 1.0;
-}
-
  
 /*
  * settings.html
@@ -448,7 +387,14 @@ input.form-control {
 
 #rprefs-ok {
 	color: green;
-	display: none;
+}
+
+
+/*
+ * Instances
+ */
+.instance-actions > img {
+	max-width: 98%;
 }
 
 /*

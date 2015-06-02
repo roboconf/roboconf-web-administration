@@ -1,15 +1,14 @@
-(function () {
-    'use strict';
+(function() {
+  'use strict';
 
-    angular
-    	.module( 'roboconf.errors' )
-    	.directive( 'rbcfErrorMessage', rbcfErrorMessage );
-    
-    /* @ngInject */
-    function rbcfErrorMessage() {
-    	return {
-    		restrict: 'E',
-    		templateUrl: 'templates/errors/_error-message.html'
-    	};
-    }
+  angular
+  .module('roboconf.errors')
+  .directive('rbcfErrorMessage', rbcfErrorMessage);
+
+  function rbcfErrorMessage() {
+    return {
+      restrict: 'E',
+      templateUrl: 'templates/errors/_error-message.html'
+    };
+  }
 })();

@@ -1,32 +1,31 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('roboconf.utils')
-        .service('rShare', rShare);
+  angular
+  .module('roboconf.utils')
+  .service('rShare', rShare);
 
-    /* @ngInject */
-    function rShare() {
-    	
-    	var lastItem = null;
-    	
-        var service = {
-        	lastItem: lastItem,
-        	eatLastItem: eatLastItem,
-            feedLastItem: feedLastItem
-        };
+  function rShare() {
 
-        return service;
-        /////////////////////
+    // Fields
+    var lastItem = null;
+    var service = {
+        lastItem: lastItem,
+        eatLastItem: eatLastItem,
+        feedLastItem: feedLastItem
+    };
 
-        function eatLastItem() {
-        	var result = lastItem;
-        	lastItem = null;
-        	return result;
-        }
-        
-        function feedLastItem( _lastItem ) {
-        	lastItem = _lastItem;
-        }
+    return service;
+
+    // Functions
+    function eatLastItem() {
+      var result = lastItem;
+      lastItem = null;
+      return result;
     }
+
+    function feedLastItem(newLastItem) {
+      lastItem = newLastItem;
+    }
+  }
 }());

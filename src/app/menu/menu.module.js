@@ -1,5 +1,3 @@
-(function () {
-    'use strict';
+'use strict';
 
-    angular.module( 'roboconf.menu', []);
-})();
+angular.module('roboconf.menu', []);

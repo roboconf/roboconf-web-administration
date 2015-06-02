@@ -1,5 +1,3 @@
-(function () {
-    'use strict';
+'use strict';
 
-    angular.module( 'roboconf.instances', [ 'ngRoute', 'restangular' ]);
-})();
+angular.module('roboconf.instances', ['ngRoute', 'restangular']);
