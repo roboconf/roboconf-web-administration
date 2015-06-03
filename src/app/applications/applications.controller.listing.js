@@ -31,18 +31,6 @@
       listApplications();
     }
 
-    var tmp = rShare.eatLastItem();
-    if (tmp) {
-      // We select an application only if it matches its kind.
-      // Template => there must be 'qualifier' property.
-      // Application => there must be a 'tpl' property.
-      if ($scope.isTpl && tmp.qualifier) {
-        showApplication(tmp);
-      } else if (! $scope.isTpl && tmp.tpl) {
-        showApplication(tmp);
-      }
-    }
-
     // Function definitions
     function showApplication(app, t) {
       $scope.selectedApp = app;

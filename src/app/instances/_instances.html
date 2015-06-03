@@ -36,11 +36,12 @@
 	
 	<!-- No instance? -->
 	<div class="block" ng-show="! error && invoked && rootNodes.length == 0">
-		<p class="block-title">No Result</p>
+		<p class="block-title">No Instance</p>
 
 		<div class="block-content">
 			<p>
-				No instance has been created so far.
+				No instance has been created so far.<br />
+				Or maybe this application does not exist.
 			</p>
 		</div>
 	</div>
@@ -57,7 +58,7 @@
 	
 	<!-- Display the hierarchy of instances -->
 	<div id="left-block">
-		<div ng-repeat="rootNode in rootNodes | rbcfInstancesFilter:searchFilter" ng-class="isNodeToHide( rootNode.instance.path ) ? 'block block-faded' : 'block'">
+		<div ng-repeat="rootNode in rootNodes | rbcfInstancesFilter:searchFilter" ng-class="isNodeToHide( rootNode.instance.path ) ? 'block block-faded instances' : 'block instances'">
 			<p class="block-title" ng-click="showInstance( rootNode.instance, 1000 )">
 				{{ rootNode.instance.name }}
 				<span class="block-annotation">{{ formatStatus( rootNode.instance.status )}}</span>
@@ -74,7 +75,7 @@
 		<p class="block-controls">
 			<button type="button" class="close" aria-label="Close" ng-click="hideInstance()"><span aria-hidden="true">&times;</span></button>
 		</p>
-		<div class="details">
+		<div>
 			<h3>{{ selectedInstance.name }}</h3>
 				
 			<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />

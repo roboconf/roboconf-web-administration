@@ -25,6 +25,9 @@ module.exports = function(config) {
             // Our JS files
             'src/app/**/*.js',
             
+            // Load our directives for tests pre-processing
+            'src/app/**/*.html',
+            
             // Load our unit tests in last
             'tests/unit/**/*.spec.js'
     ),
@@ -44,7 +47,8 @@ module.exports = function(config) {
     // pre-process matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-    	'src/app/**/*.js': ['coverage']
+    	'src/app/**/*.js': ['coverage'],
+    	'src/app/**/*.html': ['html2js']
     },
     
     
@@ -52,6 +56,13 @@ module.exports = function(config) {
     coverageReporter: {
       type: 'html',
       dir: 'target/coverage/'
+    },
+    
+
+    // Strip the path's prefix for unit tests
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'src/app/',
+      prependPrefix: 'templates/'
     },
     
 

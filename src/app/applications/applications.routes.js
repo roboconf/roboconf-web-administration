@@ -35,6 +35,16 @@
     .when('/application-templates/new', {
       templateUrl: 'templates/applications/_upload.html',
       controller: 'ApplicationsUploadController'
+    })
+
+    .when('/app/:appName/details', {
+      templateUrl: 'templates/applications/_single-app.html',
+      controller: 'SingleApplicationController'
+    })
+
+    .when('/tpl/:tplName/:tplQualifier/details', {
+      templateUrl: 'templates/applications/_single-app-tpl.html',
+      controller: 'SingleApplicationTemplateController'
     });
   }
 })();

@@ -42,7 +42,7 @@ gulp.task( 'default', ['help']);
 gulp.task('lint', function() {
 	gutil.log( 'Analyzing source with JSHint.' );
 	
-    return gulp.src( './src/app/**/*.js' )
+    return gulp.src([ './src/app/**/*.js', './tests/**/*.js' ])
         .pipe( jshint())
         .pipe( jshint.reporter('default'))
         .pipe( gjslint())

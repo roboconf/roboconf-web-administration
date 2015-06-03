@@ -83,7 +83,9 @@
     }
 
     function findPosition(instancePath) {
-      return instancePath.match(/\//g).length;
+      var result = instancePath.match(/\//g);
+      // Invalid path return the same position than a root instance, i.e. 1.
+      return result ? result.length : 1;
     }
   }
 }());

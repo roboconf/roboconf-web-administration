@@ -16,6 +16,11 @@ a:hover, a:active, a:focus, a:visited {
     background-color: #ffffff;
 }
 
+h3 {
+	font-weight: bold;
+ 	font-size: 16px;
+}
+
 .button {
 	display: inline-block;
 	-webkit-border-radius: 5px;
@@ -104,12 +109,6 @@ ul.navbar-nav > li.underlined:hover {
 	font-weight: bold;
 	margin-top: 20px;
 }
-
-.content h3 {
-	font-size: 1.1em;
-	font-weight: normal;
-	margin: 2px 0 14px 0;
-}
  
  a.welcome {
  	font-size: 14px;
@@ -176,19 +175,19 @@ div.block-content {
  */
 
 /* Nested instances rely on lists. */
-.block ul {
+.instances ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0 0 0 30px;
 }
 
 /* The first list leaves space below. */
-.block > ul {
+.instances > ul {
 	padding-bottom: 11px;
 }
 
 /* The lists have a left border. */
-.block > ul ul:before {
+.instances > ul ul:before {
 	content: "";
 	display: block;
 	width: 0;
@@ -200,7 +199,7 @@ div.block-content {
 }
 
 /* Put list items in relative position. */
-.block ul li {
+.instances ul li {
 	padding: 0 0 0 16px;
 	font-size: 14px;
 	line-height: 20px;
@@ -208,7 +207,7 @@ div.block-content {
 }
 
 /* List items have a top border. */
-.block ul li:before {
+.instances ul li:before {
 	content: "";
 	display: block;
 	width: 12px; /* same with indentation */
@@ -220,12 +219,12 @@ div.block-content {
 }
 
 /* The FIRST list item (call it the main root) has a more important padding top (branch tree). */
-.block > ul > li:first-child:before {
+.instances > ul > li:first-child:before {
 	top: 25px !important;
 }
 
 /* The last item in a list hides the left border (smooth effect). */
-.block ul li:last-child:before {
+.instances ul li:last-child:before {
 	height:auto;
 	top: 16px; /* (line-height/2) */
 	bottom: 0;
@@ -234,17 +233,17 @@ div.block-content {
 }
 
 /* The FIRST list item has a more important padding top. */
-.block > ul > li:first-child {
+.instances > ul > li:first-child {
 	padding-top: 10px;
 }
 
 /* Define the padding of list items. */
-.block ul li p {
+.instances ul li p {
 	padding: 6px 0 6px 7px;
 }
 
 /* Hover list items */
-.block ul li p:hover {
+.instances ul li p:hover {
 	color: #b23e4b;
 	cursor: pointer;
 }
@@ -328,10 +327,7 @@ option {
 }
 
 #right-block h3 {
- 	padding: 0;
  	text-align: center;
- 	font-weight: bold;
- 	font-size: 16px;
 }
 
 #right-block > .block-controls {
@@ -340,13 +336,13 @@ option {
 	padding: 0;
 }
 
-#right-block > p.avatar {
+p.avatar {
 	width: 190px;
 	height: 190px;
 	overflow: hidden;
 }
 
-#right-block > p.avatar > img {
+p.avatar > img {
 	width: 190px;
 	height: 190px;
 	border-radius: 10px;
@@ -357,7 +353,7 @@ option {
           transition: all 1s ease;
 }
 
-#right-block > p.avatar > img:hover {
+p.avatar > img:hover {
 	width: 280px;
 	height: 280px;
 	margin-left: -25%;
@@ -366,6 +362,19 @@ option {
 #right-block > ul {
 	margin-left: 50px;
 	margin-top: 6px;
+}
+
+.single-details {
+	margin: 0 0 18px 50px;
+}
+
+.single-details > ul {
+	margin-left: 50px;
+	margin-top: 2px;
+}
+
+#single-block p.avatar {
+	float: left;
 }
 
 #left-block {

@@ -32,6 +32,8 @@
     "describe": false,
     "inject": false,
     "element": false,
-    "it": false
+    "it": false,
+    "expect": false,
+    "assert": false
   }
 }

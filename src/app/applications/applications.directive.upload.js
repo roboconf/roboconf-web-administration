@@ -65,15 +65,10 @@
       var content = 'The application was succesfully uploaded.';
       $('#upload-result').html(content);
       $('#upload-result-details').fadeIn();
-
-      // Store the newly uploaded template for other controllers.
-      rShare.feedLastItem(angular.fromJson(data));
     }
 
     function onFailingUpload(jqXHR, textStatus, errorThrown) {
 
-      // Reset the stored template.
-      rShare.setLastTpl(null);
       var content = jqXHR.responseText;
       if (! content) {
         content = 'The upload failed. The server is either offline or your settings are incorrect.';

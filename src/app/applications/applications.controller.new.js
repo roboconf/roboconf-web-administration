@@ -50,8 +50,7 @@
       };
 
       Restangular.one('applications').post('', newApp).then(function() {
-        rShare.feedLastItem(newApp);
-        $window.location = '#/';
+        $window.location = '#/app/' + newApp.name + '/details';
 
       }, function(response) {
         $scope.errorMessage = 'An error occured. ' + response.data.reason;
