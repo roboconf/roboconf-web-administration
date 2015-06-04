@@ -1,0 +1,90 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Instances for {{ appName }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
+	</h1>
+	
+	<!--Global Actions 
+	<div class="btn-group" ng-show="invoked && noError">
+		<button type="button" class="btn btn-roboconf dropdown-toggle" data-toggle="dropdown">
+			<span class="glyphicon glyphicon-cog"></span>
+			Global Actions <span class="caret"></span>
+		</button>
+	
+		<ul class="dropdown-menu" role="menu">
+			<li ng-click="performAll( 'deploy-all', false )"><a href="">Deploy and Start All</a></li>
+			<li ng-click="performAll( 'stop-all', false )"><a href="">Stop All</a></li>
+			<li ng-click="performAll( 'undeploy-all', false )"><a href="">Undeploy All</a></li>
+			<li class="divider"></li>
+			<li><a href="">Create a New Instance</a></li>
+			<li><a href="">Delete Instances</a></li>
+		</ul>
+	</div>
+	-->
+	
+	<!-- Information Message -->
+	<p>
+		This page lists all the instances of the <strong>{{ appName }}</strong> application.<br />
+		Here, you can control their life cycle.
+	</p>
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="error"></rbcf-error-message>
+	
+	<!-- No instance? -->
+	<div class="block" ng-show="! error && invoked && rootNodes.length == 0">
+		<p class="block-title">No Instance</p>
+
+		<div class="block-content">
+			<p>
+				No instance has been created so far.<br />
+				Or maybe this application does not exist.
+			</p>
+		</div>
+	</div>
+	
+	<!-- A dynamic template to build a tree with AngularJS -->
+	<script type="text/ng-template" id="my-tmpl">
+    <p ng-click="showInstance( childNode.instance, 1000 )">
+		<strong>{{ childNode.instance.name }}</strong> is {{ formatStatus( childNode.instance.status )}}.
+	</p>
+    <ul>
+        <li ng-repeat="childNode in childNode.children" ng-include="'my-tmpl'"></li>
+    </ul>
+	</script>
+	
+	<!-- Display the hierarchy of instances -->
+	<div id="left-block">
+		<div ng-repeat="rootNode in rootNodes | rbcfInstancesFilter:searchFilter" ng-class="isNodeToHide( rootNode.instance.path ) ? 'block block-faded instances' : 'block instances'">
+			<p class="block-title" ng-click="showInstance( rootNode.instance, 1000 )">
+				{{ rootNode.instance.name }}
+				<span class="block-annotation">{{ formatStatus( rootNode.instance.status )}}</span>
+			</p>
+			
+			<ul>
+				<li ng-repeat="childNode in rootNode.children" ng-include="'my-tmpl'"></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Display the details of an instance -->
+	<div id="right-block">
+		<p class="block-controls">
+			<button type="button" class="close" aria-label="Close" ng-click="hideInstance()"><span aria-hidden="true">&times;</span></button>
+		</p>
+		<div>
+			<h3>{{ selectedInstance.name }}</h3>
+				
+			<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />
+			<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}<br />
+			<strong>Component:</strong> {{ selectedInstance.component.name }}
+			
+			<div class="instance-actions" ng-include="template"></div>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+</div>

@@ -1,0 +1,58 @@
+
+<nav class="navbar-rbcf" role="navigation">
+	<a href="#/"><img id="header-img" src="img/logo_roboconf_2.jpg" alt="Roboconf" /></a>
+	
+	<div class="collapse navbar-collapse" id="rbcf-menu">
+		<ul class="nav navbar-nav navbar-right">
+			
+			<!-- Search -->
+			<li>
+				<input type="search" placeholder="Find..." id="search-bar" ng-show="searchVisible" ng-model="searchFilter" />
+			</li>
+			
+			<li class="underlined" ng-show="searchVisible"> 
+				<a href="" title="Filter..." onclick="toggleSearchInput()">
+					<span class="glyphicon glyphicon-search"></span>
+				</a>
+			</li>
+			
+			<!-- Menu navigation -->
+			<li class="dropdown underlined">
+				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Browse...">
+					<span class="glyphicon glyphicon-th-list"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#/">Applications</a></li>
+					<li><a href="#/application-templates">Application Templates</a></li>
+					<li class="divider"></li>
+					<li><a href="#/applications/new">New Application</a></li>
+					<li><a href="#/application-templates/new">New Application Template</a></li>
+					<li class="divider"></li>
+					<li><a href="#/preferences" title="Preferences...">Preferences</a></li>
+				</ul>
+			</li>
+			
+			<!-- Actions (visible only when some actions were registered) -->
+			<li class="dropdown underlined" ng-show="menuActions && menuActions.length > 0">
+				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Actions...">
+					<span class="glyphicon glyphicon-plus"></span>
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<!-- TODO: insert actions -->
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script type="text/javascript">
+<!--
+function toggleSearchInput() {
+  $( '#search-bar' ).toggle();
+  if( $( '#search-bar' ).is( ':visible' )) {
+    $( '#search-bar' ).focus();
+  }
+}
+//-->
+</script>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" ng-app="roboconf">
+<head>
+	<meta charset="utf-8">
+	<title>Roboconf :: Web Administration</title>
+	
+	<!-- bower:css -->
+  	<!-- endinject -->
+	
+  	<!-- roboconf:css -->
+  	<!-- endinject -->
+
+	<link rel="shortcut icon" href="favicon.ico" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+</head>
+
+<body>
+
+	<!-- This is where content will be injected. -->
+	<div ng-view></div>
+	
+	<!-- Footer -->
+	<div id="footer">
+		Copyright &copy; 2013-2015, Linagora, Université Joseph Fourier, Floralis
+	</div>
+	
+	<!-- Scripts -->
+	<!-- bower:js -->
+  	<!-- endinject -->
+	
+	<!-- roboconf:js -->
+  	<!-- endinject -->
+  	
+  	<script type="text/javascript">
+	$( window ).scroll( function() {
+		var scrollTop = $( window ).scrollTop();
+		var newTop = scrollTop > 200 ? (scrollTop - 190) : 0;
+		$( "#right-block" ).css( 'margin-top', newTop );
+	});
+	</script>
+</body>
+</html>
