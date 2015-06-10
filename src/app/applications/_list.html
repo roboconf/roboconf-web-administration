@@ -68,7 +68,7 @@
 			<br /><br />
 			
 			<p ng-show="! isTpl">
-				<strong>Template Name:</strong> <a href="/#/tpl/{{ selectedApp.tpl.name }}/{{ selectedApp.tpl.qualifier }}/details">{{ selectedApp.tpl.name }}</a><br />
+				<strong>Template Name:</strong> <a href="#/tpl/{{ selectedApp.tpl.name }}/{{ selectedApp.tpl.qualifier }}/details">{{ selectedApp.tpl.name }}</a><br />
 				<strong>Template Qualifier:</strong> {{ selectedApp.tpl.qualifier }}
 			</p>
 			<p ng-show="isTpl">
@@ -80,9 +80,9 @@
 		<br />
 		<strong>The following links are available:</strong><br />
 		<ul>
-			<li ng-show="! isTpl"><a href="/#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/instances" ng-click"">Manage the instances</a></li>
-			<li ng-show="! isTpl"><a href="/#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/commands" ng-click"">Access the commands page</a></li>
-			<li><a href="/#/{{ isTpl ? ('tpl/' + selectedApp.name + '/' + selectedApp.qualifier) : ('app/' + selectedApp.name) }}/details" ng-click"">Browse details</a></li>
+			<li ng-show="! isTpl"><a href="#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/instances" ng-click"">Manage the instances</a></li>
+			<li ng-show="! isTpl"><a href="#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/commands" ng-click"">Access the commands page</a></li>
+			<li><a href="#/{{ isTpl ? ('tpl/' + selectedApp.name + '/' + selectedApp.qualifier) : ('app/' + selectedApp.name) }}/details" ng-click"">Browse details</a></li>
 		</ul>
 	</div>
 	<div class="clearfix"></div>

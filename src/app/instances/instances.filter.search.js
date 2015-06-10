@@ -4,6 +4,8 @@
   angular.module('roboconf.instances')
   .filter('rbcfInstancesFilter', rbcfInstancesFilter);
 
+  // Filter instances based on the search bar input.
+  // Used in the 'listing' template.
   function rbcfInstancesFilter() {
     return function(input, text) {
 

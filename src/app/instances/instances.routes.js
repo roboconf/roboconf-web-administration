@@ -12,6 +12,11 @@
     .when('/app/:appName/instances', {
       templateUrl: 'templates/instances/_instances.html',
       controller: 'InstancesListingController'
+    })
+
+    .when('/app/:appName/instances/new', {
+      templateUrl: 'templates/instances/_new.html',
+      controller: 'InstancesNewController'
     });
   }
 })();

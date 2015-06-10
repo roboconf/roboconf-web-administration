@@ -46,7 +46,7 @@ describe('Roboconf Utilities :: buildInstancesTree', function() {
                  instance_root2,
                  instance_child12,
                  instance_child22
-                 ];
+                ];
 
     var result = rutils.buildInstancesTree(input);
 
@@ -93,7 +93,7 @@ describe('Roboconf Utilities :: buildInstancesTree', function() {
                  instance_child111,
                  instance_root1,
                  instance_root2
-                 ];
+                ];
 
     var result = rutils.buildInstancesTree(input);
 
@@ -115,6 +115,119 @@ describe('Roboconf Utilities :: buildInstancesTree', function() {
     result[1].children[0].should.have.property('children').with.length(0);
     result[1].children[1].should.have.property('instance', instance_child22);
     result[1].children[1].should.have.property('children').with.length(0);
+
+    // Check children of the first child
+    result[0].children[0].children[0].should.have.property('instance', instance_child111);
+    result[0].children[0].children[0].should.have.property('children').with.length(0);
+  });
+
+
+  it('should sort AND filter nodes correctly with an intermediate filter', function() {
+
+    var instance_root1 = { name: 'toto', path: '/toto' };
+    var instance_child11 = { name: 'child11', path: '/toto/child11' };
+    var instance_child111 = { name: 'child111', path: '/toto/child11/child111' };
+    var instance_child12 = { name: 'child12', path: '/toto/child12' };
+    var instance_root2 = { name: 'titi', path: '/titi' };
+    var instance_child21 = { name: 'titi', path: '/titi/child21' };
+    var instance_child22 = { name: 'titi', path: '/titi/child22' };
+
+    var input = [
+                 instance_root1,
+                 instance_child11,
+                 instance_child21,
+                 instance_child111,
+                 instance_root2,
+                 instance_child12,
+                 instance_child22
+                ];
+
+    var result = rutils.buildInstancesTree(input, '/toto/child11');
+
+    // Check root instances
+    result.should.have.length(1);
+    result[0].should.have.property('instance', instance_root1);
+    result[0].should.have.property('children').with.length(1);
+
+    // Check children of the first root
+    result[0].children[0].should.have.property('instance', instance_child11);
+    result[0].children[0].should.have.property('children').with.length(1);
+
+    // Check children of the first child
+    result[0].children[0].children[0].should.have.property('instance', instance_child111);
+    result[0].children[0].children[0].should.have.property('children').with.length(0);
+  });
+
+
+  it('should sort AND filter nodes correctly with a root filter', function() {
+
+    var instance_root1 = { name: 'toto', path: '/toto' };
+    var instance_child11 = { name: 'child11', path: '/toto/child11' };
+    var instance_child111 = { name: 'child111', path: '/toto/child11/child111' };
+    var instance_child12 = { name: 'child12', path: '/toto/child12' };
+    var instance_root2 = { name: 'titi', path: '/titi' };
+    var instance_child21 = { name: 'titi', path: '/titi/child21' };
+    var instance_child22 = { name: 'titi', path: '/titi/child22' };
+
+    var input = [
+                 instance_root1,
+                 instance_child11,
+                 instance_child21,
+                 instance_child111,
+                 instance_root2,
+                 instance_child12,
+                 instance_child22
+                ];
+
+    var result = rutils.buildInstancesTree(input, '/toto');
+
+    // Check root instances
+    result.should.have.length(1);
+    result[0].should.have.property('instance', instance_root1);
+    result[0].should.have.property('children').with.length(2);
+
+    // Check children of the first root
+    result[0].children[0].should.have.property('instance', instance_child11);
+    result[0].children[0].should.have.property('children').with.length(1);
+    result[0].children[1].should.have.property('instance', instance_child12);
+    result[0].children[1].should.have.property('children').with.length(0);
+
+    // Check children of the first child
+    result[0].children[0].children[0].should.have.property('instance', instance_child111);
+    result[0].children[0].children[0].should.have.property('children').with.length(0);
+  });
+
+
+  it('should sort AND filter nodes correctly with a leaf filter', function() {
+
+    var instance_root1 = { name: 'toto', path: '/toto' };
+    var instance_child11 = { name: 'child11', path: '/toto/child11' };
+    var instance_child111 = { name: 'child111', path: '/toto/child11/child111' };
+    var instance_child12 = { name: 'child12', path: '/toto/child12' };
+    var instance_root2 = { name: 'titi', path: '/titi' };
+    var instance_child21 = { name: 'titi', path: '/titi/child21' };
+    var instance_child22 = { name: 'titi', path: '/titi/child22' };
+
+    var input = [
+                 instance_root1,
+                 instance_child11,
+                 instance_child21,
+                 instance_child111,
+                 instance_root2,
+                 instance_child12,
+                 instance_child22
+                ];
+
+    var result = rutils.buildInstancesTree(input, '/toto/child11/child111');
+
+    // Check root instances
+    result.should.have.length(1);
+    result[0].should.have.property('instance', instance_root1);
+    result[0].should.have.property('children').with.length(1);
+
+    // Check children of the first root
+    result[0].children[0].should.have.property('instance', instance_child11);
+    result[0].children[0].should.have.property('children').with.length(1);
 
     // Check children of the first child
     result[0].children[0].children[0].should.have.property('instance', instance_child111);

@@ -78,7 +78,7 @@ gulp.task('unit-tests', function () {
  * 
  * 1. clean-dev
  * 2. build-dev
- * 3. inject-dev
+ * 3. prepare-dev
  */
 
 // Clean all the output directories
@@ -93,21 +93,21 @@ gulp.task('clean-dev', function( cb ) {
 });
 
 // Shortcut for all the DEV tasks
-gulp.task('build-dev', [ 'clean-dev' ], buildDevDirectory )
-gulp.task('inject-dev', [ 'build-dev' ], injectScriptsInDev )
+gulp.task('build-dev', [ 'clean-dev' ], buildDevDirectory );
+gulp.task('prepare-dev', [ 'build-dev' ], injectScriptsInDev );
 
-// These tasks do not aims at being invoked manually
-gulp.task('build-watch-dev', buildDevDirectory )
-gulp.task('inject-watch-dev', [ 'build-watch-dev' ], injectScriptsInDev )
+// These tasks do not aim at being invoked manually
+gulp.task('build-watch-dev', buildDevDirectory );
+gulp.task('prepare-watch-dev', [ 'build-watch-dev' ], injectScriptsInDev );
 
 // Watch the files and update the DEV directory
-gulp.task('watch-dev', [ 'inject-dev' ], function () {
+gulp.task('watch-dev', [ 'prepare-dev' ], function () {
 		
 	// Run a web server
 	gulp.src('./target/dev').pipe( webserver());
 	
     // Watch changes in our SRC directory and update the DEV one
-	gulp.watch( 'src/**/*', [ 'inject-watch-dev' ]);
+	gulp.watch( 'src/**/*', [ 'prepare-watch-dev' ]);
 });
 
 

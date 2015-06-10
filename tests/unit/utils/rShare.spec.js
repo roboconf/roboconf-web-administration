@@ -11,7 +11,7 @@ describe('Roboconf Utilities :: rShare', function() {
 
 
   it('should share an object only once', function() {
-    assert.isNull(rshare.eatLastItem());
+    expect(rshare.eatLastItem()).to.not.exist;
 
     var item = 'some value';
     rshare.feedLastItem(item);

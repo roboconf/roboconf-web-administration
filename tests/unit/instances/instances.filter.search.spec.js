@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Instances Filter', function() {
+describe('Instances Filter :: Search', function() {
 
   beforeEach(module('roboconf.instances'));
 
@@ -29,6 +29,7 @@ describe('Instances Filter', function() {
     var array = [{ instance: { path: 'whatever' }}];
     expect(filter(array, '')).to.deep.equal(array);
   });
+
 
   it('should filter and be case insensitive', function() {
     var array = [{ instance: { path: '/vm' }}, { instance: { path: '/vm/server' }}];

@@ -65,15 +65,24 @@
       var content = 'The application was succesfully uploaded.';
       $('#upload-result').html(content);
       $('#upload-result-details').fadeIn();
+
+      // Store the newly uploaded template for other controllers.
+      rShare.feedLastItem(angular.fromJson(data));
     }
 
     function onFailingUpload(jqXHR, textStatus, errorThrown) {
 
-      var content = jqXHR.responseText;
-      if (! content) {
-        content = 'The upload failed. The server is either offline or your settings are incorrect.';
-      } else {
-        $('#upload-result-details').fadeIn();
+      // Reset the stored template.
+      rShare.eatLastItem(null);
+
+      var details;
+      if (jqXHR.responseText) {
+        details = angular.fromJson(jqXHR.responseText);
+      }
+
+      var content = 'The upload failed. The server is either offline or your settings are incorrect.';
+      if (details && details.reason) {
+        content += '<br />Reason: ' + details.reason.toLowerCase();
       }
 
       $('#upload-result').html(content);

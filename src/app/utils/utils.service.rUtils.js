@@ -15,7 +15,8 @@
         buildInstancesTree: buildInstancesTree,
         findPosition: findPosition,
         showRightBlock: showRightBlock,
-        hideRightBlock: hideRightBlock
+        hideRightBlock: hideRightBlock,
+        findInstancePath: findInstancePath
     };
 
     return service;
@@ -52,15 +53,26 @@
       }, 1000);
     }
 
-    function buildInstancesTree(instances) {
+    function buildInstancesTree(instances, filterInstancePath, fn) {
+
+      if (!fn) {
+        fn = createInstanceNode;
+        // fn must return an object with a 'path' property
+      }
 
       var rootInstances = [];
       if (angular.isArray(instances)) {
 
         var myMap = {};
-        instances.map(function(val, index, array) {
+        instances.filter(function(val, index, array) {
+          // Filter time: no need to put useless data in the result
+          return ! filterInstancePath || (val.path === filterInstancePath ||
+              filterInstancePath.indexOf(val.path + '/') === 0 ||
+              val.path.indexOf(filterInstancePath + '/') === 0);
+
+        }).map(function(val, index, array) {
           // Reference time: associate an instance with its path
-          myMap[val.path] = { instance: val, children: []};
+          myMap[val.path] = fn(val);
           return val;
 
         }).forEach(function(val, index, array) {
@@ -69,7 +81,6 @@
           parentPath = val.path.replace(/\/([^/]+)$/g, ''),
           parent = myMap[parentPath];
 
-          current.instance.treeNode = current;
           if (parent) {
             parent.children.push(current);
             current.parent = parent;
@@ -79,6 +90,7 @@
         });
       }
 
+      // When there is a filter, the result should contain at most 1 root node.
       return rootInstances;
     }
 
@@ -86,6 +98,22 @@
       var result = instancePath.match(/\//g);
       // Invalid path return the same position than a root instance, i.e. 1.
       return result ? result.length : 1;
+    }
+
+    function findInstancePath(inst) {
+      var curr = inst;
+      var res = '';
+      while (curr && curr.name) {
+          res = '/' + curr.name + res;
+          curr = curr.parent;
+      }
+
+      return res;
+    }
+
+    // Internal functions
+    function createInstanceNode(val) {
+      return {instance: val, children: []};
     }
   }
 }());

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Application upload Directive', function() {
+describe('Application Upload Directive', function() {
 
   beforeEach(module('roboconf.utils'));
   beforeEach(module('roboconf.preferences'));

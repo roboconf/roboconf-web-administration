@@ -109,7 +109,7 @@ ul.navbar-nav > li.underlined:hover {
 	font-weight: bold;
 	margin-top: 20px;
 }
- 
+
  a.welcome {
  	font-size: 14px;
  	font-weight: bold;
@@ -243,9 +243,23 @@ div.block-content {
 }
 
 /* Hover list items */
-.instances ul li p:hover {
+.instances ul li.listing p:hover {
 	color: #b23e4b;
 	cursor: pointer;
+}
+
+/* Selected instance */
+.instances ul > li.selected > p {
+	color: #b23e4b;
+}
+
+.editor-actions {
+	padding-right: 16px !important;
+}
+
+.editor-actions > span:hover {
+	cursor: pointer;
+	color: #b23e4b;
 }
 
 
@@ -319,7 +333,7 @@ option {
 	opacity: 0;
 	transition: opacity 1s;
 	
-	/* 
+	/*
 		We use the position to prevent scroll bars from appearing when this block is not visible.
 		The position is restored to static when the block is made visible (handled in our Angular code).
 	 */
@@ -384,7 +398,7 @@ p.avatar > img:hover {
     transition: width 1s;
 }
 
- 
+
 /*
  * settings.html
  */
@@ -406,6 +420,10 @@ input.form-control {
 	max-width: 98%;
 }
 
+.instance-actions > p {
+	margin-top: 18px;
+}
+
 /*
  * Footer
  */
@@ -418,4 +436,3 @@ input.form-control {
 	bottom: 0;
 	width: 100%;
 }
- 
