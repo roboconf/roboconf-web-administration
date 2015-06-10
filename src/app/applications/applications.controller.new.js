@@ -5,11 +5,8 @@
   .module('roboconf.applications')
   .controller('ApplicationsNewController', applicationsNewController);
 
-  applicationsNewController.$inject =
-    ['Restangular', '$scope', 'rAppTemplates', '$timeout', 'rShare', '$window'];
-
-  function applicationsNewController(
-      Restangular, $scope, rAppTemplates, $timeout, rShare, $window) {
+  applicationsNewController.$inject = ['Restangular', '$scope', 'rAppTemplates', '$timeout', 'rShare', '$window'];
+  function applicationsNewController(Restangular, $scope, rAppTemplates, $timeout, rShare, $window) {
 
     // Fields
     $scope.appTemplates = [];

@@ -264,20 +264,6 @@ div.block-content {
 
 
 /*
- * Buttons
- */
-.btn-roboconf {
-	border: solid #b23e4b 2px;
-	color: #b23e4b;
-	background-color: #ffffff;
-}
-
-.btn-roboconf:hover {
-	color: #b23e4b;
-}
-
-
-/*
  * Uploads
  */
 #upload-result {
@@ -422,6 +408,10 @@ input.form-control {
 
 .instance-actions > p {
 	margin-top: 18px;
+}
+
+.instance-actions > ul {
+	margin: 6px 0 0 36px;
 }
 
 /*

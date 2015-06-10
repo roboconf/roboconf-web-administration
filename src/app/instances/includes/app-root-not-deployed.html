@@ -1,14 +1,11 @@
 <img src="img/state-root-not-deployed.jpg" alt="Not Deployed" />
 <p>The following actions can be undertaken.</p>
 
-<div class="btn-group btn-group-justified">
-	<div class="btn-group" ng-click="changeState( 'DEPLOYED_STARTED' )">
-		<button class="btn btn-roboconf" title="Deploy"> <span class="glyphicon glyphicon-tower"></span> &nbsp; Deploy this Instance</button>
-	</div>
-	<div class="btn-group" ng-click="performAll( 'deploy-all', true )">
-		<button class="btn btn-roboconf" title="Deploy and Start Everything"> <span class="glyphicon glyphicon-gift"></span> &nbsp; Deploy and Start Everything</button>
-	</div>
-</div>
+<ul>
+	<li><a href="" ng-click="changeState( 'DEPLOYED_STARTED' )">Deploy this instance</a></li>
+	<li><a href="" ng-click="performAll( 'deploy-all', true )">Deploy and Start everything</a></li>
+	<li><a href="" ng-click="createChildInstance()">Create a child instance</a></li>
+</ul>
 
 <br />
 <strong>Description</strong>

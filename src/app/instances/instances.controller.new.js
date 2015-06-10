@@ -55,6 +55,7 @@
     $scope.askToReset = askToReset;
     $scope.reset = reset;
     $scope.createThemAll = createThemAll;
+    $scope.showGlobalButtons = showGlobalButtons;
 
     // Initial actions
     var startingPassedInstance = rShare.eatLastItem();
@@ -66,6 +67,26 @@
     }
 
     // Functions
+    function showGlobalButtons() {
+
+      var res = false;
+      if ($scope.rootNode && ! $scope.mode) {
+
+        var arr = [$scope.rootNode];
+        while (!res && arr.length > 0) {
+
+          var curr = arr.shift();
+          if (curr.writable) {
+            res = true;
+          } else if (curr.children) {
+            arr = arr.concat(curr.children);
+          }
+        }
+      }
+
+      return res;
+    }
+
     function askToReset() {
       $scope.mode = 'reset';
     }

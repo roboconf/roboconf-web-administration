@@ -35,11 +35,14 @@
 			<!-- Actions (visible only when some actions were registered) -->
 			<li class="dropdown underlined" ng-show="menuActions && menuActions.length > 0">
 				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Actions...">
-					<span class="glyphicon glyphicon-plus"></span>
+					<span class="glyphicon glyphicon-wrench"></span>
 					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu" role="menu">
-					<!-- TODO: insert actions -->
+					<li ng-repeat="action in menuActions" ng-class="action.title === 'separator' ? 'divider' : ''">
+						<a href="{{ action.link }}" ng-if="action.title !== separator && action.link">{{ action.title }}</a>
+						<a href="" ng-if="action.title !== separator && action.fn" ng-click="action.fn()">{{ action.title }}</a>
+					</li>
 				</ul>
 			</li>
 		</ul>

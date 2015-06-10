@@ -5,11 +5,8 @@
   .module('roboconf.instances')
   .controller('InstancesListingController', instancesListingController);
 
-  instancesListingController.$inject =
-    ['Restangular', '$scope', 'rUtils', '$routeParams'];
-
-  function instancesListingController(
-      Restangular, $scope, rUtils, $routeParams) {
+  instancesListingController.$inject = ['Restangular', '$scope', 'rUtils', '$routeParams', 'rShare', '$window'];
+  function instancesListingController(Restangular, $scope, rUtils, $routeParams, rShare, $window) {
 
     // Fields
     $scope.noError = true;
@@ -18,6 +15,19 @@
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.template = '';
+    $scope.menuActions = [
+      {title: 'Create a New Instance', link: '#/app/' + $routeParams.appName + '/instances/new'},
+      {title: 'separator'},
+      {title: 'Deploy and Start All', fn: function() {
+        performAll('deploy-all', false);
+      }},
+      {title: 'Stop All', fn: function() {
+        performAll('stop-all', false);
+      }},
+      {title: 'Undeploy All', link: '', fn: function() {
+        performAll('undeploy-all', false);
+      }}
+    ];
 
     // Function declarations
     $scope.loadInstances = loadInstances;
@@ -27,6 +37,7 @@
     $scope.isNodeToHide = isNodeToHide;
     $scope.changeState = changeState;
     $scope.performAll = performAll;
+    $scope.createChildInstance = createChildInstance;
 
     // Initial actions
     loadInstances();
@@ -59,6 +70,13 @@
     function hideInstance() {
       $scope.selectedInstance = null;
       rUtils.hideRightBlock();
+    }
+
+    function createChildInstance() {
+      if ($scope.selectedInstance) {
+        rShare.feedLastItem($scope.selectedInstance);
+        $window.location = '#/app/' + $scope.appName + '/instances/new';
+      }
     }
 
     function changeState(newState) {

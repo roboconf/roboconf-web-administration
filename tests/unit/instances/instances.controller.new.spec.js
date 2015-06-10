@@ -635,6 +635,39 @@ describe('Instances Controller :: New Instance(s)', function() {
 
     done();
   });
+
+
+  it('should enable global actions when all the instances are writable', function(done) {
+    var child = {name: 'server', writable: true, component: {name: 'Tomcat'}};
+    scope.rootNode = { name: 'vm', component: {name: 'VM'}, writable: true, children: [child]};
+    child.parent = scope.rootNode;
+
+    scope.$apply();
+    expect(scope.showGlobalButtons()).to.be.true;
+    done();
+  });
+
+
+  it('should enable global actions when some instances are writable', function(done) {
+    var child = {name: 'server', writable: true, component: {name: 'Tomcat'}};
+    scope.rootNode = { name: 'vm', component: {name: 'VM'}, children: [child]};
+    child.parent = scope.rootNode;
+
+    scope.$apply();
+    expect(scope.showGlobalButtons()).to.be.true;
+    done();
+  });
+
+
+  it('should disable global actions when no instance is writable', function(done) {
+    var child = {name: 'server', component: {name: 'Tomcat'}};
+    scope.rootNode = { name: 'vm', component: {name: 'VM'}, children: [child]};
+    child.parent = scope.rootNode;
+
+    scope.$apply();
+    expect(scope.showGlobalButtons()).to.be.false;
+    done();
+  });
 });
 
 

@@ -108,7 +108,7 @@
 	</div>
 	
 	<!-- Confirm or cancel creation -->
-	<div ng-show="rootNode && ! mode">
+	<div ng-show="showGlobalButtons()">
 		<button type="button" class="btn btn-default pull-right" ng-click="askToReset()">Drop new instances</button>
 		<button type="button" class="btn btn-default pull-right" ng-click="createThemAll()">Create them all</button>
 	</div>
