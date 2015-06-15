@@ -1,0 +1,129 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		New Instance(s) for {{ ::appName }}
+	</h1>
+	
+	<!-- Information Message -->
+	<p>
+		This page allows you to create a new instance for the <strong>{{ ::appName }}</strong> application.
+	</p>
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="error"></rbcf-error-message>
+	
+	<!-- Dynamic templates to build a tree with AngularJS -->
+	<script type="text/ng-template" id="display-tmpl">
+	<p class="editor-actions pull-right" ng-show="node.writable && ! editedInstance && ! node.progress">
+		<span class="glyphicon glyphicon-pencil" ng-click="editInstance( node )"></span>
+		&nbsp;
+		<span class="glyphicon glyphicon-plus" ng-click="createInstance( node )"></span>
+		&nbsp;
+		<span class="glyphicon glyphicon-remove" ng-click="askToDeleteInstance( node )"></span>
+	</p>
+	<p class="editor-actions pull-right" ng-show="! node.progress && ! node.writable && ! editedInstance" title="This instance already exists">
+		[ Read Only ] &nbsp;
+		<span class="glyphicon glyphicon-plus" ng-click="createInstance( node )"></span>
+	</p>
+	<p class="editor-actions pull-right text-success" ng-show="node.progress === 'ok'" title="This instance was sucessfully created">
+		<span class="glyphicon glyphicon-ok"></span>
+	</p>
+	<p class="editor-actions pull-right text-danger" ng-show="node.progress === 'ko'" title="This instance could not be created">
+		<span class="glyphicon glyphicon-exclamation-sign"></span>
+	</p>
+    <p class="clearfix">
+		<strong>{{ node.name }}</strong> is {{ findArticle( node )}} <strong>{{ node.component.name }}</strong>.
+	</p>
+    <ul>
+        <li ng-repeat="node in node.children" ng-include="'display-tmpl'" ng-class="editedInstance === node ? 'selected' : ''"></li>
+    </ul>
+	</script>
+	
+	<!-- The block that lists instances -->
+	<div class="block instances" id="single-block">
+		<p class="block-title">Create your instance</p>
+		<div class="block-content" style="margin-bottom: -6px;" ng-show="! rootNode">
+			<p class="pull-left">
+				No instance has been created so far.<br />
+				Or you can <a href="" ng-click="askToSelectInstance()">select an existing instance</a> to complete.
+			</p>
+			
+			<p class="editor-actions pull-right">
+				<span class="glyphicon glyphicon-plus" ng-click="createInstance()"></span>
+			</p>
+			<p class="clearfix" style="margin: 0; padding: 0;"></p>
+		</div>
+		<ul>
+			<li ng-repeat="node in (rootNode ? [rootNode] : [])" ng-include="'display-tmpl'" ng-class="editedInstance === node ? 'selected' : ''"></li>
+		</ul>
+	</div>
+	
+	<!-- Edit properties of an instance -->
+	<form novalidate name="newInstanceForm" ng-show="editedInstance && ['edit','new'].indexOf(mode) >= 0">
+		<div class="form-group" ng-class="{'has-error': newInstanceForm.component.$invalid && newInstanceForm.component.$dirty}">
+			<label for="component" class="control-label">Component name</label>
+			<span class="r-help" ng-show="newAppForm.component.$error.required">(required)</span>
+			<select
+					class="form-control" name="component" ng-model="editedInstance.component"
+					ng-options="comp.name for comp in possibleComponents track by comp.name" required>
+			</select>
+		</div>
+		
+		<div class="form-group" ng-class="{'has-error': newInstanceForm.name.$invalid && newInstanceForm.name.$dirty}">
+			<label for="name" class="control-label">Instance name</label>
+			<span class="r-help" ng-show="newInstanceForm.name.$error.required">(required)</span><br />
+			<input
+					type="text" class="form-control" name="name" placeholder="an instance name"
+					ng-model="editedInstance.name" ng-model-options="{allowInvalid: true}" required instance />
+		</div>
+
+		<p class="text-danger" ng-show="newInstanceForm.name.$error.instance">The instance name must be unique among its siblings.</p>
+		<button type="button" class="btn btn-default pull-right" ng-disabled="! newInstanceForm.$valid" ng-click="ok()">OK</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="cancel()">Cancel</button>
+	</form>
+	
+	<!-- Confirm the deletion of an instance -->
+	<div ng-show="editedInstance && mode === 'delete'">
+		This action will delete <strong>{{ editedInstance.name }}</strong> and all its children. &nbsp;
+		
+		<button type="button" class="btn btn-default" ng-click="deleteInstance( true )">Confirm</button>
+		<button type="button" class="btn btn-default" ng-click="deleteInstance( false )">Cancel</button>
+	</div>
+	
+	<!-- Show existing instances -->
+	<div ng-show="mode === 'select-instance'">
+		Select an existing instance in the list below.<br />
+		
+		<div class="form-group">
+			<select
+					class="form-control"
+					ng-model="selectedInstance"
+					ng-options="inst.path for inst in (existingInstances | rbcfRootInstancesFilter) track by inst.path" required>
+			</select>
+		</div>
+		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( true )">Validate</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( false )">Cancel</button>
+	</div>
+	
+	<!-- Confirm or cancel creation -->
+	<div ng-show="showGlobalButtons()">
+		<button type="button" class="btn btn-default pull-right" ng-click="askToReset()">Drop new instances</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="createThemAll()">Create them all</button>
+	</div>
+	
+	<!-- Confirm the form should be reset -->
+	<div ng-show="mode === 'reset'">
+		You are about to reset everything. All the new instances will be dropped. &nbsp;
+		
+		<button type="button" class="btn btn-default" ng-click="reset( true )">Confirm</button>
+		<button type="button" class="btn btn-default" ng-click="reset( false )">Cancel</button>
+	</div>
+	
+	<!-- Once it was posted (with or without success) -->
+	<div ng-show="mode === 'posted'">
+		<button type="button" class="btn btn-default pull-right" ng-click="reset( true )">Finish</button>
+	</div>
+	
+</div>

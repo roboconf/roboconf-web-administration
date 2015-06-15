@@ -14,6 +14,7 @@ describe('Roboconf Utilities :: startsWith', function() {
     rutils.startsWith('this is a test', 't').should.equal(true);
     rutils.startsWith('this is a test', 'this').should.equal(true);
     rutils.startsWith('this is a test', 'this is a test').should.equal(true);
+    rutils.startsWith('/vm/server/app1/config', '/vm/server').should.equal(true);
   });
 
 

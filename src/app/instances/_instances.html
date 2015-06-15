@@ -7,24 +7,6 @@
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 	</h1>
 	
-	<!--Global Actions 
-	<div class="btn-group" ng-show="invoked && noError">
-		<button type="button" class="btn btn-roboconf dropdown-toggle" data-toggle="dropdown">
-			<span class="glyphicon glyphicon-cog"></span>
-			Global Actions <span class="caret"></span>
-		</button>
-	
-		<ul class="dropdown-menu" role="menu">
-			<li ng-click="performAll( 'deploy-all', false )"><a href="">Deploy and Start All</a></li>
-			<li ng-click="performAll( 'stop-all', false )"><a href="">Stop All</a></li>
-			<li ng-click="performAll( 'undeploy-all', false )"><a href="">Undeploy All</a></li>
-			<li class="divider"></li>
-			<li><a href="">Create a New Instance</a></li>
-			<li><a href="">Delete Instances</a></li>
-		</ul>
-	</div>
-	-->
-	
 	<!-- Information Message -->
 	<p>
 		This page lists all the instances of the <strong>{{ appName }}</strong> application.<br />
@@ -48,24 +30,27 @@
 	
 	<!-- A dynamic template to build a tree with AngularJS -->
 	<script type="text/ng-template" id="my-tmpl">
-    <p ng-click="showInstance( childNode.instance, 1000 )">
+    <p ng-click="showInstance( childNode, 1000 )">
 		<strong>{{ childNode.instance.name }}</strong> is {{ formatStatus( childNode.instance.status )}}.
 	</p>
     <ul>
-        <li ng-repeat="childNode in childNode.children" ng-include="'my-tmpl'"></li>
+        <li class="listing" ng-repeat="childNode in childNode.children" ng-include="'my-tmpl'"></li>
     </ul>
 	</script>
 	
 	<!-- Display the hierarchy of instances -->
 	<div id="left-block">
 		<div ng-repeat="rootNode in rootNodes | rbcfInstancesFilter:searchFilter" ng-class="isNodeToHide( rootNode.instance.path ) ? 'block block-faded instances' : 'block instances'">
-			<p class="block-title" ng-click="showInstance( rootNode.instance, 1000 )">
+			<p class="block-title" ng-click="showInstance( rootNode, 1000 )">
 				{{ rootNode.instance.name }}
 				<span class="block-annotation">{{ formatStatus( rootNode.instance.status )}}</span>
 			</p>
+			<div class="block-content" ng-show="rootNode.children.length === 0">
+				This root instance has no child.
+			</div>
 			
 			<ul>
-				<li ng-repeat="childNode in rootNode.children" ng-include="'my-tmpl'"></li>
+				<li class="listing" ng-repeat="childNode in rootNode.children" ng-include="'my-tmpl'"></li>
 			</ul>
 		</div>
 	</div>

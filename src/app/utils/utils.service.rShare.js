@@ -8,9 +8,8 @@
   function rShare() {
 
     // Fields
-    var lastItem = null;
+    var lastItem;
     var service = {
-        lastItem: lastItem,
         eatLastItem: eatLastItem,
         feedLastItem: feedLastItem
     };

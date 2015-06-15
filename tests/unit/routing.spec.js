@@ -18,13 +18,15 @@ describe('Routing', function() {
 
       // Single applications
       expect($route.routes['/app/:appName/details'].controller).to.equal('SingleApplicationController');
-      expect($route.routes['/tpl/:tplName/:tplQualifier/details'].controller).to.equal('SingleApplicationTemplateController');
+      expect($route.routes['/tpl/:tplName/:tplQualifier/details'].controller)
+      .to.equal('SingleApplicationTemplateController');
 
       // Preferences
       expect($route.routes['/preferences'].controller).to.equal('PreferencesController');
 
       // Instances
       expect($route.routes['/app/:appName/instances'].controller).to.equal('InstancesListingController');
+      expect($route.routes['/app/:appName/instances/new'].controller).to.equal('InstancesNewController');
     });
   });
 });
