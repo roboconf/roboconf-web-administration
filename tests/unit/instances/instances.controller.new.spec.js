@@ -714,6 +714,39 @@ describe('Instances Controller :: New Instance(s) with initialization', function
   });
 
 
+  it('should be able to replicate an existing instance', function(done) {
+    inject(function($controller, $rootScope, $httpBackend, rShare) {
+      httpBackend = $httpBackend;
+      whenThings = $httpBackend.when('GET', /.*/g);
+
+      scope = $rootScope.$new();
+      instances[0].copy = true;
+      rShare.feedLastItem(instances[0]);
+      $controller('InstancesNewController', {$scope: scope, $routeParams: {appName: 'test'}});
+    });
+
+    whenThings.respond(instances);
+    httpBackend.flush();
+
+    expect(scope.mode).to.not.be.defined;
+    expect(scope.selectedInstance).to.not.be.defined;
+    expect(scope.existingInstances).to.have.length(2);
+    expect(scope.rootNode).to.be.defined;
+    expect(scope.rootNode.name).to.equal('Copy of vm');
+    expect(scope.rootNode.path).to.equal('/Copy of vm');
+    expect(scope.rootNode.writable).to.not.be.defined;
+    expect(scope.rootNode.component.name).to.equal('VM');
+    expect(scope.rootNode.children).to.have.length(1);
+    expect(scope.rootNode.children[0].name).to.equal('server');
+    expect(scope.rootNode.children[0].path).to.equal('/Copy of vm/server');
+    expect(scope.rootNode.children[0].writable).to.not.be.defined;
+    expect(scope.rootNode.children[0].component.name).to.equal('Tomcat');
+    expect(scope.rootNode.children[0].children).to.have.length(0);
+
+    done();
+  });
+
+
   it('should NOT initialize anything with an invalid item', function(done) {
     inject(function($controller, $rootScope, $httpBackend, rShare) {
       httpBackend = $httpBackend;

@@ -16,6 +16,7 @@
     $scope.searchVisible = true;
     $scope.template = '';
     $scope.askToDelete = false;
+    $scope.orderingCriteria = 'instance.name';
 
     // Menu actions
     $scope.menuActions = [
@@ -56,7 +57,7 @@
     $scope.changeState = changeState;
     $scope.performAll = performAll;
     $scope.createChildInstance = createChildInstance;
-    $scope.orderingCriteria = 'instance.name';
+    $scope.replicateInstance = replicateInstance;
     $scope.deleteInstance = deleteInstance;
 
     // Initial actions
@@ -96,6 +97,13 @@
       if ($scope.selectedInstance) {
         rShare.feedLastItem($scope.selectedInstance);
         $window.location = '#/app/' + $scope.appName + '/instances/new';
+      }
+    }
+
+    function replicateInstance() {
+      if ($scope.selectedInstance) {
+        $scope.selectedInstance.copy = true;
+        createChildInstance();
       }
     }
 
