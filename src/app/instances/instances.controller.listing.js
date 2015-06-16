@@ -26,6 +26,21 @@
       }},
       {title: 'Undeploy All', link: '', fn: function() {
         performAll('undeploy-all', false);
+      }},
+      {title: 'separator'},
+      {title: 'Sort by name', link: '', fn: function() {
+        if ($scope.orderingCriteria === 'instance.name') {
+          $scope.orderingCriteria = '-instance.name';
+        } else {
+          $scope.orderingCriteria = 'instance.name';
+        }
+      }},
+      {title: 'Sort by state', link: '', fn: function() {
+        if ($scope.orderingCriteria === 'instance.status') {
+          $scope.orderingCriteria = '-instance.status';
+        } else {
+          $scope.orderingCriteria = 'instance.status';
+        }
       }}
     ];
 
@@ -38,6 +53,7 @@
     $scope.changeState = changeState;
     $scope.performAll = performAll;
     $scope.createChildInstance = createChildInstance;
+    $scope.orderingCriteria = 'instance.name';
 
     // Initial actions
     loadInstances();

@@ -40,7 +40,9 @@
 	
 	<!-- Display the hierarchy of instances -->
 	<div id="left-block">
-		<div ng-repeat="rootNode in rootNodes | rbcfInstancesFilter:searchFilter" ng-class="isNodeToHide( rootNode.instance.path ) ? 'block block-faded instances' : 'block instances'">
+		<div ng-repeat="rootNode in rootNodes | rbcfInstancesFilter:searchFilter | orderBy:orderingCriteria" 
+				ng-class="isNodeToHide( rootNode.instance.path ) ? 'block block-faded instances' : 'block instances'">
+
 			<p class="block-title" ng-click="showInstance( rootNode, 1000 )">
 				{{ rootNode.instance.name }}
 				<span class="block-annotation">{{ formatStatus( rootNode.instance.status )}}</span>

@@ -39,7 +39,7 @@
 
 	<!-- Applications List -->
 	<div id="left-block">
-		<div ng-repeat="app in apps | filter:searchFilter" ng-class="selectedApp && app !== selectedApp ? 'block block-faded' : 'block'">
+		<div ng-repeat="app in apps | filter:searchFilter | orderBy:'name'" ng-class="selectedApp && app !== selectedApp ? 'block block-faded' : 'block'">
 			<p class="block-title" ng-click="showApplication( app, 1000 )">
 				<span ng-click="showApplication( app, 1000 )">{{ ::app.name }}</span>
 			</p>
