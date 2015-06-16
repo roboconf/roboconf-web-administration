@@ -149,5 +149,50 @@
         $scope.selectedInstance.path !== instancePath &&
         ! rUtils.startsWith($scope.selectedInstance.path, instancePath + '/');
     }
+
+
+    // LEGACY: regularly poll the server.
+    // FIXME: to be replaced by a web socket in the next version.
+    function updateFromServer() {
+
+      Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
+
+        // Reload the instances
+        $scope.rootNodes = rUtils.buildInstancesTree(instances);
+        
+        // Update the selected instance
+        if ($scope.selectedInstance) {
+          var found = false;
+          var nodesToCheck = [].concat($scope.rootNodes);
+
+          while (nodesToCheck.length > 0) {
+            var curr = nodesToCheck.shift();
+
+            if (curr.instance.path === $scope.selectedInstance.path) {
+              found = true;
+              showInstance(curr, 0);
+              break;
+
+            } else if (curr.children) {
+              nodesToCheck = nodesToCheck.concat(curr.children)
+            }
+          }
+
+          if(! found) {
+            hideInstance();
+          }
+        }
+
+        // Refresh in 5 seconds
+        $scope.updateFromServer();
+      });
+    }
+    
+    $scope.updateFromServer = function() {
+      setTimeout( updateFromServer, 5000 );
+    }
+
+    // Run it at the beginning
+    $scope.updateFromServer();
   }
 })();
