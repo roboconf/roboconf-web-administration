@@ -31,6 +31,25 @@
 				<span class="formatted">{{ app.desc }}</span>
 			</div>
 			<div class="clearfix"></div>
+			
+			<div class="single-details">
+				<strong>The following links are available:</strong><br />
+				<ul>
+					<li><a href="" ng-click="askToDelete = true">Delete this application template</a></li>
+				</ul>
+				
+				<div ng-show="askToDelete">
+					Do you really want to delete this application template? &nbsp;
+					
+					<button type="button" class="btn btn-default" ng-click="deleteApplicationTemplate()">Confirm</button>
+					<button type="button" class="btn btn-default" ng-click="askToDelete = false">Cancel</button>
+				</div>
+				
+				<div ng-show="showRestError">
+					The application template could not be deleted.<br />
+					Make sure no application is associated with this template to delete it.
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

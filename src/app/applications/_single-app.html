@@ -36,9 +36,21 @@
 			<div class="single-details">
 				<strong>The following links are available:</strong><br />
 				<ul>
-					<li><a href="#/app/{{ app.name }}/instances"ng-click"">Manage the instances</a></li>
-					<li><a href="#/app/{{ app.name }}/commands"ng-click"">Access the commands page</a></li>
+					<li><a href="#/app/{{ app.name }}/instances">Manage the instances</a></li>
+					<li><a href="" ng-click="askToDelete = true">Delete this application</a></li>
 				</ul>
+				
+				<div ng-show="askToDelete">
+					Do you really want to delete this application? &nbsp;
+					
+					<button type="button" class="btn btn-default" ng-click="deleteApplication()">Confirm</button>
+					<button type="button" class="btn btn-default" ng-click="askToDelete = false">Cancel</button>
+				</div>
+				
+				<div ng-show="showRestError">
+					The application could not be deleted.<br />
+					Make sure no instance is deployed in the application to delete it.
+				</div>
 			</div>
 		</div>
 	</div>

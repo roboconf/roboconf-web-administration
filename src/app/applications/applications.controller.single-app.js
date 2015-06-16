@@ -5,12 +5,16 @@
   .module('roboconf.applications')
   .controller('SingleApplicationController', singleApplicationController);
 
-  singleApplicationController.$inject = ['Restangular', '$scope', '$routeParams'];
-  function singleApplicationController(Restangular, $scope, $routeParams) {
+  singleApplicationController.$inject = ['Restangular', '$scope', '$routeParams', '$window'];
+  function singleApplicationController(Restangular, $scope, $routeParams, $window) {
 
     // Fields
     $scope.invoked = false;
     $scope.error = false;
+    $scope.askToDelete = false;
+    $scope.showRestError = false;
+
+    $scope.deleteApplication = deleteApplication;
     $scope.app = findApplication($routeParams.appName);
 
     // Function definitions
@@ -29,6 +33,16 @@
 
       .finally (function() {
         $scope.invoked = true;
+      });
+    }
+
+    function deleteApplication() {
+      Restangular.one('applications/' + $routeParams.appName + '/delete').remove().then(function() {
+        $window.location = '#/';
+      }, function() {
+        $scope.showRestError = true;
+      }).finally (function() {
+        $scope.askToDelete = false;
       });
     }
   }

@@ -15,6 +15,9 @@
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.template = '';
+    $scope.askToDelete = false;
+
+    // Menu actions
     $scope.menuActions = [
       {title: 'Create a New Instance', link: '#/app/' + $routeParams.appName + '/instances/new'},
       {title: 'separator'},
@@ -54,6 +57,7 @@
     $scope.performAll = performAll;
     $scope.createChildInstance = createChildInstance;
     $scope.orderingCriteria = 'instance.name';
+    $scope.deleteInstance = deleteInstance;
 
     // Initial actions
     loadInstances();
@@ -93,6 +97,23 @@
         rShare.feedLastItem($scope.selectedInstance);
         $window.location = '#/app/' + $scope.appName + '/instances/new';
       }
+    }
+
+    function deleteInstance() {
+      var path = 'app/' + $scope.appName + '/instances';
+      path += '?instance-path=' + $scope.selectedInstance.path;
+
+      Restangular.one(path).remove().then(function() {
+        $scope.askToDelete = false;
+        var node = findNode($scope.selectedInstance);
+        var array = node.parent ? node.parent.children : $scope.rootNodes;
+        var index = array.indexOf(node);
+        if (index) {
+          array.splice(index, 1);
+        }
+
+        hideInstance();
+      });
     }
 
     function changeState(newState) {
@@ -166,35 +187,38 @@
         ! rUtils.startsWith($scope.selectedInstance.path, instancePath + '/');
     }
 
+    function findNode(inst) {
+
+      var nodesToCheck = [].concat($scope.rootNodes);
+      while (nodesToCheck.length > 0) {
+        var curr = nodesToCheck.shift();
+        if (curr.instance.path === inst.path) {
+          return curr;
+
+        } else if (curr.children) {
+          nodesToCheck = nodesToCheck.concat(curr.children);
+        }
+      }
+
+      return null;
+    }
+
 
     // LEGACY: regularly poll the server.
     // FIXME: to be replaced by a web socket in the next version.
     function updateFromServer() {
 
-      Restangular.all( 'app/' + $scope.appName + '/children?all-children=true' ).getList().then( function( instances ) {
+      Restangular.all('app/' + $scope.appName + '/children?all-children=true').getList().then(function(instances) {
 
         // Reload the instances
         $scope.rootNodes = rUtils.buildInstancesTree(instances);
-        
+
         // Update the selected instance
         if ($scope.selectedInstance) {
-          var found = false;
-          var nodesToCheck = [].concat($scope.rootNodes);
-
-          while (nodesToCheck.length > 0) {
-            var curr = nodesToCheck.shift();
-
-            if (curr.instance.path === $scope.selectedInstance.path) {
-              found = true;
-              showInstance(curr, 0);
-              break;
-
-            } else if (curr.children) {
-              nodesToCheck = nodesToCheck.concat(curr.children)
-            }
-          }
-
-          if(! found) {
+          var node = findNode($scope.selectedInstance);
+          if (node) {
+            showInstance(node, 0);
+          } else {
             hideInstance();
           }
         }
@@ -203,10 +227,10 @@
         $scope.updateFromServer();
       });
     }
-    
+
     $scope.updateFromServer = function() {
-      setTimeout( updateFromServer, 5000 );
-    }
+      setTimeout(updateFromServer, 5000);
+    };
 
     // Run it at the beginning
     $scope.updateFromServer();

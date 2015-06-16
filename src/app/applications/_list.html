@@ -77,7 +77,7 @@
 		</div>
 		<div class="clearfix"></div>
 		
-		<br />
+		<br ng-show="! isTpl" />
 		<strong>The following links are available:</strong><br />
 		<ul>
 			<li ng-show="! isTpl"><a href="#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/instances" ng-click"">Manage the instances</a></li>
