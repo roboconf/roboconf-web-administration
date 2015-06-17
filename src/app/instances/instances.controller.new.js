@@ -5,8 +5,8 @@
   .module('roboconf.instances')
   .controller('InstancesNewController', instancesNewController);
 
-  instancesNewController.$inject = ['Restangular', '$scope', '$routeParams', 'rUtils', 'rShare'];
-  function instancesNewController(Restangular, $scope, $routeParams, rUtils, rShare) {
+  instancesNewController.$inject = ['Restangular', '$scope', '$routeParams', 'rUtils', 'rShare', '$window'];
+  function instancesNewController(Restangular, $scope, $routeParams, rUtils, rShare, $window) {
 
     // Fields
     $scope.appName = $routeParams.appName;
@@ -95,6 +95,7 @@
       $scope.mode = null;
       if (confirm) {
         $scope.rootNode = null;
+        $window.location = '#/app/' + $scope.appName + '/instances';
       }
     }
 
@@ -137,10 +138,24 @@
     function selectInstance(confirm) {
 
       if (confirm) {
+        // Build the tree
         $scope.rootNode = rUtils.buildInstancesTree(
             $scope.existingInstances,
             $scope.selectedInstance.path,
             createNewNode).pop();
+
+        // Case of replication: update the root node
+        if ($scope.selectedInstance.copy) {
+          var oldName = $scope.rootNode.name;
+          $scope.rootNode.name = 'Copy of ' + oldName;
+          var nodesToCheck = [$scope.rootNode];
+          while (nodesToCheck.length > 0) {
+            var curr = nodesToCheck.shift();
+            curr.writable = true;
+            curr.path = curr.path.replace('/' + oldName, '/Copy of ' + oldName);
+            nodesToCheck = nodesToCheck.concat(curr.children);
+          }
+        }
       }
 
       $scope.mode = null;

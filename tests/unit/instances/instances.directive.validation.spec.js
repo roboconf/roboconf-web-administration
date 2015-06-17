@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Menu Directive', function() {
+describe('Validation Directive for instances', function() {
 
   beforeEach(module('roboconf.instances'));
 

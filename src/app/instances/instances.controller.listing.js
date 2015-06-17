@@ -15,6 +15,10 @@
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.template = '';
+    $scope.askToDelete = false;
+    $scope.orderingCriteria = 'instance.name';
+
+    // Menu actions
     $scope.menuActions = [
       {title: 'Create a New Instance', link: '#/app/' + $routeParams.appName + '/instances/new'},
       {title: 'separator'},
@@ -26,6 +30,21 @@
       }},
       {title: 'Undeploy All', link: '', fn: function() {
         performAll('undeploy-all', false);
+      }},
+      {title: 'separator'},
+      {title: 'Sort by name', link: '', fn: function() {
+        if ($scope.orderingCriteria === 'instance.name') {
+          $scope.orderingCriteria = '-instance.name';
+        } else {
+          $scope.orderingCriteria = 'instance.name';
+        }
+      }},
+      {title: 'Sort by state', link: '', fn: function() {
+        if ($scope.orderingCriteria === 'instance.status') {
+          $scope.orderingCriteria = '-instance.status';
+        } else {
+          $scope.orderingCriteria = 'instance.status';
+        }
       }}
     ];
 
@@ -38,6 +57,8 @@
     $scope.changeState = changeState;
     $scope.performAll = performAll;
     $scope.createChildInstance = createChildInstance;
+    $scope.replicateInstance = replicateInstance;
+    $scope.deleteInstance = deleteInstance;
 
     // Initial actions
     loadInstances();
@@ -77,6 +98,30 @@
         rShare.feedLastItem($scope.selectedInstance);
         $window.location = '#/app/' + $scope.appName + '/instances/new';
       }
+    }
+
+    function replicateInstance() {
+      if ($scope.selectedInstance) {
+        $scope.selectedInstance.copy = true;
+        createChildInstance();
+      }
+    }
+
+    function deleteInstance() {
+      var path = 'app/' + $scope.appName + '/instances';
+      path += '?instance-path=' + $scope.selectedInstance.path;
+
+      Restangular.one(path).remove().then(function() {
+        $scope.askToDelete = false;
+        var node = findNode($scope.selectedInstance);
+        var array = node.parent ? node.parent.children : $scope.rootNodes;
+        var index = array.indexOf(node);
+        if (index) {
+          array.splice(index, 1);
+        }
+
+        hideInstance();
+      });
     }
 
     function changeState(newState) {
@@ -149,5 +194,53 @@
         $scope.selectedInstance.path !== instancePath &&
         ! rUtils.startsWith($scope.selectedInstance.path, instancePath + '/');
     }
+
+    function findNode(inst) {
+
+      var nodesToCheck = [].concat($scope.rootNodes);
+      while (nodesToCheck.length > 0) {
+        var curr = nodesToCheck.shift();
+        if (curr.instance.path === inst.path) {
+          return curr;
+
+        } else if (curr.children) {
+          nodesToCheck = nodesToCheck.concat(curr.children);
+        }
+      }
+
+      return null;
+    }
+
+
+    // LEGACY: regularly poll the server.
+    // FIXME: to be replaced by a web socket in the next version.
+    function updateFromServer() {
+
+      Restangular.all('app/' + $scope.appName + '/children?all-children=true').getList().then(function(instances) {
+
+        // Reload the instances
+        $scope.rootNodes = rUtils.buildInstancesTree(instances);
+
+        // Update the selected instance
+        if ($scope.selectedInstance) {
+          var node = findNode($scope.selectedInstance);
+          if (node) {
+            showInstance(node, 0);
+          } else {
+            hideInstance();
+          }
+        }
+
+        // Refresh in 5 seconds
+        $scope.updateFromServer();
+      });
+    }
+
+    $scope.updateFromServer = function() {
+      setTimeout(updateFromServer, 5000);
+    };
+
+    // Run it at the beginning
+    $scope.updateFromServer();
   }
 })();

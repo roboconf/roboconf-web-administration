@@ -39,7 +39,7 @@
 
 	<!-- Applications List -->
 	<div id="left-block">
-		<div ng-repeat="app in apps | filter:searchFilter" ng-class="selectedApp && app !== selectedApp ? 'block block-faded' : 'block'">
+		<div ng-repeat="app in apps | filter:searchFilter | orderBy:'name'" ng-class="selectedApp && app !== selectedApp ? 'block block-faded' : 'block'">
 			<p class="block-title" ng-click="showApplication( app, 1000 )">
 				<span ng-click="showApplication( app, 1000 )">{{ ::app.name }}</span>
 			</p>
@@ -77,11 +77,10 @@
 		</div>
 		<div class="clearfix"></div>
 		
-		<br />
+		<br ng-show="! isTpl" />
 		<strong>The following links are available:</strong><br />
 		<ul>
 			<li ng-show="! isTpl"><a href="#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/instances" ng-click"">Manage the instances</a></li>
-			<li ng-show="! isTpl"><a href="#/{{ isTpl ? 'tpl' : 'app' }}/{{ selectedApp.name }}/commands" ng-click"">Access the commands page</a></li>
 			<li><a href="#/{{ isTpl ? ('tpl/' + selectedApp.name + '/' + selectedApp.qualifier) : ('app/' + selectedApp.name) }}/details" ng-click"">Browse details</a></li>
 		</ul>
 	</div>

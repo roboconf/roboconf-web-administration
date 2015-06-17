@@ -5,7 +5,10 @@
 	<li><a href="" ng-click="changeState( 'DEPLOYED_STOPPED' )">Deploy this instance</a></li>
 	<li><a href="" ng-click="changeState( 'DEPLOYED_STARTED' )">Deploy and Start it</a></li>
 	<li><a href="" ng-click="createChildInstance()">Create a child instance</a></li>
+	<li><a href="" ng-click="askToDelete = true">Delete this instance</a></li>
 </ul>
+
+<rbcf-delete-instance ng-show="askToDelete"></rbcf-delete-instance>
 
 <br />
 <strong>Description</strong>
