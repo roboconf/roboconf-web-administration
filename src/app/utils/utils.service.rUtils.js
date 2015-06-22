@@ -5,8 +5,8 @@
   .module('roboconf.utils')
   .service('rUtils', rUtils);
 
-  rUtils.$inject = ['$timeout'];
-  function rUtils($timeout) {
+  rUtils.$inject = ['$timeout', 'rPrefs'];
+  function rUtils($timeout, rPrefs) {
 
     // Fields
     var service = {
@@ -16,7 +16,9 @@
         findPosition: findPosition,
         showRightBlock: showRightBlock,
         hideRightBlock: hideRightBlock,
-        findInstancePath: findInstancePath
+        findInstancePath: findInstancePath,
+        findRandomAvatar: findRandomAvatar,
+        findIcon: findIcon
     };
 
     return service;
@@ -109,6 +111,30 @@
       }
 
       return res;
+    }
+
+    function findIcon(app) {
+      var icon = '/img/default-avatar.png';
+      if (app && app.icon) {
+        icon = rPrefs.getUrl().replace('roboconf-dm', 'roboconf-icons') + app.icon;
+      }
+
+      return icon;
+    }
+
+    function findRandomAvatar(app) {
+      if (!app || app.icon) {
+        return '';
+      }
+
+      // Result depends on the length and the first letter
+      var id = (app.name.charCodeAt(0) + app.name.length + 11) % 4;
+      switch (id) {
+      case 0: return 'avatar-yellow';
+      case 1: return 'avatar-green';
+      case 2: return 'avatar-orange';
+      default: return 'avatar-blue';
+      }
     }
 
     // Internal functions

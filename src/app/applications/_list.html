@@ -57,7 +57,7 @@
 			<button type="button" class="close" aria-label="Close" ng-click="hideApplication()"><span aria-hidden="true">&times;</span></button>
 		</p>
 		<p class="avatar">
-			<img src="72k4d3n.gif" alt="oops" />
+			<img src="{{ findIcon( selectedApp )}}" alt="application's icon" ng-class="findAvatar( selectedApp )" />
 		</p>
 		<div class="details">
 			<h3>

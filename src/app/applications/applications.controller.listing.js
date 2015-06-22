@@ -23,6 +23,8 @@
     // Functions declaration
     $scope.showApplication = showApplication;
     $scope.hideApplication = hideApplication;
+    $scope.findAvatar = rUtils.findRandomAvatar;
+    $scope.findIcon = rUtils.findIcon;
 
     // Initial actions
     if ($scope.isTpl) {

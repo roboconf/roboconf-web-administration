@@ -31,6 +31,16 @@ h3 {
 	padding: 6px 19px;
 }
 
+.btn-rbcf {
+	background-color: #b23e4b;
+	color: #ffffff;
+}
+
+.btn-rbcf:hover {
+	text-decoration: underline;
+	color: #ffffff;
+}
+
 .r-red {
 	color: #b23e4b;
 }
@@ -336,29 +346,6 @@ option {
 	padding: 0;
 }
 
-p.avatar {
-	width: 190px;
-	height: 190px;
-	overflow: hidden;
-}
-
-p.avatar > img {
-	width: 190px;
-	height: 190px;
-	border-radius: 10px;
-	-webkit-transition: all 1s ease;
-     -moz-transition: all 1s ease;
-       -o-transition: all 1s ease;
-      -ms-transition: all 1s ease;
-          transition: all 1s ease;
-}
-
-p.avatar > img:hover {
-	width: 280px;
-	height: 280px;
-	margin-left: -25%;
-}
-
 #right-block > ul {
 	margin-left: 50px;
 	margin-top: 6px;
@@ -380,8 +367,8 @@ p.avatar > img:hover {
 #left-block {
 	float: left;
 	width: 100%;
-	-webkit-transition: width 1s; /* Safari */
-    transition: width 1s;
+	-webkit-transition: width 0.6s; /* Safari */
+    transition: width 0.6s;
 }
 
 
@@ -426,3 +413,36 @@ input.form-control {
 	bottom: 0;
 	width: 100%;
 }
+
+/*
+ * Avatars
+ */
+ 
+ p.avatar {
+	width: 190px;
+	height: 190px;
+	overflow: hidden;
+}
+
+p.avatar > img {
+	width: 190px;
+	height: 190px;
+	border-radius: 10px;
+}
+ 
+.avatar-yellow {
+	background-color: #ffeb0b;
+}
+
+.avatar-blue {
+	background-color: #82bdff;
+}
+
+.avatar-green {
+	background-color: #5be04d;
+}
+
+.avatar-orange {
+	background-color: #ffc017;
+}
+ 

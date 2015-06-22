@@ -21,7 +21,7 @@
 
 		<div class="block-content">
 			<p class="avatar">
-				<img src="72k4d3n.gif" alt="oops" />
+				<img src="{{ app.icon ? app.icon : '/img/default-avatar.png' }}" alt="application's icon" ng-class="findAvatar( app )" />
 			</p>
 			<div class="details">
 				<h3>{{ app.name }}</h3>
@@ -41,7 +41,7 @@
 				<div ng-show="askToDelete">
 					Do you really want to delete this application template? &nbsp;
 					
-					<button type="button" class="btn btn-default" ng-click="deleteApplicationTemplate()">Confirm</button>
+					<button type="button" class="btn btn-rbcf" ng-click="deleteApplicationTemplate()">Confirm</button>
 					<button type="button" class="btn btn-default" ng-click="askToDelete = false">Cancel</button>
 				</div>
 				

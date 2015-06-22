@@ -5,8 +5,10 @@
   .module('roboconf.applications')
   .controller('SingleApplicationTemplateController', singleApplicationTemplateController);
 
-  singleApplicationTemplateController.$inject = ['Restangular', '$scope', '$routeParams', 'rAppTemplates', '$window'];
-  function singleApplicationTemplateController(Restangular, $scope, $routeParams, rAppTemplates, $window) {
+  singleApplicationTemplateController.$inject =
+    ['Restangular', '$scope', '$routeParams', 'rAppTemplates', '$window', 'rUtils'];
+
+  function singleApplicationTemplateController(Restangular, $scope, $routeParams, rAppTemplates, $window, rUtils) {
 
     // Fields
     $scope.invoked = false;
@@ -15,6 +17,7 @@
     $scope.showRestError = false;
 
     $scope.deleteApplicationTemplate = deleteApplicationTemplate;
+    $scope.findAvatar = rUtils.findRandomAvatar;
     $scope.app = findApplicationTemplate($routeParams.tplName, $routeParams.tplQualifier);
 
     // Function definitions

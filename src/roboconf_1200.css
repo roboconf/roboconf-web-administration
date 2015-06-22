@@ -1,7 +1,7 @@
 
 @media (min-width: 1200px) {
 
-	#right-block > div.details {
+	div.details {
 		padding-left: 210px;
 	}
 	
