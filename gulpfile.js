@@ -12,9 +12,21 @@ var del = require('del');
 var inject = require('gulp-inject');
 var copy = require('gulp-copy');
 var merge = require('merge-stream');
-var mainBowerFiles = require('main-bower-files');
 var cssmin = require('gulp-cssmin');
 var exists = require('path-exists').sync;
+
+// Fix for Bootstrap, that does not embed all the dist files...
+var allMainBowerFiles = require('main-bower-files')({
+  "overrides": {
+    "bootstrap": {
+      "main": [
+               "dist/fonts/*",
+               "dist/css/*",
+               "dist/js/bootstrap*.js",
+               "js/dropdown.js"]
+    }
+  }
+});
 
 
 /*
@@ -103,7 +115,7 @@ gulp.task('build-watch-dev', buildDevDirectory );
 // DEV functions
 function injectScriptsInDev() {
 
-  var bowerSources = gulp.src( mainBowerFiles());
+  var bowerSources = gulp.src( allMainBowerFiles );
   var roboconfSources = gulp.src([
                                   './target/dev/js/**/*.module.js',
                                   './target/dev/js/**/*.js', 
@@ -185,7 +197,7 @@ function prepareDist() {
 
 function completeDist() {
   // Find Bower dependencies with minified versions when available
-  var bowerWithMin = mainBowerFiles().map( function(path, index, arr) {
+  var bowerWithMin = allMainBowerFiles.map( function(path, index, arr) {
     var newPath = path.replace(/.([^.]+)$/g, '.min.$1');
     return exists( newPath ) ? newPath : path;
   });
