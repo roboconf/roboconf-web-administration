@@ -17,13 +17,12 @@ var exists = require('path-exists').sync;
 
 // Fix for Bootstrap, that does not embed all the dist files...
 var allMainBowerFiles = require('main-bower-files')({
-  "overrides": {
-    "bootstrap": {
-      "main": [
-               "dist/fonts/*",
-               "dist/css/*",
-               "dist/js/bootstrap*.js",
-               "js/dropdown.js"]
+  'overrides': {
+    'bootstrap': {
+      'main': [
+               'dist/fonts/*',
+               'dist/css/*',
+               'js/dropdown.js']
     }
   }
 });
@@ -158,14 +157,14 @@ function buildDevDirectory() {
 
 /*
  * DIST tasks.
- * These tasks create a "target/dist" directory that contain
+ * These tasks create a 'target/dist' directory that contain
  * minified resources and all the required Bower dependencies.
  * 
  * Therefore, it builds what should be embedded in the Roboconf distribution.
  */
 gulp.task('clean-dist', function(done) {
   console.log('Cleaning target/dist' );
-  del( "target/dist", done );
+  del( 'target/dist', done );
 });
 
 gulp.task('prepare-dist', [ 'clean-dist', 'lint', 'unit-tests' ], prepareDist);
