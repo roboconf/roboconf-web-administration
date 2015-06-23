@@ -16,7 +16,10 @@
 
     $scope.deleteApplication = deleteApplication;
     $scope.findAvatar = rUtils.findRandomAvatar;
-    $scope.app = findApplication($routeParams.appName);
+    $scope.findIcon = rUtils.findIcon;
+
+    // Initial actions
+    findApplication($routeParams.appName);
 
     // Function definitions
     function findApplication(appName) {

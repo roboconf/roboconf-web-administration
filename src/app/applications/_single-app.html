@@ -21,7 +21,7 @@
 
 		<div class="block-content">
 			<p class="avatar">
-				<img src="{{ app.icon ? app.icon : '/img/default-avatar.png' }}" alt="application's icon" ng-class="findAvatar( app )" />
+				<img src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" />
 			</p>
 			<div class="details">
 				<h3>{{ app.name }}</h3>

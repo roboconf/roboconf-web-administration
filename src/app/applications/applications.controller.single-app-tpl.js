@@ -19,6 +19,7 @@
 
     $scope.deleteApplicationTemplate = deleteApplicationTemplate;
     $scope.findAvatar = rUtils.findRandomAvatar;
+    $scope.findIcon = rUtils.findIcon;
 
     // Initial actions
     findApplicationTemplate($routeParams.tplName, $routeParams.tplQualifier);
