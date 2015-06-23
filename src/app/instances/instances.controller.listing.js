@@ -216,13 +216,19 @@
     // FIXME: to be replaced by a web socket in the next version.
     function updateFromServer() {
 
+      // Do not refresh anything if we moved to another page.
+      if (!$scope.stopRefresh) {
+        return;
+      }
+
+      // Refresh the list of instances
       Restangular.all('app/' + $scope.appName + '/children?all-children=true').getList().then(function(instances) {
 
         // Reload the instances
         $scope.rootNodes = rUtils.buildInstancesTree(instances);
 
-        // Update the selected instance
-        if ($scope.selectedInstance) {
+        // Update the selected instance, unless we switched to another page
+        if (!$scope.stopRefresh && $scope.selectedInstance) {
           var node = findNode($scope.selectedInstance);
           if (node) {
             showInstance(node, 0);
@@ -242,5 +248,9 @@
 
     // Run it at the beginning
     $scope.updateFromServer();
+    $scope.$on('$locationChangeStart', function(event) {
+      $scope.stopRefresh = true;
+      console.log('stop')
+  });
   }
 })();

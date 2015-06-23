@@ -33,6 +33,16 @@
 			<div class="clearfix"></div>
 			
 			<div class="single-details">
+				<strong>Associated applications:</strong>
+				<span ng-show="associatedApps.length === 0">none</span>
+				
+				<br />
+				<ul ng-show="associatedApps.length > 0">
+					<li><a href="#/app/{{ a.name }}/details" ng-repeat="a in associatedApps">{{ a.name }}</a></li>
+				</ul>
+			</div>
+			
+			<div class="single-details">
 				<strong>The following links are available:</strong><br />
 				<ul>
 					<li><a href="" ng-click="askToDelete = true">Delete this application template</a></li>

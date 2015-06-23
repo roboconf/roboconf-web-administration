@@ -6,10 +6,10 @@
   .controller('ApplicationsListingController', applicationsListingController);
 
   applicationsListingController.$inject =
-    ['Restangular', '$scope', 'rUtils', 'rShare', '$route', 'rAppTemplates'];
+    ['Restangular', '$scope', 'rUtils', '$route', 'rAppTemplates'];
 
   function applicationsListingController(
-      Restangular, $scope, rUtils, rShare, $route, rAppTemplates) {
+      Restangular, $scope, rUtils, $route, rAppTemplates) {
 
     // Fields
     $scope.isTpl = $route.current.tpl;

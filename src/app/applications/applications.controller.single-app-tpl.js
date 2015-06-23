@@ -15,10 +15,14 @@
     $scope.error = false;
     $scope.askToDelete = false;
     $scope.showRestError = false;
+    $scope.associatedApps = [];
 
     $scope.deleteApplicationTemplate = deleteApplicationTemplate;
     $scope.findAvatar = rUtils.findRandomAvatar;
-    $scope.app = findApplicationTemplate($routeParams.tplName, $routeParams.tplQualifier);
+    
+    // Initial actions
+    findApplicationTemplate($routeParams.tplName, $routeParams.tplQualifier);
+    listAssociatedApplications($routeParams.tplName, $routeParams.tplQualifier);
 
     // Function definitions
     function findApplicationTemplate(appName, appQualifier) {
@@ -40,6 +44,15 @@
         $scope.showRestError = true;
       }).finally (function() {
         $scope.askToDelete = false;
+      });
+    }
+
+    function listAssociatedApplications(name, qualifier) {
+      Restangular.all('applications').getList().
+      then(function(applications) {
+        $scope.associatedApps = applications.filter(function(val, index, arr) {
+          return val.tpl.name === name && val.tpl.qualifier === qualifier;
+        });
       });
     }
   }
