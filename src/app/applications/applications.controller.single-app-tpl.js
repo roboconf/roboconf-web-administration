@@ -19,7 +19,7 @@
 
     $scope.deleteApplicationTemplate = deleteApplicationTemplate;
     $scope.findAvatar = rUtils.findRandomAvatar;
-    
+
     // Initial actions
     findApplicationTemplate($routeParams.tplName, $routeParams.tplQualifier);
     listAssociatedApplications($routeParams.tplName, $routeParams.tplQualifier);

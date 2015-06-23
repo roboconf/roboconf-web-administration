@@ -49,12 +49,12 @@ describe('Roboconf Utilities :: while mocking rPrefs', function() {
 
   beforeEach(function() {
     // Inject rutils
-    module('roboconf.utils')
+    module('roboconf.utils');
 
     // Mock rPrefs#getUrl()
     module(function($provide) {
       $provide.service('rPrefs', function() {
-        return { 
+        return {
           getUrl: getUrl
         };
 
@@ -72,14 +72,14 @@ describe('Roboconf Utilities :: while mocking rPrefs', function() {
 
 
   it('finds icons', function() {
-    expect(rutils.findIcon(undefined)).to.equal('/img/default-avatar.png');
-    expect(rutils.findIcon(null)).to.equal('/img/default-avatar.png');
+    expect(rutils.findIcon(undefined)).to.equal('img/default-avatar.png');
+    expect(rutils.findIcon(null)).to.equal('img/default-avatar.png');
 
     var app = {icon: '/whatever.jpg'};
     expect(rutils.findIcon(app)).to.equal('http://something/roboconf-icons/whatever.jpg');
 
     app.icon = null;
     app.name = 'test';
-    expect(rutils.findIcon(app)).to.equal('/img/default-avatar.png');
+    expect(rutils.findIcon(app)).to.equal('img/default-avatar.png');
   });
 });

@@ -250,7 +250,6 @@
     $scope.updateFromServer();
     $scope.$on('$locationChangeStart', function(event) {
       $scope.stopRefresh = true;
-      console.log('stop')
   });
   }
 })();

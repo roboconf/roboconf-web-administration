@@ -114,7 +114,7 @@
     }
 
     function findIcon(app) {
-      var icon = '/img/default-avatar.png';
+      var icon = 'img/default-avatar.png';
       if (app && app.icon) {
         icon = rPrefs.getUrl().replace('roboconf-dm', 'roboconf-icons') + app.icon;
       }
