@@ -27,7 +27,7 @@
     });
 
     // Update the description when the template changes
-    $scope.$watch("app.tpl", function(newTpl, oldTpl){
+    $scope.$watch('app.tpl', function(newTpl, oldTpl) {
       if (newTpl && $scope.app) {
         if (! $scope.app.description || $scope.app.description === oldTpl.desc) {
           $scope.app.description = newTpl.desc;
