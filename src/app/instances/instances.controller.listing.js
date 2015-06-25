@@ -214,10 +214,11 @@
 
     // LEGACY: regularly poll the server.
     // FIXME: to be replaced by a web socket in the next version.
+    $scope.refresh = true;
     function updateFromServer() {
 
       // Do not refresh anything if we moved to another page.
-      if (!$scope.stopRefresh) {
+      if (!$scope.refresh) {
         return;
       }
 
@@ -249,7 +250,7 @@
     // Run it at the beginning
     $scope.updateFromServer();
     $scope.$on('$locationChangeStart', function(event) {
-      $scope.stopRefresh = true;
+      $scope.refresh = false;
   });
   }
 })();
