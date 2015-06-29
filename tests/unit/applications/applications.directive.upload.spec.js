@@ -5,7 +5,7 @@ describe('Application Upload Directive', function() {
   beforeEach(module('roboconf.utils'));
   beforeEach(module('roboconf.preferences'));
   beforeEach(module('roboconf.applications'));
-  beforeEach(module('templates/applications/_upload-directive.html'));
+  beforeEach(module('templates/applications/html/_tpl-upload-directive.html'));
 
   var directive;
   var scope;

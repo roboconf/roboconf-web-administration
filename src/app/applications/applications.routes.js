@@ -10,40 +10,40 @@
     $routeProvider
 
     .when('/', {
-      templateUrl: 'templates/applications/_list.html',
+      templateUrl: 'templates/applications/html/_app-list.html',
       controller: 'ApplicationsListingController',
       tpl: false
     })
 
     .when('/applications', {
-      templateUrl: 'templates/applications/_list.html',
+      templateUrl: 'templates/applications/html/_app-list.html',
       controller: 'ApplicationsListingController',
       tpl: false
     })
 
     .when('/applications/new', {
-      templateUrl: 'templates/applications/_new.html',
+      templateUrl: 'templates/applications/html/_app-new.html',
       controller: 'ApplicationsNewController'
     })
 
     .when('/application-templates', {
-      templateUrl: 'templates/applications/_list.html',
+      templateUrl: 'templates/applications/html/_tpl-list.html',
       controller: 'ApplicationsListingController',
       tpl: true
     })
 
     .when('/application-templates/new', {
-      templateUrl: 'templates/applications/_upload.html',
+      templateUrl: 'templates/applications/html/_tpl-upload.html',
       controller: 'ApplicationsUploadController'
     })
 
     .when('/app/:appName/details', {
-      templateUrl: 'templates/applications/_single-app.html',
+      templateUrl: 'templates/applications/html/_app-single.html',
       controller: 'SingleApplicationController'
     })
 
     .when('/tpl/:tplName/:tplQualifier/details', {
-      templateUrl: 'templates/applications/_single-app-tpl.html',
+      templateUrl: 'templates/applications/html/_tpl-single.html',
       controller: 'SingleApplicationTemplateController'
     });
   }

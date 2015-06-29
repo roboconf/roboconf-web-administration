@@ -8,7 +8,7 @@
   function rbcfZipUpload() {
     return {
       restrict: 'E',
-      templateUrl: 'templates/applications/_upload-directive.html',
+      templateUrl: 'templates/applications/html/_tpl-upload-directive.html',
       controller: rbcfZipUploadController
     };
   }

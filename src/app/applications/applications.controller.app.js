@@ -5,14 +5,14 @@
   .module('roboconf.applications')
   .controller('SingleApplicationController', singleApplicationController);
 
-  singleApplicationController.$inject = ['Restangular', '$scope', '$routeParams', '$window', 'rUtils'];
-  function singleApplicationController(Restangular, $scope, $routeParams, $window, rUtils) {
+  singleApplicationController.$inject = ['rClient', '$scope', '$routeParams', '$window', 'rUtils'];
+  function singleApplicationController(rClient, $scope, $routeParams, $window, rUtils) {
 
     // Fields
     $scope.invoked = false;
     $scope.error = false;
-    $scope.askToDelete = false;
     $scope.showRestError = false;
+    $scope.found = true;
 
     $scope.deleteApplication = deleteApplication;
     $scope.findAvatar = rUtils.findRandomAvatar;
@@ -24,27 +24,34 @@
     // Function definitions
     function findApplication(appName) {
 
-      Restangular.all('applications').getList().
-      then(function(applications) {
+      rClient.listApplications().then(function(applications) {
         $scope.error = false;
         $scope.app = applications.filter(function(val, index, arr) {
           return val.name === appName;
         }).pop();
 
+        if (!$scope.app) {
+          $scope.found = false;
+          $scope.app = {
+            name: $routeParams.appName
+          };
+        }
+
       }, function() {
         $scope.error = true;
-      })
 
-      .finally (function() {
+      }).finally (function() {
         $scope.invoked = true;
       });
     }
 
     function deleteApplication() {
-      Restangular.one('applications/' + $routeParams.appName + '/delete').remove().then(function() {
+      rClient.deleteApplication($routeParams.appName).then(function() {
         $window.location = '#/';
+
       }, function() {
         $scope.showRestError = true;
+
       }).finally (function() {
         $scope.askToDelete = false;
       });

@@ -5,8 +5,8 @@
   .module('roboconf.applications')
   .controller('ApplicationsNewController', applicationsNewController);
 
-  applicationsNewController.$inject = ['Restangular', '$scope', 'rAppTemplates', '$timeout', 'rShare', '$window'];
-  function applicationsNewController(Restangular, $scope, rAppTemplates, $timeout, rShare, $window) {
+  applicationsNewController.$inject = ['rClient', '$scope', '$timeout', 'rShare', '$window'];
+  function applicationsNewController(rClient, $scope, $timeout, rShare, $window) {
 
     // Fields
     $scope.appTemplates = [];
@@ -22,8 +22,8 @@
     $scope.completeCreation = completeCreation;
 
     // Initialize the list of templates
-    rAppTemplates.refreshTemplates().then(function() {
-      $scope.appTemplates = rAppTemplates.getTemplates();
+    rClient.listApplicationTemplates().then(function(templates) {
+      $scope.appTemplates = templates;
     });
 
     // Update the description when the template changes
@@ -49,13 +49,11 @@
       var newApp = {
         name: app.name,
         desc: app.description,
-        tpl: {
-          name: app.tpl.name,
-          qualifier: app.tpl.qualifier
-        }
+        tplName: app.tpl.name,
+        tplQualifier: app.tpl.qualifier
       };
 
-      Restangular.one('applications').post('', newApp).then(function() {
+      rClient.newApplication(newApp).then(function() {
         $window.location = '#/app/' + newApp.name + '/details';
 
       }, function(response) {

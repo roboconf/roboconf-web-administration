@@ -1,0 +1,33 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Applications
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
+	</h1>
+	
+	<!-- Information Message -->
+	<p>
+		This page lists all the applications handled by the Deployment Manager.
+	</p>
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="error"></rbcf-error-message>
+	
+	<!-- No application? -->
+	<div class="block" ng-show="! error && invoked && apps.length == 0">
+		<p class="block-title">Welcome</p>
+
+		<div class="block-content">
+			<p>
+				No application has been created so far.<br />
+				You can <a href="#/applications/new" class="welcome">create your first application.</a>
+			</p>
+		</div>
+	</div>
+
+	<!-- Applications List -->
+	<rbcf-single-app ng-repeat="app in apps | filter:searchFilter | orderBy:'name'"></rbcf-single-app>
+	<div class="clearfix"></div>
+</div>

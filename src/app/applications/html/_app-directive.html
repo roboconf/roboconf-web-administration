@@ -1,0 +1,48 @@
+
+<div class="block">
+	<p class="block-title">
+		<a href="#/app/{{ app.name }}/details">{{ app.name }}</a>
+		<span
+				class="block-annotation" title="Delete this application"
+				ng-show="! app.info || app.info === 'nd'" ng-click="deleteApplication( app )">
+			<span aria-hidden="true">x</span>
+		</span>
+	</p>
+	
+	<p class="app-avatar">
+		<img ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" />
+	</p>
+	
+	<div class="app-links">
+		<span ng-show="! app.info || app.info === 'nd'">
+			<span class="glyphicon glyphicon-info-sign text-info"></span>&nbsp;
+			<span class="text-info">No instance is deployed.</span>
+		</span>
+		
+		<span ng-show="app.info === 'ok'">
+			<span class="glyphicon glyphicon-ok-sign text-success"></span> &nbsp;
+			<span ng-show="! app.info" class="text-success">Some instances are deployed, no issue to report.</span>
+		</span>
+		
+		<span ng-show="app.info === 'nr'">
+			<span class="glyphicon glyphicon-remove-sign text-orange"></span> &nbsp;
+			<span class="text-orange">Some instances may have encountered problems.</span>
+		</span>
+		
+		<br /><br />
+		<strong>Quick Access</strong>
+		<ul>
+			<li><a href="#/app/{{ app.name }}/instances">Manage the instances</a></li>
+			<li><a href="#/app/{{ app.name }}/details">Access the application's page</a></li>
+		</ul>
+	</div>
+
+	<p class="app-desc">
+		<span class="formatted">{{ app.desc }}</span>
+		<br /><br />
+		<strong>Template Name:</strong> <a href="#/tpl/{{ app.tplName }}/{{ app.tplQualifier }}/details">{{ app.tplName }}</a><br />
+		<strong>Template Qualifier:</strong> {{ app.tplQualifier }}
+	</p>
+	
+	<div class="clearfix"></div>
+</div>

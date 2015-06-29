@@ -159,7 +159,11 @@ p.block-title {
 
 p.block-title:hover {
 	text-decoration: underline;
-	cursor: pointer;
+}
+
+p.block-title > a {
+	color: #ffffff;
+	font-weight: bold;
 }
 
 div.block-content > p {
@@ -170,7 +174,11 @@ span.block-annotation {
 	display: inline-block;
 	float: right;
 	padding-right: 24px;
-	font-weight: normal;
+	font-weight: bold;
+}
+
+span.block-annotation:hover {
+	cursor: pointer;
 }
 
 /* The content for blocks */
@@ -338,6 +346,7 @@ option {
 
 #right-block h3 {
  	text-align: center;
+ 	margin-top: 3px;
 }
 
 #right-block > .block-controls {
@@ -415,21 +424,22 @@ input.form-control {
 }
 
 /*
- * Avatars
+ * Applications and Avatars
  */
- 
- p.avatar {
-	width: 190px;
-	height: 190px;
+
+ p.app-avatar {
+	width: 160px;
+	height: 160px;
 	overflow: hidden;
+	float: left;
 }
 
-p.avatar > img {
-	width: 190px;
-	height: 190px;
+p.app-avatar > img {
+	width: 160px;
+	height: 160px;
 	border-radius: 10px;
 }
- 
+
 .avatar-yellow {
 	background-color: #ffeb0b;
 }
@@ -445,4 +455,31 @@ p.avatar > img {
 .avatar-orange {
 	background-color: #ffc017;
 }
- 
+
+.app-desc {
+	/*
+	 *	320 px = width( app-links ) + 20
+	 *	190 px = width( app-avatar ) + 30
+	 */
+	padding: 17px 320px 10px 190px;
+}
+
+.app-desc ul {
+	list-style-type: none;
+	margin-left: 30px;
+	margin-top: 4px;
+}
+
+div.app-links {
+	width: 300px;
+	float: right;
+	padding: 18px 10px;
+}
+
+.text-orange {
+	color: #fd9816;
+}
+
+div.app-links > ul {
+	list-style-type: none;
+}

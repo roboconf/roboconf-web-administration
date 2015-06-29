@@ -5,8 +5,8 @@
   .module('roboconf.applications')
   .controller('ApplicationsUploadController', applicationsUploadController);
 
-  applicationsUploadController.$inject = ['$scope', 'rAppTemplates'];
-  function applicationsUploadController($scope, rAppTemplates) {
+  applicationsUploadController.$inject = ['$scope'];
+  function applicationsUploadController($scope) {
 
     // Fields
     $scope.resetUploadForm = resetUploadForm;
