@@ -83,7 +83,11 @@
       $scope.selectedInstance = instance;
       rUtils.showRightBlock(t);
 
-      var isRoot = rUtils.findPosition(instance.path) === 1;
+      var isRoot = false;
+      if (instance && instance.component && instance.component.installer) {
+        isRoot = instance.component.installer.toLowerCase() === 'target';
+      }
+
       var parentNotDeployed = isParentNotDeployed(node);
       $scope.template = findTemplateUrl(instance.status, isRoot, parentNotDeployed);
     }
