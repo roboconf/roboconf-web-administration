@@ -40,7 +40,7 @@
       }, function() {
         $scope.error = true;
 
-      }).finally (function() {
+      }).finally(function() {
         $scope.invoked = true;
       });
     }
@@ -52,7 +52,7 @@
       }, function() {
         $scope.showRestError = true;
 
-      }).finally (function() {
+      }).finally(function() {
         $scope.askToDelete = false;
       });
     }

@@ -387,11 +387,18 @@ option {
 
 input.form-control {
 	display: inline;
-	width: 70%;
+	width: 80%;
+}
+
+#prefs-save-btn {
+	padding-top: 8px;
+	padding-bottom: 5px;
+	margin-left: 4px;
 }
 
 #rprefs-ok {
 	color: green;
+	padding-left: 4px;
 }
 
 

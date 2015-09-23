@@ -312,7 +312,7 @@
       }, function(response) {
         node.progress = 'ko';
 
-      }).finally (function() {
+      }).finally(function() {
         node.writable = false;
       });
     }

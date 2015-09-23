@@ -9,14 +9,15 @@
   function preferencesController(rPrefs, $scope, $timeout) {
 
     // Fields
-    $scope.url = rPrefs.getUrl();
+    $scope.urls = rPrefs.getUrls();
+    $scope.selectedUrl = $scope.urls.length > 0 ? $scope.urls[0] : null;
     $scope.saveUrl = saveUrl;
     $scope.showConfirmation = false;
 
     // Functions
     function saveUrl(url) {
-      $scope.url = url;
       rPrefs.saveUrl(url);
+      $scope.urls = rPrefs.getUrls();
 
       $scope.showConfirmation = true;
       $timeout(function() {

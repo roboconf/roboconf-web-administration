@@ -73,7 +73,7 @@
       }, function() {
         $scope.error = true;
       })
-      .finally (function() {
+      .finally(function() {
         $scope.invoked = true;
       });
     }

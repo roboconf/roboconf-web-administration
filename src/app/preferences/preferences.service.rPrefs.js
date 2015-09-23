@@ -11,7 +11,8 @@
     // Fields
     var service = {
         saveUrl: saveUrl,
-        getUrl: getUrl
+        getUrl: getUrl,
+        getUrls: getUrls
     };
 
     return service;
@@ -21,25 +22,47 @@
 
       var toSave = url ? url.trim() : url;
       if (toSave) {
+
+        // Remove trailing slash, if any
         var m = toSave.match('/$');
         if (m && m[0] === '/') {
           toSave = toSave.substr(0, toSave.length - 1);
         }
+
+        // Remove the URL from the stored ones, and put it in first position
+        var urls = getUrls();
+        var index = urls.indexOf(toSave);
+        if (index > -1) {
+          urls.splice(index, 1);
+        }
+
+        urls.unshift(toSave);
+        toSave = JSON.stringify(urls);
       }
 
       if (! toSave || toSave.trim().length === 0) {
-        localStorage.removeItem('rest-location');
+        localStorage.removeItem('rest-locations');
       } else {
-        localStorage.setItem('rest-location', angular.toJson(toSave));
+        localStorage.setItem('rest-locations', toSave);
       }
     }
 
     function getUrl() {
+      var urls = getUrls();
+      return urls[0];
+    }
 
-      var result = ROBOCONF_DEFAULT_URL;
-      var obj = localStorage.getItem('rest-location');
+    function getUrls() {
+
+      var result;
+      var obj = localStorage.getItem('rest-locations');
       if (obj) {
-        result = angular.fromJson(obj);
+        result = JSON.parse(obj);
+      }
+
+      if (! result) {
+        result = [ROBOCONF_DEFAULT_URL];
+        localStorage.setItem('rest-locations', JSON.stringify(result));
       }
 
       return result;

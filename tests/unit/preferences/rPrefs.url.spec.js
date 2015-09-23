@@ -14,7 +14,7 @@ describe('Roboconf Utilities :: URL management', function() {
   }));
 
 
-  it('should.equal save and restore correctly', function() {
+  it('should save and restore the main URL correctly', function() {
 
     rprefs.saveUrl(undefined);
     rprefs.getUrl().should.equal(defaultUrl);
@@ -38,6 +38,39 @@ describe('Roboconf Utilities :: URL management', function() {
     // Remove surrounding white characters
     rprefs.saveUrl(' http://something/   ');
     rprefs.getUrl().should.equal('http://something');
+  });
+
+  it('should save and restore URLs correctly', function() {
+
+    rprefs.saveUrl(undefined);
+    rprefs.getUrls().should.deep.equal([defaultUrl]);
+
+    rprefs.saveUrl(null);
+    rprefs.getUrls().should.deep.equal([defaultUrl]);
+
+    rprefs.saveUrl('');
+    rprefs.getUrls().should.deep.equal([defaultUrl]);
+
+    rprefs.saveUrl('    ');
+    rprefs.getUrls().should.deep.equal([defaultUrl]);
+
+    rprefs.saveUrl('http://something');
+    rprefs.getUrls().should.deep.equal(['http://something', defaultUrl]);
+
+    rprefs.saveUrl(defaultUrl);
+    rprefs.getUrls().should.deep.equal([defaultUrl, 'http://something']);
+
+    // Remove any trailing slash
+    rprefs.saveUrl('http://something/');
+    rprefs.getUrls().should.deep.equal(['http://something', defaultUrl]);
+
+    // Insert another location
+    rprefs.saveUrl(' http://toto:8085/roboconf-dm');
+    rprefs.getUrls().should.deep.equal(['http://toto:8085/roboconf-dm', 'http://something', defaultUrl]);
+
+    // Remove surrounding white characters
+    rprefs.saveUrl(' http://something/   ');
+    rprefs.getUrls().should.deep.equal(['http://something', 'http://toto:8085/roboconf-dm', defaultUrl]);
   });
 
   // Restore the storage after the tests

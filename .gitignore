@@ -5,3 +5,4 @@ tmp/
 .project
 target/
 .settings
+npm-debug.log
