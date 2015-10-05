@@ -6,12 +6,19 @@
 		Applications &raquo; {{ app.name }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 	</h1>
-	
-	<!-- Information Message -->
-	<p ng-show="found">
-		This page gives details about the <strong>{{ app.name }}</strong> application.
-	</p>
-	
+</div>
+
+<div class="menu">
+	<ul>
+		<li class="active"><a href="#/app/{{ app.name }}/overview">Overview</a></li>
+		<li><a href="#/app/{{ app.name }}/instances">Instances</a></li>
+		<li><a href="#/app/{{ app.name }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ app.name }}/bindings">Application Bindings</a></li>
+		<li><a href="#/app/{{ app.name }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
 	<!-- Error message -->
 	<rbcf-error-message ng-show="error"></rbcf-error-message>
 

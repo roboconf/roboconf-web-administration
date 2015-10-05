@@ -6,12 +6,18 @@
 		Application Templates &raquo; {{ app.name }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 	</h1>
+</div>
 	
-	<!-- Information Message -->
-	<p ng-show="found">
-		This page gives details about the <strong>{{ app.name }}</strong> application template.
-	</p>
-	
+<div class="menu">
+	<ul>
+		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">Overview</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">Associated Applications</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+
 	<!-- Error message -->
 	<rbcf-error-message ng-show="error"></rbcf-error-message>
 

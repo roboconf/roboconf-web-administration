@@ -17,8 +17,8 @@ describe('Routing', function() {
       expect($route.routes['/application-templates/new'].controller).to.equal('ApplicationsUploadController');
 
       // Single applications
-      expect($route.routes['/app/:appName/details'].controller).to.equal('SingleApplicationController');
-      expect($route.routes['/tpl/:tplName/:tplQualifier/details'].controller)
+      expect($route.routes['/app/:appName/overview'].controller).to.equal('SingleApplicationController');
+      expect($route.routes['/tpl/:tplName/:tplQualifier/overview'].controller)
       .to.equal('SingleApplicationTemplateController');
 
       // Preferences

@@ -1,0 +1,51 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Targets &raquo; {{ targetAlias }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
+	</h1>
+	
+	<!-- Information Message -->
+	<p ng-show="found">
+		This page gives details about the <strong>{{ target.name }}</strong> target.
+	</p>
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="error"></rbcf-error-message>
+
+	<!-- Target Details -->
+	<div class="target-data" ng-show="found">
+		<textarea rows="20" cols="8" id="target-properties"></textarea>
+	</div>
+	
+<br />
+<div ng-show="found">
+	<div>
+		This target is <span ng-if="referencing.length === 0">not</span> referenced
+		and <span ng-if="using.length === 0">not</span> used.
+		
+		<span ng-if="using.length === 0 && referencing.length === 0">
+			You can <a href="">delete</a> it if you want.
+		</span>
+		
+		<span ng-if="using.length !== 0 || referencing.length !== 0">
+			You cannot delete it.
+		</span>
+	
+		<button class="btn btn-default pull-right" type="submit" ng-show="editable">Save</button>
+		<button class="btn btn-default pull-right" type="submit" ng-show="editable" ng-click="setEditable(false)">Cancel</button>
+		<button class="btn btn-default pull-right" type="submit" ng-hide="editable" ng-click="setEditable(true)">Edit the Properties</button>
+	</div>
+	<span ng-if="using.length !== 0">
+		Show applications that use this target.
+	</span>
+	<span ng-if="referencing.length !== 0">
+		Show applications that reference this target.
+	</span>
+	</div>		
+</div>
+
+	<div ng-show="! found">No target with the ID <strong>{{ targetId }}</strong> was found.</div>
+</div>

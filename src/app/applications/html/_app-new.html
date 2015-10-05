@@ -3,13 +3,19 @@
 
 <div class="content">
 	<h1>
-		New Application
+		Applications
 	</h1>
+</div>
 	
-	<p>
-		This page allows you to create a new application from a template.
-	</p>
-	
+<div class="menu">
+	<ul>
+		<li><a href="#/">Applications</a></li>
+		<li class="active"><a href="#/applications/new">New Application</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+
 	<form novalidate name="newAppForm">
 		<div class="form-group" ng-class="{'has-error': newAppForm.name.$invalid && newAppForm.name.$dirty}">
 			<label for="name" class="control-label">Application name</label>

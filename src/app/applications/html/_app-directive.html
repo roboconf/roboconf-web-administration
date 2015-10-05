@@ -1,10 +1,10 @@
 
 <div class="block">
 	<p class="block-title">
-		<a href="#/app/{{ app.name }}/details">{{ app.name }}</a>
+		<a href="#/app/{{ app.name }}/overview">{{ app.name }}</a>
 		<span
 				class="block-annotation" title="Delete this application"
-				ng-show="! app.info || app.info === 'nd'" ng-click="deleteApplication( app )">
+				ng-show="showLinks && (! app.info || app.info === 'nd')" ng-click="deleteApplication( app )">
 			<span aria-hidden="true">x</span>
 		</span>
 	</p>
@@ -29,12 +29,13 @@
 			<span class="text-orange">Some instances may have encountered problems.</span>
 		</span>
 		
-		<br /><br />
-		<strong>Quick Access</strong>
-		<ul>
-			<li><a href="#/app/{{ app.name }}/instances">Manage the instances</a></li>
-			<li><a href="#/app/{{ app.name }}/details">Access the application's page</a></li>
-		</ul>
+		<div ng-show="showLinks">
+			<strong>Quick Access</strong>
+			<ul>
+				<li><a href="#/app/{{ app.name }}/instances">Manage the instances</a></li>
+				<li><a href="#/app/{{ app.name }}/overview">Access the application's page</a></li>
+			</ul>
+		</div>
 	</div>
 
 	<p class="app-desc">

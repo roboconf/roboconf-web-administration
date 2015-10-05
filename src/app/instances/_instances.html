@@ -3,15 +3,22 @@
 
 <div class="content">
 	<h1>
-		Instances for {{ appName }}
+		Applications &raquo; {{ appName }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 	</h1>
-	
-	<!-- Information Message -->
-	<p>
-		This page lists all the instances of the <a href="#/app/{{ appName }}/details">{{ appName }}</a> application.<br />
-		Here, you can control their life cycle.
-	</p>
+</div>
+
+<div class="menu">
+	<ul>
+		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/instances">Instances</a></li>
+		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ appName }}/bindings">Application Bindings</a></li>
+		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
 	
 	<!-- Error message -->
 	<rbcf-error-message ng-show="error"></rbcf-error-message>

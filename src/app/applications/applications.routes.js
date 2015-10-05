@@ -37,12 +37,12 @@
       controller: 'ApplicationsUploadController'
     })
 
-    .when('/app/:appName/details', {
+    .when('/app/:appName/overview', {
       templateUrl: 'templates/applications/html/_app-single.html',
       controller: 'SingleApplicationController'
     })
 
-    .when('/tpl/:tplName/:tplQualifier/details', {
+    .when('/tpl/:tplName/:tplQualifier/overview', {
       templateUrl: 'templates/applications/html/_tpl-single.html',
       controller: 'SingleApplicationTemplateController'
     });

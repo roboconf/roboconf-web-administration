@@ -15,6 +15,9 @@
     $scope.apps = [];
     $scope.searchFilter = '';
     $scope.searchVisible = true;
+    
+    // For the APP and TPL directives
+    $scope.showLinks = true;
 
     // Functions declaration
     $scope.findAvatar = rUtils.findRandomAvatar;

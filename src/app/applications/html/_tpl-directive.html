@@ -1,7 +1,7 @@
 
 <div class="block">
 	<p class="block-title">
-		<a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/details">{{ app.name }}</a>
+		<a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{ app.name }}</a>
 		<span
 				class="block-annotation" title="Delete this application"
 				ng-show="app.apps.length === 0" ng-click="deleteApplication( app )">
@@ -24,11 +24,12 @@
 			<span class="text-success">One or several applications are associated with this template.</span>
 		</span>
 		
-		<br /><br />
-		<strong>Quick Access</strong>
-		<ul>
-			<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/details">Access the application template's page</a></li>
-		</ul>
+		<div ng-show="showLinks">
+			<strong>Quick Access</strong>
+			<ul>
+				<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">Access the application template's page</a></li>
+			</ul>
+		</div>
 	</div>
 
 	<div class="app-desc">
@@ -36,14 +37,6 @@
 		<br /><br />
 		
 		<strong>Qualifier:</strong> {{ app.qualifier }}
-		<br />
-
-		<div ng-show="showApps && app.apps.length > 0">
-			<strong>Associated applications:</strong>
-			<ul>
-				<li ng-repeat="a in app.apps"> &raquo; <a href="#/app/{{ a }}/details">{{ a }}</a></li>
-			</ul>
-		</div>
 	</div>
 	
 	<div class="clearfix"></div>

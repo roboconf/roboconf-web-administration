@@ -14,7 +14,10 @@
       listApplicationTemplates: listApplicationTemplates,
       deleteApplication: deleteApplication,
       deleteApplicationTemplate: deleteApplicationTemplate,
-      newApplication: newApplication
+      newApplication: newApplication,
+      listTargets: listTargets,
+      findTarget: findTarget,
+      findTargetProperties: findTargetProperties
     };
 
     return service;
@@ -38,6 +41,22 @@
 
     function newApplication(newApp) {
       return Restangular.one('applications').post('', newApp);
+    }
+
+    function listTargets() {
+      return Restangular.all('targets').getList();
+    }
+    
+    function findTarget(id) {
+      return Restangular.one('targets/' + id + '/details').get();
+    }
+
+    function findTargetProperties(id) {
+      return Restangular.one('targets/' + id).get();
+    }
+
+    function findTargetUsage(id) {
+      return Restangular.all('targets/' + id + '/usage').getList();
     }
   }
 }());

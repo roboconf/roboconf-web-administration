@@ -1,0 +1,54 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Targets
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
+	</h1>
+	
+	<!-- Information Message -->
+	<p>
+		This page lists all the available deployment targets.
+	</p>
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="error"></rbcf-error-message>
+	
+	<!-- No target? -->
+	<div class="block" ng-show="! error && invoked && targets.length == 0">
+		<p class="block-title">No Target Yet</p>
+
+		<div class="block-content">
+			<p>
+				No target has been defined so far.<br />
+				You can <a href="#/targets/new" class="welcome">create your first one.</a>
+			</p>
+		</div>
+	</div>
+
+	<!-- Target List -->
+	<!-- 
+	<div class="block">
+		<p class="block-title">List of Deployment Targets</p>
+		-->
+		<table class="table table-hover table-rbcf" ng-show="! error && invoked && targets.length > 0">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Handler</th>
+				<th>Description</th>
+			</tr>
+			<tr ng-repeat="t in targets">
+				<td>{{ t.id }}</td>
+				<td><a href="#target/{{ t.id }}">{{ t.name ? t.name : 'no name' }}</a></td>
+				<td>{{ t.handler }}</td>
+				<td>{{ t.description ? t.description : 'no description' }}</td>
+			</tr>
+		</table>
+	<!-- 
+	</div>
+	 -->
+	
+	<div class="clearfix"></div>
+</div>

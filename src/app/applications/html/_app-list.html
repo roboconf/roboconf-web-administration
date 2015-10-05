@@ -6,11 +6,16 @@
 		Applications
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 	</h1>
+</div>
 	
-	<!-- Information Message -->
-	<p>
-		This page lists all the applications handled by the Deployment Manager.
-	</p>
+<div class="menu">
+	<ul>
+		<li class="active"><a href="#/">Applications</a></li>
+		<li><a href="#/applications/new">New Application</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
 	
 	<!-- Error message -->
 	<rbcf-error-message ng-show="error"></rbcf-error-message>
