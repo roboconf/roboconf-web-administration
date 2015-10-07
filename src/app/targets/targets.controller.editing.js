@@ -15,7 +15,7 @@
     $scope.targetAlias = $scope.targetId;
     $scope.targetProperties = '';
     $scope.targetPropertiesBackup = '';
-    
+
     $scope.referencing = [];
     $scope.using = [];
     $scope.editable = false;
@@ -31,7 +31,7 @@
       lineWrapping: true,
       readOnly: true
     });
-    
+
     rClient.findTarget($scope.targetId).then(function(bean) {
       $scope.targetAlias = bean.name ? bean.name : 'no name';
       $scope.error = false;
@@ -43,13 +43,13 @@
     }).finally(function() {
       $scope.invoked = true;
     });
-    
+
     rClient.findTargetProperties($scope.targetId).then(function(props) {
       $scope.targetPropertiesBackup = props.s;
       $scope.targetProperties = props.s;
       editor.setValue(props.s);
     });
-    
+
     // Functions
     function setEditable(editable) {
       $scope.editable = editable;

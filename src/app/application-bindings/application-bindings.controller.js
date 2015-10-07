@@ -30,14 +30,14 @@
 
     // Function definitions
     function isEmptyBindings() {
-      return $scope.responseStatus === 0
-        && $.isEmptyObject($scope.mapping);
+      return $scope.responseStatus === 0 &&
+        $.isEmptyObject($scope.mapping);
     }
 
 
     function hasBindings() {
-      return $scope.responseStatus === 0
-        && ! $.isEmptyObject($scope.mapping);
+      return $scope.responseStatus === 0 &&
+        ! $.isEmptyObject($scope.mapping);
     }
 
 
@@ -55,7 +55,7 @@
 
       rClient.listApplications().then(function(apps) {
         apps.forEach(function(val, index, arr) {
-          if ( bindings.hasOwnProperty(val.tplEep)) {
+          if (bindings.hasOwnProperty(val.tplEep)) {
             mapping[val.tplEep].apps.push(val.name);
           }
         });
@@ -106,15 +106,15 @@
           ok: false,
           msg: 'An error occurred while saving the binding for prefix "' + currentMapping.key + '".'
         });
-        
+
         // Keep it for debug
-        console.log(response)
-      })
+        console.log(response);
+      });
     }
-    
-    
+
+
     function removeStatus(s) {
-      
+
       var index = $scope.status.indexOf(s);
       if (index > -1) {
         $scope.status.splice(index, 1);
