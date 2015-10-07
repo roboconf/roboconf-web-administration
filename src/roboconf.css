@@ -541,6 +541,24 @@ div.app-links > div {
 	margin-top: 22px;
 }
 
+.rbcf-padfix {
+	padding-top: 6px;
+}
+
+/* Notifications */
+
+.status-panel {
+	padding-top: 44px;
+	clear: both;
+}
+
+.status-panel > p {
+	padding: 5px 12px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 .CodeMirror {
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;

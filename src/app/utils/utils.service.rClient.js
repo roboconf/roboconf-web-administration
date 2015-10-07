@@ -17,7 +17,9 @@
       newApplication: newApplication,
       listTargets: listTargets,
       findTarget: findTarget,
-      findTargetProperties: findTargetProperties
+      findTargetProperties: findTargetProperties,
+      listApplicationBindings: listApplicationBindings,
+      bindApplications: bindApplications
     };
 
     return service;
@@ -57,6 +59,14 @@
 
     function findTargetUsage(id) {
       return Restangular.all('targets/' + id + '/usage').getList();
+    }
+
+    function listApplicationBindings(appName) {
+      return Restangular.one('app/' + appName + '/bind').get();
+    }
+
+    function bindApplications(appName,bTplName,bAppName) {
+      return Restangular.one('app/' + appName + '/bind?bound-tpl=' + bTplName + '&bound-app=' + bAppName).post();
     }
   }
 }());

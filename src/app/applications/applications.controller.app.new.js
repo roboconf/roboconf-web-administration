@@ -54,7 +54,7 @@
       };
 
       rClient.newApplication(newApp).then(function() {
-        $window.location = '#/app/' + newApp.name + '/details';
+        $window.location = '#/app/' + newApp.name + '/overview';
 
       }, function(response) {
         $scope.errorMessage = 'An error occured. ' + response.data.reason;

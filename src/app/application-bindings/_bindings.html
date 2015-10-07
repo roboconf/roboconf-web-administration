@@ -1,0 +1,66 @@
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Applications &raquo; {{ appName }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+
+<div class="menu">
+	<ul>
+		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
+		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
+		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
+		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+	
+	<!-- No application? -->
+	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>
+	
+	<div ng-show="isEmptyBindings()">
+		This application does not import any external variable.<br />
+		There is no binding to define between this application and others.
+	</div>
+	
+	<div ng-show="hasBindings()">
+		The following prefixes match properties exported by other applications.<br />
+		Select which ones this application should be bound to.<br /><br />
+	
+		<form class="form-horizontal">
+			<div class="form-group" ng-repeat="(key,value) in mapping">
+				<label class="col-sm-1 rbcf-padfix">{{ key }}</label>
+				<div class="col-sm-11">
+					<select class="form-control"
+							required
+							ng-model="value.curr"
+							ng-options="a for a in value.apps">
+					</select>
+				</div>
+			</div>
+			
+			<button 
+					class="btn btn-default pull-right" type="submit" 
+					ng-disabled="disableSaveButton()"
+					ng-model="mapping"
+					ng-click="saveBindings()">Save</button>
+
+			<div class="status-panel">
+				<p ng-repeat="s in status" ng-class="s.ok ? 'bg-success' : 'bg-danger'">
+					{{ s.msg }}
+					
+					<button type="button" class="close" aria-label="Close" ng-click="removeStatus( s )">
+						<span aria-hidden="true" >&times;</span>
+					</button>
+				</p>
+			</div>
+		</form>
+	</div>
+</div>
