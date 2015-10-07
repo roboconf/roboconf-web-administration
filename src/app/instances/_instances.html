@@ -37,7 +37,7 @@
 	
 	<!-- A dynamic template to build a tree with AngularJS -->
 	<script type="text/ng-template" id="my-tmpl">
-    <p ng-click="showInstance( childNode, 1000 )">
+    <p ng-click="showInstance( childNode, 1000 )" ng-class="selectedInstance === childNode.instance ? 'r-red' : ''">
 		<strong>{{ childNode.instance.name }}</strong> is {{ formatStatus( childNode.instance.status )}}.
 	</p>
     <ul>
