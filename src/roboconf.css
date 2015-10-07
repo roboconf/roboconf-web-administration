@@ -509,6 +509,14 @@ p.app-avatar > img {
 	background-color: #ffc017;
 }
 
+.app-variables {
+	/*
+	 *	320 px = width( app-links ) + 20
+	 *	190 px = width( app-avatar ) + 30
+	 */
+	padding: 2px 320px 10px 190px;
+}
+
 .app-desc {
 	/*
 	 *	320 px = width( app-links ) + 20
@@ -517,7 +525,7 @@ p.app-avatar > img {
 	padding: 17px 320px 10px 190px;
 }
 
-.app-desc ul {
+.app-variables ul {
 	list-style-type: none;
 	margin-left: 30px;
 	margin-top: 4px;

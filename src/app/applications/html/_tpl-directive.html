@@ -36,7 +36,17 @@
 		<span class="formatted">{{ app.desc }}</span>
 		<br /><br />
 		
-		<strong>Qualifier:</strong> {{ app.qualifier }}
+		<strong>Qualifier:</strong> {{ app.qualifier }}<br />
+		<span ng-show="app.eep">
+			<strong>Prefix for External Exports:</strong> {{ app.eep }}
+		</span>
+	</div>
+	
+	<div ng-show="app.extVars && ! showLinks" class="app-variables">
+		Variables made visible to other applications:
+		<ul>
+			<li ng-repeat="(k,v) in app.extVars">&raquo; &nbsp; {{ k }} <strong>as</strong> {{ v }}</li>
+		</ul>
 	</div>
 	
 	<div class="clearfix"></div>

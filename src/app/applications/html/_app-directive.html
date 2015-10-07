@@ -41,9 +41,20 @@
 	<p class="app-desc">
 		<span class="formatted">{{ app.desc }}</span>
 		<br /><br />
-		<strong>Template Name:</strong> <a href="#/tpl/{{ app.tplName }}/{{ app.tplQualifier }}/details">{{ app.tplName }}</a><br />
-		<strong>Template Qualifier:</strong> {{ app.tplQualifier }}
+		
+		<strong>Template Name:</strong> <a href="#/tpl/{{ app.tplName }}/{{ app.tplQualifier }}/overview">{{ app.tplName }}</a><br />
+		<strong>Template Qualifier:</strong> {{ app.tplQualifier }}<br />
+		<span ng-show="app.tplEep">
+			<strong>Prefix for External Exports:</strong> {{ app.tplEep }}
+		</span>
 	</p>
+	
+	<div ng-show="app.extVars && ! showLinks" class="app-variables">
+		Variables made visible to other applications:
+		<ul>
+			<li ng-repeat="(k,v) in app.extVars">&raquo; &nbsp; {{ k }} <strong>as</strong> {{ v }}</li>
+		</ul>
+	</div>
 	
 	<div class="clearfix"></div>
 </div>
