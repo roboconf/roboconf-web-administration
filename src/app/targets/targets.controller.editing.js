@@ -9,8 +9,8 @@
   function targetEditingController($scope, rClient, $routeParams) {
 
     // Fields
-    $scope.found = false;
-    $scope.error = false;
+    $scope.responseStatus = -1;
+
     $scope.targetId = $routeParams.targetId;
     $scope.targetAlias = $scope.targetId;
     $scope.targetProperties = '';
@@ -23,40 +23,37 @@
     // Functions declaration
     $scope.setEditable = setEditable;
 
-    // Initial actions
-    var txtArea = $('#target-properties').get(0);
-    var editor = CodeMirror.fromTextArea(txtArea, {
-      mode: 'properties',
-      lineNumbers: true,
-      lineWrapping: true,
-      readOnly: true
-    });
-
+    // Functions
     rClient.findTarget($scope.targetId).then(function(bean) {
       $scope.targetAlias = bean.name ? bean.name : 'no name';
-      $scope.error = false;
-      $scope.found = true;
+      $scope.responseStatus = 0;
+      
+      var txtArea = $('#target-properties').get(0);
+      $scope.editor = CodeMirror.fromTextArea(txtArea, {
+        mode: 'properties',
+        lineNumbers: true,
+        lineWrapping: true,
+        readOnly: true
+      });
 
-    }, function() {
-      $scope.error = true;
-
-    }).finally(function() {
-      $scope.invoked = true;
+    }, function(response) {
+      $scope.responseStatus = response.status;
     });
 
     rClient.findTargetProperties($scope.targetId).then(function(props) {
       $scope.targetPropertiesBackup = props.s;
       $scope.targetProperties = props.s;
-      editor.setValue(props.s);
+      $scope.editor.setValue(props.s);
     });
 
     // Functions
     function setEditable(editable) {
       $scope.editable = editable;
-      editor.setOption('readOnly', ! editable);
+      $scope.editor.setOption('readOnly', ! editable);
+
       if (! editable) {
         $scope.targetProperties = $scope.targetPropertiesBackup;
-        editor.setValue($scope.targetPropertiesBackup);
+        $scope.editor.setValue($scope.targetPropertiesBackup);
       }
     }
   }

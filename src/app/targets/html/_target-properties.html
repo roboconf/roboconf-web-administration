@@ -1,0 +1,40 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Targets &raquo; {{ targetAlias }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+
+<div class="menu">
+	<ul>
+		<li><a href="#/target/{{ targetId }}/overview">Overview</a></li>
+		<li class="active"><a href="#/target/{{ targetId }}/properties">Properties</a></li>
+		<li><a href="#/target/{{ targetId }}/usage">Usage</a></li>
+		<li><a href="#/target/{{ targetId }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+
+	<!-- Target Details -->
+	<div ng-show="responseStatus  === 0">
+		<div class="target-data">
+			<textarea rows="20" cols="8" id="target-properties"></textarea>
+		</div>
+
+		<br />
+		<div>
+			<button class="btn btn-default pull-right" type="submit" ng-show="editable">Save</button>
+			<button class="btn btn-default pull-right" type="submit" ng-show="editable" ng-click="setEditable(false)">Cancel</button>
+			<button class="btn btn-default pull-right" type="submit" ng-hide="editable" ng-click="setEditable(true)">Edit the Properties</button>
+		</div>		
+	</div>
+
+	<div ng-show="responseStatus === 404">No target with the ID <strong>{{ targetId }}</strong> was found.</div>
+</div>

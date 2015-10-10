@@ -1,0 +1,38 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Targets &raquo; {{ targetAlias }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+
+<div class="menu">
+	<ul>
+		<li class="active"><a href="#/target/{{ targetId }}/overview">Overview</a></li>
+		<li><a href="#/target/{{ targetId }}/properties">Properties</a></li>
+		<li><a href="#/target/{{ targetId }}/usage">Usage</a></li>
+		<li><a href="#/target/{{ targetId }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+
+	<!-- Target Details -->
+	<div ng-show="responseStatus  === 0">
+		<label>Target ID:</label> {{ targetId }}
+		<br />
+		<label>Target Name:</label> {{ target.name ? target.name : '' }}
+		<br />
+		<label>Target Handler:</label> {{ target.handler }}
+		
+		<br /><br />
+		{{ target.desc ? target.desc : 'No description.' }}
+	</div>
+
+	<div ng-show="responseStatus === 404">No target with the ID <strong>{{ targetId }}</strong> was found.</div>
+</div>

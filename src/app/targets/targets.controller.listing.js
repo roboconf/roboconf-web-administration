@@ -9,8 +9,7 @@
   function targetsListingController($scope, rClient) {
 
     // Fields
-    $scope.invoked = false;
-    $scope.error = false;
+    $scope.responseStatus = -1;
     $scope.targets = [];
     $scope.searchFilter = '';
     $scope.searchVisible = true;
@@ -25,13 +24,10 @@
 
       rClient.listTargets().then(function(ts) {
         $scope.targets = ts;
-        $scope.error = false;
+        $scope.responseStatus = 0;
 
-      }, function() {
-        $scope.error = true;
-
-      }).finally(function() {
-        $scope.invoked = true;
+      }, function(response) {
+        $scope.responseStatus = response.status;
       });
     }
   }

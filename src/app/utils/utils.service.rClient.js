@@ -19,6 +19,7 @@
       findTarget: findTarget,
       findTargetProperties: findTargetProperties,
       findTargetUsage: findTargetUsage,
+      deleteTarget: deleteTarget,
       listApplicationBindings: listApplicationBindings,
       bindApplications: bindApplications
     };
@@ -52,6 +53,10 @@
 
     function findTarget(id) {
       return Restangular.one('targets/' + id + '/details').get();
+    }
+
+    function deleteTarget(id) {
+      return Restangular.one('targets/' + id).remove();
     }
 
     function findTargetProperties(id) {
