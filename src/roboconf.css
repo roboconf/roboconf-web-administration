@@ -53,6 +53,12 @@ span.formatted {
 	white-space: pre-wrap;
 }
 
+ul.nice-list {
+	list-style-type: none !important;
+	margin-left: 30px;
+	margin-top: 4px;
+}
+
 /* Top of the Pages */
 
 #header-img {
@@ -523,12 +529,6 @@ p.app-avatar > img {
 	 *	190 px = width( app-avatar ) + 30
 	 */
 	padding: 17px 320px 10px 190px;
-}
-
-.app-variables ul {
-	list-style-type: none;
-	margin-left: 30px;
-	margin-top: 4px;
 }
 
 div.app-links {

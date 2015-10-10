@@ -1,0 +1,46 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Application Templates &raquo; {{ app.name }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+	
+<div class="menu">
+	<ul>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">Overview</a></li>
+		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">Associated Applications</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+
+	<!-- Application Details -->
+	<div ng-show="responseStatus === 0">
+		<div ng-show="app.apps.length > 0">
+			Template <strong>{{ app.name }}</strong> with qualifier <strong>{{ app.qualifier }}</strong>
+			is associated with the following applications.
+
+			<br /><br />
+			<ul class="nice-list">
+				<li ng-repeat="a in app.apps"> &raquo; &nbsp; <a href="/#/app/{{ a }}/overview">{{ a }}</a></li>
+			</ul>
+		</div>
+		
+		<div ng-show="app.apps.length === 0">
+			Template <strong>{{ app.name }}</strong> with qualifier <strong>{{ app.qualifier }}</strong>
+			is not associated with any application.
+		</div>
+	</div>
+	
+	<div ng-show="responseStatus === 404">
+		No application template called <strong>{{ app.name }}</strong> 
+		was found with the qualifier <strong>{{ app.qualifier }}</strong>.
+	</div>
+</div>

@@ -55,6 +55,11 @@
     .when('/tpl/:tplName/:tplQualifier/delete', {
       templateUrl: 'templates/applications/html/_tpl-delete.html',
       controller: 'SingleApplicationTemplateController'
+    })
+
+    .when('/tpl/:tplName/:tplQualifier/applications', {
+      templateUrl: 'templates/applications/html/_tpl-applications.html',
+      controller: 'SingleApplicationTemplateController'
     });
   }
 })();
