@@ -42,6 +42,11 @@
       controller: 'SingleApplicationController'
     })
 
+    .when('/app/:appName/delete', {
+      templateUrl: 'templates/applications/html/_app-delete.html',
+      controller: 'SingleApplicationController'
+    })
+
     .when('/tpl/:tplName/:tplQualifier/overview', {
       templateUrl: 'templates/applications/html/_tpl-single.html',
       controller: 'SingleApplicationTemplateController'

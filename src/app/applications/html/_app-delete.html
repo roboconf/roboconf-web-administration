@@ -10,11 +10,11 @@
 
 <div class="menu">
 	<ul>
-		<li class="active"><a href="#/app/{{ app.name }}/overview">Overview</a></li>
+		<li><a href="#/app/{{ app.name }}/overview">Overview</a></li>
 		<li><a href="#/app/{{ app.name }}/instances">Instances</a></li>
 		<li><a href="#/app/{{ app.name }}/targets">Target Associations</a></li>
 		<li><a href="#/app/{{ app.name }}/application-bindings">Application Bindings</a></li>
-		<li><a href="#/app/{{ app.name }}/delete">Delete</a></li>
+		<li class="active"><a href="#/app/{{ app.name }}/delete">Delete</a></li>
 	</ul>
 </div>
 
@@ -24,7 +24,19 @@
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
 
 	<!-- Application Details -->
-	<rbcf-single-app ng-show="responseStatus === 0"></rbcf-single-app>
+	<div ng-show="responseStatus === 0">
+		<div ng-show="app.info && app.info !== 'nd'">
+			Application <strong>{{ app.name }}</strong> still has deployed instances. It cannot be deleted.
+		</div>
+		
+		<div ng-show="! app.info || app.info === 'nd'">
+			Application <strong>{{ app.name }}</strong> does not have any deployed instance.<br />
+			You can delete it if you want.
+			
+			<br /><br />
+			<button class="btn btn-danger" ng-click="deleteApplication( app )">Confirm the Deletion of this Application</button>
+		</div>
+	</div>
 	
 	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>
 </div>

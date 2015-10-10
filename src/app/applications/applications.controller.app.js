@@ -9,10 +9,7 @@
   function singleApplicationController(rClient, $scope, $routeParams, $window, rUtils) {
 
     // Fields
-    $scope.invoked = false;
-    $scope.error = false;
-    $scope.showRestError = false;
-    $scope.found = true;
+    $scope.responseStatus = -1;
 
     $scope.deleteApplication = deleteApplication;
     $scope.findAvatar = rUtils.findRandomAvatar;
@@ -25,35 +22,26 @@
     function findApplication(appName) {
 
       rClient.listApplications().then(function(applications) {
-        $scope.error = false;
+        $scope.responseStatus = 0;
         $scope.app = applications.filter(function(val, index, arr) {
           return val.name === appName;
         }).pop();
 
         if (!$scope.app) {
-          $scope.found = false;
+          $scope.responseStatus = 404;
           $scope.app = {
             name: $routeParams.appName
           };
         }
 
-      }, function() {
-        $scope.error = true;
-
-      }).finally(function() {
-        $scope.invoked = true;
+      }, function(reponse) {
+        $scope.responseStatus = response.status;
       });
     }
 
     function deleteApplication() {
       rClient.deleteApplication($routeParams.appName).then(function() {
         $window.location = '#/';
-
-      }, function() {
-        $scope.showRestError = true;
-
-      }).finally(function() {
-        $scope.askToDelete = false;
       });
     }
   }
