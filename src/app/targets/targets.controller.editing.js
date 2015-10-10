@@ -27,7 +27,7 @@
     rClient.findTarget($scope.targetId).then(function(bean) {
       $scope.targetAlias = bean.name ? bean.name : 'no name';
       $scope.responseStatus = 0;
-      
+
       var txtArea = $('#target-properties').get(0);
       $scope.editor = CodeMirror.fromTextArea(txtArea, {
         mode: 'properties',

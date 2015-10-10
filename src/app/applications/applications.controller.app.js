@@ -34,7 +34,7 @@
           };
         }
 
-      }, function(reponse) {
+      }, function(response) {
         $scope.responseStatus = response.status;
       });
     }

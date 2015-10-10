@@ -21,6 +21,25 @@ describe('Routing', function() {
       expect($route.routes['/tpl/:tplName/:tplQualifier/overview'].controller)
       .to.equal('SingleApplicationTemplateController');
 
+      // Application deletions
+      expect($route.routes['/app/:appName/delete'].controller).to.equal('SingleApplicationController');
+      expect($route.routes['/tpl/:tplName/:tplQualifier/delete'].controller)
+      .to.equal('SingleApplicationTemplateController');
+
+      // Template associations
+      expect($route.routes['/tpl/:tplName/:tplQualifier/applications'].controller)
+      .to.equal('SingleApplicationTemplateController');
+
+      // Targets
+      expect($route.routes['/targets'].controller).to.equal('TargetsListingController');
+      expect($route.routes['/target/:targetId/overview'].controller).to.equal('TargetSingleController');
+      expect($route.routes['/target/:targetId/properties'].controller).to.equal('TargetEditingController');
+      expect($route.routes['/target/:targetId/usage'].controller).to.equal('TargetSingleController');
+      expect($route.routes['/target/:targetId/delete'].controller).to.equal('TargetSingleController');
+
+      // Application Bindings
+      expect($route.routes['/app/:appName/application-bindings'].controller).to.equal('ApplicationBindingsController');
+
       // Preferences
       expect($route.routes['/preferences'].controller).to.equal('PreferencesController');
 

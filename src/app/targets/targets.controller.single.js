@@ -5,15 +5,15 @@
   .module('roboconf.targets')
   .controller('TargetSingleController', targetSingleController);
 
-  targetSingleController.$inject = ['$scope', 'rClient', '$routeParams', '$route'];
-  function targetSingleController($scope, rClient, $routeParams, $route) {
+  targetSingleController.$inject = ['$scope', 'rClient', '$routeParams', '$route', '$window'];
+  function targetSingleController($scope, rClient, $routeParams, $route, $window) {
 
     // Fields
     $scope.responseStatus = -1;
     $scope.targetId = $routeParams.targetId;
     $scope.targetAlias = $scope.targetId;
     $scope.stats = [];
-    
+
     // Function declarations
     $scope.findLink = findLink;
     $scope.deleteTarget = deleteTarget;
