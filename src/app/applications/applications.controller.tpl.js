@@ -9,11 +9,7 @@
   function singleApplicationTemplateController(rClient, $scope, $routeParams, $window, rUtils) {
 
     // Fields
-    $scope.invoked = false;
-    $scope.error = false;
-    $scope.showRestError = false;
-    $scope.showApps = true;
-    $scope.found = true;
+    $scope.responseStatus = -1;
 
     $scope.deleteApplicationTemplate = deleteApplicationTemplate;
     $scope.findAvatar = rUtils.findRandomAvatar;
@@ -26,33 +22,27 @@
     function findApplicationTemplate(appName, appQualifier) {
 
       rClient.listApplicationTemplates().then(function(templates) {
-        $scope.error = false;
+        $scope.responseStatus = 0;
         $scope.app = templates.filter(function(val, index, arr) {
           return val.name === appName && val.qualifier === appQualifier;
         }).pop();
 
         if (!$scope.app) {
-          $scope.found = false;
+          $scope.responseStatus = 404;
           $scope.app = {
             name: $routeParams.tplName,
             qualifier: $routeParams.tplQualifier
           };
         }
 
-      }, function() {
-        $scope.error = true;
-
-      }).finally(function() {
-        $scope.invoked = true;
+      }, function(response) {
+        $scope.responseStatus = response.status;
       });
     }
 
     function deleteApplicationTemplate() {
       rClient.deleteApplicationTemplate($routeParams.tplName, $routeParams.tplQualifier).then(function() {
         $window.location = '#/application-templates';
-
-      }, function() {
-        $scope.showRestError = true;
       });
     }
   }

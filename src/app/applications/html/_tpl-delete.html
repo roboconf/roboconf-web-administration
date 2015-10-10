@@ -1,0 +1,44 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Application Templates &raquo; {{ app.name }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+	
+<div class="menu">
+	<ul>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">Overview</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">Associated Applications</a></li>
+		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+
+	<!-- Application Details -->
+	<div ng-show="responseStatus === 0">
+		<div ng-show="app.apps.length > 0">
+			Template <strong>{{ app.name }}</strong> with qualifier <strong>{{ app.qualifier }}</strong>
+			still has associated applications. It cannot be deleted.
+		</div>
+		
+		<div ng-show="app.apps.length === 0">
+			Template <strong>{{ app.name }}</strong> with qualifier <strong>{{ app.qualifier }}</strong>
+			is not associated with any application. You can delete it if you want.
+			
+			<br /><br />
+			<button class="btn btn-danger" ng-click="deleteApplicationTemplate( app )">Confirm the Deletion of this Application Template</button>
+		</div>
+	</div>
+	
+	<div ng-show="responseStatus === 404">
+		No application template called <strong>{{ app.name }}</strong> 
+		was found with the qualifier <strong>{{ app.qualifier }}</strong>.
+	</div>
+</div>
