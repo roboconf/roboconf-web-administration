@@ -20,6 +20,8 @@
       findTargetProperties: findTargetProperties,
       findTargetUsage: findTargetUsage,
       deleteTarget: deleteTarget,
+      newTarget: newTarget,
+      updateTarget: updateTarget,
       listApplicationBindings: listApplicationBindings,
       bindApplications: bindApplications
     };
@@ -49,6 +51,14 @@
 
     function listTargets() {
       return Restangular.all('targets').getList();
+    }
+
+    function newTarget(targetContent) {
+      return Restangular.one('targets').post('', targetContent);
+    }
+
+    function updateTarget(targetId, targetContent) {
+      return Restangular.one('targets?target-id=' + targetId).post('', targetContent);
     }
 
     function findTarget(id) {

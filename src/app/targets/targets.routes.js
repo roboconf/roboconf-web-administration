@@ -14,6 +14,11 @@
       controller: 'TargetsListingController'
     })
 
+    .when('/targets/new', {
+      templateUrl: 'templates/targets/html/_targets-new.html',
+      controller: 'TargetsNewController'
+    })
+
     .when('/target/:targetId/overview', {
       templateUrl: 'templates/targets/html/ _target-overview.html',
       controller: 'TargetSingleController'

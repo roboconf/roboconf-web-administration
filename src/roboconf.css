@@ -53,6 +53,10 @@ span.formatted {
 	white-space: pre-wrap;
 }
 
+.right-margin {
+	margin-right: 7px;
+}
+
 ul.nice-list {
 	list-style-type: none !important;
 	margin-left: 30px;

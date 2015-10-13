@@ -25,13 +25,13 @@
 	<!-- Target Details -->
 	<div ng-show="responseStatus  === 0">
 		<div class="target-data">
-			<textarea rows="20" cols="8" id="target-properties"></textarea>
+			<textarea rows="20" cols="8" id="target-properties" ng-model="targetProperties"></textarea>
 		</div>
 
 		<br />
 		<div>
-			<button class="btn btn-default pull-right" type="submit" ng-show="editable">Save</button>
-			<button class="btn btn-default pull-right" type="submit" ng-show="editable" ng-click="setEditable(false)">Cancel</button>
+			<button class="btn btn-default pull-right" type="submit" ng-show="editable" ng-click="save()">Save</button>
+			<button class="btn btn-default pull-right right-margin" type="submit" ng-show="editable" ng-click="setEditable(false)">Cancel</button>
 			<button class="btn btn-default pull-right" type="submit" ng-hide="editable" ng-click="setEditable(true)">Edit the Properties</button>
 		</div>		
 	</div>
