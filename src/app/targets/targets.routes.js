@@ -20,7 +20,7 @@
     })
 
     .when('/target/:targetId/overview', {
-      templateUrl: 'templates/targets/html/ _target-overview.html',
+      templateUrl: 'templates/targets/html/_target-overview.html',
       controller: 'TargetSingleController'
     })
 
