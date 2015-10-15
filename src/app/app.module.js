@@ -7,6 +7,7 @@ angular.module('roboconf', [
     'roboconf.errors',
     'roboconf.applications',
     'roboconf.application-bindings',
+    'roboconf.application-targets',
     'roboconf.instances',
     'roboconf.targets'
 ]);

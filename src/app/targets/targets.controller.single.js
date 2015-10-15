@@ -13,6 +13,7 @@
     $scope.targetId = $routeParams.targetId;
     $scope.targetAlias = $scope.targetId;
     $scope.stats = [];
+    $scope.target = {};
 
     // Function declarations
     $scope.findLink = findLink;

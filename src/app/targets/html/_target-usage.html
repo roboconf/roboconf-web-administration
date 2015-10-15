@@ -32,11 +32,11 @@
 			<th>Template?</th>
 			<th>Name</th>
 			<th>Qualifier</th>
-			<th>Referencing</th>
-			<th>Using</th>
+			<th class="text-center">Referencing</th>
+			<th class="text-center">Using</th>
 		</tr>
 		<tr ng-repeat="s in stats">
-			<td class="text-center">{{ s.qualifier ? 'yes' : '' }}</td>
+			<td>{{ s.qualifier ? 'yes' : '' }}</td>
 			<td><a href="/#/{{ findLink( s ) }}/overview">{{ s.name }}</a></td>
 			<td>{{ s.qualifier ? s.qualifier : '' }}</td>
 			<td class="text-center">{{ s.referencing ? 'x' : '' }}</td>

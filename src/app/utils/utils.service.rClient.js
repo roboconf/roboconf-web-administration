@@ -23,7 +23,10 @@
       newTarget: newTarget,
       updateTarget: updateTarget,
       listApplicationBindings: listApplicationBindings,
-      bindApplications: bindApplications
+      bindApplications: bindApplications,
+      findTargetAssociations: findTargetAssociations,
+      associateTarget: associateTarget,
+      findPossibleTargets: findPossibleTargets
     };
 
     return service;
@@ -83,6 +86,23 @@
 
     function bindApplications(appName, bTplName, bAppName) {
       return Restangular.one('app/' + appName + '/bind?bound-tpl=' + bTplName + '&bound-app=' + bAppName).post();
+    }
+
+    function findTargetAssociations(appName) {
+      return Restangular.all('app/' + appName + '/targets').getList();
+    }
+
+    function findPossibleTargets(appName) {
+      return Restangular.all('targets?name=' + appName).getList();
+    }
+
+    function associateTarget(appName, targetId, instPath) {
+      var path = 'targets/' + targetId + '/associations?bind=true&name=' + appName;
+      if (instPath) {
+        path += '&instance-path=' + instPath;
+      }
+
+      return Restangular.one(path).post();
     }
   }
 }());

@@ -1,0 +1,60 @@
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Applications &raquo; {{ appName }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+
+<div class="menu">
+	<ul>
+		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
+		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
+		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+	
+	<!-- No application? -->
+	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>
+	
+	<div ng-show="associations.length > 0">
+		This page allows to associate machine instances with deployment targets.<br /><br />
+	
+		<form class="form-horizontal">
+			<div class="form-group" ng-repeat="a in associations">
+				<label class="col-sm-2 rbcf-padfix">{{ a.path === '' ? 'Default' : a.path }}</label>
+				<div class="col-sm-7">
+					<select class="form-control"
+							required
+							ng-model="a.selectedId"
+							ng-options="pt.id as formatTarget(pt) for pt in possibleTargets"
+							ng-show="a.editable">
+					</select>
+					
+					<span ng-show="! a.editable" style="display: inline-block" class="rbcf-padfix">
+						<a href="/#/target/{{ a.selectedId }}/properties" ng-if="a.selectedId > -1">{{ formatTarget(a) }}</a>
+						<span ng-if="a.selectedId === -1">none</span>
+					</span>
+				</div>
+				<div class="col-sm-3">
+					<button class="btn btn-default" type="submit" ng-click="cancelAssociation( a )" ng-show="a.editable">Cancel</button>
+					<button class="btn btn-default" type="submit" ng-click="a.editable = true" ng-show="! a.editable">Edit</button>
+					<button 
+							class="btn btn-default" type="submit" 
+							ng-click="saveAssociation( a )" 
+							ng-show="a.editable"
+							ng-model="a"
+							ng-disabled="a.oldId === a.selectedId">Save</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -41,6 +41,9 @@ describe('Routing', function() {
       // Application Bindings
       expect($route.routes['/app/:appName/application-bindings'].controller).to.equal('ApplicationBindingsController');
 
+      // Application Targets
+      expect($route.routes['/app/:appName/targets'].controller).to.equal('ApplicationTargetsController');
+
       // Preferences
       expect($route.routes['/preferences'].controller).to.equal('PreferencesController');
 
