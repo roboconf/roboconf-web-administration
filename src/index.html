@@ -36,7 +36,7 @@
 	  
 	  	// Update the margin-top of the right block...
 	  	// ... unless this block is bigger than the window
-	  	if( $( '#right-block' ).height() < $( window ).height ) {
+	  	if( $( '#right-block' ).height() < $( window ).height()) {
 			var scrollTop = $( window ).scrollTop();
 			var newTop = scrollTop > 200 ? (scrollTop - 190) : 0;
 			$( '#right-block' ).css( 'margin-top', newTop );
