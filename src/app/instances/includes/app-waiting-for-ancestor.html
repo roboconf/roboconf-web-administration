@@ -1,0 +1,15 @@
+<img src="img/state-starting.gif" alt="Waiting for ancestor..." />
+<p>The following actions can be undertaken.</p>
+
+<ul>
+	<li><a href="" ng-click="changeState( 'DEPLOYED_STOPPED' )">Stop this instance</a></li>
+	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">Undeploy it</a></li>
+	<li><a href="" ng-click="createChildInstance()">Create a child instance</a></li>
+</ul>
+
+<br />
+<strong>Description</strong>
+<br />
+
+The instance is waiting for one of its ancestor to resolve its dependencies.
+This instance will start automatically with its ancestors.

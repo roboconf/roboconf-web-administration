@@ -161,6 +161,7 @@
       case 'DEPLOYED_STOPPED': result = 'deployed but stopped'; break;
       case 'DEPLOYED_STARTED': result = 'deployed and started'; break;
       case 'PROBLEM': result = 'undetermined'; break;
+      case 'WAITING_FOR_ANCESTOR': result = 'waiting for an ancestor to resolve its dependencies'; break;
       case 'CUSTOM': result = 'being updated...'; break;
       }
 
