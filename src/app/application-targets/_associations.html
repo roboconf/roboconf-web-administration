@@ -40,7 +40,7 @@
 					</select>
 					
 					<span ng-show="! a.editable" style="display: inline-block" class="rbcf-padfix">
-						<a href="/#/target/{{ a.selectedId }}/properties" ng-if="a.selectedId > -1">{{ formatTarget(a) }}</a>
+						<a href="#/target/{{ a.selectedId }}/properties" ng-if="a.selectedId > -1">{{ formatTarget(a) }}</a>
 						<span ng-if="a.selectedId === -1">none</span>
 					</span>
 				</div>
