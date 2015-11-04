@@ -19,9 +19,17 @@
     // Fields and functions
     $scope.restUrl = rPrefs.getUrl() + '/applications/templates';
     $scope.uploadZip = uploadZip;
-    $scope.progress = 0;
+    $scope.reset = reset;
+
+    // Initialize everything
+    reset();
 
     // Functions
+    function reset() {
+      $scope.progress = 0;
+      $('#upload-result').html('');
+    }
+
     function uploadZip() {
 
       // Prepare the data to submit
@@ -80,7 +88,9 @@
         details = angular.fromJson(jqXHR.responseText);
       }
 
-      var content = 'The upload failed. The server is either offline or your settings are incorrect.';
+      var content =
+        'The upload failed. The server is either offline, or your settings are incorrect, or the archive is invalid.';
+
       if (details && details.reason) {
         content += '<br />Reason: ' + details.reason.toLowerCase();
       }
