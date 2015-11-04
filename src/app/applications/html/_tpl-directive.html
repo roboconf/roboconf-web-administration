@@ -4,7 +4,7 @@
 		<a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{ app.name }}</a>
 		<span
 				class="block-annotation" title="Delete this application"
-				ng-show="app.apps.length === 0" ng-click="deleteApplication( app )">
+				ng-show="showLinks && app.apps.length === 0" ng-click="deleteApplication( app )">
 			<span aria-hidden="true">x</span>
 		</span>
 	</p>
