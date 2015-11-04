@@ -9,14 +9,14 @@
   function instancesListingController(Restangular, $scope, rUtils, $routeParams, rShare, $window) {
 
     // Fields
-    $scope.noError = true;
-    $scope.invoked = false;
+    $scope.responseStatus = -1;
     $scope.appName = $routeParams.appName;
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.template = '';
     $scope.askToDelete = false;
     $scope.orderingCriteria = 'instance.name';
+    $scope.details = 'LIFECYCLE';
 
     // Menu actions
     $scope.menuActions = [
@@ -59,6 +59,7 @@
     $scope.createChildInstance = createChildInstance;
     $scope.replicateInstance = replicateInstance;
     $scope.deleteInstance = deleteInstance;
+    $scope.showDetailsSection = showDetailsSection;
 
     // Initial actions
     loadInstances();
@@ -67,14 +68,11 @@
     function loadInstances() {
       Restangular.all('app/' + $scope.appName + '/children?all-children=true')
       .getList().then(function(instances) {
+        $scope.responseStatus = 0;
         $scope.rootNodes = rUtils.buildInstancesTree(instances);
-        $scope.error = false;
 
-      }, function() {
-        $scope.error = true;
-      })
-      .finally(function() {
-        $scope.invoked = true;
+      }, function(response) {
+        $scope.responseStatus = response.status;
       });
     }
 
@@ -90,6 +88,10 @@
 
       var parentNotDeployed = isParentNotDeployed(node);
       $scope.template = findTemplateUrl(instance.status, isRoot, parentNotDeployed);
+    }
+
+    function showDetailsSection(section) {
+      $scope.details = section;
     }
 
     function hideInstance() {

@@ -4,7 +4,7 @@
 <div class="content">
 	<h1>
 		Applications &raquo; {{ appName }}
-		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
@@ -21,16 +21,18 @@
 <div class="content short-content">
 	
 	<!-- Error message -->
-	<rbcf-error-message ng-show="error"></rbcf-error-message>
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+	
+	<!-- No application? -->
+	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>
 	
 	<!-- No instance? -->
-	<div class="block" ng-show="! error && invoked && rootNodes.length == 0">
+	<div class="block" ng-show="responseStatus === 0 && rootNodes.length == 0">
 		<p class="block-title">No Instance</p>
 
 		<div class="block-content">
 			<p>
-				No instance has been created so far.<br />
-				Or maybe this application does not exist.
+				No instance has been created so far.
 			</p>
 		</div>
 	</div>
@@ -57,7 +59,7 @@
 			<div class="block-content" ng-show="rootNode.children.length === 0">
 				This root instance has no child.
 			</div>
-			
+
 			<ul>
 				<li class="listing" ng-repeat="childNode in rootNode.children" ng-include="'my-tmpl'"></li>
 			</ul>
@@ -66,17 +68,18 @@
 	
 	<!-- Display the details of an instance -->
 	<div id="right-block">
-		<p class="block-controls">
+		<div class="block-controls">
 			<button type="button" class="close" aria-label="Close" ng-click="hideInstance()"><span aria-hidden="true">&times;</span></button>
-		</p>
+		</div>
 		<div>
 			<h3>{{ selectedInstance.name }}</h3>
-				
+			
 			<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />
 			<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}<br />
 			<strong>Component:</strong> {{ selectedInstance.component.name }}
 			
-			<div class="instance-actions" ng-include="template"></div>
+			<div class="instance-actions" ng-include="'templates/instances/includes/life-cycle.html'" ng-show="details === 'LIFECYCLE'"></div>
+			<div class="instance-actions" ng-include="'templates/instances/includes/exported-variables.html'" ng-show="details === 'EXPORTS'"></div>
 		</div>
 	</div>
 	
