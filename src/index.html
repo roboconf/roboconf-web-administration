@@ -15,9 +15,17 @@
 </head>
 
 <body>
+	<!-- Is this resolution supported? -->
+	<div id="resolution-notice">
+		<a href="#/"><img id="header-img" src="img/logo_roboconf_2.jpg" alt="Roboconf" /></a>
+		<p>
+			Sorry, this resolution is not supported.<br />
+			At least 800px are required to work with Roboconf's web administration.
+		</p>
+	</div>
 
 	<!-- This is where content will be injected. -->
-	<div ng-view></div>
+	<div id="rbcf-wa-content" ng-view></div>
 	
 	<!-- Footer -->
 	<div id="footer">
