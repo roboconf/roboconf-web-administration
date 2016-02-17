@@ -5,8 +5,8 @@
   .module('roboconf.targets')
   .controller('TargetSingleController', targetSingleController);
 
-  targetSingleController.$inject = ['$scope', 'rClient', '$routeParams', '$route', '$window'];
-  function targetSingleController($scope, rClient, $routeParams, $route, $window) {
+  targetSingleController.$inject = ['$scope', 'rClient', '$routeParams', '$window'];
+  function targetSingleController($scope, rClient, $routeParams, $window) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -29,11 +29,9 @@
       $scope.responseStatus = response.status;
     });
 
-    if ($route.current.usage) {
-      rClient.findTargetUsage($scope.targetId).then(function(stats) {
-        $scope.stats = stats;
-      });
-    }
+    rClient.findTargetUsage($scope.targetId).then(function(stats) {
+      $scope.stats = stats;
+    });
 
     // Functions
     function findLink(s) {

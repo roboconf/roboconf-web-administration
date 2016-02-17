@@ -33,7 +33,7 @@ describe('Routing', function() {
       // Targets
       expect($route.routes['/targets'].controller).to.equal('TargetsListingController');
       expect($route.routes['/targets/new'].controller).to.equal('TargetsNewController');
-      expect($route.routes['/target/:targetId/overview'].controller).to.equal('TargetSingleController');
+      expect($route.routes['/target/:targetId'].controller).to.equal('TargetEditingController');
       expect($route.routes['/target/:targetId/properties'].controller).to.equal('TargetEditingController');
       expect($route.routes['/target/:targetId/usage'].controller).to.equal('TargetSingleController');
       expect($route.routes['/target/:targetId/delete'].controller).to.equal('TargetSingleController');
