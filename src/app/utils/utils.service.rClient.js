@@ -26,6 +26,7 @@
       bindApplications: bindApplications,
       findTargetAssociations: findTargetAssociations,
       associateTarget: associateTarget,
+      dissociateTarget: dissociateTarget,
       findPossibleTargets: findPossibleTargets
     };
 
@@ -102,6 +103,11 @@
         path += '&instance-path=' + instPath;
       }
 
+      return Restangular.one(path).post();
+    }
+
+    function dissociateTarget(appName, targetId, instPath) {
+      var path = 'targets/' + targetId + '/associations?bind=false&name=' + appName + '&instance-path=' + instPath;
       return Restangular.one(path).post();
     }
   }

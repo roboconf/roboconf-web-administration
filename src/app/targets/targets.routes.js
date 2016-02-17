@@ -23,7 +23,7 @@
       templateUrl: 'templates/targets/html/_target-properties.html',
       controller: 'TargetEditingController'
     })
-    
+
     .when('/target/:targetId/properties', {
       templateUrl: 'templates/targets/html/_target-properties.html',
       controller: 'TargetEditingController'

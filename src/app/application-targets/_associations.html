@@ -35,13 +35,13 @@
 					<select class="form-control"
 							required
 							ng-model="a.selectedId"
-							ng-options="pt.id as formatTarget(pt) for pt in possibleTargets"
+							ng-options="pt.id as formatTarget(pt) for pt in findTargetsList(a)"
 							ng-show="a.editable">
 					</select>
 					
 					<span ng-show="! a.editable" style="display: inline-block" class="rbcf-padfix">
 						<a href="#/target/{{ a.selectedId }}" ng-if="a.selectedId > -1">{{ formatTarget(a) }}</a>
-						<span ng-if="a.selectedId === -1">none</span>
+						<span ng-if="a.selectedId === -1">default</span>
 					</span>
 				</div>
 				<div class="col-sm-3">

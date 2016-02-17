@@ -13,11 +13,14 @@
     $scope.appName = $routeParams.appName;
     $scope.associations = [];
     $scope.possibleTargets = [];
+    $scope.enhancedPossibleTargets = [];
     $scope.defaultTarget = null;
 
+    // Scope functions
     $scope.formatTarget = formatTarget;
     $scope.saveAssociation = saveAssociation;
     $scope.cancelAssociation = cancelAssociation;
+    $scope.findTargetsList = findTargetsList;
 
     // Initial actions
     rClient.findTargetAssociations($scope.appName).then(function(associations) {
@@ -48,6 +51,9 @@
       $scope.responseStatus = 0;
       $scope.possibleTargets = possibleTargets;
 
+      $scope.enhancedPossibleTargets = possibleTargets.slice();
+      $scope.enhancedPossibleTargets.splice(0, 0, { name: 'default', id: -1 });
+
     }, function(response) {
       $scope.responseStatus = response.status;
     });
@@ -55,18 +61,24 @@
     // Function definitions
     function formatTarget(t) {
       if (t) {
-        return (t.name ? t.name : 'no name') + '  (' + t.handler + ')';
+        return (t.name ? t.name : 'no name') + (t.handler ? '  (' + t.handler + ')' : '');
       } else {
         return '';
       }
     }
 
     function saveAssociation(a) {
-      rClient.associateTarget($scope.appName, a.selectedId, a.path).then(function() {
+
+      var fct = rClient.associateTarget;
+      if (a.selectedId === -1) {
+        fct = rClient.dissociateTarget;
+      }
+
+      fct($scope.appName, a.selectedId, a.path).then(function() {
         a.editable = false;
         a.oldId = a.selectedId;
 
-        $scope.possibleTargets.forEach(function(val, index, arr) {
+        $scope.enhancedPossibleTargets.forEach(function(val, index, arr) {
           if (a.selectedId === val.id) {
             a.name = val.name;
             a.handler = val.handler;
@@ -78,6 +90,16 @@
     function cancelAssociation(a) {
       a.editable = false;
       a.selectedId = a.oldId;
+    }
+
+    function findTargetsList(a) {
+
+      var res = $scope.possibleTargets;
+      if (a.path !== '') {
+        res = $scope.enhancedPossibleTargets;
+      }
+
+      return res;
     }
   }
 })();
