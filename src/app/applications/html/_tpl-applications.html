@@ -24,10 +24,10 @@
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
 		<div ng-show="app.apps.length > 0">
-			Template <strong>{{ app.name }}</strong> with qualifier <strong>{{ app.qualifier }}</strong>
-			is associated with the following applications.
-
-			<br /><br />
+			<strong>Template name:</strong> {{ app.name }}<br />
+			<strong>Qualifier:</strong> {{ app.qualifier }}<br /><br />
+			<strong>Associated applications:</strong><br />
+			
 			<ul class="nice-list">
 				<li ng-repeat="a in app.apps"> &raquo; &nbsp; <a href="#/app/{{ a }}/overview">{{ a }}</a></li>
 			</ul>
