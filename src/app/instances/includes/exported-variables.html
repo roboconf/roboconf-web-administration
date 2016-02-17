@@ -1,5 +1,6 @@
 
-<p>This instance exports the following variables.</p>
+<p ng-show="! selectedInstance.exports">This instance does not export any variable.</p>
+<p ng-show="selectedInstance.exports">This instance exports the following variables.</p>
 <ul>
 	<li ng-repeat="(key,value) in selectedInstance.exports"><strong>{{ key }}</strong>: {{ value }}</li>
 </ul>
