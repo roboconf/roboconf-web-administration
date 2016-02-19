@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('roboconf.preferences', []);
+angular.module('roboconf.preferences', ['ngRoute']);

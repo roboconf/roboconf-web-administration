@@ -2,16 +2,16 @@
   'use strict';
 
   angular
-  .module('roboconf.preferences')
+  .module('roboconf.commands')
   .config(appConfig);
 
   appConfig.$inject = ['$routeProvider'];
   function appConfig($routeProvider) {
 
     $routeProvider
-    .when('/preferences', {
-      templateUrl: 'templates/preferences/_preferences.html',
-      controller: 'PreferencesController'
+    .when('/app/:appName/commands', {
+      templateUrl: 'templates/commands/_commands.html',
+      controller: 'CommandsListingController'
     });
   }
 })();

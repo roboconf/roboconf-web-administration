@@ -30,6 +30,9 @@ describe('Routing', function() {
       expect($route.routes['/tpl/:tplName/:tplQualifier/applications'].controller)
       .to.equal('SingleApplicationTemplateController');
 
+      // Commands
+      expect($route.routes['/app/:appName/commands'].controller).to.equal('CommandsListingController');
+
       // Targets
       expect($route.routes['/targets'].controller).to.equal('TargetsListingController');
       expect($route.routes['/targets/new'].controller).to.equal('TargetsNewController');

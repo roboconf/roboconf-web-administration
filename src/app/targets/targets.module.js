@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('roboconf.targets', ['ngRoute', 'restangular']);
+angular.module('roboconf.targets', ['ngRoute']);

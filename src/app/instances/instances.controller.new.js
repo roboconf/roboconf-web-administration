@@ -5,8 +5,8 @@
   .module('roboconf.instances')
   .controller('InstancesNewController', instancesNewController);
 
-  instancesNewController.$inject = ['Restangular', '$scope', '$routeParams', 'rUtils', 'rShare', '$window'];
-  function instancesNewController(Restangular, $scope, $routeParams, rUtils, rShare, $window) {
+  instancesNewController.$inject = ['rClient', '$scope', '$routeParams', 'rUtils', 'rShare', '$window'];
+  function instancesNewController(rClient, $scope, $routeParams, rUtils, rShare, $window) {
 
     // Fields
     $scope.appName = $routeParams.appName;
@@ -102,7 +102,6 @@
     function createThemAll() {
 
       // Go through the entire tree and post writable instances.
-      var rootPath = 'app/' + $scope.appName + '/instances';
       var toDo = [$scope.rootNode];
       while (toDo.length > 0) {
 
@@ -118,13 +117,13 @@
 
         // Prepare the invocation
         var newInst = {name: current.name, component: {name: current.component.name}};
-        var path = rootPath;
+        var instancePath = null;
         if (current.parent) {
-          path += '?instance-path=' + rUtils.findInstancePath(current.parent);
+          instancePath = rUtils.findInstancePath(current.parent);
         }
 
         // Post
-        postNewInstance(path, current, newInst);
+        postNewInstance(instancePath, current, newInst);
       }
 
       $scope.mode = 'posted';
@@ -265,12 +264,7 @@
 
     function findComponents(componentName) {
 
-      var path = 'app/' + $scope.appName + '/components/children';
-      if (componentName) {
-        path += '?name=' + componentName;
-      }
-
-      Restangular.all(path).getList().then(function(components) {
+      rClient.listChildrenComponents($scope.appName, componentName).then(function(components) {
         $scope.possibleComponents = components;
         $scope.error = false;
 
@@ -285,8 +279,7 @@
     }
 
     function loadInstances(fn) {
-      return Restangular.all('app/' + $scope.appName + '/children?all-children=true')
-      .getList().then(function(instances) {
+      return rClient.listInstances().then(function(instances) {
         $scope.error = false;
         $scope.existingInstances = instances;
 
@@ -304,9 +297,9 @@
       };
     }
 
-    function postNewInstance(path, node, newInst) {
+    function postNewInstance(instancePath, node, newInst) {
       node.progress = 'in progress';
-      Restangular.one(path).post('', newInst).then(function() {
+      rClient.postNewInstance($scope.appName, instancePath, newInst).then(function() {
         node.progress = 'ok';
 
       }, function(response) {

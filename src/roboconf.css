@@ -95,6 +95,10 @@ html {
 		margin-top: 4px;
 	}
 	
+	.hovered-line:hover {
+		background-color: #f6f6f0;
+	}
+	
 	/* Top of the Pages */
 	
 	#header-img {
@@ -579,8 +583,11 @@ html {
 	
 	/* Notifications */
 	
-	.status-panel {
+	.status-panel-bottom {
 		padding-top: 44px;
+	}
+	
+	.status-panel {
 		clear: both;
 	}
 	

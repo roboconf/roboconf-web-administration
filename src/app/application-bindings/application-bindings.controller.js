@@ -17,7 +17,7 @@
     $scope.hasBindings = hasBindings;
     $scope.disableSaveButton = disableSaveButton;
     $scope.saveBindings = saveBindings;
-    $scope.removeStatus = removeStatus;
+    $scope.removeStatus = rUtils.removeArrayItem;
 
     // Initial actions
     rClient.listApplicationBindings($scope.appName).then(function(bindings) {
@@ -61,7 +61,6 @@
         });
 
         $scope.mapping = mapping;
-        console.log(mapping);
       });
     }
 
@@ -110,15 +109,6 @@
         // Keep it for debug
         console.log(response);
       });
-    }
-
-
-    function removeStatus(s) {
-
-      var index = $scope.status.indexOf(s);
-      if (index > -1) {
-        $scope.status.splice(index, 1);
-      }
     }
   }
 })();

@@ -1,0 +1,59 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Applications &raquo; {{ appName }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+
+<div class="menu">
+	<ul>
+		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
+		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/commands">Commands</a></li>
+		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
+		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+
+	<!-- Commands -->
+	<div ng-show="responseStatus === 0 && commands.length === 0">No command is available for this application.</div>
+	
+	<div ng-show="responseStatus === 0 && commands.length > 0">
+		The following commands are available.<br />
+		You can execute them directly from this console. Notice that a command
+		may take time to be executed and produce effects.
+		<br /><br />
+		
+		<div class="status-panel">
+			<p ng-repeat="s in status" ng-class="s.ok ? 'bg-success' : 'bg-danger'">
+				{{ s.msg }}
+					
+				<button type="button" class="close" aria-label="Close" ng-click="removeStatus( status, s )">
+					<span aria-hidden="true" >&times;</span>
+				</button>
+			</p>
+		</div>
+	
+		<form class="form-horizontal">
+			<div class="form-group hovered-line" ng-repeat="cmd in commands">
+				<label class="col-sm-8 rbcf-padfix">[ x ] &nbsp; {{ cmd }}</label>
+				<div class="col-sm-3">
+					<button class="btn btn-default" type="submit" ng-click="execute( cmd )">
+						<span ng-hide="cmd.executed">Execute</span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>
+</div>

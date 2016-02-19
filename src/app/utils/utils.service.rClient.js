@@ -10,11 +10,13 @@
 
     // Fields
     var service = {
+
       listApplications: listApplications,
       listApplicationTemplates: listApplicationTemplates,
       deleteApplication: deleteApplication,
       deleteApplicationTemplate: deleteApplicationTemplate,
       newApplication: newApplication,
+
       listTargets: listTargets,
       findTarget: findTarget,
       findTargetProperties: findTargetProperties,
@@ -22,12 +24,23 @@
       deleteTarget: deleteTarget,
       newTarget: newTarget,
       updateTarget: updateTarget,
+
       listApplicationBindings: listApplicationBindings,
       bindApplications: bindApplications,
       findTargetAssociations: findTargetAssociations,
       associateTarget: associateTarget,
       dissociateTarget: dissociateTarget,
-      findPossibleTargets: findPossibleTargets
+      findPossibleTargets: findPossibleTargets,
+
+      listInstances: listInstances,
+      deleteInstance: deleteInstance,
+      changeInstanceState: changeInstanceState,
+      performActionOnInstance: performActionOnInstance,
+      postNewInstance: postNewInstance,
+      listChildrenComponents: listChildrenComponents,
+
+      listCommands: listCommands,
+      executeCommand: executeCommand
     };
 
     return service;
@@ -109,6 +122,59 @@
     function dissociateTarget(appName, targetId, instPath) {
       var path = 'targets/' + targetId + '/associations?bind=false&name=' + appName + '&instance-path=' + instPath;
       return Restangular.one(path).post();
+    }
+
+    function listCommands(appName) {
+      var path = 'app/' + appName + '/commands';
+      return Restangular.all(path).getList();
+    }
+
+    function executeCommand(appName, cmdName) {
+      var path = 'app/' + appName + '/commands/execute?command-name=' + cmdName;
+      return Restangular.one(path).post();
+    }
+
+    function listInstances(appName) {
+      return Restangular.all('app/' + appName + '/children?all-children=true').getList();
+    }
+
+    function deleteInstance(appName, instancePath) {
+      var path = 'app/' + appName + '/instances?instance-path=' + instancePath;
+      return Restangular.one(path).remove();
+    }
+
+    function changeInstanceState(appName, instancePath, newState) {
+      var path = 'app/' + appName + '/change-state?new-state=' +
+      newState + '&instance-path=' + instancePath;
+
+      return Restangular.one(path).post();
+    }
+
+    function performActionOnInstance(appName, instancePath, action) {
+      var path = 'app/' + appName + '/' + action;
+      if (instancePath) {
+        path += '?instance-path=' + instancePath;
+      }
+
+      return Restangular.one(path).post();
+    }
+
+    function listChildrenComponents(appName, componentName) {
+      var path = 'app/' + appName + '/components/children';
+      if (componentName) {
+        path += '?name=' + componentName;
+      }
+
+      return Restangular.all(path).getList();
+    }
+
+    function postNewInstance(appName, instancePath, newInst) {
+      var path = 'app/' + appName + '/instances';
+      if (instancePath) {
+        path += '?instance-path=' + instancePath;
+      }
+
+      return Restangular.one(path).post('', newInst);
     }
   }
 }());

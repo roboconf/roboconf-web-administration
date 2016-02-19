@@ -9,5 +9,6 @@ angular.module('roboconf', [
     'roboconf.application-bindings',
     'roboconf.application-targets',
     'roboconf.instances',
+    'roboconf.commands',
     'roboconf.targets'
 ]);

@@ -42,6 +42,38 @@ describe('Roboconf Utilities :: without mocking rPrefs', function() {
     app.name = 'rest';
     expect(rutils.findRandomAvatar(app)).to.equal('avatar-green');
   });
+
+
+  it('checks it can remove array items', function() {
+
+    var arr = [];
+    rutils.removeArrayItem(arr, {});
+    expect(arr).to.be.empty;
+
+    rutils.removeArrayItem(arr, null);
+    expect(arr).to.be.empty;
+
+    rutils.removeArrayItem(arr, undefined);
+    expect(arr).to.be.empty;
+
+    rutils.removeArrayItem(arr, 'something');
+    expect(arr).to.be.empty;
+
+    arr = ['elt-1', 'elt-2', 'elt-3', 'elt-4'];
+    expect(arr).to.have.lengthOf(4);
+
+    rutils.removeArrayItem(arr, undefined);
+    expect(arr).to.have.lengthOf(4);
+
+    rutils.removeArrayItem(arr, 'elt-1');
+    expect(arr).to.have.lengthOf(3);
+
+    rutils.removeArrayItem(arr, 'elt-5');
+    expect(arr).to.have.lengthOf(3);
+
+    rutils.removeArrayItem(arr, 'elt-3');
+    expect(arr).to.have.lengthOf(2);
+  });
 });
 
 

@@ -18,12 +18,23 @@
         hideRightBlock: hideRightBlock,
         findInstancePath: findInstancePath,
         findRandomAvatar: findRandomAvatar,
-        findIcon: findIcon
+        findIcon: findIcon,
+        removeArrayItem: removeArrayItem
     };
 
     return service;
 
     // Functions
+    function removeArrayItem(arr, item) {
+
+      if (item !== undefined && item !== null) {
+        var index = arr.indexOf(item);
+        if (index > -1) {
+          arr.splice(index, 1);
+        }
+      }
+    }
+
     function startsWith(string, prefix) {
       return typeof string === 'string' &&
           typeof prefix === 'string' &&

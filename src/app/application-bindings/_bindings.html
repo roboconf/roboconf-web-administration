@@ -11,6 +11,7 @@
 	<ul>
 		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
 		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
+		<li><a href="#/app/{{ appName }}/commands">Commands</a></li>
 		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
 		<li class="active"><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
 		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
@@ -52,11 +53,11 @@
 					ng-model="mapping"
 					ng-click="saveBindings()">Save</button>
 
-			<div class="status-panel">
+			<div class="status-panel status-panel-bottom">
 				<p ng-repeat="s in status" ng-class="s.ok ? 'bg-success' : 'bg-danger'">
 					{{ s.msg }}
 					
-					<button type="button" class="close" aria-label="Close" ng-click="removeStatus( s )">
+					<button type="button" class="close" aria-label="Close" ng-click="removeStatus( status, s )">
 						<span aria-hidden="true" >&times;</span>
 					</button>
 				</p>

@@ -5,8 +5,8 @@
   .module('roboconf.instances')
   .controller('InstancesListingController', instancesListingController);
 
-  instancesListingController.$inject = ['Restangular', '$scope', 'rUtils', '$routeParams', 'rShare', '$window'];
-  function instancesListingController(Restangular, $scope, rUtils, $routeParams, rShare, $window) {
+  instancesListingController.$inject = ['$scope', 'rUtils', '$routeParams', 'rShare', '$window', 'rClient'];
+  function instancesListingController($scope, rUtils, $routeParams, rShare, $window, rClient) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -66,8 +66,7 @@
 
     // Functions
     function loadInstances() {
-      Restangular.all('app/' + $scope.appName + '/children?all-children=true')
-      .getList().then(function(instances) {
+      rClient.listInstances($scope.appName).then(function(instances) {
         $scope.responseStatus = 0;
         $scope.rootNodes = rUtils.buildInstancesTree(instances);
 
@@ -114,10 +113,8 @@
     }
 
     function deleteInstance() {
-      var path = 'app/' + $scope.appName + '/instances';
-      path += '?instance-path=' + $scope.selectedInstance.path;
 
-      Restangular.one(path).remove().then(function() {
+      rClient.deleteInstance($scope.appName, $scope.selectedInstance.path).then(function() {
         $scope.askToDelete = false;
         var node = findNode($scope.selectedInstance);
         var array = node.parent ? node.parent.children : $scope.rootNodes;
@@ -131,20 +128,14 @@
     }
 
     function changeState(newState) {
-      var path = 'app/' + $scope.appName + '/change-state?new-state=' +
-      newState + '&instance-path=' + $scope.selectedInstance.path;
-
-      Restangular.one(path).post();
+      rClient.changeState($scope.appName, $scope.selectedInstance.path, newState);
       $scope.selectedInstance.status = 'CUSTOM';
     }
 
     function performAll(action, useInstance) {
-      var path = 'app/' + $scope.appName + '/' + action;
-      if (useInstance) {
-        path += '?instance-path=' + $scope.selectedInstance.path;
-      }
 
-      Restangular.one(path).post().then($scope.loadInstances);
+      var path = useInstance ? $scope.selectedInstance.path : null;
+      rClient.performActionOnInstance($scope.appName, path, action).then($scope.loadInstances);
       if (useInstance) {
         $scope.selectedInstance.status = 'CUSTOM';
       }
@@ -220,7 +211,7 @@
 
 
     // LEGACY: regularly poll the server.
-    // FIXME: to be replaced by a web socket in the next version.
+    // FIXME: to be replaced by a web socket in a next version.
     $scope.refresh = true;
     function updateFromServer() {
 
@@ -230,7 +221,7 @@
       }
 
       // Refresh the list of instances
-      Restangular.all('app/' + $scope.appName + '/children?all-children=true').getList().then(function(instances) {
+      rClient.listInstances($scope.appName).then(function(instances) {
 
         // Reload the instances
         $scope.rootNodes = rUtils.buildInstancesTree(instances);
