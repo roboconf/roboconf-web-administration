@@ -6,7 +6,7 @@
   .controller('ApplicationBindingsController', applicationBindingsController);
 
   applicationBindingsController.$inject = ['rClient', '$scope', '$routeParams', 'rUtils'];
-  function applicationBindingsController(rClient, $scope, $routeParams, $window, rUtils) {
+  function applicationBindingsController(rClient, $scope, $routeParams, rUtils) {
 
     // Fields
     $scope.responseStatus = -1;
