@@ -5,11 +5,24 @@
 	<h1>
 		New Instance(s) for {{ ::appName }}
 	</h1>
-	
+</div>
+
+<div class="menu">
+	<ul>
+		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/instances">Instances</a></li>
+		<li><a href="#/app/{{ appName }}/commands">Commands</a></li>
+		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
+		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+
 	<!-- Information Message -->
-	<p>
-		This page allows you to create a new instance for the <strong>{{ ::appName }}</strong> application.
-	</p>
+	This page allows you to create a new instance for the <strong>{{ ::appName }}</strong> application.
+	<br /><br />
 	
 	<!-- Error message -->
 	<rbcf-error-message ng-show="error"></rbcf-error-message>
