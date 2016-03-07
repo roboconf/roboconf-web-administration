@@ -162,7 +162,7 @@
     function listChildrenComponents(appName, componentName) {
       var path = 'app/' + appName + '/components/children';
       if (componentName) {
-        path += '?name=' + componentName;
+        path += '?component-name=' + componentName;
       }
 
       return Restangular.all(path).getList();

@@ -279,7 +279,7 @@
     }
 
     function loadInstances(fn) {
-      return rClient.listInstances().then(function(instances) {
+      return rClient.listInstances($scope.appName).then(function(instances) {
         $scope.error = false;
         $scope.existingInstances = instances;
 
