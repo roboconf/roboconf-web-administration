@@ -128,7 +128,7 @@
     }
 
     function changeState(newState) {
-      rClient.changeState($scope.appName, $scope.selectedInstance.path, newState);
+      rClient.changeInstanceState($scope.appName, $scope.selectedInstance.path, newState);
       $scope.selectedInstance.status = 'CUSTOM';
     }
 
