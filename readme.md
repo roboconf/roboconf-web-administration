@@ -2,9 +2,7 @@
 [![Build Status](http://travis-ci.org/roboconf/roboconf-web-administration.png?branch=master)](http://travis-ci.org/roboconf/roboconf-web-administration)
 [![License](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Join us on Gitter.im](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/roboconf/roboconf)
-
-Website: [http://roboconf.net](http://roboconf.net)  
-Licensed under the terms of the **Apache License v2**.
+[![Web site](https://img.shields.io/badge/website-roboconf.net-b23e4b.svg)](http://roboconf.net)
 
 A web application to interact with Roboconf's Deployment Manager.  
 User documentation can be found on Roboconf's web site.
