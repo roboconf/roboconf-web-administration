@@ -14,6 +14,7 @@
     $scope.deleteApplication = deleteApplication;
     $scope.findAvatar = rUtils.findRandomAvatar;
     $scope.findIcon = rUtils.findIcon;
+    $scope.uploadIcon = uploadIcon;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -43,6 +44,13 @@
       rClient.deleteApplication($routeParams.appName).then(function() {
         $window.location = '#/';
       });
+    }
+    
+    function uploadIcon() {
+      rClient.uploadIcon($routeParams.appName, $routeParams.image, $routeParams.filedetail).then(function() {
+    	$window.location = '#/';
+    	});
+    	console.log("Bonjour le monde cruel");
     }
   }
 })();
