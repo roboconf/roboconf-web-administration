@@ -42,7 +42,9 @@
     "karma-spec-reporter": "0.0.19",
     "mocha": "^2.2.4",
     "phantomjs": "1.9.9",
-    "wiredep": "^2.1.0"
+    "wiredep": "^2.1.0",
+    "gulp": "~3.9.1",
+    "gulp-concat": "~2.6.0"
   },
   "scripts": {
     "postinstall": "node ./node_modules/bower/bin/bower install"

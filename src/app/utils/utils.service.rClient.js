@@ -5,8 +5,8 @@
   .module('roboconf.utils')
   .service('rClient', rClient);
 
-  rClient.$inject = ['Restangular'];
-  function rClient(Restangular) {
+  rClient.$inject = ['Restangular', '$http', 'rPrefs'];
+  function rClient(Restangular, $http, rPrefs) {
 
     // Fields
     var service = {
@@ -68,14 +68,19 @@
       return Restangular.one('applications').post('', newApp);
     }
     
-    function uploadIcon(appName, image, fileDetail) {
-    	var path = 'applications/image?name=' + appName;
+    function uploadIcon(appName, qualifier, file) {
+    	var path = rPrefs.getUrl() + '/applications/image?name=' + appName + '&qualifier=' + qualifier;
+    	console.log(path);
     	var formData = new FormData();
-    	formData.append('file', image);
-    	formData.append('file', fileDetail);
-    	return Restangular.one(path) 
+    	formData.append('file', file);
+    	/*return Restangular.one('applications/image?name=' + appName + '&qualifier=' + qualifier ) 
     		   .withHttpConfig({transformRequest: angular.identity})
-    		   .customPOST(formData, '', undefined, {'Content-Type': undefined});
+    		   .customPOST(formData, ' ', false, {'Mime-Type':'multipart/form-data','Content-Type': 'multipart/form-data'});*/
+    	return $http.post(path, formData, {
+    		   transformRequest: angular.identity,
+    		   headers : {'Mime-Type':'multipart/form-data'}
+    	});
+    	
     }
 
     function listTargets() {
