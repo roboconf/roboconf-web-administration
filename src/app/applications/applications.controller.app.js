@@ -16,8 +16,8 @@
     $scope.findIcon = rUtils.findIcon;
     $scope.uploadIcon = uploadIcon;
     
-    $scope.file = '';
-    $scope.qualifier = 0;
+    //$scope.file = '';
+    //$scope.qualifier = 0;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -49,11 +49,12 @@
       });
     }
     
-    function uploadIcon(appName, qualifier, file) {
+    //function uploadIcon(appName, qualifier, file) {
+    function uploadIcon(appName) {
       console.log(appName);
-      console.log(qualifier);
-      console.log(file);
-      rClient.uploadIcon(appName, qualifier, file).then(function() {
+      //console.log(qualifier);
+      //console.log(file);
+      rClient.uploadIcon(appName).then(function() {
     	$window.location = '#/';
     	});
     }

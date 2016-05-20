@@ -68,18 +68,25 @@
       return Restangular.one('applications').post('', newApp);
     }
     
-    function uploadIcon(appName, qualifier, file) {
-    	var path = rPrefs.getUrl() + '/applications/image?name=' + appName + '&qualifier=' + qualifier;
+    function uploadIcon(appName, qualifier) {
+    	//var path = rPrefs.getUrl() + '/applications/image?name=' + appName + '&qualifier=' + qualifier;
+    	var path = rPrefs.getUrl() + '/applications/image?name=' + appName;
     	console.log(path);
     	var formData = new FormData();
-    	formData.append('file', file);
-    	/*return Restangular.one('applications/image?name=' + appName + '&qualifier=' + qualifier ) 
+    	//formData.append('file', file);
+    	
+    	var formObj = $('#upload-icon-form')[0];
+    	console.log(formObj)
+        var formData = new FormData(formObj);
+        //formData.append('file', formObj);
+    	console.log(appName);
+    	return Restangular.one('applications/image?name=' + appName) 
     		   .withHttpConfig({transformRequest: angular.identity})
-    		   .customPOST(formData, ' ', false, {'Mime-Type':'multipart/form-data','Content-Type': 'multipart/form-data'});*/
-    	return $http.post(path, formData, {
+    		   .customPOST(formData, '', undefined, {'Mime-Type':'multipart/form-data', 'Content-Type': undefined});
+    	/*return $http.post(path, formData, {
     		   transformRequest: angular.identity,
-    		   headers : {'Mime-Type':'multipart/form-data'}
-    	});
+    		   headers : {'Mime-Type':'multipart/form-data', 'Content-Type': 'multipart/form-data'}
+    	});*/
     	
     }
 
