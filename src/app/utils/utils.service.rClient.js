@@ -5,8 +5,8 @@
   .module('roboconf.utils')
   .service('rClient', rClient);
 
-  rClient.$inject = ['Restangular', '$http', 'rPrefs'];
-  function rClient(Restangular, $http, rPrefs) {
+  rClient.$inject = ['Restangular'];
+  function rClient(Restangular) {
 
     // Fields
     var service = {
@@ -16,9 +16,9 @@
       deleteApplication: deleteApplication,
       deleteApplicationTemplate: deleteApplicationTemplate,
       newApplication: newApplication,
-      
+
       uploadIcon: uploadIcon,
-      
+
       listTargets: listTargets,
       findTarget: findTarget,
       findTargetProperties: findTargetProperties,
@@ -67,27 +67,13 @@
     function newApplication(newApp) {
       return Restangular.one('applications').post('', newApp);
     }
-    
-    function uploadIcon(appName, qualifier) {
-    	//var path = rPrefs.getUrl() + '/applications/image?name=' + appName + '&qualifier=' + qualifier;
-    	var path = rPrefs.getUrl() + '/applications/image?name=' + appName;
-    	console.log(path);
-    	var formData = new FormData();
-    	//formData.append('file', file);
-    	
-    	var formObj = $('#upload-icon-form')[0];
-    	console.log(formObj)
+
+    function uploadIcon(appName) {
+        var formObj = $('#upload-icon-form')[0];
         var formData = new FormData(formObj);
-        //formData.append('file', formObj);
-    	console.log(appName);
-    	return Restangular.one('applications/image?name=' + appName) 
-    		   .withHttpConfig({transformRequest: angular.identity})
-    		   .customPOST(formData, '', undefined, {'Mime-Type':'multipart/form-data', 'Content-Type': undefined});
-    	/*return $http.post(path, formData, {
-    		   transformRequest: angular.identity,
-    		   headers : {'Mime-Type':'multipart/form-data', 'Content-Type': 'multipart/form-data'}
-    	});*/
-    	
+        return Restangular.one('applications/image?name=' + appName)
+              .withHttpConfig({transformRequest: angular.identity})
+              .customPOST(formData, '', undefined, {'Mime-Type': 'multipart/form-data', 'Content-Type': undefined});
     }
 
     function listTargets() {

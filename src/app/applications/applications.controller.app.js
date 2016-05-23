@@ -15,9 +15,6 @@
     $scope.findAvatar = rUtils.findRandomAvatar;
     $scope.findIcon = rUtils.findIcon;
     $scope.uploadIcon = uploadIcon;
-    
-    //$scope.file = '';
-    //$scope.qualifier = 0;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -45,18 +42,13 @@
 
     function deleteApplication() {
       rClient.deleteApplication($routeParams.appName).then(function() {
-        $window.location = '#/';
+          $window.location = '#/';
       });
     }
-    
-    //function uploadIcon(appName, qualifier, file) {
     function uploadIcon(appName) {
-      console.log(appName);
-      //console.log(qualifier);
-      //console.log(file);
       rClient.uploadIcon(appName).then(function() {
-    	$window.location = '#/';
-    	});
+          $window.location = '#/';
+      });
     }
   }
 })();

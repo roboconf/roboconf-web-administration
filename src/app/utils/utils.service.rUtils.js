@@ -132,11 +132,6 @@
 
       return icon;
     }
-    
-    /*function findAppIcon(app) {
-      var icon = 'img/default-avatar.png';
-      if (app)
-    }*/
 
     function findRandomAvatar(app) {
       if (!app || app.icon) {
