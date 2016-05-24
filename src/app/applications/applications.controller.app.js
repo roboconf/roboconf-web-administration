@@ -45,9 +45,10 @@
           $window.location = '#/';
       });
     }
+
     function uploadIcon(appName) {
       rClient.uploadIcon(appName).then(function() {
-          $window.location = '#/';
+          $window.location = '#/app/' + appName + '/overview';
       });
     }
   }
