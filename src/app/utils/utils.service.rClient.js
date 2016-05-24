@@ -17,6 +17,8 @@
       deleteApplicationTemplate: deleteApplicationTemplate,
       newApplication: newApplication,
 
+      uploadIcon: uploadIcon,
+
       listTargets: listTargets,
       findTarget: findTarget,
       findTargetProperties: findTargetProperties,
@@ -64,6 +66,14 @@
 
     function newApplication(newApp) {
       return Restangular.one('applications').post('', newApp);
+    }
+
+    function uploadIcon(appName) {
+        var formObj = $('#upload-icon-form')[0];
+        var formData = new FormData(formObj);
+        return Restangular.one('applications/image?name=' + appName)
+              .withHttpConfig({transformRequest: angular.identity})
+              .customPOST(formData, '', undefined, {'Mime-Type': 'multipart/form-data', 'Content-Type': undefined});
     }
 
     function listTargets() {

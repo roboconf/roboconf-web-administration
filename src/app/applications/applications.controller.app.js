@@ -14,6 +14,7 @@
     $scope.deleteApplication = deleteApplication;
     $scope.findAvatar = rUtils.findRandomAvatar;
     $scope.findIcon = rUtils.findIcon;
+    $scope.uploadIcon = uploadIcon;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -41,7 +42,13 @@
 
     function deleteApplication() {
       rClient.deleteApplication($routeParams.appName).then(function() {
-        $window.location = '#/';
+          $window.location = '#/';
+      });
+    }
+
+    function uploadIcon(appName) {
+      rClient.uploadIcon(appName).then(function() {
+          $window.location = '#/app/' + appName + '/overview';
       });
     }
   }
