@@ -1,0 +1,551 @@
+{
+	"COMMON_APPLICATIONS" : "Applications",
+	
+	"COMMON_NEW_APPLICATION" : "Nouvelle Application",
+	
+	"COMMON_OVERVIEW"     : "Aperçu",
+	
+	"COMMON_INSTANCES"    : "Instances",
+	
+	"COMMON_COMMANDS" : "Commandes",
+	
+	"COMMON_TARGET_ASSOCIATIONS" : "Cibles",
+	
+	"COMMON_SCHEDULED_JOBS" : "Tâches planifiées",
+	
+	"COMMON_APPLICATIONS_BINDINGS"    : "Liaisons avec d'autres applications ",
+	
+	"COMMON_DELETE" : "Supprimer",
+	
+	"COMMON_UPLOAD" : "Téléverser",
+	
+	"COMMON_CANCEL" : "Annuler",
+	
+	"COMMON_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} n'a été trouvée.",
+	
+	"APPLICATIONS_DIRECTIVE_REPLACE_IMAGE" : "Cliquer pour remplacer cette image",
+	
+	"APPLICATIONS_DIRECTIVE_NO_DEPLOYED_INSTANCE" : "Aucune instance déployée.",
+	
+	"APPLICATIONS_DIRECTIVE_DEPLOYED_INSTANCES" : "Certaines instances sont déployées. Pas de problèmes à remonter.",
+	
+	"APPLICATIONS_DIRECTIVE_INSTANCES_WITH_PROBLEMS" : "Des instances semblent avoir rencontré des problèmes.",
+	
+	"COMMON_QUICK_ACCESS" : "Accès rapide",
+	
+	"APPLICATIONS_DIRECTIVE_MANAGE_INSTANCES" : "Gérer les instances",
+	
+	"APPLICATIONS_DIRECTIVE_ACCES_APPLICATION_PAGE" : "Accéder à la page de l'application",
+	
+	"APPLICATIONS_DIRECTIVE_TEMPLATE_NAME" : "Nom du modèle",
+	
+	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER" : "Qualificatif du Template",
+	
+	"COMMON_EXTERNAL_DEPENDENCIES" : "Dépendances Externes",
+	
+	"COMMON_YES" : "Oui",
+	
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes ",
+	
+	"COMMON_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles par d'autres applications",
+	
+	"APPLICATIONS_DIRECTIVE_AS" : "comme",
+	
+	"APPLICATIONS_DELETE_NO_DELETE" : "L'application {{name}} a toujours des instances déployées. Elle ne peut pas être supprimée.",
+	
+	"APPLICATIONS_DELETE_DELETE" : "L'application {{name}} n'a aucune instance déployée.",
+	
+	"APPLICATIONS_DELETE_DELETE_2" : "Vous pouvez la supprimer si vous le souhaitez.",
+	
+	"APPLICATIONS_DELETE_CONFIRM" : "Confirmer la suppression de cette application",
+	
+	"COMMON_WELCOME" : "Bienvenue",
+	
+	"APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED" : "Aucune appplication créée jusqu'à présent.",
+	
+	"COMMON_YOU_CAN" : "Vous pouvez",
+	
+	"APPLICATIONS_APP_LIST_CREATE_APPLICATION" : "créer votre première application.",
+	
+	"COMMON_APPLICATION_NAME" : "Nom de l'application",
+	
+	"COMMON_REQUIRED" : "(obligatoire)",
+	
+	"APPLICATIONS_DESCRIPTION" : "Description",
+	
+	"APPLICATIONS_PLEASE" : "Veuillez",
+	
+	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE" : "selectionner un modèle existant",
+	
+	"APPLICATIONS_TO_CREATE_AN_APPLICATION" : "pour créer une application ou",
+	
+	"APPLICATIONS_UPLOAD_NEW_TEMPLATE" : "télécharger un nouveau modèle",
+	
+	"APPLICATIONS_FIRST" : "d'abord",
+	
+	"APPLICATIONS_SUBMIT" : "Soumettre",
+	
+	"COMMON_YOU_CAN" : "Vous pouvez",
+	
+	"APPLICATIONS_COMPLETE_APPLICATION_CREATION" : "compléter la création de votre nouvelle application",
+	
+	"APPLICATIONS_TEMPLATE_APPLICATION" : "Modèles d'application",
+	
+	"COMMON_OVERVIEW" : "Aperçu",
+	
+	"APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS" : "Applications Associées",
+	
+	"COMMON_DELETE" : "Supprimer",
+	
+	"APPLICATIONS_TEMPLATE_TEMPLATE_NAME" : "Nom du modèle:",
+	
+	"APPLICATIONS_TEMPLATE_QUALIFIER" : "Qualificatif:",
+	
+	"COMMON_EXTERNAL_DEPENDENCIES" : "Dépendances Externes",
+	
+	"COMMON_YES" : "Oui",
+	
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes : ",
+	
+	"APPLICATIONS_TEMPLATE_TEMPLATE" : "Modèle",
+	
+	"APPLICATIONS_TEMPLATE_WITH_QUALIFIER" : "avec le qualificatif",
+	
+	"APPLICATIONS_TEMPLATE_NOT_ASSOCIATED_WITH_APPLICATION" : "n'est associé à aucune application.",
+	
+	"APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND" : "Aucun modèle d'application appélé {{name}} n'a été trouvé avec le qualificatif {{qualifier}}",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_NO_DELETE" : "Le modèle {{name}} avec le qualificatif {{qualifier}} est toujours associé à des applications. Il ne peut pas être supprimé.",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_DELETE" : "Le modèle {{name}} avec le qualificatif {{qualifier}} n'est associé à aucune application. Si vous pouvez le supprimer si vous voulez.",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_CONFIRM" : "Confirmer la suppression de ce modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_NO_ASSOCIATED_APPLICATIONS" : "Pas d'application associée.",
+	
+	"APPLICATIONS_TEMPLATE_ONE_OR_SEVERAL_ASSOCIATED_APPLICATIONS" : "une ou plusieurs applications sont associées à ce modèle.",
+	
+	"COMMON_QUICK_ACCESS" : "Accès Rapide",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE" : "Accéder à la page du modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUALIFIER" : "Qualificatif:",
+	
+	"COMMON_EXTERNAL_DEPENDENCIES" : "Dépendances externes",
+	
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes:",
+	
+	"COMMON_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles aux autres applications:",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NEW_APPLICATION" : "Nouveau modèle d'application",
+	
+	"COMMON_WELCOME" : "Bienvenue",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION" : "Aucun modèle d'application n'a été déployé jusqu'à présent.",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION_2" : "Vous pouvez déployer un nouveau modèle d'application en téléchargeant un fichier ZIP.",
+	
+	"APPLICATIONS_TEMPLATE_LIST_UPLOAD" : "Téléverser votre premier modèle d'application.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_FILE" : "Selectionner un fichier",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_CHANGE" : "Changer",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_RESET" : "Initialiser",
+	
+	"COMMON_UPLOAD" : "Téléverser",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE" : "Selectionner un fichier ZIP contenant le modèle d'application à déployer.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE" : "Nouveau modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN" : "Vous pouvez...",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_AVAILABLE_APPLICATION_TEMPLATES" : "lister les modèles d'application disponibles.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE_2" : "téléverser un nouveau modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_CREATE_NEW_APPLICATION" : "créer une nouvelle application",
+	
+	
+	"INSTANCES_NEW" : "Nouvelle Application",
+	
+	"COMMON_OVERVIEW"     : "Aperçu",
+	
+	"COMMON_INSTANCES"    : "Instances",
+	
+	"COMMON_COMMANDS" : "Commandes",
+	
+	"COMMON_TARGET_ASSOCIATIONS" : "Cibles",
+	
+	"COMMON_SCHEDULED_JOBS" : "Tâches planifiées",
+	
+	"COMMON_APPLICATIONS_BINDINGS"    : "Liaisons avec d'autres applications ",
+	
+	"COMMON_DELETE" : "Supprimer",
+	
+	"COMMON_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} trouvée.",
+	
+	"INSTANCES_NO_INSTANCES" : "Pas d'Instance",
+	
+	"INSTANCES_NO_INSTANCE_CREATED" : "Aucune Instance n'a été créée jusqu'à présent ",
+	
+	"INSTANCES_ROOT_INSTANCE_NO_CHILD" : "Cette Instance racine n'a pas d'enfants.",
+	
+	"INSTANCES_INSTANCE_PATH" : "Chemin vers l'Instance :",
+	
+	"INSTANCES_INSTANCE_STATUS" : "Statut de l'Instance :",
+	
+	"INSTANCES_COMPONENT" : "Composant :",
+	
+	"INSTANCES_INCLUDES_ACTIONS" : "Les actions suivantes peuvent être entreprises.",
+	
+	"INSTANCES_INCLUDES_DEPLOY_INSTANCE" : "Deployer cette instance",
+	
+	"INSTANCES_INCLUDES_DEPLOY_START" : "Deployer et Démarrer tout service",
+	
+	"INSTANCES_INCLUDES_CREATE_CHILD" : "Créer une instance fille",
+	
+	"INSTANCES_INCLUDES_REPLICATE_INSTANCE" : "Répliquer cette instance",
+	
+	"INSTANCES_INCLUDES_DELETE_INSTANCE" : "Supprimer cette instance",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_TITLE" : "Description",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_NOT_DEPLOYED" : "L'instance n'est pas déployée. Elle ne peut qu'être déployée.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_NOT_DEPLOYED_2" : "Vous pouvez aussi déployer et démarrer cette instance avec tous ses enfants en un clique.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_CYCLE" : "Le cycle de vie de cette instance est gérée par l'installeur  {{installer}} de Roboconf.",
+	
+	"INSTANCES_INCLUDES_ADDITIONAL_INFORMATION" : "Information additionnelle",
+	
+	"INSTANCES_INCLUDES_ACCESS_EXPORTED_VARIABLES" : "Accéder aux variables exportées",
+	
+	"INSTANCES_INCLUDES_STOP_INSTANCE" : "Arrêter cette instance",
+	
+	"INSTANCES_INCLUDES_START_INSTANCE" : "Démarrer cette instance",
+	
+	"INSTANCES_INCLUDES_UNDEPLOYED_IT" : "Désinstaller cette instance",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYED_STARTED" : "L'instance a démarré. Elle ne peut qu'être stoppée.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYED_STOPPED" : "L'instance est arrêtée. Elle peut être soit redémarrée ou non déployée",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYING" : "L'instance va être déployée par l'installeur {{installer}} de Roboconf.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYING_2" : "Cela peut prendre un peu de temps.",
+	
+	"INSTANCES_INCLUDES_PARENT_INSTANCE_NO_DEPLOYED" : "Son instance parent n'est pas déployée.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_NOT_DEPLOYED_NO_ACTION" : "L'instance n'est pas déployée. Vous devez déployer et redémarrer son instance parent avant de mettre à jour son état.",
+	
+	"INSTANCES_INCLUDES_DEPLOY_START_IT" : "Déployer et démarrer l'instance",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_NOT_DEPLOYED" : "L'instance n'est pas déployée. Elle ne peut qu'être déployée.",
+	
+	"INSTANCES_INCLUDES_IP_ADDRESS" : "Adresse IP :",
+	
+	"INSTANCES_INCLUDES_MACHINE_ID" : "Identifiant Machine :",
+	
+	"INSTANCES_INCLUDES_UNDEPLOY_INSTANCE" : "Désinstaller cette instance",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_DEPLOYED_STARTED" : "L'instance est déployée. Elle ne peut être qu'en mode sans déploiement.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_DEPLOYING" : "L'instance va être déployée par l'installeur {{installer}} de Roboconf.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_DEPLOYING_2" : "Cela peut prendre quelques temps.",
+	
+	"INSTANCES_INCLUDES_APP_ROOT_PROBLEM" : "L'état de l'instance est indéterminé.",
+	
+	"INSTANCES_INCLUDES_APP_ROOT_PROBLEM_2" : "C'est à dire que le gestionnaire de déploiement de Roboconf ne reçoit pas de signal venant de l'agent associé pendant plus de 2 minutes. Cela peut être expliqué par un problème de réseau du côté de gestionnaire de déploiement, du côté de l'agent, du côté de serveur de messagerie, ou une erreur du serveur de messagerie lui même (assurez vous qu'il fonctionne toujours).",
+	
+	"INSTANCES_INCLUDES_TRY_TO_UNDEPLOY" : "Essayer de désinstaller cette instance (Encore)",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_UNDEPLOYING" : "L'instance va être déployée par l'installeur {{installer}} de Roboconf.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_UNDEPLOYING_2" : "Cela peut prendre un peu de temps.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STARTING" : "L'instance va être démarrée par l'installeur {{installer}} de Roboconf.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STARTING_2" : "Cela peut prendre un peu de temps.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STOPPING" : "L'instance va être désinstallée par l'installeur {{installer}} de Roboconf.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STOPPING_2" : "Cela peut prendre quelques temps.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_UNDEPLOYING" : "L'instance va être passée en mode sans déploiement par l'installeur {{installer}} de Roboconf.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_UNDEPLOYING_2" : "Cela peut prendre un peu de temps.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_UNRESOLVED" : "L'instance est en attente de la résolution de ses dépendances avant de démarrer.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_UNRESOLVED_2" : "Cela peut prendre un peu de temps.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_WAITING_FOR_ANCESTOR" : "L'instance est en attente d'un de ses ancêtres pour résoudre la dépendance. Cette instance va démarrer automatiquement avec ses ancêtres.",
+	
+	"INSTANCES_INCLUDES_NO_EXPORTED_VARIABLE" : "Cette instance n'exporte aucune variable.",
+	
+	"INSTANCES_INCLUDES_EXPORTED_VARIABLES" : "Cette instance exporte les variables suivantes.",
+	
+	"INSTANCES_INCLUDES_GO_BACK_TO_THE" : "Retour à la ",
+	
+	"INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT" : "gestion du cycle de vie",
+	
+	"INSTANCES_DELETE_INSTANCE_CHILDREN" : "Voulez-vous supprimer cette instance et ses enfants ?",
+	
+	"INSTANCES_DELETE_CONFIRM" : "Confirmer",
+	
+	"COMMON_CANCEL" : "Annuler",
+	
+	"INSTANCES_NEW_INSTANCES" : "Nouvelle(s) pour",
+	
+	"INSTANCES_NEW_INFORMATION_MESSAGE" : "Cette page permet de créer une nouvellle instance pour l'application {{appName}}.",
+	
+	"INSTANCES_CREATE_INSTANCE" : "Créer votre instance",
+	
+	"INSTANCES_NO_INSTANCE_CREATED" : "Aucune instance n'a été créée jusqu'à présent.",
+	
+	"INSTANCES_OR_YOU_CAN" : "Ou vous pouvez",
+	
+	"INSTANCES_SELECT_AN_EXISTING_INSTANCE" : "selectionner une instance existante",
+	
+	"INSTANCES_TO_COMPLETE" : "à compléter.",
+	
+	"INSTANCES_COMPONENT_NAME" : "Nom du composant",
+	
+	"INSTANCES_INSTANCE_NAME" : "Nom de l'instance",
+	
+	"COMMON_REQUIRED" : "(obligatoire)",
+	
+	"INSTANCES_INSTANCE_NAME_UNIQUE" : "Le nom de l'instance doit être unique au sein de l'application",
+	
+	"INSTANCES_NEW_OK" : "OK",
+	
+	"COMMON_CANCEL" : "Annuler",
+	
+	"INSTANCES_NEW_ACTION_DELETE" : "Cette action va supprimer {{editedInstName}} et tous ses enfants.",
+	
+	"INSTANCES_SELECT_AN_EXISTING_INSTANCE_BELOW" : "selectionner une instance existante dans la liste ci-dessous",
+	
+	"INSTANCES_NEW_SHOW_EXISTING_VALIDATE" : "Valider",
+	
+	"COMMON_CANCEL" : "Annuler",
+	
+	"INSTANCES_NEW_CANCEL_CREATION" : "Annuler la création",
+	
+	"INSTANCES_NEW_CREATE_THEM_ALL" : "Créer les tous",
+	
+	"INSTANCES_NEW_RESET_FORM" : "Réinitialiser le formulaire",
+	
+	"INSTANCES_NEW_RESET_FORM_MESSAGE" : "Vous êtes sur le point de tout réinitialiser. Toutes les instances seront supprimées.",
+	
+	"INSTANCES_NEW_RESET_FORM_CONFIRM" : "Confirmer",
+	
+	"COMMON_CANCEL" : "Annuler",
+	
+	"INSTANCES_NEW_FINISH" : "Finir",
+	
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT" : "Cette application n'importe aucune variable externe.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT_2" : "Il n'y a aucune liaison à définir entre cette application et les autres.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES" : "Les préfixes suivants correspondent aux propriétés exportées par d'autres applications.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2" : "Selectionner une application à laquelle cette application sera liée.",
+	
+	"APPLICATIONS_BINDINGS_SAVE" : "Enregistrer",
+	
+	
+	"APPLICATIONS_TARGETS_ASSOCIATE" : "Cette page permet d'associer des instances de machine avec des cibles de déploiement.",
+	
+	"APPLICATIONS_TARGETS_DEFAULT" : "défaut",
+	
+	"APPLICATIONS_TARGETS_NONE" : "aucun",
+	
+	"COMMON_CANCEL" : "Annuler",
+	
+	"APPLICATIONS_TARGETS_EDIT" : "Editer",
+	
+	"APPLICATIONS_TARGETS_SAVE" : "Enregistrer",
+	
+	
+	"COMMANDS_NO_COMMAND_AVAILABLE" : "Aucune commande disponible pour cette application.",
+	
+	"COMMANDS_AVAILABLE_COMMANDS" : "Les commandes suivantes sont disponibles.", 
+	
+	"COMMANDS_AVAILABLE_COMMANDS_2" : "Vous pouvez les exécuter directement dans cette console. Remarquez qu'une commande peut prendre du temps à être exécutée ou produire des effets.",
+	
+	"COMMANDS_COMMAND_NAME" : "Nom de la commande",
+	
+	"COMMANDS_AVAILABLE_ACTIONS" : "Actions disponibles",
+	
+	"COMMANDS_EXECUTE" : "exécute",
+	
+	
+	"ERRORS_MESSAGE" : "Une erreur apparaît : la communication avec le serveur a échoué.",
+	
+	"ERRORS_MESSAGE_2" : "Assurez-vous que le gestionnaire de déploiement est démarré ou que les paramètres de connexion sont corrects dans",
+	
+	"ERRORS_PREFERENCES" : "preferences",
+	
+	"ERRORS_OOPS" : "Oups",
+	
+	
+	"COMMON_APPLICATIONS" : "Applications",
+	
+	"MENU_APPLICATIONS_TEMPLATES" : "Modèles d'application",
+	
+	"MENU_DEPLOYMENT_TARGETS" : "Cibles de déploiement",
+	
+	"MENU_SCHEDULER" : "Planificateur",
+	
+	"MENU_PREFERENCES" : "Préferences" ,
+	
+	"MENU_WEB_SITE" : "Site Web",
+	
+	
+	"PREFERENCES_PREFERENCES" : "Préferences",
+	
+	"PREFERENCES_MANAGE_SETTINGS_PREFERENCES" : "Gérer vos réglages et préferences.",
+	
+	"PREFERENCES_LANGUAGES" : "Langues",
+	
+	"PREFERENCES_ENGLISH" : "Anglais",
+	
+	"PREFERENCES_FRENCH" : "Français",
+	
+	"PREFERENCES_PLEASE_SELECT_LANGUAGE" : "Veuillez selectionner votre langue.",
+	
+	
+	"SCHEDULING_SCHEDULER" : "Planificateur",
+	
+	"COMMON_SCHEDULED_JOBS" : "Tâches planifiées",
+	
+	"SCHEDULING_PROPERTIES" : "Propriétés",
+	
+	"COMMON_DELETE" : "Supprimer",
+	
+	"SCHEDULING_DELETE_MESSAGE" : "Vous pouvez supprimer cette tâche si vous voulez.",
+	
+	"SCHEDULING_DELETE_CONFIRM" : "Confirmer la suppression de cette tâche",
+	
+	"SCHEDULING_NO_FOUND_JOB" : "Aucune tâche avec cet ID n'a été trouvée",
+	
+	"SCHEDULING_NO_SCHEDULED_JOB" : "Aucune tâche n'a été planifiée jusqu'à présent.",
+	
+	"SCHEDULING_LIST_APP_SCHEDULED_JOBS" : "Les tâches suivantes ont été planifiées.",
+	
+	"SCHEDULING_JOB_NAME" : "Nom de la tâche",
+	
+	"COMMON_APPLICATION_NAME" : "Nom de l'application",
+	
+	"SCHEDULING_COMMAND_NAME" : "Nom de la commande",
+	
+	"SCHEDULING_NEW_SCHEDULED_JOB" : "Nouvelle tâche planifiée",
+	
+	"SCHEDULING_REQUIRED" : "obligatoire",
+	
+	"SCHEDULING_PLEASE" : "Veuillez, cliquer sur",
+	
+	"SCHEDULING_CRON_EXPRESSION" : "expression CRON ",
+	
+	"SCHEDULING_SETUP_SCHEDULE" : "pour configurer la planification.",
+	
+	"SCHEDULING_CONTAIN_FIELDS" : "doit contenir soit  entre 6 et 7 champs",
+	
+	"SCHEDULING_YOU_CAN_USE" : "Vous pouvez utiliser",
+	
+	"SCHEDULING_SIMPLIFIED_CRON_EDITOR" : "notre éditeur de CRON simplifié",
+	
+	"SCHEDULING_HIDE" : "Cacher",
+	
+	"SCHEDULING_SUBMIT" : "Soumettre",
+	
+	"SCHEDULING_THE" : "L'",
+	
+	"SCHEDULING_FOR_THE_SCHEDULE" : "pour la planification.",
+	
+	"SCHEDULING_EDIT" : "Editer",
+	
+	"COMMON_CANCEL" : "Annuler",
+	
+	
+	"TARGETS_DEPLOYMENT_TARGETS" : "Cibles de déploiement",
+	
+	"TARGETS_PROPERTIES" : "Propriétés",
+	
+	"TARGETS_USAGE" : "Usage",
+	
+	"COMMON_DELETE" : "Supprimer",
+	
+	"TARGETS_TARGET" : "La cible",
+	
+	"TARGETS_DELETE_NO_DELETE" : "est toujours référencée et/ou utilisée par des applications ou des modèles d'application. Elle ne peut pas être supprimée.",
+	
+	"TARGETS_DELETE_DELETE" : "n'est ni référencée ni utilisée par une application ou un modèle d'application. Vous pouvez la supprimer si vous voulez.",
+	
+	"TARGETS_DELETE_CONFIRM" : "Confirmer la suppression de cette cible",
+	
+	"TARGETS_NO_FOUND_TARGET_ID" : "Aucune cible avec l'identifiant {{id}} n'a été trouvée.",
+	
+	"TARGETS_SAVE" : "Enregistrer",
+	
+	"COMMON_CANCEL" : "Annuler",
+	
+	"TARGETS_EDIT_PROPERTIES" : "Editer les propriétés",
+	
+	"TARGETS_TARGET_USAGE_MESSAGE" : "Cett cible n'est référencée ou utilisée par aucune application.",
+	
+	"TARGETS_TEMPLATE" : "Modèle",
+	
+	"TARGETS_NAME" : "Nom",
+	
+	"TARGETS_QUALIFIER" : "Qualificatif",
+	
+	"TARGETS_REFERENCING" : "Référençant",
+	
+	"TARGETS_USING" : "Utilisant",
+	
+	"COMMON_YES" : "oui",
+	
+	"TARGETS_NEW_DEPLOYMENT_TARGET" : "Nouvelle cible de  déploiement",
+	
+	"TARGETS_NO_TARGET_DEFINED" : "Aucune cible n'a été définie jusqu'à présent.",
+	
+	"TARGETS_ID" : "ID",
+	
+	"TARGETS_HANDLER" : "Gestionnaire",
+	
+	"TARGETS_DESCRIPTION" : "Description",
+	
+	"TARGETS_NO_NAME" : "pas de nom",
+	
+	"TARGETS_NO_DESCRIPTION" : "pas de description",
+	
+	"TARGETS_TARGETS_NEW_MESSAGE" : "Vous êtes sur le point de créer une nouvelle cible de déploiement.",
+	
+	"TARGETS_TARGETS_NEW_MESSAGE_2" : "Veuillez, selectionner un modèle pour les propriétés de votre cible.",
+	
+	"TARGETS_BLANK" : "Vide",
+	
+	"TARGETS_AMAZON_WEB_SERVICES" : "Amazon Web Services",
+	
+	"TARGETS_APACHE_JCLOUDS" : "Apache JClouds",
+	
+	"TARGETS_DOCKER" : "Docker",
+	
+	"TARGETS_EMBEDDED" : "Embarqué",
+	
+	"TARGETS_IN_MEMORY" : "En mémoire",
+	
+	"TARGETS_MICROSOFT_AZURE" : "Microsoft Azure",
+	
+	"TARGETS_OPENSTACK" : "Openstack",
+	
+	"TARGETS_VMWARE" : "VMWare",
+	
+	"TARGETS_VALIDATE" : "Valider"
+	
+}

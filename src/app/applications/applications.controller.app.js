@@ -27,6 +27,9 @@
           $scope.data = dataNew;
         }
     };
+    $scope.appData = {
+       name: '<strong>' + $routeParams.appName + '</strong>'
+    };
 
     $scope.deleteApplication = deleteApplication;
     $scope.findIconStyle = findIconStyle;
@@ -114,5 +117,6 @@
       var style = 'cursor ' + rUtils.findRandomAvatar(app);
       return style.trim();
     }
+
   }
 })();

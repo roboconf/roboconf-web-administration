@@ -3,14 +3,14 @@
 
 <div class="content">
 	<h1>
-		Application Templates
+		{{'APPLICATIONS_TEMPLATE_APPLICATION' | translate}}
 	</h1>
 </div>
 	
 <div class="menu">
 	<ul>
-		<li><a href="#/application-templates">Application Templates</a></li>
-		<li class="active"><a href="#/application-templates/new">New Application Template</a></li>
+		<li><a href="#/application-templates">{{'APPLICATIONS_TEMPLATE_APPLICATION' | translate}}</a></li>
+		<li class="active"><a href="#/application-templates/new">{{'APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -18,11 +18,11 @@
 	
 	<rbcf-zip-upload></rbcf-zip-upload>
 	<div id="upload-result-details">
-		You can...
+		{{'APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN' | translate}}
 		<ul>
-			<li>... <a href="#/application-templates">list the available application templates.</a></li>
-			<li>... <a href="#/application-templates/new" ng-click="resetUploadForm()">upload a new application template</a>.</li>
-			<li>... <a href="#/applications/new">create a new application</a>.</li>
+			<li>... <a href="#/application-templates">{{'APPLICATIONS_TEMPLATE_UPLOAD_AVAILABLE_APPLICATION_TEMPLATES' | translate}}</a></li>
+			<li>... <a href="#/application-templates/new" ng-click="resetUploadForm()">{{'APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE_2' | translate}}</a>.</li>
+			<li>... <a href="#/applications/new">{{'APPLICATIONS_TEMPLATE_UPLOAD_CREATE_NEW_APPLICATION' | translate}}</a>.</li>
 		</ul>
 	</div>
 </div>

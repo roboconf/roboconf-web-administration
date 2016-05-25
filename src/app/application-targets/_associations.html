@@ -2,20 +2,20 @@
 
 <div class="content">
 	<h1>
-		Applications &raquo; {{ appName }}
+		{{'COMMON_APPLICATIONS' | translate}} &raquo; {{ appName }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
-		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
-		<li><a href="#/app/{{ appName }}/commands">Commands</a></li>
-		<li class="active"><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
-		<li><a href="#/app/{{ appName }}/jobs">Scheduled Jobs</a></li>
-		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
-		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+		<li><a href="#/app/{{ appName }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -25,10 +25,10 @@
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
 	
 	<!-- No application? -->
-	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>
+	<div ng-show="responseStatus === 404" translate="{{'COMMON_NO_FOUND_APPLICATION' | translate:appTargetData}}"></div>
 	
 	<div ng-show="associations.length > 0">
-		This page allows to associate machine instances with deployment targets.<br /><br />
+		{{'APPLICATIONS_TARGETS_ASSOCIATE' | translate}}<br /><br />
 	
 		<form class="form-horizontal">
 			<div class="form-group hovered-line" ng-repeat="a in associations">
@@ -47,20 +47,20 @@
 					
 					<span ng-show="! a.editable" style="display: inline-block" class="rbcf-padfix">
 						<a href="#/target/{{ a.selectedId }}" ng-if="a.selectedId > -1">{{ formatTarget(a) }}</a>
-						<span ng-if="a.path !== '' && a.selectedId === -1">default</span>
-						<span ng-if="a.path === '' && a.selectedId === -1">none</span>
+						<span ng-if="a.path !== '' && a.selectedId === -1">{{'APPLICATIONS_TARGETS_DEFAULT' | translate}}</span>
+						<span ng-if="a.path === '' && a.selectedId === -1">{{'APPLICATIONS_TARGETS_NONE' | translate}}</span>
 					</span>
 				</div>
 
 				<div class="col-sm-3">
-					<button class="btn btn-default" type="submit" ng-click="cancelAssociation( a )" ng-show="a.editable">Cancel</button>
-					<button class="btn btn-default" type="submit" ng-click="a.editable = true" ng-show="! a.editable">Edit</button>
+					<button class="btn btn-default" type="submit" ng-click="cancelAssociation( a )" ng-show="a.editable">{{'COMMON_CANCEL' | translate}}</button>
+					<button class="btn btn-default" type="submit" ng-click="a.editable = true" ng-show="! a.editable">{{'APPLICATIONS_TARGETS_EDIT' | translate}}</button>
 					<button 
 							class="btn btn-default" type="submit" 
 							ng-click="saveAssociation( a )" 
 							ng-show="a.editable"
 							ng-model="a"
-							ng-disabled="a.oldId === a.selectedId">Save</button>
+							ng-disabled="a.oldId === a.selectedId">{{'APPLICATIONS_TARGETS_SAVE' | translate}}</button>
 				</div>
 			</div>
 		</form>

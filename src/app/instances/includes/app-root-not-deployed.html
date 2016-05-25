@@ -1,24 +1,24 @@
 <img src="img/state-root-not-deployed.jpg" alt="Not Deployed" />
-<p>The following actions can be undertaken.</p>
+<p>{{"INSTANCES_INCLUDES_ACTIONS" | translate}}</p>
 
 <ul>
-	<li><a href="" ng-click="changeState( 'DEPLOYED_STARTED' )">Deploy this instance</a></li>
-	<li><a href="" ng-click="performAll( 'deploy-all', true )">Deploy and Start everything</a></li>
+	<li><a href="" ng-click="changeState( 'DEPLOYED_STARTED' )">{{"INSTANCES_INCLUDES_DEPLOY_INSTANCE" | translate}}</a></li>
+	<li><a href="" ng-click="performAll( 'deploy-all', true )">{{"INSTANCES_INCLUDES_DEPLOY_START" | translate}}</a></li>
 </ul>
 <ul>
-	<li><a href="" ng-click="createChildInstance()">Create a child instance</a></li>
-	<li><a href="" ng-click="replicateInstance()">Replicate this instance</a></li>
+	<li><a href="" ng-click="createChildInstance()">{{"INSTANCES_INCLUDES_CREATE_CHILD" | translate}}</a></li>
+	<li><a href="" ng-click="replicateInstance()">{{"INSTANCES_INCLUDES_REPLICATE_INSTANCE" | translate}}</a></li>
 </ul>
 <ul>
-	<li><a href="" ng-click="askToDelete = true">Delete this instance</a></li>
+	<li><a href="" ng-click="askToDelete = true">{{"INSTANCES_INCLUDES_DELETE_INSTANCE" | translate}}</a></li>
 </ul>
 
 <rbcf-delete-instance ng-show="askToDelete"></rbcf-delete-instance>
 
 <br />
-<strong>Description</strong>
+<strong>{{'INSTANCES_INCLUDES_DESCRIPTION_TITLE' | translate}}</strong>
 <br />
-
-The instance is not deployed. It can only be deployed.<br />
-You can also deploy and start this instance with all its children in one click.
-The life cycle of this instance is handled by Roboconf's <strong>{{ selectedInstance.component.installer }}</strong> installer.
+{{'INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_NOT_DEPLOYED' | translate}}
+<br/>
+{{'INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_NOT_DEPLOYED_2' | translate }}
+<span translate="{{'INSTANCES_INCLUDES_DESCRIPTION_CYCLE' | translate:instData}}" />

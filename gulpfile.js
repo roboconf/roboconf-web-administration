@@ -162,8 +162,12 @@ function buildDevDirectory() {
   var img = gulp.src([ './src/img/*' ])
     .pipe( changed( './target/dev/img' ))
     .pipe( copy('./target/dev/img', {'prefix': 2}));
+  
+  var i18n = gulp.src([ './src/i18n/*' ])
+  .pipe( changed( './target/dev/i18n' ))
+  .pipe( copy('./target/dev/i18n', {'prefix': 2}));
 
-  return merge( html, favicon, js, devJs, tpl, img, css, misc );
+  return merge( html, favicon, js, devJs, tpl, img, css, misc, i18n );
 }
 
 
@@ -198,6 +202,7 @@ function prepareDist() {
   var tpl = gulp.src([ './src/app/**/*.html' ]).pipe( copy('./target/dist/templates', {'prefix': 2}));
   var img = gulp.src([ './src/img/*' ]).pipe( copy('./target/dist/img', {'prefix': 2}));
   var misc = gulp.src([ './src/app/**/*.properties' ]).pipe( copy('./target/dist/misc', {'prefix': 2}));
+  var i18n = gulp.src([ './src/i18n/*' ]).pipe( copy('./target/dist/i18n', {'prefix': 2}));
 
   var minifyJs = gulp.src(['./src/app/**/*.module.js', './src/app/**/*.js'])
     .pipe( concat('roboconf.min.js'))
@@ -207,7 +212,9 @@ function prepareDist() {
   var devJs = gulp.src([ './target/dev.config/**/*.js' ])
     .pipe( copy('./target/dist', {'prefix': 2}));
 
-  return merge( html, favicon, tpl, misc, img, css, minifyJs, devJs );
+  var flags = gulp.src( './target/dev/dependencies/flag-icon-css/flags/**' ).pipe( gulp.dest( './target/dist/lib/flag-icon-css/flags/' ));
+
+  return merge( html, favicon, tpl, misc, img, css, minifyJs, devJs, i18n, flags );
 }
 
 function completeDist() {

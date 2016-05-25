@@ -3,17 +3,17 @@
 
 <div class="content">
 	<h1>
-		Deployment Targets &raquo; {{ targetAlias }}
+		{{'TARGETS_DEPLOYMENT_TARGETS' | translate}} &raquo; {{ targetAlias }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/targets">Deployment Targets</a></li>
-		<li class="active"><a href="#/target/{{ targetId }}/properties">Properties</a></li>
-		<li><a href="#/target/{{ targetId }}/usage">Usage</a></li>
-		<li><a href="#/target/{{ targetId }}/delete">Delete</a></li>
+		<li><a href="#/targets">{{'TARGETS_DEPLOYMENT_TARGETS' | translate}}</a></li>
+		<li class="active"><a href="#/target/{{ targetId }}/properties">{{'TARGETS_PROPERTIES' | translate}}</a></li>
+		<li><a href="#/target/{{ targetId }}/usage">{{'TARGETS_USAGE' | translate}}</a></li>
+		<li><a href="#/target/{{ targetId }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -30,11 +30,11 @@
 
 		<br />
 		<div>
-			<button class="btn btn-default pull-right" type="submit" ng-show="editable" ng-click="save()">Save</button>
-			<button class="btn btn-default pull-right right-margin" type="submit" ng-show="editable" ng-click="setEditable(false)">Cancel</button>
-			<button class="btn btn-default pull-right" type="submit" ng-hide="editable" ng-click="setEditable(true)">Edit the Properties</button>
+			<button class="btn btn-default pull-right" type="submit" ng-show="editable" ng-click="save()">{{'TARGETS_SAVE' | translate}}</button>
+			<button class="btn btn-default pull-right right-margin" type="submit" ng-show="editable" ng-click="setEditable(false)">{{'COMMON_CANCEL' | translate}}</button>
+			<button class="btn btn-default pull-right" type="submit" ng-hide="editable" ng-click="setEditable(true)">{{'TARGETS_EDIT_PROPERTIES' | translate}}</button>
 		</div>		
 	</div>
 
-	<div ng-show="responseStatus === 404">No target with the ID <strong>{{ targetId }}</strong> was found.</div>
+	<div ng-show="responseStatus === 404" translate="{{'TARGETS_NO_FOUND_TARGET_ID' | translate}}"></div>
 </div>

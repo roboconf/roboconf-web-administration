@@ -12,6 +12,9 @@
     $scope.responseStatus = -1;
     $scope.appName = $routeParams.appName;
     $scope.status = [];
+    $scope.appBindingData = {
+       name: '<strong>' + $routeParams.appName + '</strong>'
+    };
 
     $scope.hasBindings = hasBindings;
     $scope.disableSaveButton = disableSaveButton;

@@ -1,9 +1,9 @@
 
-<p ng-show="! selectedInstance.exports">This instance does not export any variable.</p>
-<p ng-show="selectedInstance.exports">This instance exports the following variables.</p>
+<p ng-show="! selectedInstance.exports">{{'INSTANCES_INCLUDES_NO_EXPORTED_VARIABLE' | translate}}</p>
+<p ng-show="selectedInstance.exports">{{'INSTANCES_INCLUDES_EXPORTED_VARIABLES' | translate}}</p>
 <ul>
 	<li ng-repeat="(key,value) in selectedInstance.exports"><strong>{{ key }}</strong>: {{ value }}</li>
 </ul>
 
 <br />
-Go back to the <a href="" ng-click="showDetailsSection( 'LIFECYCLE' )">life cycle management</a>.
+{{'INSTANCES_INCLUDES_GO_BACK_TO_THE' | translate}} <a href="" ng-click="showDetailsSection( 'LIFECYCLE' )">{{'INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT' | translate}}</a>.

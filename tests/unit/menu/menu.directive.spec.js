@@ -3,6 +3,7 @@
 describe('Menu Directive', function() {
 
   beforeEach(module('roboconf.menu'));
+  beforeEach(module('pascalprecht.translate'));
   beforeEach(module('templates/menu/_menu.html'));
 
   var directive;

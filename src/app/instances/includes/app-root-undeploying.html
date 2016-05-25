@@ -1,14 +1,15 @@
 <img src="img/state-root-undeploying.gif" alt="Undeploying" />
-<p>The following actions can be undertaken.</p>
+<p>{{'INSTANCES_INCLUDES_ACTIONS' | translate}}</p>
 
 <ul>
-	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">Try to undeploy this instance (Again)</a></li>
-	<li><a href="" ng-click="createChildInstance()">Create a child instance</a></li>
+	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">{{'INSTANCES_INCLUDES_TRY_TO_UNDEPLOY' | translate}}</a></li>
+	<li><a href="" ng-click="createChildInstance()">{{'INSTANCES_INCLUDES_CREATE_CHILD' | translate}}</a></li>
 </ul>
 
 <br />
-<strong>Description</strong>
+<strong>{{'INSTANCES_INCLUDES_DESCRIPTION_TITLE' | translate}}</strong>
 <br />
 
-The instance is being undeployed by Roboconf's <strong>{{ selectedInstance.component.installer }}</strong> installer.<br />
-This may take some time.
+<span translate="{{'INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_UNDEPLOYING' | translate}}"/>
+<br />
+{{'INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_UNDEPLOYING_2' | translate}}

@@ -3,6 +3,7 @@
 describe('Error Directive', function() {
 
   beforeEach(module('roboconf.errors'));
+  beforeEach(module('pascalprecht.translate'));
   beforeEach(module('templates/errors/_error-message.html'));
 
   var directive;
@@ -19,6 +20,6 @@ describe('Error Directive', function() {
     var blockContent = angular.element(directive.find('.block-content')[0]);
 
     expect(blockContent).to.exist;
-    blockContent.text().should.contain('Deployment Manager');
+    blockContent.text().should.contain('ERRORS_MESSAGE');
   });
 });

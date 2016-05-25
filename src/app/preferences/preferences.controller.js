@@ -5,9 +5,23 @@
   .module('roboconf.preferences')
   .controller('PreferencesController', preferencesController);
 
-  preferencesController.$inject = ['rPrefs', '$scope', '$timeout'];
-  function preferencesController(rPrefs, $scope, $timeout) {
+  preferencesController.$inject = ['rClient', 'rPrefs', '$scope', '$timeout', '$translate'];
+  function preferencesController(rClient, rPrefs, $scope, $timeout, $translate) {
 
-    // nothing for the moment
+    // Fields
+    $scope.langKeys = ['fr_FR', 'en_US'];
+
+    // Functions
+    $scope.setLang = setLang;
+    $scope.formatLang = formatLang
+
+    function setLang(langKey) {
+       $translate.use(langKey);
+       //rClient.savePreferences('langkey', langKey);
+    }
+
+    function formatLang(lang) {
+        return lang === 'fr_FR'? 'French' : 'English';
+    }
   }
 })();
