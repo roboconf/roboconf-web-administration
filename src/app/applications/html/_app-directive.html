@@ -9,9 +9,16 @@
 		</span>
 	</p>
 	
-	<p class="app-avatar">
-		<img ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" />
-	</p>
+	<!--<p class="app-avatar">-->
+	  <form class="app-avatar" name="upload-icon-form" id="upload-icon-form">
+	        <input type="file" name="file" id="toto" class="inputfile"/> 
+	        <label for="toto" ng-click="uploadIcon( app.name )">
+				<img ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" title="Click to change icon" id="titi"/>
+				<!--<a for="titi" ng-click="uploadIcon( app.name )"></a>-->
+			</label>
+	  </form>
+	<!--</p>-->
+	
 	
 	<div class="app-links">
 		<span ng-show="! app.info || app.info === 'nd'">
