@@ -9,17 +9,9 @@
 		</span>
 	</p>
 	
-	<!--<p class="app-avatar">-->
-	<form name="upload-icon-form" id="upload-icon-form"> 
-		<input type="file" name="file" id="img-id" class="inputfile" onchange="angular.element(this).scope().uploadIcon()"/> 
-		<label for="img-id">
-			<p class="app-avatar">
-				<img ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" title="Click on to change icon"/>
-			</p>
-		</label>
-	</form> 
-	<!--</p>-->
-	
+	<p class="app-avatar">
+ 		<img ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" title="Click to replace this image" ng-click="selectFile()"/>
+	</p>
 	
 	<div class="app-links">
 		<span ng-show="! app.info || app.info === 'nd'">

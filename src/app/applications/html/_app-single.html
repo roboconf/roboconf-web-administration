@@ -26,15 +26,11 @@
 
 	<!-- Application Details -->
 	<rbcf-single-app ng-show="responseStatus === 0"></rbcf-single-app>
-	
-	<!--  <form name="upload-icon-form" id="upload-icon-form">
-		<div   ng-show="responseStatus === 0">
-			<span class="fileinput-new">Select an icon</span>
-			<input type="file" name="file" id="toto" class="inputfile"/>
-			<label for="toto" style="background-image:url('{{ findIcon( app )}}') ">tttt</label>
-			<a href="#/app/{{ app.name }}/upload" ng-click="uploadIcon(app.name)"> Upload an icon </a>
-		</div>
-	</form> 
-	 -->
+		
+	<form name="upload-icon-form" id="upload-icon-form">
+<!--  		<input type="file" name="file" id="file-id" class="inputfile" onchange="angular.element(this).scope().uploadIcon()"/> -->
+ 		<input type="file" name="file" id="file-id" class="inputfile" ng-model="file" ng-change="uploadIcon( {{app.name}} )"/>
+    </form> 
+
 	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>
 </div>

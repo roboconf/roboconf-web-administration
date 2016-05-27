@@ -15,6 +15,7 @@
     $scope.findAvatar = rUtils.findRandomAvatar;
     $scope.findIcon = rUtils.findIcon;
     $scope.uploadIcon = uploadIcon;
+    $scope.selectFile = selectFile;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -46,11 +47,16 @@
       });
     }
 
-    function uploadIcon() {
-      rClient.uploadIcon($routeParams.appName).then(function() {
+    function uploadIcon( appName ) {
+      console.log("Bonjour le monde cruel")
+      rClient.uploadIcon( appName ).then(function() {
     	  $window.location.reload(true);
-      });
-      
+      });  
     }
+
+    function selectFile() {
+      $("input[id='file-id']").click();
+    }
+    
   }
 })();
