@@ -47,9 +47,8 @@
       });
     }
 
-    function uploadIcon( appName ) {
-      console.log("Bonjour le monde cruel")
-      rClient.uploadIcon( appName ).then(function() {
+    function uploadIcon() {
+      rClient.uploadIcon( $routeParams.appName ).then(function() {
     	  $window.location.reload(true);
       });  
     }

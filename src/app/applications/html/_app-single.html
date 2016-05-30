@@ -28,8 +28,8 @@
 	<rbcf-single-app ng-show="responseStatus === 0"></rbcf-single-app>
 		
 	<form name="upload-icon-form" id="upload-icon-form">
-<!--  		<input type="file" name="file" id="file-id" class="inputfile" onchange="angular.element(this).scope().uploadIcon()"/> -->
- 		<input type="file" name="file" id="file-id" class="inputfile" ng-model="file" ng-change="uploadIcon( {{app.name}} )"/>
+ 		<input type="file" name="file" id="file-id" class="inputfile" onchange="angular.element(this).scope().uploadIcon()"/>
+<!--  		<input type="file" name="file" id="file-id" class="inputfile" ng-change="uploadIcon( app.name )"/> -->
     </form> 
 
 	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>
