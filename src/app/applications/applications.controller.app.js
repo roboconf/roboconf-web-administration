@@ -47,15 +47,18 @@
       });
     }
 
-    function uploadIcon() {
-      rClient.uploadIcon( $routeParams.appName ).then(function() {
+    function uploadIcon( appName ) {
+      rClient.uploadIcon( appName ).then(function() {
     	  $window.location.reload(true);
       });  
     }
 
-    function selectFile() {
+    function selectFile( appName ) {
       $("input[id='file-id']").click();
+      setTimeout(function() {
+    	  $scope.uploadIcon( appName )
+      }, 3000);
     }
-    
+
   }
 })();

@@ -10,7 +10,7 @@
 	</p>
 	
 	<p class="app-avatar">
- 		<img ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" title="Click to replace this image" ng-click="selectFile()"/>
+ 		<img id="img-id" ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" title="Click to replace this image" ng-click="selectFile( app.name )"/>
 	</p>
 	
 	<div class="app-links">
