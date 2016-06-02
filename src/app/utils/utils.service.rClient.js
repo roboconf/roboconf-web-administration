@@ -68,8 +68,8 @@
       return Restangular.one('applications').post('', newApp);
     }
 
-    function uploadIcon(appName) {
-        var formObj = $('#upload-icon-form')[0];
+    function uploadIcon(appName, formObj) {
+        //var formObj = $('#upload-icon-form')[0];
         var formData = new FormData(formObj);
         return Restangular.one('applications/image?name=' + appName)
               .withHttpConfig({transformRequest: angular.identity})
