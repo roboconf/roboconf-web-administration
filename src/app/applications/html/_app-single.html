@@ -30,13 +30,10 @@
 	<form name="upload-icon-form" id="upload-icon-form">
 <!--  		<input type="file" name="file" id="file-id" class="inputfile" onchange="angular.element(this).scope().uploadIcon()"/> -->
  		<input type="file" name="file" id="file-id" class="inputfile" accept="image/*" custom-on-change="readURL"/>
-    </form> 
-    <form name="test-form" id="test-form">
-    	<div id="div-img" class="load-icon" ng-show="showDiv" >
+ 		<div id="div-img" class="load-icon" ng-show="showDiv" >
     		<img id="my-img" src="#" alt=""/>
-    		<a>Crop this image</a>
     	</div>
-    </form>
+    </form> 
 
 	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>
 </div>

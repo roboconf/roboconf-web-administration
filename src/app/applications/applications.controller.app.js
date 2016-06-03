@@ -66,52 +66,28 @@
     	  $scope.uploadIcon( appName )
       }, 3000);*/
     }
-    function readURL( ) {
-
-	   console.log("Bonjour le monde cruel");
+    function readURL() {
 	   var input = $('#file-id')[0];
        if (input.files && input.files[0]) {
          var reader = new FileReader();
-         console.log(input.files[0]);
+         //console.log(input.files[0]);
          reader.onload = function (e) {
             $('#my-img')
-                  .attr('src', e.target.result);
-                  //.width(150)
-                  //.height(200);
-            console.log($scope.showDiv);
+                  .attr('src', e.target.result)
+                  .width(150)
+                  .height(200);
             $scope.showDiv = true;
-        	$scope.$apply();
+            $scope.$apply();
+        	$scope.cropImage('my-img');	
          };
-         reader.readAsDataURL(input.files[0]);
+         console.log(input.files[0]);
+         reader.readAsDataURL(input.files[0]);	
        }
-       
-       //$scope.cropImage();
-       var image = document.getElementById('my-img');
-       var cropper = new Cropper(image, {
-         aspectRatio: 16 / 9,
-         crop: function(e) {
-          console.log(e.detail.x);
-          console.log(e.detail.y);
-          console.log(e.detail.width);
-          console.log(e.detail.height);
-          console.log(e.detail.rotate);
-          console.log(e.detail.scaleX);
-          console.log(e.detail.scaleY);
-         }
-       });
-//       $scope.imgStatus = 1;
-//       console.log($scope.imgStatus);
-//       var divImg = document.getElementById("div-img").outerHTML;
-//       var myWindow = window.open('', '', 'width=400,height=200');
-//       var doc = myWindow.document;
-//       doc.open();
-//       doc.write(divImg);
-//       doc.close();
-       
     }
     
-    function cropImage() {
-        var image = document.getElementById('my-img');
+    function cropImage( id ) {
+    	console.log("id = "+id);
+        var image = document.getElementById(id);
         var cropper = new Cropper(image, {
           aspectRatio: 16 / 9,
           crop: function(e) {
@@ -124,6 +100,12 @@
            console.log(e.detail.scaleY);
           }
         });
+        var canvas = cropper.getCroppedCanvas();
+        var cropData = cropper.crop();
+        console.log("Bonjour le monde cruel");
+        console.log(canvas);
+        console.log(cropData);
+        
         //$('#test-form').hide();
        
     }
