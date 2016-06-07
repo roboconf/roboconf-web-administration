@@ -28,12 +28,23 @@
 	<rbcf-single-app ng-show="responseStatus === 0"></rbcf-single-app>
 		
 	<form name="upload-icon-form" id="upload-icon-form">
-<!--  		<input type="file" name="file" id="file-id" class="inputfile" onchange="angular.element(this).scope().uploadIcon()"/> -->
- 		<input type="file" name="file" id="file-id" class="inputfile" accept="image/*" custom-on-change="readURL"/>
- 		<div id="div-img" class="load-icon" ng-show="showDiv" >
-    		<img id="my-img" src="#" alt=""/>
-    	</div>
-    </form> 
+		<input type="file" id="file-id" class="inputfile" custom-on-change="onFile">
+		<button ng-click="preview()">Show preview</button>
+		<div ng-if="dataUrl" class="img-container">
+			<img ng-if="dataUrl" ng-src="{{dataUrl}}" width="800"
+				ng-cropper
+				ng-cropper-proxy="cropperProxy"
+				ng-cropper-show="showEvent"
+				ng-cropper-hide="hideEvent"
+				ng-cropper-options="options">
+		</div>
+	</form>
+	
+	<form name="toto" id="toto">
+		<div class="preview-container">
+			<img ng-if="preview.dataUrl" ng-src="{{preview.dataUrl}}" ng-click="uploadIcon( app.name )">
+		</div>
+	</form>
 
 	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>
 </div>

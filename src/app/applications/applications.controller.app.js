@@ -2,11 +2,11 @@
   'use strict';
 
   angular
-  .module('roboconf.applications')
+  .module('roboconf.applications',['ngCropper'])
   .controller('SingleApplicationController', singleApplicationController);
 
-  singleApplicationController.$inject = ['rClient', '$scope', '$routeParams', '$window', 'rUtils'];
-  function singleApplicationController(rClient, $scope, $routeParams, $window, rUtils) {
+  singleApplicationController.$inject = ['rClient', '$scope', '$routeParams', '$window', '$timeout', 'rUtils', 'Cropper'];
+  function singleApplicationController(rClient, $scope, $routeParams, $window, $timeout, rUtils, Cropper) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -16,9 +16,21 @@
     $scope.findIcon = rUtils.findIcon;
     $scope.uploadIcon = uploadIcon;
     $scope.selectFile = selectFile;
-    $scope.readURL = readURL;
-    $scope.showDiv = false;
-    $scope.cropImage = cropImage;
+    $scope.onFile = onFile;
+    $scope.preview = preview;
+    $scope.cropper = {};
+    $scope.cropperProxy = 'cropper.first';
+    $scope.showEvent = 'show';
+    $scope.hideEvent = 'hide';
+    $scope.options = {
+        maximize: true,
+        aspectRatio: 2 / 1,
+        crop: function(dataNew) {
+          data = dataNew;
+        }
+    };
+    $scope.formD = '';
+    var file, data;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -51,8 +63,13 @@
     }
 
     function uploadIcon( appName ) {
-      var formObj = $('#upload-icon-form')[0];
-      //var formObj = $('#test-form')[0];
+      //var formObj = $('#upload-icon-form')[0];
+      //var formObj = $('#toto')[0];
+      var content = $scope.formD;
+      var b = new Blob([content], { type: "image/jpg"});
+      console.log(content);
+      var formObj = new FormData();
+      formObj.append("file", b);
       console.log(formObj);
       //console.log(formObj1);
       rClient.uploadIcon( appName, formObj ).then(function() {
@@ -62,52 +79,30 @@
 
     function selectFile( appName ) {
       $("input[id='file-id']").click();
-     /* setTimeout(function() {
-    	  $scope.uploadIcon( appName )
-      }, 3000);*/
     }
-    function readURL() {
-	   var input = $('#file-id')[0];
-       if (input.files && input.files[0]) {
-         var reader = new FileReader();
-         //console.log(input.files[0]);
-         reader.onload = function (e) {
-            $('#my-img')
-                  .attr('src', e.target.result)
-                  .width(150)
-                  .height(200);
-            $scope.showDiv = true;
-            $scope.$apply();
-        	$scope.cropImage('my-img');	
-         };
-         console.log(input.files[0]);
-         reader.readAsDataURL(input.files[0]);	
-       }
+
+    function onFile() {
+      console.log("bonjour!!!!!");
+      var input = $('#file-id')[0];
+      var blob = input.files[0]; 
+      console.log(blob);
+      Cropper.encode((file = blob)).then(function(dataUrl) {
+        $scope.dataUrl = dataUrl;
+        $timeout(showCropper);  // wait for $digest to set image's src
+      });
     }
-    
-    function cropImage( id ) {
-    	console.log("id = "+id);
-        var image = document.getElementById(id);
-        var cropper = new Cropper(image, {
-          aspectRatio: 16 / 9,
-          crop: function(e) {
-           console.log(e.detail.x);
-           console.log(e.detail.y);
-           console.log(e.detail.width);
-           console.log(e.detail.height);
-           console.log(e.detail.rotate);
-           console.log(e.detail.scaleX);
-           console.log(e.detail.scaleY);
-          }
-        });
-        var canvas = cropper.getCroppedCanvas();
-        var cropData = cropper.crop();
-        console.log("Bonjour le monde cruel");
-        console.log(canvas);
-        console.log(cropData);
-        
-        //$('#test-form').hide();
-       
+
+    function preview() {
+      if (!file || !data) return;
+      Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
+        console.log("data-url = "+dataUrl);
+        console.log(typeof(data));
+        $scope.formD = dataUrl;
+        ($scope.preview || ($scope.preview = {})).dataUrl = dataUrl;
+      });
     }
+
+    function showCropper() { $scope.$broadcast($scope.showEvent); }
+    function hideCropper() { $scope.$broadcast($scope.hideEvent); }
   }
 })();
