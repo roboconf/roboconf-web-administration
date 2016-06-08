@@ -27,9 +27,9 @@
 	<!-- Application Details -->
 	<rbcf-single-app ng-show="responseStatus === 0"></rbcf-single-app>
 		
-	<form name="upload-icon-form" id="upload-icon-form">
+<!-- 	<form name="upload-icon-form" id="upload-icon-form"> -->
+	<div>
 		<input type="file" id="file-id" class="inputfile" custom-on-change="onFile">
-		<button ng-click="preview()">Show preview</button>
 		<div ng-if="dataUrl" class="img-container">
 			<img ng-if="dataUrl" ng-src="{{dataUrl}}" width="800"
 				ng-cropper
@@ -38,13 +38,14 @@
 				ng-cropper-hide="hideEvent"
 				ng-cropper-options="options">
 		</div>
-	</form>
+<!--  		<button ng-click="cropImage()">Crop</button>  -->
+		<button ng-click="uploadIcon( app.name )">Upload</button>
+	</div>
 	
-	<form name="toto" id="toto">
-		<div class="preview-container">
-			<img ng-if="preview.dataUrl" ng-src="{{preview.dataUrl}}" ng-click="uploadIcon( app.name )">
-		</div>
-	</form>
+	<!-- <div class="preview-container">
+		<img ng-if="cropImage.dataUrl" ng-src="{{cropImage.dataUrl}}" ng-click="uploadIcon( app.name )">
+	</div> -->
+
 
 	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>
 </div>

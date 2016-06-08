@@ -17,7 +17,7 @@
     $scope.uploadIcon = uploadIcon;
     $scope.selectFile = selectFile;
     $scope.onFile = onFile;
-    $scope.preview = preview;
+    $scope.cropImage = cropImage;
     $scope.cropper = {};
     $scope.cropperProxy = 'cropper.first';
     $scope.showEvent = 'show';
@@ -29,7 +29,7 @@
           data = dataNew;
         }
     };
-    $scope.formD = '';
+    $scope.filename = "";
     var file, data;
 
     // Initial actions
@@ -63,15 +63,15 @@
     }
 
     function uploadIcon( appName ) {
-      //var formObj = $('#upload-icon-form')[0];
-      //var formObj = $('#toto')[0];
-      var content = $scope.formD;
-      var b = new Blob([content], { type: "image/jpg"});
-      console.log(content);
+      $scope.cropImage();
+      //console.log($scope.cropImage.dataUrl);
+      var dataUrl = $scope.cropImage.dataUrl;
+      console.log(dataUrl);
+      var croppedBlob = Cropper.decode(dataUrl);
+      var croppedImage = new File([croppedBlob],$scope.filename);
       var formObj = new FormData();
-      formObj.append("file", b);
-      console.log(formObj);
-      //console.log(formObj1);
+
+      formObj.append("file", croppedImage);
       rClient.uploadIcon( appName, formObj ).then(function() {
     	  $window.location.reload(true);
       });
@@ -82,23 +82,22 @@
     }
 
     function onFile() {
-      console.log("bonjour!!!!!");
       var input = $('#file-id')[0];
       var blob = input.files[0]; 
-      console.log(blob);
       Cropper.encode((file = blob)).then(function(dataUrl) {
         $scope.dataUrl = dataUrl;
-        $timeout(showCropper);  // wait for $digest to set image's src
+        $timeout(showCropper);
       });
     }
 
-    function preview() {
+    function cropImage() {
       if (!file || !data) return;
+      console.log("Bojjjjjj");
       Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
-        console.log("data-url = "+dataUrl);
-        console.log(typeof(data));
-        $scope.formD = dataUrl;
-        ($scope.preview || ($scope.preview = {})).dataUrl = dataUrl;
+        $scope.filename = file.name;
+        //$scope.cropImage.dataUrl = dataUrl;
+        console.log(dataUrl);
+        ($scope.cropImage || ($scope.cropImage = {})).dataUrl = dataUrl;
       });
     }
 

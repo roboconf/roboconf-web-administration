@@ -631,4 +631,17 @@ html {
 		max-width: 100%;
 		/*border : 1px solid #aaf;*/
 	}
+	
+	/* .img-container {
+		max-width: 800px;
+		float: left;
+	}
+
+	.preview-container {
+		float: right;
+	}
+
+	.preview-container img {
+		max-width: 400px;
+	} */
 }
