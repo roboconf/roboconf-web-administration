@@ -607,41 +607,4 @@ html {
 	.inputfile {
 		opacity: 0;
 	}
-	
-	div.load-icon {
-		position: absolute;
-		z-index: 1;
-		left: 400px;
-		top: 100px;
-		width: 1200px;
-		height: 570px;
-		/*background-color: #036;*/
-		visibility: visible;
-	}
-	
-	div.load-icon > img {
-		position: absolute;
-		top : 50%;           /* la moitié de la hauteur du bloc qui la contient  */
-		left : 50%;          /* la moitié de la largeur du bloc qui la contient  */
-		margin-top : -50px;  /* la moitié de la hauteur de l'image  */
-		margin-left : -47px; /* la moitié de la largeur de l'image  */
-		display : block;
-		width : 94px;
-		height : 100px;
-		max-width: 100%;
-		/*border : 1px solid #aaf;*/
-	}
-	
-	/* .img-container {
-		max-width: 800px;
-		float: left;
-	}
-
-	.preview-container {
-		float: right;
-	}
-
-	.preview-container img {
-		max-width: 400px;
-	} */
 }
