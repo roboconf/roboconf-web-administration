@@ -2,10 +2,11 @@
   'use strict';
 
   angular
-  .module('roboconf.applications',['ngCropper'])
+  .module('roboconf.applications', ['ngCropper'])
   .controller('SingleApplicationController', singleApplicationController);
 
-  singleApplicationController.$inject = ['rClient', '$scope', '$routeParams', '$window', '$timeout', 'rUtils', 'Cropper'];
+  singleApplicationController.$inject = ['rClient', '$scope', '$routeParams', '$window', '$timeout',
+                                         'rUtils', 'Cropper'];
   function singleApplicationController(rClient, $scope, $routeParams, $window, $timeout, rUtils, Cropper) {
 
     // Fields
@@ -29,7 +30,7 @@
           data = dataNew;
         }
     };
-    $scope.filename = "";
+    $scope.filename = '';
     $scope.showButton = false;
     var file, data;
 
@@ -63,27 +64,27 @@
       });
     }
 
-    function uploadIcon( appName ) {
-      $scope.cropImage(function(){
+    function uploadIcon(appName) {
+      $scope.cropImage(function() {
           var dataUrl = $scope.cropImage.dataUrl;
           var croppedBlob = Cropper.decode(dataUrl);
-          var croppedImage = new File([croppedBlob],$scope.filename);
+          var croppedImage = new File([croppedBlob], $scope.filename);
           var formObj = new FormData();
 
-          formObj.append("file", croppedImage);
-          rClient.uploadIcon( appName, formObj ).then(function() {
+          formObj.append('file', croppedImage);
+          rClient.uploadIcon(appName, formObj).then(function() {
             $window.location.reload(true);
           });
       });
     }
 
     function selectFile() {
-      $("input[id='file-id']").click();
+      $('input[id=file-id]').click();
     }
 
     function onFile() {
       var input = $('#file-id')[0];
-      var blob = input.files[0]; 
+      var blob = input.files[0];
       Cropper.encode((file = blob)).then(function(dataUrl) {
         $scope.dataUrl = dataUrl;
         $timeout(showCropper);
@@ -91,8 +92,8 @@
       });
     }
 
-    function cropImage( callback ) {
-      if (!file || !data) return;
+    function cropImage(callback) {
+      if (!file || !data) { return;}
 
       Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
         $scope.filename = file.name;
@@ -102,6 +103,5 @@
     }
 
     function showCropper() { $scope.$broadcast($scope.showEvent); }
-    function hideCropper() { $scope.$broadcast($scope.hideEvent); }
   }
 })();
