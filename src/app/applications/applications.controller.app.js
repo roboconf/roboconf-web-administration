@@ -30,6 +30,7 @@
         }
     };
     $scope.filename = "";
+    $scope.showButton = false;
     var file, data;
 
     // Initial actions
@@ -63,21 +64,20 @@
     }
 
     function uploadIcon( appName ) {
-      $scope.cropImage();
-      //console.log($scope.cropImage.dataUrl);
-      var dataUrl = $scope.cropImage.dataUrl;
-      console.log(dataUrl);
-      var croppedBlob = Cropper.decode(dataUrl);
-      var croppedImage = new File([croppedBlob],$scope.filename);
-      var formObj = new FormData();
+      $scope.cropImage(function(){
+          var dataUrl = $scope.cropImage.dataUrl;
+          var croppedBlob = Cropper.decode(dataUrl);
+          var croppedImage = new File([croppedBlob],$scope.filename);
+          var formObj = new FormData();
 
-      formObj.append("file", croppedImage);
-      rClient.uploadIcon( appName, formObj ).then(function() {
-    	  $window.location.reload(true);
+          formObj.append("file", croppedImage);
+          rClient.uploadIcon( appName, formObj ).then(function() {
+            $window.location.reload(true);
+          });
       });
     }
 
-    function selectFile( appName ) {
+    function selectFile() {
       $("input[id='file-id']").click();
     }
 
@@ -87,17 +87,17 @@
       Cropper.encode((file = blob)).then(function(dataUrl) {
         $scope.dataUrl = dataUrl;
         $timeout(showCropper);
+        $scope.showButton = true;
       });
     }
 
-    function cropImage() {
+    function cropImage( callback ) {
       if (!file || !data) return;
-      console.log("Bojjjjjj");
+
       Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
         $scope.filename = file.name;
-        //$scope.cropImage.dataUrl = dataUrl;
-        console.log(dataUrl);
         ($scope.cropImage || ($scope.cropImage = {})).dataUrl = dataUrl;
+        callback();
       });
     }
 
