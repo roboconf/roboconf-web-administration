@@ -4,7 +4,7 @@
   angular
   .module('roboconf.applications')
   .directive('rbcfSingleApp', rbcfSingleApp)
-  .directive('customOnChange', customOnChange);
+  .directive('rbcfIconManagement', rbcfIconManagement);
 
   function rbcfSingleApp() {
     return {
@@ -13,11 +13,11 @@
     };
   }
 
-  function customOnChange() {
+  function rbcfIconManagement() {
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
-        var onChangeHandler = scope.$eval(attrs.customOnChange);
+        var onChangeHandler = scope.$eval(attrs.rbcfIconManagement);
         element.bind('change', onChangeHandler);
       }
     };

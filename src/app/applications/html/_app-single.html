@@ -10,7 +10,7 @@
 
 <div class="menu">
 	<ul>
-		<li class="active"><a href="#/app/{{ app.name }}/overview">Overview</a></li>
+		<li class="active"><a id="ovp" href="#/app/{{ app.name }}/overview">Overview</a></li>
 		<li><a href="#/app/{{ app.name }}/instances">Instances</a></li>
 		<li><a href="#/app/{{ app.name }}/commands">Commands</a></li>
 		<li><a href="#/app/{{ app.name }}/targets">Target Associations</a></li>
@@ -28,7 +28,7 @@
 	<rbcf-single-app ng-show="responseStatus === 0"></rbcf-single-app>
 
 	<div>
-		<input type="file" id="file-id" class="inputfile" custom-on-change="onFile">
+		<input type="file" id="file-id" class="inputfile" rbcf-icon-management="onFile">
 		<div ng-if="dataUrl" class="img-container">
 			<img ng-if="dataUrl" ng-src="{{dataUrl}}" width="800"
 				ng-cropper

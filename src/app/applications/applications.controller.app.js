@@ -11,6 +11,21 @@
 
     // Fields
     $scope.responseStatus = -1;
+    $scope.cropper = {};
+    $scope.cropperProxy = 'cropper.first';
+    $scope.showEvent = 'show';
+    $scope.hideEvent = 'hide';
+    $scope.fileToCrop = '';
+    $scope.filename = '';
+    $scope.cropImage = {};
+    $scope.options = {
+        maximize: true,
+        aspectRatio: 2 / 1,
+        crop: function(dataNew) {
+          $scope.data = dataNew;
+        }
+    };
+    $scope.showButton = false;
 
     $scope.deleteApplication = deleteApplication;
     $scope.findAvatar = rUtils.findRandomAvatar;
@@ -19,20 +34,6 @@
     $scope.selectFile = selectFile;
     $scope.onFile = onFile;
     $scope.cropImage = cropImage;
-    $scope.cropper = {};
-    $scope.cropperProxy = 'cropper.first';
-    $scope.showEvent = 'show';
-    $scope.hideEvent = 'hide';
-    $scope.options = {
-        maximize: true,
-        aspectRatio: 2 / 1,
-        crop: function(dataNew) {
-          data = dataNew;
-        }
-    };
-    $scope.filename = '';
-    $scope.showButton = false;
-    var file, data;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -84,8 +85,8 @@
 
     function onFile() {
       var input = $('#file-id')[0];
-      var blob = input.files[0];
-      Cropper.encode((file = blob)).then(function(dataUrl) {
+      $scope.fileToCrop = input.files[0];
+      Cropper.encode($scope.fileToCrop).then(function(dataUrl) {
         $scope.dataUrl = dataUrl;
         $timeout(showCropper);
         $scope.showButton = true;
@@ -93,15 +94,17 @@
     }
 
     function cropImage(callback) {
-      if (!file || !data) { return;}
+      if (!$scope.fileToCrop || !$scope.data) { return;}
 
-      Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
-        $scope.filename = file.name;
-        ($scope.cropImage || ($scope.cropImage = {})).dataUrl = dataUrl;
+      Cropper.crop($scope.fileToCrop, $scope.data).then(Cropper.encode).then(function(dataUrl) {
+        $scope.filename = $scope.fileToCrop.name;
+        $scope.cropImage.dataUrl = dataUrl;
         callback();
       });
     }
 
-    function showCropper() { $scope.$broadcast($scope.showEvent); }
+    function showCropper() {
+      $scope.$broadcast($scope.showEvent);
+    }
   }
 })();
