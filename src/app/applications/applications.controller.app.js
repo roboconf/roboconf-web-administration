@@ -94,7 +94,9 @@
     }
 
     function cropImage(callback) {
-      if (!$scope.fileToCrop || !$scope.data) { return;}
+      if (!$scope.fileToCrop || !$scope.data) {
+        return;
+      }
 
       Cropper.crop($scope.fileToCrop, $scope.data).then(Cropper.encode).then(function(dataUrl) {
         $scope.filename = $scope.fileToCrop.name;
