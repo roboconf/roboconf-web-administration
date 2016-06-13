@@ -603,4 +603,8 @@ html {
 		border-bottom: 1px solid #ddd;
 		height: 400px !important;
 	}
+	
+	.inputfile {
+		opacity: 0;
+	}
 }

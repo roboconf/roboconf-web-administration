@@ -2,19 +2,38 @@
   'use strict';
 
   angular
-  .module('roboconf.applications')
+  .module('roboconf.applications', ['ngCropper'])
   .controller('SingleApplicationController', singleApplicationController);
 
-  singleApplicationController.$inject = ['rClient', '$scope', '$routeParams', '$window', 'rUtils'];
-  function singleApplicationController(rClient, $scope, $routeParams, $window, rUtils) {
+  singleApplicationController.$inject = ['rClient', '$scope', '$routeParams', '$window', '$timeout',
+                                         'rUtils', 'Cropper'];
+  function singleApplicationController(rClient, $scope, $routeParams, $window, $timeout, rUtils, Cropper) {
 
     // Fields
     $scope.responseStatus = -1;
+    $scope.cropper = {};
+    $scope.cropperProxy = 'cropper.first';
+    $scope.showEvent = 'show';
+    $scope.hideEvent = 'hide';
+    $scope.fileToCrop = '';
+    $scope.filename = '';
+    $scope.cropImage = {};
+    $scope.options = {
+        maximize: true,
+        aspectRatio: 2 / 1,
+        crop: function(dataNew) {
+          $scope.data = dataNew;
+        }
+    };
+    $scope.showButton = false;
 
     $scope.deleteApplication = deleteApplication;
     $scope.findAvatar = rUtils.findRandomAvatar;
     $scope.findIcon = rUtils.findIcon;
     $scope.uploadIcon = uploadIcon;
+    $scope.selectFile = selectFile;
+    $scope.onFile = onFile;
+    $scope.cropImage = cropImage;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -47,9 +66,47 @@
     }
 
     function uploadIcon(appName) {
-      rClient.uploadIcon(appName).then(function() {
-          $window.location = '#/app/' + appName + '/overview';
+      $scope.cropImage(function() {
+          var dataUrl = $scope.cropImage.dataUrl;
+          var croppedBlob = Cropper.decode(dataUrl);
+          var croppedImage = new File([croppedBlob], $scope.filename);
+          var formObj = new FormData();
+
+          formObj.append('file', croppedImage);
+          rClient.uploadIcon(appName, formObj).then(function() {
+            $window.location.reload(true);
+          });
       });
+    }
+
+    function selectFile() {
+      $('input[id=file-id]').click();
+    }
+
+    function onFile() {
+      var input = $('#file-id')[0];
+      $scope.fileToCrop = input.files[0];
+      Cropper.encode($scope.fileToCrop).then(function(dataUrl) {
+        $scope.dataUrl = dataUrl;
+        $timeout(showCropper);
+        $scope.showButton = true;
+      });
+    }
+
+    function cropImage(callback) {
+      if (!$scope.fileToCrop || !$scope.data) {
+        return;
+      }
+
+      Cropper.crop($scope.fileToCrop, $scope.data).then(Cropper.encode).then(function(dataUrl) {
+        $scope.filename = $scope.fileToCrop.name;
+        $scope.cropImage.dataUrl = dataUrl;
+        callback();
+      });
+    }
+
+    function showCropper() {
+      $scope.$broadcast($scope.showEvent);
     }
   }
 })();
