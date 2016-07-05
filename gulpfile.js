@@ -14,6 +14,7 @@ var copy = require('gulp-copy');
 var merge = require('merge-stream');
 var cssmin = require('gulp-cssmin');
 var exists = require('path-exists').sync;
+var less = require('gulp-less');
 
 // Fix for Bootstrap, that does not embed all the dist files...
 var allMainBowerFiles = require('main-bower-files')({
@@ -136,7 +137,9 @@ function buildDevDirectory() {
     .pipe( changed( './target/dev/' ))
     .pipe( gulp.dest( './target/dev/' ));
 
-  var css = gulp.src([ './src/roboconf*.css' ])
+  var css = gulp.src([ './src/roboconf.less' ])
+    .pipe( less())
+    .pipe( gulp.dest('./target/dev/css'))  
     .pipe( changed( './target/dev/css' ))
     .pipe( copy('./target/dev/css', {'prefix': 1}));
 
@@ -187,7 +190,7 @@ function prepareDist() {
 
   var html = gulp.src( './src/index.html' ).pipe( gulp.dest( './target/dist/' ));
   var favicon = gulp.src( './src/favicon.ico' ).pipe( gulp.dest( './target/dist/' ));
-  var css = gulp.src([ './src/roboconf.css' ]).pipe( cssmin()).pipe( rename( 'roboconf.min.css' )).pipe( gulp.dest( './target/dist/' ));
+  var css = gulp.src([ './src/roboconf.less' ]).pipe( less()).pipe( cssmin()).pipe( rename( 'roboconf.min.css' )).pipe( gulp.dest( './target/dist/' ));
   var tpl = gulp.src([ './src/app/**/*.html' ]).pipe( copy('./target/dist/templates', {'prefix': 2}));
   var img = gulp.src([ './src/img/*' ]).pipe( copy('./target/dist/img', {'prefix': 2}));
   var misc = gulp.src([ './src/app/**/*.properties' ]).pipe( copy('./target/dist/misc', {'prefix': 2}));

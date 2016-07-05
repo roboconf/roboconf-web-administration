@@ -33,6 +33,7 @@
     "gulp-task-listing": "^1.0.0",
     "gulp-watch": "^4.2.4",
     "gulp-webserver": "^0.9.1",
+    "gulp-less": "3.1.0", 
     "karma": "^0.12.31",
     "karma-chai": "^0.1.0",
     "karma-coverage": "^0.2.4",
@@ -49,7 +50,7 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/roboconf/roboconf-web-administration/issues/"
+    "url": "https://github.com/roboconf/roboconf-web-administration/issues"
   },
   "repository": {
     "type": "git",
