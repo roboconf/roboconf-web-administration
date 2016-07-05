@@ -54,6 +54,7 @@
     $scope.selectInstance = selectInstance;
     $scope.askToReset = askToReset;
     $scope.reset = reset;
+    $scope.hardReset = hardReset;
     $scope.createThemAll = createThemAll;
     $scope.showGlobalButtons = showGlobalButtons;
 
@@ -94,9 +95,14 @@
     function reset(confirm) {
       $scope.mode = null;
       if (confirm) {
-        $scope.rootNode = null;
+        hardReset();
         $window.location = '#/app/' + $scope.appName + '/instances';
       }
+    }
+
+    function hardReset() {
+      $scope.rootNode = null;
+      $scope.mode = null;
     }
 
     function createThemAll() {
