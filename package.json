@@ -47,7 +47,7 @@
   "scripts": {
     "postinstall": "node ./node_modules/bower/bin/bower install"
   },
-  "license": "Apache v2.0",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/roboconf/roboconf-web-administration/issues/"
   },
