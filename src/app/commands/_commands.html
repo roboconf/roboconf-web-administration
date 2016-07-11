@@ -14,6 +14,7 @@
 		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
 		<li class="active"><a href="#/app/{{ appName }}/commands">Commands</a></li>
 		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ appName }}/jobs">Scheduled Jobs</a></li>
 		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
 		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
 	</ul>
@@ -43,16 +44,24 @@
 			</p>
 		</div>
 	
-		<form class="form-horizontal">
-			<div class="form-group hovered-line" ng-repeat="cmd in commands">
-				<label class="col-sm-8 rbcf-padfix">[ x ] &nbsp; {{ cmd }}</label>
-				<div class="col-sm-3">
-					<button class="btn btn-default" type="submit" ng-click="execute( cmd )">
-						<span ng-hide="cmd.executed">Execute</span>
-					</button>
-				</div>
-			</div>
-		</form>
+		<table class="table table-hover table-rbcf">
+			<tr>
+				<th>-</th>
+				<th>Command Name</th>
+				<th>Available Actions</th>
+			</tr>
+			<tr ng-repeat="cmd in commands | filter:searchFilter">
+				<td>{{ $index + 1 }}</td>
+				<td>{{ cmd }}</td>
+				<td>
+					<a href="" ng-click="execute( cmd )">
+						<span class="glyphicon glyphicon-play"></span>
+						&nbsp;
+						<span ng-hide="cmd.executed">execute</span>
+					</a>
+				</td>
+			</tr>
+		</table>
 	</div>
 	
 	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>

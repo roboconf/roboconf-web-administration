@@ -40,13 +40,13 @@
 
       rClient.executeCommand($scope.appName, cmd).then(function() {
         $scope.status.splice(0, 0, {
-          msg: 'Command \'' + cmd + '\' was successfully executed.',
+          msg: 'Command \'' + cmd + '\' was successfully launched.',
           ok: true
         });
 
       }, function(response) {
         $scope.status.splice(0, 0, {
-          msg: 'Execution of command \'' + cmd + '\' failed.',
+          msg: 'Command \'' + cmd + '\' could not be launched. An error occurred.',
           ok: false
         });
 

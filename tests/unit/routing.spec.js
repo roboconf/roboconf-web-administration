@@ -33,6 +33,13 @@ describe('Routing', function() {
       // Commands
       expect($route.routes['/app/:appName/commands'].controller).to.equal('CommandsListingController');
 
+      // Scheduling
+      expect($route.routes['/scheduler'].controller).to.equal('ScheduleListingController');
+      expect($route.routes['/scheduler/new'].controller).to.equal('ScheduleUpdateController');
+      expect($route.routes['/scheduler/job/:jobId'].controller).to.equal('ScheduleUpdateController');
+      expect($route.routes['/scheduler/job/:jobId/delete'].controller).to.equal('ScheduleUpdateController');
+      expect($route.routes['/app/:appName/jobs'].controller).to.equal('ScheduleListingController');
+
       // Targets
       expect($route.routes['/targets'].controller).to.equal('TargetsListingController');
       expect($route.routes['/targets/new'].controller).to.equal('TargetsNewController');

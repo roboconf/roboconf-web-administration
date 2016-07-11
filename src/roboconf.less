@@ -81,25 +81,25 @@ html {
 	.r-red {
 		color: @rbcf_color;
 	}
-	
+
 	img.spinner {
 		padding-left: 40px;
 	}
-	
+
 	span.formatted {
 		white-space: pre-wrap;
 	}
-	
+
 	.right-margin {
 		margin-right: 7px;
 	}
-	
+
 	ul.nice-list {
 		list-style-type: none !important;
 		margin-left: 30px;
 		margin-top: 4px;
 	}
-	
+
 	.hovered-line:hover {
 		background-color: #f6f6f0;
 	}
@@ -154,7 +154,7 @@ html {
 		position: fixed;
 		left: 22px;
 		width: 180px;
-		margin-top: -4px;
+		margin-top: -6px;
 	}
 	
 	.menu li {
@@ -231,6 +231,7 @@ html {
 		border: solid @rbcf_color 1px;
 		box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 		margin-bottom: 24px;
+		margin-top: -3px;
 	}
 	
 	.block-faded {
@@ -399,6 +400,7 @@ html {
 	/* Applications */
 	span.r-help {
 		font-style: italic;
+		font-weight: normal;
 	}
 	
 	option {
@@ -479,7 +481,6 @@ html {
 	
 	input.form-control {
 		display: inline;
-		width: 80%;
 	}
 	
 	#prefs-save-btn {
@@ -604,5 +605,26 @@ html {
 	
 	.inputfile {
 		opacity: 0;
+	}
+
+
+	/* CRON */
+
+	div.cron-wrap div {
+		display: inline-flex;
+	}
+	
+	div.cron-wrap span {
+		padding: 0 7px;
+	}
+	
+	div.cron-wrap select {
+		padding: 3px 5px;
+		margin-top: -5px;
+	}
+	
+	div.cron-wrap > .cron-select-wrap > select {
+		padding: 0 5px;
+		margin: 0;
 	}
 }

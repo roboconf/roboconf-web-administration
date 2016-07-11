@@ -42,7 +42,12 @@
       listChildrenComponents: listChildrenComponents,
 
       listCommands: listCommands,
-      executeCommand: executeCommand
+      executeCommand: executeCommand,
+
+      listScheduledJobs: listScheduledJobs,
+      postScheduledJob: postScheduledJob,
+      deleteScheduledJob: deleteScheduledJob,
+      findScheduledJob: findScheduledJob
     };
 
     return service;
@@ -135,6 +140,39 @@
     function listCommands(appName) {
       var path = 'app/' + appName + '/commands';
       return Restangular.all(path).getList();
+    }
+
+    function postScheduledJob(jobId, jobName, appName, cmdName, cron) {
+
+      var path = 'scheduler?job-name=';
+      path += jobName;
+      path += '&app-name=';
+      path += appName;
+      path += '&cmd-name=';
+      path += cmdName;
+      path += '&cron=';
+      path += cron;
+
+      if (jobId) {
+        path += '&job-id=' + jobId;
+      }
+
+      return Restangular.one(path).post();
+    }
+
+    function listScheduledJobs(appName, cmdName) {
+      var path = 'scheduler';
+      return Restangular.all(path).getList();
+    }
+
+    function deleteScheduledJob(jobId) {
+      var path = 'scheduler/' + jobId;
+      return Restangular.one(path).remove();
+    }
+
+    function findScheduledJob(jobId) {
+      var path = 'scheduler/' + jobId;
+      return Restangular.one(path).get();
     }
 
     function executeCommand(appName, cmdName) {

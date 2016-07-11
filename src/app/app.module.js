@@ -10,5 +10,6 @@ angular.module('roboconf', [
     'roboconf.application-targets',
     'roboconf.instances',
     'roboconf.commands',
+    'roboconf.scheduling',
     'roboconf.targets'
 ]);
