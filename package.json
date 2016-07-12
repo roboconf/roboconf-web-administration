@@ -17,6 +17,7 @@
     "gulp-copy": "0.0.2",
     "gulp-cssmin": "^0.1.7",
     "gulp-inject": "^1.2.0",
+    "gulp-less": "3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.2.0",
     "main-bower-files": "^2.8.0",
@@ -47,9 +48,9 @@
   "scripts": {
     "postinstall": "node ./node_modules/bower/bin/bower install"
   },
-  "license": "Apache v2.0",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/roboconf/roboconf-web-administration/issues/"
+    "url": "https://github.com/roboconf/roboconf-web-administration/issues"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,9 @@
     },
     {
       "name": "Christophe Hamerling"
+    },
+    {
+      "name": "Amadou Diarra"
     }
   ]
 }

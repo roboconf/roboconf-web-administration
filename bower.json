@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "authors": [
     "Vincent Zurczak",
-    "Christophe Hamerling"
+    "Christophe Hamerling",
+    "Amadou Diarra"
   ],
   "description": "Web administration for Roboconf",
   "keywords": [
@@ -11,7 +12,7 @@
     "deployment",
     "orchestration"
   ],
-  "license": "Apache v2.0",
+  "license": "Apache-2.0",
   "private": false,
   "ignore": [
     "**/.*",
@@ -21,21 +22,29 @@
   ],
   "dependencies": {
     "jquery": "~2.0.3",
-    "angular": "~1.3.15",
-    "angular-route": "~1.3.15",
+    "angular": "1.4.12",
+    "angular-route": "1.4.12",
     "bootstrap": "~3.3.1",
     "font-awesome": "~4.0.3",
     "restangular": "1.5.1",
     "underscore": "~1.6.0",
     "jasny-bootstrap": "~3.1.3",
-    "codemirror": "~5.7.0"
+    "codemirror": "~5.7.0",
+    "ng-cropper": "~0.4.1"
   },
   "devDependencies": {
-    "angular-mocks": "~1.3.15"
+    "angular-mocks": "1.4.12"
   },
   "overrides": {
     "codemirror": {
-      "main": ["lib/codemirror.js", "lib/codemirror.css", "mode/properties/properties.js"]
+      "main": [
+        "lib/codemirror.js",
+        "lib/codemirror.css",
+        "mode/properties/properties.js"
+      ]
     }
+  },
+  "resolutions": {
+    "angular": "1.4.12"
   }
 }

@@ -1,6 +1,6 @@
 
 <nav class="navbar-rbcf" role="navigation">
-	<a href="#/"><img id="header-img" src="img/logo_roboconf_2.jpg" alt="Roboconf" /></a>
+	<img id="header-img" src="img/logo_roboconf_2.jpg" alt="Roboconf" onclick="window.location = '#/'" />
 	
 	<div class="collapse navbar-collapse" id="rbcf-menu">
 		<ul class="nav navbar-nav navbar-right">
@@ -51,6 +51,16 @@
 						<a href="{{ action.link }}" ng-if="action.title !== separator && action.link">{{ action.title }}</a>
 						<a href="" ng-if="action.title !== separator && action.fn" ng-click="action.fn()">{{ action.title }}</a>
 					</li>
+				</ul>
+			</li>
+			
+			<!-- Help -->
+			<li class="dropdown underlined" >
+				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Help..." >
+					<span class="glyphicon glyphicon-question-sign"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="http://roboconf.net">Web Site</a></li>
 				</ul>
 			</li>
 		</ul>

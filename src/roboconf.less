@@ -1,3 +1,8 @@
+// LESS variables
+@rbcf_color: #b23e4b;
+@rbcf_opposite_color: #ffffff;
+
+
 /* Global Properties */
 
 * {
@@ -45,7 +50,7 @@ html {
 	a:hover, a:active, a:focus, a:visited {
 	    outline: none;
 	    border: 0;
-	    background-color: #ffffff;
+	    background-color: white;
 	}
 	
 	h3 {
@@ -64,17 +69,17 @@ html {
 	}
 	
 	.btn-rbcf {
-		background-color: #b23e4b;
-		color: #ffffff;
+		background-color: @rbcf_color;
+		color: @rbcf_opposite_color;
 	}
 	
 	.btn-rbcf:hover {
 		text-decoration: underline;
-		color: #ffffff;
+		color: @rbcf_opposite_color;
 	}
 	
 	.r-red {
-		color: #b23e4b;
+		color: @rbcf_color;
 	}
 	
 	img.spinner {
@@ -106,6 +111,7 @@ html {
 		margin: 8px 0 0 10px;
 		padding: 0 34px 14px 18px;
 		border-bottom: solid black 3px;
+		cursor: pointer;
 	}
 	
 	.navbar-rbcf {
@@ -125,7 +131,7 @@ html {
 	}
 	
 	ul.navbar-nav > li.underlined:hover {
-		border-bottom: solid #b23e4b 2px;
+		border-bottom: solid @rbcf_color 2px;
 		text-decoration: none;
 	}
 	
@@ -133,12 +139,13 @@ html {
 		background-color: #fff !important;
 	}
 	
-	#search-bar {
+	input#search-bar {
 		display: none;
 		width: 200px;
-		transition: all .5s ease;
 		padding: 2px 4px;
 		margin-top: 12px;
+		border-radius: 4px;
+		outline: none;
 	}
 	
 	/* Left Menu */
@@ -165,7 +172,7 @@ html {
 	}
 	
 	.menu li:hover {
-		color: #b23e4b;
+		color: @rbcf_color;
 	}
 	
 	.menu a, .menu a:active, .menu a:hover {
@@ -173,9 +180,13 @@ html {
 		text-decoration: none;
 	}
 	
+	.menu a:hover {
+		background-color: @rbcf_opposite_color;
+	}
+	
 	.menu li.active {
 		font-weight: bold;
-		color: #b23e4b;
+		color: @rbcf_color;
 	}
 	
 	/* Other Pages */
@@ -193,7 +204,7 @@ html {
 	}
 	
 	.content a, .content a:hover {
-		color: #b23e4b;
+		color: @rbcf_color;
 	}
 	
 	.content h1 {
@@ -212,14 +223,12 @@ html {
 	 	font-weight: bold;
 	 }
 	
-	/*
-	 * Blocks
-	 */
+	/* Blocks */
 	
 	/* The block for a root instance. */
 	div.block {
 		border-radius: 10px;
-		border: solid #b23e4b 1px;
+		border: solid @rbcf_color 1px;
 		box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 		margin-bottom: 24px;
 	}
@@ -238,8 +247,8 @@ html {
 	p.block-title {
 		border-top-left-radius: 8px;
 		border-top-right-radius: 8px;
-		background-color: #b23e4b;
-		color: #ffffff;
+		background-color: @rbcf_color;
+		color: @rbcf_opposite_color;
 		font-weight: bold;
 		padding: 6px 0 6px 18px;
 	}
@@ -249,13 +258,13 @@ html {
 	}
 	
 	p.block-title > a {
-		color: #ffffff;
+		color: @rbcf_opposite_color;
 		font-weight: bold;
 	}
 	
 	p.block-title > a:hover {
-		background-color: #b23e4b;
-		color: #ffffff;
+		background-color: @rbcf_color;
+		color: @rbcf_opposite_color;
 	}
 	
 	div.block-content > p {
@@ -280,9 +289,7 @@ html {
 	}
 	
 	
-	/*
-	 * app.html
-	 */
+	/* app.html */
 	
 	/* Nested instances rely on lists. */
 	.instances ul {
@@ -305,7 +312,7 @@ html {
 		top: 0;
 		bottom: 0;
 		left: 0;
-		border-left: 2px #b23e4b solid;
+		border-left: 2px @rbcf_color solid;
 	}
 	
 	/* Put list items in relative position. */
@@ -322,7 +329,7 @@ html {
 		display: block;
 		width: 12px; /* same with indentation */
 		height: 0;
-		border-top: 2px #b23e4b solid;
+		border-top: 2px @rbcf_color solid;
 		position: absolute;
 		top: 14px;
 		left: 0;
@@ -338,7 +345,7 @@ html {
 		height:auto;
 		top: 16px; /* (line-height/2) */
 		bottom: 0;
-		background:white;
+		background: white;
 		z-index: 11;
 	}
 	
@@ -354,13 +361,13 @@ html {
 	
 	/* Hover list items */
 	.instances ul li.listing p:hover {
-		color: #b23e4b;
+		color: @rbcf_color;
 		cursor: pointer;
 	}
 	
 	/* Selected instance */
 	.instances ul > li.selected > p {
-		color: #b23e4b;
+		color: @rbcf_color;
 	}
 	
 	.editor-actions {
@@ -369,13 +376,12 @@ html {
 	
 	.editor-actions > span:hover {
 		cursor: pointer;
-		color: #b23e4b;
+		color: @rbcf_color;
 	}
 	
 	
-	/*
-	 * Uploads
-	 */
+	/* Uploads */
+	
 	#upload-result {
 		margin-bottom: 0;
 	}
@@ -390,9 +396,7 @@ html {
 	}
 	
 	
-	/*
-	 * Applications
-	 */
+	/* Applications */
 	span.r-help {
 		font-style: italic;
 	}
@@ -414,14 +418,12 @@ html {
 	}
 	
 	
-	/*
-	 * Master-Details
-	 */
+	/* Master-Details */
 	#right-block {
 		float: left;
 		width: 47%;
 		border-radius: 10px;
-		border: solid #b23e4b 1px;
+		border: solid @rbcf_color 1px;
 		padding: 16px;
 		margin-left: 16px;
 		
@@ -473,9 +475,7 @@ html {
 	}
 	
 	
-	/*
-	 * settings.html
-	 */
+	/* Settings.html */
 	
 	input.form-control {
 		display: inline;
@@ -494,9 +494,8 @@ html {
 	}
 	
 	
-	/*
-	 * Instances
-	 */
+	/* Instances */
+	
 	.instance-actions > img {
 		max-width: 98%;
 	}
@@ -510,9 +509,7 @@ html {
 	}
 	
 	
-	/*
-	 * Applications and Avatars
-	 */
+	/* Applications and Avatars */
 	
 	 p.app-avatar {
 		width: 160px;
@@ -580,7 +577,8 @@ html {
 	.rbcf-padfix {
 		padding-top: 6px;
 	}
-	
+
+
 	/* Notifications */
 	
 	.status-panel-bottom {
@@ -602,5 +600,9 @@ html {
 		border-top: 1px solid #ddd;
 		border-bottom: 1px solid #ddd;
 		height: 400px !important;
+	}
+	
+	.inputfile {
+		opacity: 0;
 	}
 }

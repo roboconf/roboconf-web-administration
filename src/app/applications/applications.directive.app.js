@@ -11,4 +11,5 @@
       templateUrl: 'templates/applications/html/_app-directive.html'
     };
   }
+
 })();
