@@ -25,7 +25,18 @@
 	<div ng-show="responseStatus === 0">
 		<div ng-show="app.apps.length > 0">
 			<strong>Template name:</strong> {{ app.name }}<br />
-			<strong>Qualifier:</strong> {{ app.qualifier }}<br /><br />
+			<strong>Qualifier:</strong> {{ app.qualifier }}<br />
+			
+			<span ng-show="app.extDep">
+				<strong>External Dependencies</strong>: yes
+			</span>
+			
+			<br ng-show="app.eep && app.extDep" />
+			<span ng-show="app.eep">
+				<strong>Prefix for External Exports:</strong> {{ app.eep }}
+			</span>
+			
+			<br /><br />
 			<strong>Associated applications:</strong><br />
 			
 			<ul class="nice-list">

@@ -5,8 +5,9 @@
   .module('roboconf.applications', ['ngCropper'])
   .controller('SingleApplicationController', singleApplicationController);
 
-  singleApplicationController.$inject = ['rClient', '$scope', '$routeParams', '$window', '$timeout',
-                                         'rUtils', 'Cropper'];
+  singleApplicationController.$inject =
+    ['rClient', '$scope', '$routeParams', '$window', '$timeout', 'rUtils', 'Cropper'];
+
   function singleApplicationController(rClient, $scope, $routeParams, $window, $timeout, rUtils, Cropper) {
 
     // Fields

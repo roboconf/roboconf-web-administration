@@ -48,6 +48,12 @@
 		
 		<strong>Template Name:</strong> <a href="#/tpl/{{ app.tplName }}/{{ app.tplQualifier }}/overview">{{ app.tplName }}</a><br />
 		<strong>Template Qualifier:</strong> {{ app.tplQualifier }}<br />
+		
+		<span ng-show="app.extDep">
+			<strong>External Dependencies</strong>: yes
+		</span>
+		<br ng-show="app.extDep" />
+		
 		<span ng-show="app.tplEep">
 			<strong>Prefix for External Exports:</strong> {{ app.tplEep }}
 		</span>
