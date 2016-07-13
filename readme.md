@@ -39,7 +39,7 @@ The web administration invokes the DM's REST API.
 With released versions of Roboconf, the location of the REST API is deduced from the
 server. However, in development mode, it often happens that we have the DM running on one side
 (available at [http://localhost:8181/roboconf-dm](http://localhost:8181/roboconf-dm)) and the
-web administration running one another location ([http://localhost:8000](http://localhost:8000)).
+web administration running from another location ([http://localhost:8000](http://localhost:8000)).
 
 To be able to use a real DM in development mode, follow this procedure.
 
