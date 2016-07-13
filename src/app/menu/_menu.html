@@ -7,7 +7,9 @@
 			
 			<!-- Search -->
 			<li>
-				<input type="search" placeholder="Find..." id="search-bar" ng-show="searchVisible" ng-model="searchFilter" />
+				<input type="search" placeholder="Find..." id="search-bar" onkeyup="hideSearchInput(event)"
+						ng-show="searchVisible"
+						ng-model="searchFilter" />
 			</li>
 			
 			<li class="underlined" ng-show="searchVisible">
@@ -64,6 +66,12 @@ function toggleSearchInput() {
   $( '#search-bar' ).toggle();
   if( $( '#search-bar' ).is( ':visible' )) {
     $( '#search-bar' ).focus();
+  }
+}
+
+function hideSearchInput(event) {
+  if( event.keyCode === 27 ) {	// ESC
+    $( '#search-bar' ).hide();
   }
 }
 //-->
