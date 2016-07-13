@@ -11,24 +11,24 @@
 
     // Fields
     $scope.responseStatus = -1;
-    $scope.cropper = {};
-    $scope.cropperProxy = 'cropper.first';
     $scope.showEvent = 'show';
     $scope.hideEvent = 'hide';
+    $scope.showButton = false;
+
+    $scope.cropper = {};
+    $scope.cropperProxy = 'cropper.first';
     $scope.fileToCrop = '';
-    $scope.filename = '';
     $scope.cropImage = {};
     $scope.options = {
         maximize: true,
-        aspectRatio: 2 / 1,
+        aspectRatio: 1 / 1,
         crop: function(dataNew) {
           $scope.data = dataNew;
         }
     };
-    $scope.showButton = false;
 
     $scope.deleteApplication = deleteApplication;
-    $scope.findAvatar = rUtils.findRandomAvatar;
+    $scope.findIconStyle = findIconStyle;
     $scope.findIcon = rUtils.findIcon;
     $scope.uploadIcon = uploadIcon;
     $scope.selectFile = selectFile;
@@ -69,7 +69,7 @@
       $scope.cropImage(function() {
           var dataUrl = $scope.cropImage.dataUrl;
           var croppedBlob = Cropper.decode(dataUrl);
-          var croppedImage = new File([croppedBlob], $scope.filename);
+          var croppedImage = new File([croppedBlob], $scope.fileToCrop.name);
           var formObj = new FormData();
 
           formObj.append('file', croppedImage);
@@ -107,6 +107,11 @@
 
     function showCropper() {
       $scope.$broadcast($scope.showEvent);
+    }
+
+    function findIconStyle(app) {
+      var style = 'cursor ' + rUtils.findRandomAvatar(app);
+      return style.trim();
     }
   }
 })();

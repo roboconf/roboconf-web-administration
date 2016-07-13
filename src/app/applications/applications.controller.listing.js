@@ -20,7 +20,7 @@
     $scope.showLinks = true;
 
     // Functions declaration
-    $scope.findAvatar = rUtils.findRandomAvatar;
+    $scope.findIconStyle = rUtils.findRandomAvatar;
     $scope.findIcon = rUtils.findIcon;
     $scope.deleteApplication = deleteApplication;
 
