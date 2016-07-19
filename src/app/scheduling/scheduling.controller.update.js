@@ -16,7 +16,9 @@
     $scope.errorMessage = null;
 
     $scope.cronEditorConfig = {
-      allowMultiple: true
+      allowMultiple: true,
+      // FIXME: "angular-cron-jobs" does need this field to be set
+      options: {}
     };
 
     // Function declarations
