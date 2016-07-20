@@ -146,6 +146,10 @@ function buildDevDirectory() {
   var js = gulp.src([ './src/app/**/*.js' ])
     .pipe( changed( './target/dev/js' ))
     .pipe( copy('./target/dev/js', {'prefix': 2}));
+  
+  var devJs = gulp.src([ './target/dev.config/**/*.js' ])
+    .pipe( changed( './target/dev/js' ))
+    .pipe( copy('./target/dev/js', {'prefix': 1}));
 
   var tpl = gulp.src([ './src/app/**/*.html' ])
     .pipe( changed( './target/dev/templates' ))
@@ -159,7 +163,7 @@ function buildDevDirectory() {
     .pipe( changed( './target/dev/img' ))
     .pipe( copy('./target/dev/img', {'prefix': 2}));
 
-  return merge( html, favicon, js, tpl, img, css, misc );
+  return merge( html, favicon, js, devJs, tpl, img, css, misc );
 }
 
 
@@ -200,7 +204,10 @@ function prepareDist() {
     .pipe( uglify())
     .pipe( gulp.dest('target/dist'));
 
-  return merge( html, favicon, tpl, misc, img, css, minifyJs );
+  var devJs = gulp.src([ './target/dev.config/**/*.js' ])
+    .pipe( copy('./target/dist', {'prefix': 2}));
+
+  return merge( html, favicon, tpl, misc, img, css, minifyJs, devJs );
 }
 
 function completeDist() {
@@ -215,8 +222,11 @@ function completeDist() {
 
   // List our own resources
   var roboconfSources = gulp.src([
-    './target/dist/roboconf.min.js',
+    './target/dist/*.min.js',
+    './target/dist/*.js',
     './target/dist/roboconf.min.css'], {read: false});
+  
+  var devJs = gulp.src(['./target/dist/'], {read: false});
 
   // And inject...
   return gulp.src('./target/dist/index.html')
@@ -230,6 +240,17 @@ function completeDist() {
  * Production tasks.
  * Those we will run from Maven.
  */
-gulp.task('prepare-embed', [ 'clean-dist' ], prepareDist);
+gulp.task('no-dev-config', function () {
+
+  if (exists('./target/dev.config')) {
+    var gutil = require('gulp-util');
+    throw new gutil.PluginError({
+      plugin: 'no-dev-config',
+      message: 'The embed task cannot work as long as "target/dev.config" exists. Please, delete or rename this directory.'
+    });
+  }
+});
+
+gulp.task('prepare-embed', [ 'clean-dist', 'no-dev-config' ], prepareDist);
 gulp.task('complete-embed', [ 'prepare-embed' ], completeDist);
 gulp.task('embed', [ 'prepare-embed', 'complete-embed' ]);

@@ -10,7 +10,11 @@
 	</p>
 	
 	<p class="app-avatar">
- 		<img id="img-id" ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findAvatar( app )" title="{{showLinks? '':'Click to replace this image'}}" ng-click="selectFile()" />
+ 		<img id="img-id" alt="application's icon"
+ 				title="{{showLinks? '':'Click to replace this image'}}"
+ 				ng-src="{{ findIcon( app )}}" 
+ 				ng-class="findIconStyle( app )" 
+ 				ng-click="selectFile()" />
 	</p>
 	
 	<div class="app-links">
@@ -44,6 +48,12 @@
 		
 		<strong>Template Name:</strong> <a href="#/tpl/{{ app.tplName }}/{{ app.tplQualifier }}/overview">{{ app.tplName }}</a><br />
 		<strong>Template Qualifier:</strong> {{ app.tplQualifier }}<br />
+		
+		<span ng-show="app.extDep">
+			<strong>External Dependencies</strong>: yes
+		</span>
+		<br ng-show="app.extDep" />
+		
 		<span ng-show="app.tplEep">
 			<strong>Prefix for External Exports:</strong> {{ app.tplEep }}
 		</span>

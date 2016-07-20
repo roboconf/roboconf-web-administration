@@ -17,13 +17,48 @@ You need [NPM](https://www.npmjs.com/) installed on your machine.
 The primary thing to do is to execute...
 
 ```
+sudo npm install
 npm install
-sudo npm install gulp -g
 ```
 
 Like Maven, this will download the required Javascript libraries.  
 We then use another tool called [Gulp](http://gulpjs.com/) to manage build actions. You should not have to install it,
 it was downloaded by **npm**.
+
+
+## Quick Start
+
+Once NPM and the project's dependencies have been installed, open a command line interface
+in the project, type in **gulp watch-dev** and open [http://localhost:8000](http://localhost:8000)
+in your web browser.
+
+
+## Custom Server URL
+
+The web administration invokes the DM's REST API.  
+With released versions of Roboconf, the location of the REST API is deduced from the
+server. However, in development mode, it often happens that we have the DM running on one side
+(available at [http://localhost:8181/roboconf-dm](http://localhost:8181/roboconf-dm)) and the
+web administration running from another location ([http://localhost:8000](http://localhost:8000)).
+
+To be able to use a real DM in development mode, follow this procedure.
+
+1. In the project, create the **target/dev.config** directory.
+2. Create a JS file in it, e.g. **roboconf.dev.configuration.js**.
+3. Copy the following content in this file.
+
+```javascript
+'use strict';
+
+angular.module('roboconf.preferences')
+.constant('ROBOCONF_SERVER_URL', 'http://localhost:8181/roboconf-dm');
+```
+
+4. Update, if necessary, the server URL.
+
+> Notice that this file will be used for the Gulp **dev** and **dist** tasks.  
+> However, an error will be thrown with the **embed** task if this directory exists.  
+> This file is only here for development, not for building.
 
 
 ## Gulp Tasks
@@ -44,12 +79,14 @@ Other tasks do not aim at being invoked manually.
 
 About the way these tasks were implemented, they were done this way because most of
 the Roboconf team is familiar with Maven and Java development but not with Javascript.
-So, to work similarly to Maven, we created a **target** directory. Here is how it is organized.
+So, to work similarly to Maven, we created a **target** directory (ignored by Git).
+Here is how it is organized.
 
 * **target/dependencies**: the Bower dependencies (or dependencies for the front-end).
 * **target/dev**: the development directory, with non-minified files but with a clear structure.
 * **target/dist**: the distribution directory, with minified files and another structure.
 * **target/coverage**: the directory with coverage reports after the unit tests were run.
+* **target/dev.config**: optional directory to create by hand and to store custom settings for development.
 
 > **target/dist** is the thing to embed in Roboconf distributions.
 
@@ -106,4 +143,4 @@ all the JS and CSS scripts automatically in the index.html file.
 
 Under **target/dist**, we group things differently.  
 Bower dependencies are filtered and copied under **lib**. All the application's JS scripts
-are merged into **roboconf.min.js**. And the CSS as well as the index files are minified too.  
+are merged into **roboconf.min.js**. And the CSS as well as the index files are minified too.

@@ -14,6 +14,7 @@
 		<li><a href="#/app/{{ app.name }}/instances">Instances</a></li>
 		<li><a href="#/app/{{ app.name }}/commands">Commands</a></li>
 		<li><a href="#/app/{{ app.name }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ app.name }}/jobs">Scheduled Jobs</a></li>
 		<li><a href="#/app/{{ app.name }}/application-bindings">Application Bindings</a></li>
 		<li><a href="#/app/{{ app.name }}/delete">Delete</a></li>
 	</ul>
@@ -25,19 +26,23 @@
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
 
 	<!-- Application Details -->
-	<rbcf-single-app ng-show="responseStatus === 0"></rbcf-single-app>
+	<rbcf-single-app ng-show="responseStatus === 0 && ! showButton"></rbcf-single-app>
 
 	<div>
-		<input type="file" id="file-id" class="inputfile" rbcf-icon-management="onFile">
-		<div ng-if="dataUrl" class="img-container">
-			<img ng-if="dataUrl" ng-src="{{dataUrl}}" width="800"
+		<div ng-show="showButton && dataUrl">
+			<img ng-if="dataUrl" ng-src="{{ dataUrl }}"
 				ng-cropper
 				ng-cropper-proxy="cropperProxy"
 				ng-cropper-show="showEvent"
 				ng-cropper-hide="hideEvent"
-				ng-cropper-options="options">
+				ng-cropper-options="options" />
 		</div>
-		<button ng-show="showButton" ng-click="uploadIcon( app.name )">Upload</button>
+
+		<input type="file" id="file-id" class="crop-hidden" rbcf-icon-management="onFile" />
+		<div ng-show="showButton">
+			<button type="submit" class="btn btn-default pull-right" ng-click="uploadIcon( app.name )">Upload</button>
+			<button type="submit" class="btn btn-default pull-right" ng-click="showButton = false">Cancel</button>
+		</div>
 	</div>
 
 	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>

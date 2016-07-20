@@ -1,0 +1,49 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		Applications &raquo; {{ appName }}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+
+<div class="menu">
+	<ul>
+		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
+		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
+		<li><a href="#/app/{{ appName }}/commands">Commands</a></li>
+		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/jobs">Scheduled Jobs</a></li>
+		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
+		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+</div>
+
+<div class="content short-content">
+
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0"></rbcf-error-message>
+
+	<!-- Jobs -->
+	<div ng-show="responseStatus === 0 && jobs.length === 0">No job has been scheduled so far.</div>
+	
+	<div ng-show="responseStatus === 0 && jobs.length > 0">
+		The following jobs have been scheduled.
+		<br /><br />
+		
+		<table class="table table-hover table-rbcf">
+			<tr>
+				<th>-</th>
+				<th>Job Name</th>
+				<th>Application Name</th>
+				<th>Command Name</th>
+			</tr>
+			<tr ng-repeat="job in jobs">
+				<td>{{ $index + 1 }}</td>
+				<td><a href="#/scheduler/job/{{ job.id }}">{{ job['job-name']}}</a></td>
+				<td><a href="#/app/{{ job['app-name'] }}/overview">{{ job['app-name']}}</a></td>
+				<td><a href="#/app/{{ job['app-name'] }}/commands">{{ job['cmd-name']}}</a></td>
+			</tr>
+		</table>
+	</div>
+</div>

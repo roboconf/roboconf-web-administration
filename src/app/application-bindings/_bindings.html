@@ -13,6 +13,7 @@
 		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
 		<li><a href="#/app/{{ appName }}/commands">Commands</a></li>
 		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ appName }}/jobs">Scheduled Jobs</a></li>
 		<li class="active"><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
 		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
 	</ul>
@@ -26,7 +27,7 @@
 	<!-- No application? -->
 	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>
 	
-	<div ng-show="isEmptyBindings()">
+	<div ng-show="hasBindings()">
 		This application does not import any external variable.<br />
 		There is no binding to define between this application and others.
 	</div>

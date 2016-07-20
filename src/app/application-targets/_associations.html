@@ -13,6 +13,7 @@
 		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
 		<li><a href="#/app/{{ appName }}/commands">Commands</a></li>
 		<li class="active"><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
+		<li><a href="#/app/{{ appName }}/jobs">Scheduled Jobs</a></li>
 		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
 		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
 	</ul>
@@ -31,8 +32,12 @@
 	
 		<form class="form-horizontal">
 			<div class="form-group hovered-line" ng-repeat="a in associations">
-				<label class="col-sm-2 rbcf-padfix">{{ a.path === '' ? 'Default' : a.path }}</label>
-				<div class="col-sm-7">
+			
+				<label class="col-sm-4 rbcf-padfix">
+					{{ a.path === '' ? 'Default' : a.path }}
+				</label>
+
+				<div class="col-sm-5">
 					<select class="form-control"
 							required
 							ng-model="a.selectedId"
@@ -46,6 +51,7 @@
 						<span ng-if="a.path === '' && a.selectedId === -1">none</span>
 					</span>
 				</div>
+
 				<div class="col-sm-3">
 					<button class="btn btn-default" type="submit" ng-click="cancelAssociation( a )" ng-show="a.editable">Cancel</button>
 					<button class="btn btn-default" type="submit" ng-click="a.editable = true" ng-show="! a.editable">Edit</button>

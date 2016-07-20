@@ -13,7 +13,6 @@
     $scope.appName = $routeParams.appName;
     $scope.status = [];
 
-    $scope.isEmptyBindings = isEmptyBindings;
     $scope.hasBindings = hasBindings;
     $scope.disableSaveButton = disableSaveButton;
     $scope.saveBindings = saveBindings;
@@ -29,12 +28,6 @@
     });
 
     // Function definitions
-    function isEmptyBindings() {
-      return $scope.responseStatus === 0 &&
-        $.isEmptyObject($scope.mapping);
-    }
-
-
     function hasBindings() {
       return $scope.responseStatus === 0 &&
         ! $.isEmptyObject($scope.mapping);

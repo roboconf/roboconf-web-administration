@@ -12,7 +12,7 @@
     $scope.responseStatus = -1;
 
     $scope.deleteApplicationTemplate = deleteApplicationTemplate;
-    $scope.findAvatar = rUtils.findRandomAvatar;
+    $scope.findIconStyle = rUtils.findRandomAvatar;
     $scope.findIcon = rUtils.findIcon;
 
     // Initial actions
