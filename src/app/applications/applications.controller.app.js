@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-  .module('roboconf.applications', ['ngCropper'])
+  .module('roboconf.applications', ['ngCropper', 'pascalprecht.translate'])
   .controller('SingleApplicationController', singleApplicationController);
 
   singleApplicationController.$inject =
-    ['rClient', '$scope', '$routeParams', '$window', '$timeout', 'rUtils', 'Cropper'];
+    ['rClient', '$scope', '$routeParams', '$window', '$timeout', 'rUtils', 'Cropper', '$translate'];
 
-  function singleApplicationController(rClient, $scope, $routeParams, $window, $timeout, rUtils, Cropper) {
+  function singleApplicationController(rClient, $scope, $routeParams, $window, $timeout, rUtils, Cropper, $translate) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -27,6 +27,9 @@
           $scope.data = dataNew;
         }
     };
+    $scope.appData = {
+    	name : '<strong>' + $routeParams.appName + '</strong>'
+    };
 
     $scope.deleteApplication = deleteApplication;
     $scope.findIconStyle = findIconStyle;
@@ -35,6 +38,7 @@
     $scope.selectFile = selectFile;
     $scope.onFile = onFile;
     $scope.cropImage = cropImage;
+    $scope.setLang = setLang;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -113,6 +117,10 @@
     function findIconStyle(app) {
       var style = 'cursor ' + rUtils.findRandomAvatar(app);
       return style.trim();
+    }
+    
+    function setLang(langKey) {
+      $translate.use(langKey);
     }
   }
 })();

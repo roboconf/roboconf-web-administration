@@ -1,0 +1,25 @@
+{
+	"APPLICATIONS" : "Applications",
+	
+	"APPLICATIONS_NEW" : "New Application",
+	
+	"APPLICATIONS_OVERVIEW"     : "Overview",
+	
+	"APPLICATIONS_INSTANCES"    : "Instances",
+	
+	"APPLICATIONS_COMMANDS" : "Commands",
+	
+	"APPLICATIONS_TARGET" : "Target Associations",
+	
+	"APPLICATIONS_SCHEDULED_JOBS" : "Scheduled Jobs",
+	
+	"APPLICATIONS_BINDINGS"    : "Applications Bindings",
+	
+	"APPLICATIONS_DELETE" : "Delete",
+	
+	"APPLICATIONS_UPLOAD" : "Upload",
+	
+	"APPLICATIONS_CANCEL" : "Cancel",
+	
+	"APPLICATIONS_NO_FOUND_APPLICATION" : "No application called {{ name }} was found."
+}

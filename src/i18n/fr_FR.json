@@ -1,0 +1,25 @@
+{
+	"APPLICATIONS" : "Applications",
+	
+	"APPLICATIONS_NEW" : "Nouvelle Application",
+	
+	"APPLICATIONS_OVERVIEW"     : "Aperçu",
+	
+	"APPLICATIONS_INSTANCES"    : "Instances",
+	
+	"APPLICATIONS_COMMANDS" : "Commandes",
+	
+	"APPLICATIONS_TARGET" : "Cibles",
+	
+	"APPLICATIONS_SCHEDULED_JOBS" : "Tâches planifiées",
+	
+	"APPLICATIONS_BINDINGS"    : "Liaisons avec d'autres applications ",
+	
+	"APPLICATIONS_DELETE" : "Supprimer",
+	
+	"APPLICATIONS_UPLOAD" : "Téléverser",
+	
+	"APPLICATIONS_CANCEL" : "Annuler",
+	
+	"APPLICATIONS_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} trouvée."
+}

@@ -6,17 +6,22 @@
 		Applications &raquo; {{ app.name }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
+	
+	<!-- <p>
+    	<a href="#/app/{{ app.name }}/overview" ng-click="setLang('en_US')">English</a>
+    	<a href="#/app/{{ app.name }}/overview" ng-click="setLang('fr_FR')">Français</a>
+  	</p> -->
 </div>
 
 <div class="menu">
 	<ul>
-		<li class="active"><a href="#/app/{{ app.name }}/overview">Overview</a></li>
-		<li><a href="#/app/{{ app.name }}/instances">Instances</a></li>
-		<li><a href="#/app/{{ app.name }}/commands">Commands</a></li>
-		<li><a href="#/app/{{ app.name }}/targets">Target Associations</a></li>
-		<li><a href="#/app/{{ app.name }}/jobs">Scheduled Jobs</a></li>
-		<li><a href="#/app/{{ app.name }}/application-bindings">Application Bindings</a></li>
-		<li><a href="#/app/{{ app.name }}/delete">Delete</a></li>
+		<li class="active"><a href="#/app/{{ app.name }}/overview">{{'APPLICATIONS_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/instances">{{'APPLICATIONS_INSTANCES' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>  
+		<li><a href="#/app/{{ app.name }}/targets">{{'APPLICATIONS_TARGET' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/jobs">{{'APPLICATIONS_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/application-bindings">{{'APPLICATIONS_BINDINGS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/delete">{{'APPLICATIONS_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -40,10 +45,11 @@
 
 		<input type="file" id="file-id" class="crop-hidden" rbcf-icon-management="onFile" />
 		<div ng-show="showButton">
-			<button type="submit" class="btn btn-default pull-right" ng-click="uploadIcon( app.name )">Upload</button>
-			<button type="submit" class="btn btn-default pull-right" ng-click="showButton = false">Cancel</button>
+			<button type="submit" class="btn btn-default pull-right" ng-click="uploadIcon( app.name )">{{'APPLICATIONS_UPLOAD' | translate}}</button>
+			<button type="submit" class="btn btn-default pull-right" ng-click="showButton = false">{{'APPLICATIONS_CANCEL' | translate}}</button>
 		</div>
 	</div>
 
-	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>
+ 	<div ng-show="responseStatus === 404" translate="{{'APPLICATIONS_NO_FOUND_APPLICATION' | translate: appData}}"></div> 
+ 	
 </div>
