@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-  .module('roboconf.applications', ['ngCropper', 'pascalprecht.translate'])
+  .module('roboconf.applications', ['ngCropper'])
   .controller('SingleApplicationController', singleApplicationController);
 
   singleApplicationController.$inject =
-    ['rClient', '$scope', '$routeParams', '$window', '$timeout', 'rUtils', 'Cropper', '$translate'];
+    ['rClient', '$scope', '$routeParams', '$window', '$timeout', 'rUtils', 'Cropper'];
 
-  function singleApplicationController(rClient, $scope, $routeParams, $window, $timeout, rUtils, Cropper, $translate) {
+  function singleApplicationController(rClient, $scope, $routeParams, $window, $timeout, rUtils, Cropper) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -38,7 +38,7 @@
     $scope.selectFile = selectFile;
     $scope.onFile = onFile;
     $scope.cropImage = cropImage;
-    $scope.setLang = setLang;
+    //$scope.setLang = setLang;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -119,8 +119,8 @@
       return style.trim();
     }
     
-    function setLang(langKey) {
+    /*function setLang(langKey) {
       $translate.use(langKey);
-    }
+    }*/
   }
 })();
