@@ -21,5 +21,24 @@
 	
 	"APPLICATIONS_CANCEL" : "Annuler",
 	
-	"APPLICATIONS_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} trouvée."
+	"APPLICATIONS_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} trouvée.",
+	
+	
+	"INSTANCES_NEW" : "Nouvelle Application",
+	
+	"INSTANCES_OVERVIEW"     : "Aperçu",
+	
+	"INSTANCES_INSTANCES"    : "Instances",
+	
+	"INSTANCES_COMMANDS" : "Commandes",
+	
+	"INSTANCES_TARGET" : "Cibles",
+	
+	"INSTANCES_SCHEDULED_JOBS" : "Tâches planifiées",
+	
+	"INSTANCES_BINDINGS"    : "Liaisons avec d'autres applications ",
+	
+	"INSTANCES_DELETE" : "Supprimer",
+	
+	"INSTANCES_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} trouvée."
 }

@@ -21,5 +21,24 @@
 	
 	"APPLICATIONS_CANCEL" : "Cancel",
 	
-	"APPLICATIONS_NO_FOUND_APPLICATION" : "No application called {{ name }} was found."
+	"APPLICATIONS_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
+	
+	
+	"INSTANCES_NEW" : "New Application",
+	
+	"INSTANCES_OVERVIEW"     : "Overview",
+	
+	"INSTANCES_INSTANCES"    : "Instances",
+	
+	"INSTANCES_COMMANDS" : "Commands",
+	
+	"INSTANCES_TARGET" : "Target Associations",
+	
+	"INSTANCES_SCHEDULED_JOBS" : "Scheduled Jobs",
+	
+	"INSTANCES_BINDINGS"    : "Applications Bindings",
+	
+	"INSTANCES_DELETE" : "Delete",
+	
+	"INSTANCES_NO_FOUND_APPLICATION" : "No application called {{ name }} was found."
 }
