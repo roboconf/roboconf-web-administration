@@ -11,7 +11,7 @@
 	
 	<p class="app-avatar">
  		<img id="img-id" alt="application's icon"
- 				title="{{showLinks? '':'Click to replace this image'}}"
+ 				title="{{showLinks? '':'APPLICATIONS_DIRECTIVE_REPLACE_IMAGE' | translate }}"
  				ng-src="{{ findIcon( app )}}" 
  				ng-class="findIconStyle( app )" 
  				ng-click="selectFile()" />
@@ -20,24 +20,24 @@
 	<div class="app-links">
 		<span ng-show="! app.info || app.info === 'nd'">
 			<span class="glyphicon glyphicon-info-sign text-info"></span>&nbsp;
-			<span class="text-info">No instance is deployed.</span>
+			<span class="text-info">{{'APPLICATIONS_DIRECTIVE_NO_DEPLOYED_INSTANCE' | translate }}</span>
 		</span>
 		
 		<span ng-show="app.info === 'ok'">
 			<span class="glyphicon glyphicon-ok-sign text-success"></span> &nbsp;
-			<span class="text-success">Some instances are deployed, no issue to report.</span>
+			<span class="text-success">{{'APPLICATIONS_DIRECTIVE_DEPLOYED_INSTANCES' | translate }}</span>
 		</span>
 		
 		<span ng-show="app.info === 'warn'">
 			<span class="glyphicon glyphicon-remove-sign text-orange"></span> &nbsp;
-			<span class="text-orange">Some instances may have encountered problems.</span>
+			<span class="text-orange">{{'APPLICATIONS_DIRECTIVE_INSTANCES_WITH_PROBLEMS' | translate }}</span>
 		</span>
 		
 		<div ng-show="showLinks">
-			<strong>Quick Access</strong>
+			<strong>{{'APPLICATIONS_DIRECTIVE_QUICK_ACCESS' | translate }}</strong>
 			<ul>
-				<li><a href="#/app/{{ app.name }}/instances">Manage the instances</a></li>
-				<li><a href="#/app/{{ app.name }}/overview">Access the application's page</a></li>
+				<li><a href="#/app/{{ app.name }}/instances">{{'APPLICATIONS_DIRECTIVE_MANAGE_INSTANCES' | translate }}</a></li>
+				<li><a href="#/app/{{ app.name }}/overview">{{'APPLICATIONS_DIRECTIVE_ACCES_APPLICATION_PAGE' | translate }}</a></li>
 			</ul>
 		</div>
 	</div>
@@ -46,8 +46,8 @@
 		<span class="formatted">{{ app.desc }}</span>
 		<br /><br />
 		
-		<strong>Template Name:</strong> <a href="#/tpl/{{ app.tplName }}/{{ app.tplQualifier }}/overview">{{ app.tplName }}</a><br />
-		<strong>Template Qualifier:</strong> {{ app.tplQualifier }}<br />
+		<strong>{{'APPLICATIONS_DIRECTIVE_TEMPLATE_NAME' | translate }}:</strong> <a href="#/tpl/{{ app.tplName }}/{{ app.tplQualifier }}/overview">{{ app.tplName }}</a><br />
+		<strong>{{'APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER' | translate }}:</strong> {{ app.tplQualifier }}<br />
 		
 		<span ng-show="app.extDep">
 			<strong>External Dependencies</strong>: yes

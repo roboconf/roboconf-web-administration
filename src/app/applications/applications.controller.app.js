@@ -38,7 +38,6 @@
     $scope.selectFile = selectFile;
     $scope.onFile = onFile;
     $scope.cropImage = cropImage;
-    //$scope.setLang = setLang;
 
     // Initial actions
     findApplication($routeParams.appName);
@@ -118,9 +117,6 @@
       var style = 'cursor ' + rUtils.findRandomAvatar(app);
       return style.trim();
     }
-    
-    /*function setLang(langKey) {
-      $translate.use(langKey);
-    }*/
+   
   }
 })();

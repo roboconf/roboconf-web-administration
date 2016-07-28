@@ -23,6 +23,24 @@
 	
 	"APPLICATIONS_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
 	
+	"APPLICATIONS_DIRECTIVE_REPLACE_IMAGE" : "Click to replace this image",
+	
+	"APPLICATIONS_DIRECTIVE_NO_DEPLOYED_INSTANCE" : "No instance is deployed.",
+	
+	"APPLICATIONS_DIRECTIVE_DEPLOYED_INSTANCES" : "Some instances are deployed, no issue to report.",
+	
+	"APPLICATIONS_DIRECTIVE_INSTANCES_WITH_PROBLEMS" : "Some instances may have encountered problems.",
+	
+	"APPLICATIONS_DIRECTIVE_QUICK_ACCESS" : "Quick access",
+	
+	"APPLICATIONS_DIRECTIVE_MANAGE_INSTANCES" : "Manage the instances",
+	
+	"APPLICATIONS_DIRECTIVE_ACCES_APPLICATION_PAGE" : "Acces the application's page",
+	
+	"APPLICATIONS_DIRECTIVE_TEMPLATE_NAME" : "Template Name",
+	
+	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER" : "Template Qualifier",
+	
 	
 	"INSTANCES_NEW" : "New Application",
 	
