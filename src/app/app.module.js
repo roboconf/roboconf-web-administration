@@ -12,5 +12,6 @@ angular.module('roboconf', [
     'roboconf.commands',
     'roboconf.scheduling',
     'roboconf.targets',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ngCookies'
 ]);

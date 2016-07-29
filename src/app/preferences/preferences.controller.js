@@ -3,19 +3,17 @@
 
   angular
   .module('roboconf.preferences')
-  //.module('roboconf.preferences', 'pascalprecht.translate'])
   .controller('PreferencesController', preferencesController);
 
-  //preferencesController.$inject = ['rPrefs', '$scope', '$timeout', '$translate'];
-  //function preferencesController(rPrefs, $scope, $timeout, $translate) {
-  preferencesController.$inject = ['rPrefs', '$scope', '$timeout', '$translate'];
-  function preferencesController(rPrefs, $scope, $timeout, $translate) {
+  preferencesController.$inject = ['rClient', 'rPrefs', '$scope', '$timeout', '$translate'];
+  function preferencesController(rClient, rPrefs, $scope, $timeout, $translate) {
 
-    //Fields
+    // Fields
 	$scope.setLang = setLang;
 	
 	function setLang(langKey) {
 		$translate.use(langKey);
+		//rClient.savePreferences('langkey', langKey);
 	}
   }
 })();
