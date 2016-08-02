@@ -58,5 +58,112 @@
 	
 	"INSTANCES_DELETE" : "Delete",
 	
-	"INSTANCES_NO_FOUND_APPLICATION" : "No application called {{ name }} was found."
+	"INSTANCES_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
+	
+	"INSTANCES_NO_INSTANCES" : "No Instance",
+	
+	"INSTANCES_NO_INSTANCE_CREATED" : "No instance has been created so far.",
+	
+	"INSTANCES_ROOT_INSTANCE_NO_CHILD" : "This root instance has no child.",
+	
+	"INSTANCES_INSTANCE_PATH" : "Instance Path:",
+	
+	"INSTANCES_INSTANCE_STATUS" : "Instance Status:",
+	
+	"INSTANCES_COMPONENT" : "Component:",
+	
+	"INSTANCES_INCLUDES_ACTIONS" : "The following actions can be undertaken.",
+	
+	"INSTANCES_INCLUDES_DEPLOY_INSTANCE" : "Deploy this instance",
+	
+	"INSTANCES_INCLUDES_DEPLOY_START" : "Deploy and Start everything",
+	
+	"INSTANCES_INCLUDES_CREATE_CHILD" : "Create a child instance",
+	
+	"INSTANCES_INCLUDES_REPLICATE_INSTANCE" : "Replicate this instance",
+	
+	"INSTANCES_INCLUDES_DELETE_INSTANCE" : "Delete this instance",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_TITLE" : "Description",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_NOT_DEPLOYED" : "The instance is not deployed. It can only be deployed.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_NOT_DEPLOYED_2" : "You can also deploy and start this instance with all its children in one click.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_CYCLE" : "The life cycle of this instance is handled by Roboconf's {{installer}} installer.",
+	
+	"INSTANCES_INCLUDES_ADDITIONAL_INFORMATION" : "Additional Information",
+	
+	"INSTANCES_INCLUDES_ACCESS_EXPORTED_VARIABLES" : "Access the exported variables",
+	
+	"INSTANCES_INCLUDES_STOP_INSTANCE" : "Stop this instance",
+	
+	"INSTANCES_INCLUDES_START_INSTANCE" : "Start this instance",
+	
+	"INSTANCES_INCLUDES_UNDEPLOYED_IT" : "Undeploy it",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYED_STARTED" : "The instance is started. It can be only stopped.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYED_STOPPED" : "The instance is stopped. It can be either started or undeployed.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYING" : "The instance is being deployed by Roboconf's {{installer}}.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYING_2" : "This may take some time.",
+	
+	"INSTANCES_INCLUDES_PARENT_INSTANCE_NO_DEPLOYED" : "Its parent instance is not deployed.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_NOT_DEPLOYED_NO_ACTION" : "The instance is not deployed. You must deploy and start its parent before updating its state.",
+	
+	"INSTANCES_INCLUDES_DEPLOY_START_IT" : "Deploy and Start it",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_NOT_DEPLOYED" : "The instance is not deployed. It can only be deployed.",
+	
+	"INSTANCES_INCLUDES_IP_ADDRESS" : "IP Address:",
+	
+	"INSTANCES_INCLUDES_MACHINE_ID" : "Machine ID:",
+	
+	"INSTANCES_INCLUDES_UNDEPLOY_INSTANCE" : "Undeploy this instance",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_DEPLOYED_STARTED" : "The instance is deployed. It can only be undeployed.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_DEPLOYING" : "The instance is being deployed by Roboconf's {{installer}}.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_DEPLOYING_2" : "This may take some time.",
+	
+	"INSTANCES_INCLUDES_APP_ROOT_PROBLEM" : "The instance's state is undetermined.",
+	
+	"INSTANCES_INCLUDES_APP_ROOT_PROBLEM_2" : "It means Roboconf's Deployment Manager has not received a heartbeat from the associated agent for more than 2 minutes. This can be explained by a network issue on the Deployment Manager's side, a network on the agent's side, a network issue with the messaging server, or an error with messaging server itself (make sure it is still running).",
+	
+	"INSTANCES_INCLUDES_TRY_TO_UNDEPLOY" : "Try to undeploy this instance (Again)",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_UNDEPLOYING" : "The instance is being deployed by Roboconf's {{installer}}.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_UNDEPLOYING_2" : "This may take some time.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STARTING" : "The instance is being started by Roboconf's {{installer}}.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STARTING_2" : "This may take some time.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STOPPING" : "The instance is being stopped by Roboconf's {{installer}}.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STOPPING_2" : "This may take some time.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_UNDEPLOYING" : "The instance is being undeployed by Roboconf's {{installer}}.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_UNDEPLOYING_2" : "This may take some time.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_UNRESOLVED" : "The instance is waiting for its dependencies to be resolved before starting.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_UNRESOLVED_2" : "This may take some time.",
+	
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_WAITING_FOR_ANCESTOR" : "The instance is waiting for one of its ancestor to resolve its dependencies. This instance will start automatically with its ancestors.",
+	
+	"INSTANCES_INCLUDES_NO_EXPORTED_VARIABLE" : "This instance does not export any variable.",
+	
+	"INSTANCES_INCLUDES_EXPORTED_VARIABLES" : "This instance exports the following variables.",
+	
+	"INSTANCES_INCLUDES_GO_BACK_TO_THE" : "Go back to the ",
+	
+	"INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT" : "life cycle management"
+	
 }

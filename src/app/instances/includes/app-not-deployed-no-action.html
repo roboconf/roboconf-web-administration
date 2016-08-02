@@ -1,18 +1,19 @@
 <img src="img/state-not-deployed.jpg" alt="Not Deployed" />
 <p>
-	Its parent instance is not deployed.<br />
-	The following actions can be undertaken.
+	{{'INSTANCES_INCLUDES_PARENT_INSTANCE_NO_DEPLOYED' | translate}}<br />
+	{{'INSTANCES_INCLUDES_ACTIONS' | translate}}
 </p>
 
 <ul>
-	<li><a href="" ng-click="askToDelete = true">Delete this instance</a></li>
+	<li><a href="" ng-click="askToDelete = true">{{'INSTANCES_INCLUDES_DELETE_INSTANCE' | translate}}</a></li>
 </ul>
 
 <rbcf-delete-instance ng-show="askToDelete"></rbcf-delete-instance>
 
 <br />
-<strong>Description</strong>
+<strong>{{'INSTANCES_INCLUDES_DESCRIPTION_TITLE' | translate}}</strong>
 <br />
 
-The instance is not deployed. You must deploy and start its parent before updating its state.
-The life cycle of this instance is handled by Roboconf's <strong>{{ selectedInstance.component.installer }}</strong> installer.
+{{'INSTANCES_INCLUDES_DESCRIPTION_APP_NOT_DEPLOYED_NO_ACTION' | translate}}
+<span translate="{{'INSTANCES_INCLUDES_DESCRIPTION_CYCLE' | translate}}"/>
+

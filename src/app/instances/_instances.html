@@ -26,15 +26,15 @@
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
 	
 	<!-- No application? -->
-	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>
+	<div ng-show="responseStatus === 404">{{"INSTANCES_NO_FOUND_APPLICATION" | translate:instData}}</div>
 	
 	<!-- No instance? -->
 	<div class="block" ng-show="responseStatus === 0 && rootNodes.length == 0">
-		<p class="block-title">No Instance</p>
+		<p class="block-title">{{"INSTANCES_NO_INSTANCE" | translate}}</p>
 
 		<div class="block-content">
 			<p>
-				No instance has been created so far.
+				{{"INSTANCES_NO_INSTANCE_CREATED" | translate}}
 			</p>
 		</div>
 	</div>
@@ -59,7 +59,7 @@
 				<span class="block-annotation">{{ formatStatus( rootNode.instance.status )}}</span>
 			</p>
 			<div class="block-content" ng-show="rootNode.children.length === 0">
-				This root instance has no child.
+				{{"INSTANCES_ROOT_INSTANCE_NO_CHILD" | translate}}
 			</div>
 
 			<ul>
@@ -76,9 +76,9 @@
 		<div>
 			<h3>{{ selectedInstance.name }}</h3>
 			
-			<strong>Instance Path:</strong> {{ selectedInstance.path }}<br />
-			<strong>Instance Status:</strong> {{ formatStatus( selectedInstance.status )}}<br />
-			<strong>Component:</strong> {{ selectedInstance.component.name }}
+			<strong>{{"INSTANCES_INSTANCE_PATH" | translate}}</strong> {{ selectedInstance.path }}<br />
+			<strong>{{"INSTANCES_INSTANCE_STATUS" | translate}}</strong> {{ formatStatus( selectedInstance.status )}}<br />
+			<strong>{{"INSTANCES_COMPONENT" | translate}}</strong> {{ selectedInstance.component.name }}
 			
 			<div class="instance-actions" ng-include="'templates/instances/includes/life-cycle.html'" ng-show="details === 'LIFECYCLE'"></div>
 			<div class="instance-actions" ng-include="'templates/instances/includes/exported-variables.html'" ng-show="details === 'EXPORTS'"></div>

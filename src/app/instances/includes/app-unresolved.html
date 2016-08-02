@@ -1,15 +1,16 @@
 <img src="img/state-starting.gif" alt="Unresolved" />
-<p>The following actions can be undertaken.</p>
+<p>{{'INSTANCES_INCLUDES_ACTIONS' | translate}}</p>
 
 <ul>
-	<li><a href="" ng-click="changeState( 'DEPLOYED_STOPPED' )">Stop this instance</a></li>
-	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">Undeploy it</a></li>
-	<li><a href="" ng-click="createChildInstance()">Create a child instance</a></li>
+	<li><a href="" ng-click="changeState( 'DEPLOYED_STOPPED' )">{{'INSTANCES_INCLUDES_STOP_INSTANCE' | translate}}</a></li>
+	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">{{'INSTANCES_INCLUDES_UNDEPLOYED_IT' | translate}}</a></li>
+	<li><a href="" ng-click="createChildInstance()">{{'INSTANCES_INCLUDES_CREATE_CHILD' | translate}}</a></li>
 </ul>
 
 <br />
-<strong>Description</strong>
+<strong>{{'INSTANCES_INCLUDES_DESCRIPTION_TITLE' | translate}}</strong>
 <br />
 
-The instance is waiting for its dependencies to be resolved before starting.
-This may take some time.
+{{'INSTANCES_INCLUDES_DESCRIPTION_APP_UNRESOLVED' | translate}}
+<br/>
+{{'INSTANCES_INCLUDES_DESCRIPTION_APP_UNRESOLVED_2' | translate}}

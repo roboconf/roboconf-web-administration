@@ -8,12 +8,18 @@
 		Manage your settings and preferences.<br />
 	</p>
 	
-	<div>
-		<!--There is no preference to define for the moment.-->
-		<p>
-    		<a href="#/" ng-click="setLang('en_US')">English</a>
-    		<a href="#/" ng-click="setLang('fr_FR')">Français</a>
-  		</p>
+    <div class="menu">
+		<ul>
+			<li>
+				<a role="button" data-toggle="dropdown"> Languages
+					
+					<ul class="dropdown-menu" role="menu">
+    					<li><a href="#/" ng-click="setLang('en_US')"><span class="flag-icon flag-icon-gb"></span> English</a></li>
+    					<li><a href="#/" ng-click="setLang('fr_FR')"><span class="flag-icon flag-icon-fr"></span> French</a></li>
+    				</ul>
+    			</a>
+    		</li>
+  		</ul>
 	</div>
 
 	<!--
