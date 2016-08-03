@@ -164,6 +164,71 @@
 	
 	"INSTANCES_INCLUDES_GO_BACK_TO_THE" : "Go back to the ",
 	
-	"INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT" : "life cycle management"
+	"INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT" : "life cycle management",
+	
+	"INSTANCES_DELETE" : "Do you really want to delete this instance and its children?",
+	
+	"INSTANCES_DELETE_CONFIRM" : "Confirm",
+	
+	"INSTANCES_DELETE_CANCEL" : "Cancel",
+	
+	"INSTANCES_NEW_INSTANCES" : "New Instance(s) for",
+	
+	"INSTANCES_NEW_INFORMATION_MESSAGE" : "This page allows you to create a new instance for the {{appName}} application.",
+	
+	"INSTANCES_CREATE_INSTANCE" : "Create your instance",
+	
+	"INSTANCES_NO_INSTANCE_CREATED" : "No instance has been created so far.",
+	
+	"INSTANCES_OR_YOU_CAN" : "Or you can",
+	
+	"INSTANCES_SELECT_AN_EXISTING_INSTANCE" : "select an existing instance",
+	
+	"INSTANCES_TO_COMPLETE" : "to complete.",
+	
+	"INSTANCES_COMPONENT_NAME" : "Component name",
+	
+	"INSTANCES_INSTANCE_NAME" : "Instance name",
+	
+	"INSTANCES_REQUIRED" : "(required)",
+	
+	"INSTANCES_INSTANCE_NAME_UNIQUE" : "The instance name must be unique among its siblings.",
+	
+	"INSTANCES_NEW_OK" : "OK",
+	
+	"INSTANCES_NEW_CANCEL" : "Cancel",
+	
+	"INSTANCES_NEW_ACTION_DELETE" : "This action will delete {{editedInstName}} and all its children.",
+	
+	"INSTANCES_SELECT_AN_EXISTING_INSTANCE_BELOW" : "select an existing instance in the list below",
+	
+	"INSTANCES_NEW_SHOW_EXISTING_VALIDATE" : "Validate",
+	
+	"INSTANCES_NEW_SHOW_EXISTING_CANCEL" : "Cancel",
+	
+	"INSTANCES_NEW_CANCEL_CREATION" : "Cancel creation",
+	
+	"INSTANCES_NEW_CREATE_THEM_ALL" : "Create them all",
+	
+	"INSTANCES_NEW_RESET_FORM" : "Reset the form" ,
+	
+	"INSTANCES_NEW_RESET_FORM_MESSAGE" : "You are about to reset everything. All the new instances will be dropped.",
+	
+	"INSTANCES_NEW_RESET_FORM_CONFIRM" : "Confirm",
+	
+	"INSTANCES_NEW_RESET_FORM_CANCEL" : "Cancel",
+	
+	"INSTANCES_NEW_FINISH" : "Finish",
+	
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT" : "This application does not import any external variable.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT_2" : "There is no binding to define between this application and others.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES" : "The following prefixes match properties exported by other applications.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2" : "Select which ones this application should be bound to.",
+	
+	"APPLICATIONS_BINDINGS_SAVE" : "Save"
 	
 }

@@ -21,7 +21,6 @@
     $scope.instData = {
         	name : '<strong>' + $routeParams.appName + '</strong>',
         	installer : ''
-        	
     };
 
     // Menu actions

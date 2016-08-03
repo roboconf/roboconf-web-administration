@@ -41,6 +41,12 @@
      * A list of children components for editedInstance.
      */
     $scope.possibleComponents = {};
+    
+    // For internationalization
+    $scope.instNewData = {
+    		editedInstName : '<strong>' + $scope.editedInstance.name + '</strong>',
+    		appName : '<strong>' + '::' + $routeParams.appName + '</strong>'
+    };
 
     // Function declarations
     $scope.ok = ok;

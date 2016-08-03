@@ -164,6 +164,71 @@
 	
 	"INSTANCES_INCLUDES_GO_BACK_TO_THE" : "Retour à la ",
 	
-	"INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT" : "gestion du cycle de vie"
+	"INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT" : "gestion du cycle de vie",
+	
+	"INSTANCES_DELETE" : "Voulez-vous supprimer cette instance et ses enfants ?",
+	
+	"INSTANCES_DELETE_CONFIRM" : "Confirmer",
+	
+	"INSTANCES_DELETE_CANCEL" : "Annuler",
+	
+	"INSTANCES_NEW_INSTANCES" : "Nouvelle(s) pour",
+	
+	"INSTANCES_NEW_INFORMATION_MESSAGE" : "Cette page permet de créer une nouvellle instance pour l'application {{appName}}.",
+	
+	"INSTANCES_CREATE_INSTANCE" : "Créer votre instance",
+	
+	"INSTANCES_NO_INSTANCE_CREATED" : "Aucune instance n'a été créée jusqu'à présent.",
+	
+	"INSTANCES_OR_YOU_CAN" : "Ou vous pouvez",
+	
+	"INSTANCES_SELECT_AN_EXISTING_INSTANCE" : "selectionner une instance existante",
+	
+	"INSTANCES_TO_COMPLETE" : "à compléter.",
+	
+	"INSTANCES_COMPONENT_NAME" : "Nom du composant",
+	
+	"INSTANCES_INSTANCE_NAME" : "Nom de l'instance",
+	
+	"INSTANCES_REQUIRED" : "(obligatoire)",
+	
+	"INSTANCES_INSTANCE_NAME_UNIQUE" : "Le nom de l'instance doit être unique parmi les autres",
+	
+	"INSTANCES_NEW_OK" : "OK",
+	
+	"INSTANCES_NEW_CANCEL" : "Annuler",
+	
+	"INSTANCES_NEW_ACTION_DELETE" : "Cette action va supprimer {{editedInstName}} et tous ses enfants.",
+	
+	"INSTANCES_SELECT_AN_EXISTING_INSTANCE_BELOW" : "selectionner une instance existante dans la liste ci-dessous",
+	
+	"INSTANCES_NEW_SHOW_EXISTING_VALIDATE" : "Valider",
+	
+	"INSTANCES_NEW_SHOW_EXISTING_CANCEL" : "Annuler",
+	
+	"INSTANCES_NEW_CANCEL_CREATION" : "Annuler la création",
+	
+	"INSTANCES_NEW_CREATE_THEM_ALL" : "Créer les tous",
+	
+	"INSTANCES_NEW_RESET_FORM" : "Réinitialiser le formulaire",
+	
+	"INSTANCES_NEW_RESET_FORM_MESSAGE" : "Vous êtes sur le point de tout réinitialiser. Toutes les instances seront supprimées.",
+	
+	"INSTANCES_NEW_RESET_FORM_CONFIRM" : "Confirmer",
+	
+	"INSTANCES_NEW_RESET_FORM_CANCEL" : "Annuler",
+	
+	"INSTANCES_NEW_FINISH" : "Finir",
+	
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT" : "Cette application n'importe aucune variable externe.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT_2" : "Il n'y a aucune liaison à définir entre cette application et les autres.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES" : "Les préfixes suivants correspondent aux propriétés exportées par d'autres applications.",
+	
+	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2" : "Selectionner une application à laquelle cette application sera liée.",
+	
+	"APPLICATIONS_BINDINGS_SAVE" : "Enregistrer"
 	
 }

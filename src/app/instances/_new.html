@@ -3,25 +3,25 @@
 
 <div class="content">
 	<h1>
-		New Instance(s) for {{ ::appName }}
+		{{'INSTANCES_NEW_INSTANCES' | translate}}{{ ::appName }}
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
-		<li class="active"><a href="#/app/{{ appName }}/instances">Instances</a></li>
-		<li><a href="#/app/{{ appName }}/commands">Commands</a></li>
-		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
-		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
-		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+		<li><a href="#/app/{{ appName }}/overview">{{'INSTANCES_OVERVIEW' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/instances">{{'INSTANCES_INSTANCES' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/commands">{{'INSTANCES_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/targets">{{'INSTANCES_TARGET' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/application-bindings">{{'INSTANCES_BINDINGS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/delete">{{'INSTANCES_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
 <div class="content short-content">
 
 	<!-- Information Message -->
-	This page allows you to create a new instance for the <strong>{{ ::appName }}</strong> application.
+	<span translate="{{'INSTANCES_NEW_INFORMATION_MESSAGE' | translate:instNewData}}"/>
 	<br /><br />
 	
 	<!-- Error message -->
@@ -56,11 +56,11 @@
 	
 	<!-- The block that lists instances -->
 	<div class="block instances" id="single-block">
-		<p class="block-title">Create your instance</p>
+		<p class="block-title">{{'INSTANCES_CREATE_INSTANCE' | translate}}</p>
 		<div class="block-content" style="margin-bottom: -6px;" ng-show="! rootNode">
 			<p class="pull-left">
-				No instance has been created so far.<br />
-				Or you can <a href="" ng-click="askToSelectInstance()">select an existing instance</a> to complete.
+				{{'INSTANCES_NO_INSTANCE_CREATED' | translate}}<br />
+				{{'INSTANCES_OR_YOU_CAN' | translate}} <a href="" ng-click="askToSelectInstance()">{{'INSTANCES_SELECT_AN_EXISTING_INSTANCE' | translate}}</a> {{'INSTANCES_TO_COMPLETE' | translate}}
 			</p>
 			
 			<p class="editor-actions pull-right">
@@ -76,8 +76,8 @@
 	<!-- Edit properties of an instance -->
 	<form novalidate name="newInstanceForm" ng-show="editedInstance && ['edit','new'].indexOf(mode) >= 0">
 		<div class="form-group" ng-class="{'has-error': newInstanceForm.component.$invalid && newInstanceForm.component.$dirty}">
-			<label for="component" class="control-label">Component name</label>
-			<span class="r-help" ng-show="newAppForm.component.$error.required">(required)</span>
+			<label for="component" class="control-label">{{'INSTANCES_COMPONENT_NAME' | translate}}</label>
+			<span class="r-help" ng-show="newAppForm.component.$error.required">{{'INSTANCES_REQUIRED' | translate}}</span>
 			<select
 					class="form-control" name="component" ng-model="editedInstance.component"
 					ng-options="comp.name for comp in possibleComponents track by comp.name" required>
@@ -85,29 +85,29 @@
 		</div>
 		
 		<div class="form-group" ng-class="{'has-error': newInstanceForm.name.$invalid && newInstanceForm.name.$dirty}">
-			<label for="name" class="control-label">Instance name</label>
-			<span class="r-help" ng-show="newInstanceForm.name.$error.required">(required)</span><br />
+			<label for="name" class="control-label">{{'INSTANCES_INSTANCE_NAME' | translate}}</label>
+			<span class="r-help" ng-show="newInstanceForm.name.$error.required">{{'INSTANCES_REQUIRED' | translate}}</span><br />
 			<input
 					type="text" class="form-control" name="name" placeholder="an instance name"
 					ng-model="editedInstance.name" ng-model-options="{allowInvalid: true}" required instance />
 		</div>
 
-		<p class="text-danger" ng-show="newInstanceForm.name.$error.instance">The instance name must be unique among its siblings.</p>
-		<button type="button" class="btn btn-default pull-right" ng-disabled="! newInstanceForm.$valid" ng-click="ok()">OK</button>
-		<button type="button" class="btn btn-default pull-right" ng-click="cancel()">Cancel</button>
+		<p class="text-danger" ng-show="newInstanceForm.name.$error.instance">{{'INSTANCES_INSTANCE_NAME_UNIQUE' | translate}}</p>
+		<button type="button" class="btn btn-default pull-right" ng-disabled="! newInstanceForm.$valid" ng-click="ok()">{{'INSTANCES_NEW_OK' | translate}}</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="cancel()">{{'INSTANCES_NEW_CANCEL' | translate}}</button>
 	</form>
 	
 	<!-- Confirm the deletion of an instance -->
 	<div ng-show="editedInstance && mode === 'delete'">
-		This action will delete <strong>{{ editedInstance.name }}</strong> and all its children. &nbsp;
+		<span translate="{{'INSTANCES_NEW_ACTION_DELETE' | translate:instNewData}}"></span> &nbsp;
 		
-		<button type="button" class="btn btn-default" ng-click="deleteInstance( true )">Confirm</button>
-		<button type="button" class="btn btn-default" ng-click="deleteInstance( false )">Cancel</button>
+		<button type="button" class="btn btn-default" ng-click="deleteInstance( true )">{{'INSTANCES_DELETE_CONFIRM' | translate}}</button>
+		<button type="button" class="btn btn-default" ng-click="deleteInstance( false )">{{'INSTANCES_DELETE_CANCEL' | translate}}</button>
 	</div>
 	
 	<!-- Show existing instances -->
 	<div ng-show="mode === 'select-instance'">
-		Select an existing instance in the list below.<br />
+		{{'INSTANCES_SELECT_AN_EXISTING_INSTANCE_BELOW' | translate}}<br />
 		
 		<div class="form-group">
 			<select
@@ -116,32 +116,32 @@
 					ng-options="inst.path for inst in (existingInstances | rbcfRootInstancesFilter) track by inst.path" required>
 			</select>
 		</div>
-		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( true )">Validate</button>
-		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( false )">Cancel</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( true )">{{'INSTANCES_NEW_SHOW_EXISTING_VALIDATE' | translate}}</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( false )">{{'INSTANCES_NEW_SHOW_EXISTING_CANCEL' | translate}}</button>
 	</div>
 	
 	<!-- Confirm or cancel creation -->
 	<div ng-show="showGlobalButtons()">
-		<button type="button" class="btn btn-default pull-right" ng-click="askToReset()">Cancel creation</button>
-		<button type="button" class="btn btn-default pull-right" ng-click="createThemAll()">Create them all</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="askToReset()">{{'INSTANCES_NEW_CANCEL_CREATION' | translate}}</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="createThemAll()">{{'INSTANCES_NEW_CREATE_THEM_ALL' | translate}}</button>
 	</div>
 	
 	<!-- Reset the form once we selected existing instances -->
 	<div ng-show="rootNode && ! editedInstance && mode !== 'reset'">
-		<button type="button" class="btn btn-default pull-right" ng-click="hardReset()">Reset the form</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="hardReset()">{{'INSTANCES_NEW_RESET_FORM' | translate}}</button>
 	</div>
 	
 	<!-- Confirm the form should be reset -->
 	<div ng-show="mode === 'reset'">
-		You are about to reset everything. All the new instances will be dropped. &nbsp;
+		{{'INSTANCES_NEW_RESET_FORM_MESSAGE' | translate}} &nbsp;
 		
-		<button type="button" class="btn btn-default" ng-click="reset( true )">Confirm</button>
-		<button type="button" class="btn btn-default" ng-click="reset( false )">Cancel</button>
+		<button type="button" class="btn btn-default" ng-click="reset( true )">{{'INSTANCES_NEW_RESET_FORM_CONFIRM' | translate}}</button>
+		<button type="button" class="btn btn-default" ng-click="reset( false )">{{'INSTANCES_NEW_RESET_FORM_CANCEL' | translate}}</button>
 	</div>
 	
 	<!-- Once it was posted (with or without success) -->
 	<div ng-show="mode === 'posted'">
-		<button type="button" class="btn btn-default pull-right" ng-click="reset( true )">Finish</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="reset( true )">{{'INSTANCES_NEW_FINISH' | translate}}</button>
 	</div>
 	
 </div>
