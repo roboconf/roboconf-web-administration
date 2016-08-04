@@ -35,11 +35,59 @@
 	
 	"APPLICATIONS_DIRECTIVE_MANAGE_INSTANCES" : "Manage the instances",
 	
-	"APPLICATIONS_DIRECTIVE_ACCES_APPLICATION_PAGE" : "Acces the application's page",
+	"APPLICATIONS_DIRECTIVE_ACCES_APPLICATION_PAGE" : "Access the application's page",
 	
 	"APPLICATIONS_DIRECTIVE_TEMPLATE_NAME" : "Template Name",
 	
 	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER" : "Template Qualifier",
+	
+	"APPLICATIONS_DIRECTIVE_EXTERNAL_DEPENDENCIES" : "External Dependencies",
+	
+	"APPLICATIONS_DIRECTIVE_YES" : "yes",
+	
+	"APPLICATIONS_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports",
+	
+	"APPLICATIONS_DIRECTIVE_VISIBLE_VARIABLES" : "Variables made visible to other applications",
+	
+	"APPLICATIONS_DIRECTIVE_AS" : "as",
+	
+	"APPLICATIONS_DELETE_NO_DELETE" : "Application {{name}} still has deployed instances. It cannot be deleted.",
+	
+	"APPLICATIONS_DELETE_DELETE" : "Application {{name}} does not have any deployed instance.",
+	
+	"APPLICATIONS_DELETE_DELETE_2" : "You can delete it if you want.",
+	
+	"APPLICATIONS_DELETE_CONFIRM" : "Confirm the Deletion of this Application",
+	
+	"APPLICATIONS_APP_LIST_WELCOME" : "Welcome",
+	
+	"APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED" : "No application has been created so far.",
+	
+	"APPLICATIONS_APP_LIST_YOU_CAN" : "You can",
+	
+	"APPLICATIONS_APP_LIST_CREATE_APPLICATION" : "create your first application.",
+	
+	"APPLICATIONS_NAME" : "Application name",
+	
+	"APPLICATIONS_REQUIRED" : "(required)",
+	
+	"APPLICATIONS_DESCRIPTION" : "Description",
+	
+	"APPLICATIONS_PLEASE" : "Please",
+	
+	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE" : "select an existing template",
+	
+	"APPLICATIONS_TO_CREATE_AN_APPLICATION" : "to create an application or",
+	
+	"APPLICATIONS_UPLOAD_NEW_TEMPLATE" : "upload a new template",
+	
+	"APPLICATIONS_FIRST" : "first",
+	
+	"APPLICATIONS_SUBMIT" : "Submit",
+	
+	"APPLICATIONS_NEW_YOU_CAN" : "You can",
+	
+	"APPLICATIONS_COMPLETE_APPLICATION_CREATION" : "complete the creation of your new application",
 	
 	
 	"INSTANCES_NEW" : "New Application",
@@ -229,6 +277,19 @@
 	
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2" : "Select which ones this application should be bound to.",
 	
-	"APPLICATIONS_BINDINGS_SAVE" : "Save"
+	"APPLICATIONS_BINDINGS_SAVE" : "Save",
+	
+	
+	"APPLICATIONS_TARGETS_ASSOCIATE" : "This page allows to associate machine instances with deployment targets.",
+	
+	"APPLICATIONS_TARGETS_DEFAULT" : "default",
+	
+	"APPLICATIONS_TARGETS_NONE" : "none",
+	
+	"APPLICATIONS_TARGETS_CANCEL" : "Cancel",
+	
+	"APPLICATIONS_TARGETS_EDIT" : "Edit",
+	
+	"APPLICATIONS_TARGETS_SAVE" : "Save"
 	
 }

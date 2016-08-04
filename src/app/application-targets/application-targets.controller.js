@@ -15,6 +15,9 @@
     $scope.possibleTargets = [];
     $scope.enhancedPossibleTargets = [];
     $scope.defaultTarget = null;
+    $scope.appTargetData = {
+        name : '<strong>' + $routeParams.appName + '</strong>'
+    };
 
     // Scope functions
     $scope.formatTarget = formatTarget;

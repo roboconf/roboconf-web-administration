@@ -22,12 +22,12 @@
 	
 	<!-- No application? -->
 	<div class="block" ng-show="! error && invoked && apps.length == 0">
-		<p class="block-title">Welcome</p>
+		<p class="block-title">{{'APPLICATIONS_APP_LIST_WELCOME' | translate}}</p>
 
 		<div class="block-content">
 			<p>
-				No application has been created so far.<br />
-				You can <a href="#/applications/new" class="welcome">create your first application.</a>
+				{{'APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED' | translate}}<br />
+				{{'APPLICATIONS_APP_LIST_YOU_CAN' | translate}} <a href="#/applications/new" class="welcome">{{'APPLICATIONS_APP_LIST_CREATE_APPLICATION' | translate}}</a>
 			</p>
 		</div>
 	</div>

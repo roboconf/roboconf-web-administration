@@ -41,6 +41,54 @@
 	
 	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER" : "Qualificatif du Template",
 	
+	"APPLICATIONS_DIRECTIVE_EXTERNAL_DEPENDENCIES" : "Dépendances Externes",
+	
+	"APPLICATIONS_DIRECTIVE_YES" : "Oui",
+	
+	"APPLICATIONS_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les Exports externes ",
+	
+	"APPLICATIONS_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles par d'autres applications",
+	
+	"APPLICATIONS_DIRECTIVE_AS" : "comme",
+	
+	"APPLICATIONS_DELETE_NO_DELETE" : "L'application {{name}} a toujours des instances déployées. Elle ne peut pas être supprimée.",
+	
+	"APPLICATIONS_DELETE_DELETE" : "L'application {{name}} n'a aucune instance déployée.",
+	
+	"APPLICATIONS_DELETE_DELETE_2" : "Vous pouvez la supprimer si vous voulez.",
+	
+	"APPLICATIONS_DELETE_CONFIRM" : "Confirmer la suppression de cette application",
+	
+	"APPLICATIONS_APP_LIST_WELCOME" : "Bienvenue",
+	
+	"APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED" : "Aucune appplication créée jusqu'à présent.",
+	
+	"APPLICATIONS_APP_LIST_YOU_CAN" : "Vous pouvez",
+	
+	"APPLICATIONS_APP_LIST_CREATE_APPLICATION" : "créer votre première application.",
+	
+	"APPLICATIONS_NAME" : "Nom de l'application",
+	
+	"APPLICATIONS_REQUIRED" : "(obligatoire)",
+	
+	"APPLICATIONS_DESCRIPTION" : "Description",
+	
+	"APPLICATIONS_PLEASE" : "Veuillez",
+	
+	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE" : "selectionner un modèle existant",
+	
+	"APPLICATIONS_TO_CREATE_AN_APPLICATION" : "pour créer une application ou",
+	
+	"APPLICATIONS_UPLOAD_NEW_TEMPLATE" : "télécharger un nouveau modèle",
+	
+	"APPLICATIONS_FIRST" : "d'abord",
+	
+	"APPLICATIONS_SUBMIT" : "Soumettre",
+	
+	"APPLICATIONS_NEW_YOU_CAN" : "Vous pouvez",
+	
+	"APPLICATIONS_COMPLETE_APPLICATION_CREATION" : "compléter la création de votre nouvelle application",
+	
 	
 	"INSTANCES_NEW" : "Nouvelle Application",
 	
@@ -229,6 +277,19 @@
 	
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2" : "Selectionner une application à laquelle cette application sera liée.",
 	
-	"APPLICATIONS_BINDINGS_SAVE" : "Enregistrer"
+	"APPLICATIONS_BINDINGS_SAVE" : "Enregistrer",
+	
+	
+	"APPLICATIONS_TARGETS_ASSOCIATE" : "Cette page permet d'associer des instances de machine avec des cibles de déploiement.",
+	
+	"APPLICATIONS_TARGETS_DEFAULT" : "défaut",
+	
+	"APPLICATIONS_TARGETS_NONE" : "aucun",
+	
+	"APPLICATIONS_TARGETS_CANCEL" : "Annuler",
+	
+	"APPLICATIONS_TARGETS_EDIT" : "Editer",
+	
+	"APPLICATIONS_TARGETS_SAVE" : "Enregistrer"
 	
 }
