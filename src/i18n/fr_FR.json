@@ -89,6 +89,84 @@
 	
 	"APPLICATIONS_COMPLETE_APPLICATION_CREATION" : "compléter la création de votre nouvelle application",
 	
+	"APPLICATIONS_TEMPLATE_APPLICATION" : "Modèles d'application",
+	
+	"APPLICATIONS_TEMPLATE_OVERVIEW" : "Aperçu",
+	
+	"APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS" : "Applications Associées",
+	
+	"APPLICATIONS_TEMPLATE_DELETE" : "Supprimer",
+	
+	"APPLICATIONS_TEMPLATE_TEMPLATE_NAME" : "Nom du modèle:",
+	
+	"APPLICATIONS_TEMPLATE_QUALIFIER" : "Qualificatif:",
+	
+	"APPLICATIONS_TEMPLATE_EXTERNAL_DEPENDENCIES" : "Dépendances Externes",
+	
+	"APPLICATIONS_TEMPLATE_YES" : "Oui",
+	
+	"APPLICATIONS_TEMPLATE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes:",
+	
+	"APPLICATIONS_TEMPLATE_TEMPLATE" : "Modèle",
+	
+	"APPLICATIONS_TEMPLATE_WITH_QUALIFIER" : "avec le qualificatif",
+	
+	"APPLICATIONS_TEMPLATE_NOT_ASSOCIATED_WITH_APPLICATION" : "n'est associé à aucune application.",
+	
+	"APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND" : "Aucun modèle d'application appélé {{name}} n'a été trouvé avec le qualificatif {{qualifier}}",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_NO_DELETE" : "Le modèle {{name}} avec le qualificatif {{qualifier}} est toujours associé à des applications. Il ne peut pas être supprimé.",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_DELETE" : "Le modèle {{name}} avec le qualificatif {{qualifier}} n'est associé à aucune application. Si vous pouvez le supprimer si vous voulez.",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_CONFIRM" : "Confirmer la suppression de ce modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_NO_ASSOCIATED_APPLICATIONS" : "Pas d'application associée.",
+	
+	"APPLICATIONS_TEMPLATE_ONE_OR_SEVERAL_ASSOCIATED_APPLICATIONS" : "une ou plusieurs applications sont associées à ce modèle.",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUICK_ACCESS" : "Accès Rapide",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE" : "Accéder à la page du modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUALIFIER" : "Qualificatif:",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_EXTERNAL_DEPENDENCIES" : "Dépendances externes",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes:",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles aux autres applications:",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NEW_APPLICATION" : "Nouveau modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_LIST_WELCOME" : "Bienvenue",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION" : "Aucun modèle d'application n'a été déployé jusqu'à présent.",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION_2" : "Vous pouvez déployer un nouveau modèle d'application en téléchargeant un fichier ZIP.",
+	
+	"APPLICATIONS_TEMPLATE_LIST_UPLOAD" : "Télécharger votre premier modèle d'application.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_FILE" : "Selectionner un fichier",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_CHANGE" : "Changer",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_RESET" : "Initialiser",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_UPLOAD" : "Téléverser",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE" : "Selectionner un fichier ZIP contenant le modèle d'application à déployer.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE" : "Nouveau modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN" : "Vous pouvez...",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_AVAILABLE_APPLICATION_TEMPLATES" : "lister les modèles d'application disponibles.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE_2" : "téléverser un nouveau modèle d'application",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_CREATE_NEW_APPLICATION" : "créer une nouvelle application",
+	
 	
 	"INSTANCES_NEW" : "Nouvelle Application",
 	

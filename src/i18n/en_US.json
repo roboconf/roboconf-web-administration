@@ -89,6 +89,84 @@
 	
 	"APPLICATIONS_COMPLETE_APPLICATION_CREATION" : "complete the creation of your new application",
 	
+	"APPLICATIONS_TEMPLATE_APPLICATION" : "Application Templates",
+	
+	"APPLICATIONS_TEMPLATE_OVERVIEW" : "Overview",
+	
+	"APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS" : "Associated Applications",
+	
+	"APPLICATIONS_TEMPLATE_DELETE" : "Delete",
+	
+	"APPLICATIONS_TEMPLATE_TEMPLATE_NAME" : "Template name:",
+	
+	"APPLICATIONS_TEMPLATE_QUALIFIER" : "Qualifier:",
+	
+	"APPLICATIONS_TEMPLATE_EXTERNAL_DEPENDENCIES" : "External Dependencies",
+	
+	"APPLICATIONS_TEMPLATE_YES" : "Yes",
+	
+	"APPLICATIONS_TEMPLATE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports:",
+	
+	"APPLICATIONS_TEMPLATE_TEMPLATE" : "Template",
+	
+	"APPLICATIONS_TEMPLATE_WITH_QUALIFIER" : "with qualifier",
+	
+	"APPLICATIONS_TEMPLATE_NOT_ASSOCIATED_WITH_APPLICATION" : "is not associated with any application.",
+	
+	"APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND" : "No application template called {{name}} was found with the qualifier {{qualifier}}",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_NO_DELETE" : "Template {{name}} with qualifier {{qualifier}} still has associated applications. It cannot be deleted.",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_DELETE" : "Template {{name}} with qualifier {{qualifier}} is not associated with any application. You can delete it if you want.",
+	
+	"APPLICATIONS_TEMPLATE_DELETE_CONFIRM" : "Confirm the Deletion of this Application Template",
+	
+	"APPLICATIONS_TEMPLATE_NO_ASSOCIATED_APPLICATIONS" : "No associated application.",
+	
+	"APPLICATIONS_TEMPLATE_ONE_OR_SEVERAL_ASSOCIATED_APPLICATIONS" : "One or several applications are associated with this template.",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUICK_ACCESS" : "Quick Access",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE" : "Access the application template's page",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUALIFIER" : "Qualifier:",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_EXTERNAL_DEPENDENCIES" : "External Dependencies",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports:",
+	
+	"APPLICATIONS_TEMPLATE_DIRECTIVE_VISIBLE_VARIABLES" : "Variables made visible to other applications:",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NEW_APPLICATION" : "New Application Template",
+	
+	"APPLICATIONS_TEMPLATE_LIST_WELCOME" : "Welcome",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION" : "No application template has been deployed so far.",
+	
+	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION_2" : "You can deploy a new application template by uploading a ZIP file.",
+	
+	"APPLICATIONS_TEMPLATE_LIST_UPLOAD" : "Upload your first application template.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_FILE" : "Select file",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_CHANGE" : "Change",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_RESET" : "Reset",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_UPLOAD" : "Upload",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE" : "Select a ZIP file containing the application template to deploy.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE" : "New Application Template",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN" : "You can..."
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_AVAILABLE_APPLICATION_TEMPLATES" : "list the available application templates.",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE_2" : "upload a new application template",
+	
+	"APPLICATIONS_TEMPLATE_UPLOAD_CREATE_NEW_APPLICATION" : "create a new application",
+	
 	
 	"INSTANCES_NEW" : "New Application",
 	

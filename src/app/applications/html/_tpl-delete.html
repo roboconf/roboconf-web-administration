@@ -3,16 +3,16 @@
 
 <div class="content">
 	<h1>
-		Application Templates &raquo; {{ app.name }}
+		{{'APPLICATIONS_TEMPLATE_APPLICATION' | translate}} &raquo; {{ app.name }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 	
 <div class="menu">
 	<ul>
-		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">Overview</a></li>
-		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">Associated Applications</a></li>
-		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">Delete</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{'APPLICATIONS_TEMPLATE_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}</a></li>
+		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">{{'APPLICATIONS_TEMPLATE_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -23,22 +23,14 @@
 
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
-		<div ng-show="app.apps.length > 0">
-			Template <strong>{{ app.name }}</strong> with qualifier <strong>{{ app.qualifier }}</strong>
-			still has associated applications. It cannot be deleted.
-		</div>
+		<div ng-show="app.apps.length > 0" translate="{{'APPLICATIONS_TEMPLATE_DELETE_NO_DELETE' | translate:appTplData}}"></div>
 		
-		<div ng-show="app.apps.length === 0">
-			Template <strong>{{ app.name }}</strong> with qualifier <strong>{{ app.qualifier }}</strong>
-			is not associated with any application. You can delete it if you want.
+		<div ng-show="app.apps.length === 0" translate="{{'APPLICATIONS_TEMPLATE_DELETE_DELETE' | translate}}">
 			
 			<br /><br />
-			<button class="btn btn-danger" ng-click="deleteApplicationTemplate( app )">Confirm the Deletion of this Application Template</button>
+			<button class="btn btn-danger" ng-click="deleteApplicationTemplate( app )">{{'APPLICATIONS_TEMPLATE_DELETE_CONFIRM' | translate}}</button>
 		</div>
 	</div>
 	
-	<div ng-show="responseStatus === 404">
-		No application template called <strong>{{ app.name }}</strong> 
-		was found with the qualifier <strong>{{ app.qualifier }}</strong>.
-	</div>
+	<div ng-show="responseStatus === 404" translate="{{'APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND' | translate}}"></div>
 </div>

@@ -8,18 +8,18 @@
 		</div>
 
 		<span class="input-group-addon btn btn-default btn-file">
-			<span class="fileinput-new">Select file</span>
-			<span class="fileinput-exists">Change</span>
+			<span class="fileinput-new">{{'APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_FILE' | translate}}</span>
+			<span class="fileinput-exists">{{'APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_CHANGE' | translate}}</span>
 			<input type="file" name="file" />
 		</span>
 		
-		<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput" ng-click="reset()">Reset</a>
+		<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput" ng-click="reset()">{{'APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_RESET' | translate}}</a>
 		<span class="input-group-addon btn btn-default btn-default fileinput-exists" ng-click="uploadZip()">
-			<i class="glyphicon glyphicon-upload"></i> Upload
+			<i class="glyphicon glyphicon-upload"></i> {{'APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_UPLOAD' | translate}}
 		</span>
 	</div>
 	
-	<p class="help-block">Select a ZIP file containing the application template to deploy.</p>
+	<p class="help-block">{{'APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE' | translate}}</p>
 </form>
 
 <div class="progress">

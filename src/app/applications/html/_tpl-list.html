@@ -3,15 +3,15 @@
 
 <div class="content">
 	<h1>
-		Applications Templates
+		{{'APPLICATIONS_TEMPLATE_APPLICATION' | translate}}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 	</h1>
 </div>
 	
 <div class="menu">
 	<ul>
-		<li class="active"><a href="#/application-templates">Application Templates</a></li>
-		<li><a href="#/application-templates/new">New Application Template</a></li>
+		<li class="active"><a href="#/application-templates">{{'APPLICATIONS_TEMPLATE_APPLICATION' | translate}}</a></li>
+		<li><a href="#/application-templates/new">{{'APPLICATIONS_TEMPLATE_LIST_NEW_APPLICATION' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -22,14 +22,14 @@
 	
 	<!-- No application? -->
 	<div class="block" ng-show="! error && invoked && apps.length == 0">
-		<p class="block-title">Welcome</p>
+		<p class="block-title">{{'APPLICATIONS_TEMPLATE_LIST_WELCOME' | translate}}</p>
 		<div class="block-content">
 			<p>
-				No application template has been deployed so far.<br />
-				You can deploy a new application template by uploading a ZIP file.
+				{{'APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION' | translate}}<br />
+				{{'APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION_2' | translate}}
 			</p>
 			<p>
-				<a href="#/application-templates/new" class="welcome">Upload your first application template.</a>
+				<a href="#/application-templates/new" class="welcome">{{'APPLICATIONS_TEMPLATE_LIST_UPLOAD' | translate}}</a>
 			</p>
 		</div>
 	</div>
