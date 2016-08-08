@@ -3,20 +3,20 @@
 
 <div class="content">
 	<h1>
-		Applications &raquo; {{ appName }}
+		{{'APPLICATIONS' | translate}} &raquo; {{ appName }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
-		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
-		<li><a href="#/app/{{ appName }}/commands">Commands</a></li>
-		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
-		<li class="active"><a href="#/app/{{ appName }}/jobs">Scheduled Jobs</a></li>
-		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
-		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+		<li><a href="#/app/{{ appName }}/overview">{{'APPLICATIONS_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/instances">{{'APPLICATIONS_INSTANCES' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/targets">{{'APPLICATIONS_TARGET' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/jobs">{{'APPLICATIONS_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/application-bindings">{{'APPLICATIONS_BINDINGS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/delete">{{'APPLICATIONS_DELETE' | translate}}</a></li>
 </div>
 
 <div class="content short-content">
@@ -25,18 +25,18 @@
 	<rbcf-error-message ng-show="responseStatus > 0"></rbcf-error-message>
 
 	<!-- Jobs -->
-	<div ng-show="responseStatus === 0 && jobs.length === 0">No job has been scheduled so far.</div>
+	<div ng-show="responseStatus === 0 && jobs.length === 0">{{'SCHEDULING_NO_SCHEDULED_JOB' | translate}}</div>
 	
 	<div ng-show="responseStatus === 0 && jobs.length > 0">
-		The following jobs have been scheduled.
+		{{'SCHEDULING_LIST_APP_SCHEDULED_JOBS' | translate}}
 		<br /><br />
 		
 		<table class="table table-hover table-rbcf">
 			<tr>
 				<th>-</th>
-				<th>Job Name</th>
-				<th>Application Name</th>
-				<th>Command Name</th>
+				<th>{{'SCHEDULING_JOB_NAME' | translate}}</th>
+				<th>{{'SCHEDULING_APPLICATION_NAME' | translate}}</th>
+				<th>{{'SCHEDULING_COMMAND_NAME' | translate}}</th>
 			</tr>
 			<tr ng-repeat="job in jobs">
 				<td>{{ $index + 1 }}</td>

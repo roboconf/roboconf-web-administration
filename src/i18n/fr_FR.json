@@ -368,6 +368,105 @@
 	
 	"APPLICATIONS_TARGETS_EDIT" : "Editer",
 	
-	"APPLICATIONS_TARGETS_SAVE" : "Enregistrer"
+	"APPLICATIONS_TARGETS_SAVE" : "Enregistrer",
+	
+	
+	"COMMANDS_NO_COMMAND_AVAILABLE" : "Aucune commande disponible pour cette application.",
+	
+	"COMMANDS_AVAILABLE_COMMANDS" : "Les commandes suivantes sont disponibles.", 
+	
+	"COMMANDS_AVAILABLE_COMMANDS_2" : "Vous pouvez les exécuter directement dans cette console. Remarquez qu'une commande peut prendre du temps à être exécutée ou produire des effets.",
+	
+	"COMMANDS_COMMAND_NAME" : "Nom de la commande",
+	
+	"COMMANDS_AVAILABLE_ACTIONS" : "Actions disponibles",
+	
+	"COMMANDS_EXECUTE" : "exécute",
+	
+	
+	"ERRORS_MESSAGE" : "Une erreur apparaît : communication avec le serveur échoué.",
+	
+	"ERRORS_MESSAGE_2" : "Assurez vous que le gestionnaire de déploiement est démarré ou que les paramètres de connexion sont corrects dans",
+	
+	"ERRORS_PREFERENCES" : "preferences",
+	
+	"ERRORS_OOPS" : "Ouups",
+	
+	
+	"MENU_APPLICATIONS" : "Applications",
+	
+	"MENU_APPLICATIONS_TEMPLATES" : "Modèles d'application",
+	
+	"MENU_DEPLOYMENT_TARGETS" : "Cibles de déploiement",
+	
+	"MENU_SCHEDULER" : "Planificateur",
+	
+	"MENU_PREFERENCES" : "Préferences" ,
+	
+	"MENU_WEB_SITE" : "Site Web",
+	
+	
+	"PREFERENCES_PREFERENCES" : "Préferences",
+	
+	"PREFERENCES_MANAGE_SETTINGS_PREFERENCES" : "Gérer vos réglages et préferences.",
+	
+	"PREFERENCES_LANGUAGES" : "Langues",
+	
+	"PREFERENCES_ENGLISH" : "Anglais",
+	
+	"PREFERENCES_FRENCH" : "Français",
+	
+	
+	"SCHEDULING_SCHEDULER" : "Planificateur",
+	
+	"SCHEDULING_SCHEDULED_JOBS" : "Tâches planifiées",
+	
+	"SCHEDULING_PROPERTIES" : "Propriétés",
+	
+	"SCHEDULING_DELETE" : "Supprimer",
+	
+	"SCHEDULING_DELETE_MESSAGE" : "Vous pouvez supprimer cette tâche si vous voulez.",
+	
+	"SCHEDULING_DELETE_CONFIRM" : "Confirmer la suppression de cette tâche",
+	
+	"SCHEDULING_NO_FOUND_JOB" : "Aucune tâche avec cet ID n'a été trouvée",
+	
+	"SCHEDULING_NO_SCHEDULED_JOB" : "Aucune tâche n'a été planifiée jusqu'à présent.",
+	
+	"SCHEDULING_LIST_APP_SCHEDULED_JOBS" : "Les tâches suivantes ont été planifiées.",
+	
+	"SCHEDULING_JOB_NAME" : "Nom de la tâche",
+	
+	"SCHEDULING_APPLICATION_NAME" : "Nom de l'application",
+	
+	"SCHEDULING_COMMAND_NAME" : "Nom de la commande",
+	
+	"SCHEDULING_NEW_SCHEDULED_JOB" : "Nouvelle tâche planifiée",
+	
+	"SCHEDULING_REQUIRED" : "obligatoire",
+	
+	"SCHEDULING_PLEASE" : "Veuillez, cliquer sur",
+	
+	"SCHEDULING_CRON_EXPRESSION" : "expression CRON ",
+	
+	"SCHEDULING_SETUP_SCHEDULE" : "pour configurer la planification.",
+	
+	"SCHEDULING_CONTAIN_FIELDS" : "doit contenir soit  entre 6 et 7 champs",
+	
+	"SCHEDULING_YOU_CAN_USE" : "Vous pouvez utiliser",
+	
+	"SCHEDULING_SIMPLIFIED_CRON_EDITOR" : "notre éditeur de CRON simplifié",
+	
+	"SCHEDULING_HIDE" : "Cacher",
+	
+	"SCHEDULING_SUBMIT" : "Soumettre",
+	
+	"SCHEDULING_THE" : "L'",
+	
+	"SCHEDULING_FOR_THE_SCHEDULE" : "pour la planification.",
+	
+	"SCHEDULING_EDIT" : "Editer",
+	
+	"SCHEDULING_CANCEL" : "Annuler"
 	
 }

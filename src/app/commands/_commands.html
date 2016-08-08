@@ -3,20 +3,20 @@
 
 <div class="content">
 	<h1>
-		Applications &raquo; {{ appName }}
+		{{'APPLICATIONS' | translate}} &raquo; {{ appName }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/app/{{ appName }}/overview">Overview</a></li>
-		<li><a href="#/app/{{ appName }}/instances">Instances</a></li>
-		<li class="active"><a href="#/app/{{ appName }}/commands">Commands</a></li>
-		<li><a href="#/app/{{ appName }}/targets">Target Associations</a></li>
-		<li><a href="#/app/{{ appName }}/jobs">Scheduled Jobs</a></li>
-		<li><a href="#/app/{{ appName }}/application-bindings">Application Bindings</a></li>
-		<li><a href="#/app/{{ appName }}/delete">Delete</a></li>
+		<li><a href="#/app/{{ appName }}/overview">{{'APPLICATIONS_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/instances">{{'APPLICATIONS_INSTANCES' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/targets">{{'APPLICATIONS_TARGET' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/jobs">{{'APPLICATIONS_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/application-bindings">{{'APPLICATIONS_BINDINGS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/delete">{{'APPLICATIONS_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -26,12 +26,11 @@
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
 
 	<!-- Commands -->
-	<div ng-show="responseStatus === 0 && commands.length === 0">No command is available for this application.</div>
+	<div ng-show="responseStatus === 0 && commands.length === 0">{{'COMMANDS_NO_COMMAND_AVAILABLE' | translate}}</div>
 	
 	<div ng-show="responseStatus === 0 && commands.length > 0">
-		The following commands are available.<br />
-		You can execute them directly from this console. Notice that a command
-		may take time to be executed and produce effects.
+		{{'COMMANDS_AVAILABLE_COMMANDS' | translate}}<br />
+		{{'COMMANDS_AVAILABLE_COMMANDS_2' | translate}}
 		<br /><br />
 		
 		<div class="status-panel">
@@ -47,8 +46,8 @@
 		<table class="table table-hover table-rbcf">
 			<tr>
 				<th>-</th>
-				<th>Command Name</th>
-				<th>Available Actions</th>
+				<th>{{'COMMANDS_COMMAND_NAME' | translate}}</th>
+				<th>{{'COMMANDS_AVAILABLE_ACTIONS' | translate}}</th>
 			</tr>
 			<tr ng-repeat="cmd in commands | filter:searchFilter">
 				<td>{{ $index + 1 }}</td>
@@ -57,12 +56,12 @@
 					<a href="" ng-click="execute( cmd )">
 						<span class="glyphicon glyphicon-play"></span>
 						&nbsp;
-						<span ng-hide="cmd.executed">execute</span>
+						<span ng-hide="cmd.executed">{{'COMMANDS_EXECUTE' | translate}}</span>
 					</a>
 				</td>
 			</tr>
 		</table>
 	</div>
 	
-	<div ng-show="responseStatus === 404">No application called <strong>{{ appName }}</strong> was found.</div>
+	<div ng-show="responseStatus === 404" translate="{{'APPLICATIONS_NO_FOUND_APPLICATION' | translate:commandData}}"></div>
 </div>

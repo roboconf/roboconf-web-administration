@@ -159,7 +159,7 @@
 	
 	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE" : "New Application Template",
 	
-	"APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN" : "You can..."
+	"APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN" : "You can...",
 	
 	"APPLICATIONS_TEMPLATE_UPLOAD_AVAILABLE_APPLICATION_TEMPLATES" : "list the available application templates.",
 	
@@ -368,6 +368,105 @@
 	
 	"APPLICATIONS_TARGETS_EDIT" : "Edit",
 	
-	"APPLICATIONS_TARGETS_SAVE" : "Save"
+	"APPLICATIONS_TARGETS_SAVE" : "Save",
 	
+	
+	"COMMANDS_NO_COMMAND_AVAILABLE" : "No command is available for this application.",
+	
+	"COMMANDS_AVAILABLE_COMMANDS" : "The following commands are available.", 
+	
+	"COMMANDS_AVAILABLE_COMMANDS_2" : "You can execute them directly from this console. Notice that a command may take time to be executed and produce effects.",
+	
+	"COMMANDS_COMMAND_NAME" : "Command Name",
+	
+	"COMMANDS_AVAILABLE_ACTIONS" : "Available Actions",
+	
+	"COMMANDS_EXECUTE" : "execute",
+	
+	
+	"ERRORS_MESSAGE" : "An error occurred: communication with the server failed.",
+	
+	"ERRORS_MESSAGE_2" : "Make sure the Deployment Manager is started or that the connection settings are correct in the",
+	
+	"ERRORS_PREFERENCES" : "preferences",
+	
+	"ERRORS_OOPS" : "Oops",
+	
+	
+	"MENU_APPLICATIONS" : "Applications",
+	
+	"MENU_APPLICATIONS_TEMPLATES" : "Application Templates",
+	
+	"MENU_DEPLOYMENT_TARGETS" : "Deployment Targets",
+	
+	"MENU_SCHEDULER" : "Scheduler",
+	
+	"MENU_PREFERENCES" : "Preferences" ,
+	
+	"MENU_WEB_SITE" : "Web Site",
+	
+	
+	"PREFERENCES_PREFERENCES" : "Preferences",
+	
+	"PREFERENCES_MANAGE_SETTINGS_PREFERENCES" : "Manage your settings and preferences.",
+	
+	"PREFERENCES_LANGUAGES" : "Languages",
+	
+	"PREFERENCES_ENGLISH" : "English",
+	
+	"PREFERENCES_FRENCH" : "French",
+	
+	
+	"SCHEDULING_SCHEDULER" : "Scheduler",
+	
+	"SCHEDULING_SCHEDULED_JOBS" : "Scheduled Jobs",
+	
+	"SCHEDULING_PROPERTIES" : "Properties",
+	
+	"SCHEDULING_DELETE" : "Delete",
+	
+	"SCHEDULING_DELETE_MESSAGE" : "You can delete this job if you want.",
+	
+	"SCHEDULING_DELETE_CONFIRM" : "Confirm the Deletion of this Job",
+	
+	"SCHEDULING_NO_FOUND_JOB" : "No job with this ID was found",
+	
+	"SCHEDULING_NO_SCHEDULED_JOB" : "No job has been scheduled so far.",
+	
+	"SCHEDULING_LIST_APP_SCHEDULED_JOBS" : "The following jobs have been scheduled.",
+	
+	"SCHEDULING_JOB_NAME" : "Job Name",
+	
+	"SCHEDULING_APPLICATION_NAME" : "Application Name",
+	
+	"SCHEDULING_COMMAND_NAME" : "Command Name",
+	
+	"SCHEDULING_NEW_SCHEDULED_JOB" : "New Scheduled Job",
+	
+	"SCHEDULING_REQUIRED" : "required",
+	
+	"SCHEDULING_PLEASE" : "Please, type in a",
+	
+	"SCHEDULING_CRON_EXPRESSION" : "CRON expression",
+	
+	"SCHEDULING_SETUP_SCHEDULE" : "to setup the schedule.",
+	
+	"SCHEDULING_CONTAIN_FIELDS" : "must contain either between 6 and 7 fields",
+	
+	"SCHEDULING_YOU_CAN_USE" : "You can use",
+	
+	"SCHEDULING_SIMPLIFIED_CRON_EDITOR" : "our simplified CRON editor",
+	
+	"SCHEDULING_HIDE" : "Hide",
+	
+	"SCHEDULING_SUBMIT" : "Submit",
+	
+	"SCHEDULING_THE" : "The",
+	
+	"SCHEDULING_FOR_THE_SCHEDULE" : "for the schedule.",
+	
+	"SCHEDULING_EDIT" : "Edit",
+	
+	"SCHEDULING_CANCEL" : "Cancel"
+
 }
