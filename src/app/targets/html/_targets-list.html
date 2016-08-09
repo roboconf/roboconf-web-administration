@@ -3,15 +3,15 @@
 
 <div class="content">
 	<h1>
-		Deployment Targets
+		{{'TARGETS_DEPLOYMENT_TARGETS' | translate}}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li class="active"><a href="#/targets">Deployment Targets</a></li>
-		<li><a href="#/targets/new">New Deployment Target</a></li>
+		<li class="active"><a href="#/targets">{{'TARGETS_DEPLOYMENT_TARGETS' | translate}}</a></li>
+		<li><a href="#/targets/new">{{'TARGETS_NEW_DEPLOYMENT_TARGET' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -22,22 +22,22 @@
 	
 	<!-- No target? -->
 	<div ng-show="responseStatus === 0 && targets.length === 0">
-		No target has been defined so far.
+		{{'TARGETS_NO_TARGET_DEFINED' | translate}}
 	</div>
 
 	<!-- Target List -->
 	<table class="table table-hover table-rbcf" ng-show="responseStatus === 0 && targets.length > 0">
 		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Handler</th>
-			<th>Description</th>
+			<th>{{'TARGETS_ID' | translate}}</th>
+			<th>{{'TARGETS_NAME' | translate}}</th>
+			<th>{{'TARGETS_HANDLER' | translate}}</th>
+			<th>{{'TARGETS_DESCRIPTION' | translate}}</th>
 		</tr>
 		<tr ng-repeat="t in targets">
 			<td>{{ t.id }}</td>
-			<td><a href="#target/{{ t.id }}">{{ t.name ? t.name : 'no name' }}</a></td>
+			<td><a href="#target/{{ t.id }}">{{ t.name ? t.name : 'TARGETS_NO_NAME' | translate }}</a></td>
 			<td>{{ t.handler }}</td>
-			<td>{{ t.desc ? t.desc : 'no description' }}</td>
+			<td>{{ t.desc ? t.desc : 'TARGETS_NO_DESCRIPTION' | translate }}</td>
 		</tr>
 	</table>
 </div>

@@ -14,6 +14,9 @@
     $scope.targetAlias = $scope.targetId;
     $scope.stats = [];
     $scope.target = {};
+    $scope.targetData = {
+        id : '<strong>' + $routeParams.targetId + '</strong>'
+    };
 
     // Function declarations
     $scope.findLink = findLink;

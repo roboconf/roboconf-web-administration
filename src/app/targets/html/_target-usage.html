@@ -3,17 +3,17 @@
 
 <div class="content">
 	<h1>
-		Deployment Targets &raquo; {{ targetAlias }}
+		{{'TARGETS_DEPLOYMENT_TARGETS' | translate}} &raquo; {{ targetAlias }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/targets">Deployment Targets</a></li>
-		<li><a href="#/target/{{ targetId }}/properties">Properties</a></li>
-		<li class="active"><a href="#/target/{{ targetId }}/usage">Usage</a></li>
-		<li><a href="#/target/{{ targetId }}/delete">Delete</a></li>
+		<li><a href="#/targets">{{'TARGETS_DEPLOYMENT_TARGETS' | translate}}</a></li>
+		<li><a href="#/target/{{ targetId }}/properties">{{'TARGETS_PROPERTIES' | translate}}</a></li>
+		<li class="active"><a href="#/target/{{ targetId }}/usage">{{'TARGETS_USAGE' | translate}}</a></li>
+		<li><a href="#/target/{{ targetId }}/delete">{{'TARGETS_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -24,19 +24,19 @@
 
 	<!-- Target Details -->
 	<div ng-show="responseStatus === 0 && stats.length === 0">
-		This target is not used or referenced by any application.
+		{{'TARGETS_TARGET_USAGE_MESSAGE' | translate}}
 	</div>
 	
 	<table class="table table-hover table-rbcf" ng-show="responseStatus === 0 && stats.length > 0">
 		<tr>
-			<th>Template?</th>
-			<th>Name</th>
-			<th>Qualifier</th>
-			<th class="text-center">Referencing</th>
-			<th class="text-center">Using</th>
+			<th>{{'TARGETS_TEMPLATE' | translate}}?</th>
+			<th>{{'TARGETS_NAME' | translate}}</th>
+			<th>{{'TARGETS_QUALIFIER' | translate}}</th>
+			<th class="text-center">{{'TARGETS_REFERENCING' | translate}}</th>
+			<th class="text-center">{{'TARGETS_USING' | translate}}</th>
 		</tr>
 		<tr ng-repeat="s in stats">
-			<td>{{ s.qualifier ? 'yes' : '' }}</td>
+			<td>{{ s.qualifier ? 'TARGETS_USING' | translate : '' }}</td>
 			<td><a href="#/{{ findLink( s ) }}/overview">{{ s.name }}</a></td>
 			<td>{{ s.qualifier ? s.qualifier : '' }}</td>
 			<td class="text-center">{{ s.referencing ? 'x' : '' }}</td>
@@ -44,5 +44,5 @@
 		</tr>
 	</table>
 
-	<div ng-show="responseStatus === 404">No target with the ID <strong>{{ targetId }}</strong> was found.</div>
+	<div ng-show="responseStatus === 404" translate="{{'TARGETS_NO_FOUND_TARGET_ID' | translate}}"></div>
 </div>

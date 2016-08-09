@@ -467,6 +467,83 @@
 	
 	"SCHEDULING_EDIT" : "Edit",
 	
-	"SCHEDULING_CANCEL" : "Cancel"
+	"SCHEDULING_CANCEL" : "Cancel",
+	
+	
+	"TARGETS_DEPLOYMENT_TARGETS" : "Deployment Targets",
+	
+	"TARGETS_PROPERTIES" : "Properties",
+	
+	"TARGETS_USAGE" : "Usage",
+	
+	"TARGETS_DELETE" : "Delete",
+	
+	"TARGETS_TARGET" : "Target",
+	
+	"TARGETS_DELETE_NO_DELETE" : "is still referenced and/or used by applications and application templates. It cannot be deleted.",
+	
+	"TARGETS_DELETE_DELETE" : "is neither referenced nor used by any application or application template. You can delete it if you want.",
+	
+	"TARGETS_DELETE_CONFIRM" : "Confirm the Deletion of this Target",
+	
+	"TARGETS_NO_FOUND_TARGET_ID" : "No target with the ID {{id}} was found.",
+	
+	"TARGETS_SAVE" : "Save",
+	
+	"TARGETS_CANCEL" : "Cancel",
+	
+	"TARGETS_EDIT_PROPERTIES" : "Edit the Properties",
+	
+	"TARGETS_TARGET_USAGE_MESSAGE" : "This target is not used or referenced by any application.",
+	
+	"TARGETS_TEMPLATE" : "Template",
+	
+	"TARGETS_NAME" : "Name",
+	
+	"TARGETS_QUALIFIER" : "Qualifier",
+	
+	"TARGETS_REFERENCING" : "Referencing",
+	
+	"TARGETS_USING" : "Using",
+	
+	"TARGETS_YES" : "yes",
+	
+	"TARGETS_NEW_DEPLOYMENT_TARGET" : "New Deployment Target",
+	
+	"TARGETS_NO_TARGET_DEFINED" : "No target has been defined so far.",
+	
+	"TARGETS_ID" : "ID",
+	
+	"TARGETS_HANDLER" : "Handler",
+	
+	"TARGETS_DESCRIPTION" : "Description",
+	
+	"TARGETS_NO_NAME" : "No name",
+	
+	"TARGETS_NO_DESCRIPTION" : "no description",
+	
+	"TARGETS_TARGETS_NEW_MESSAGE" : "You are about to create a new deployment target.",
+	
+	"TARGETS_TARGETS_NEW_MESSAGE_2" : "Please, select a template for your target properties.",
+	
+	"TARGETS_BLANK" : "Blank",
+	
+	"TARGETS_AMAZON_WEB_SERVICES" : "Amazon Web Services",
+	
+	"TARGETS_APACHE_JCLOUDS" : "Apache JClouds",
+	
+	"TARGETS_DOCKER" : "Docker",
+	
+	"TARGETS_EMBEDDED" : "Embedded",
+	
+	"TARGETS_IN_MEMORY" : "In-Memory",
+	
+	"TARGETS_MICROSOFT_AZURE" : "Microsoft Azure",
+	
+	"TARGETS_OPENSTACK" : "Openstack",
+	
+	"TARGETS_VMWARE" : "VMWare",
+	
+	"TARGETS_VALIDATE" : "Validate"
 
 }

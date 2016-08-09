@@ -467,6 +467,83 @@
 	
 	"SCHEDULING_EDIT" : "Editer",
 	
-	"SCHEDULING_CANCEL" : "Annuler"
+	"SCHEDULING_CANCEL" : "Annuler",
+	
+	
+	"TARGETS_DEPLOYMENT_TARGETS" : "Cibles de déploiement",
+	
+	"TARGETS_PROPERTIES" : "Propriétés",
+	
+	"TARGETS_USAGE" : "Usage",
+	
+	"TARGETS_DELETE" : "Supprimer",
+	
+	"TARGETS_TARGET" : "La cible",
+	
+	"TARGETS_DELETE_NO_DELETE" : "est toujours référencée et/ou utilisée par des applications ou des modèles d'application. Elle ne peut pas être supprimée.",
+	
+	"TARGETS_DELETE_DELETE" : "n'est ni référencée ni utilisée par une application ou un modèle d'application. Vous pouvez la supprimer si vous voulez.",
+	
+	"TARGETS_DELETE_CONFIRM" : "Confirmer la suppression de cette cible",
+	
+	"TARGETS_NO_FOUND_TARGET_ID" : "Aucune cible avec l'identifiant {{id}} n'a été trouvée.",
+	
+	"TARGETS_SAVE" : "Enregistrer",
+	
+	"TARGETS_CANCEL" : "Annuler",
+	
+	"TARGETS_EDIT_PROPERTIES" : "Editer les propriétés",
+	
+	"TARGETS_TARGET_USAGE_MESSAGE" : "Cett cible n'est référencée ou utilisée par aucune application.",
+	
+	"TARGETS_TEMPLATE" : "Modèle",
+	
+	"TARGETS_NAME" : "Nom",
+	
+	"TARGETS_QUALIFIER" : "Qualificatif",
+	
+	"TARGETS_REFERENCING" : "Référençant",
+	
+	"TARGETS_USING" : "Utilisant",
+	
+	"TARGETS_YES" : "oui",
+	
+	"TARGETS_NEW_DEPLOYMENT_TARGET" : "Nouvelle cible de  déploiement",
+	
+	"TARGETS_NO_TARGET_DEFINED" : "Aucune cible n'a été définie jusqu'à présent.",
+	
+	"TARGETS_ID" : "ID",
+	
+	"TARGETS_HANDLER" : "Gestionnaire",
+	
+	"TARGETS_DESCRIPTION" : "Description",
+	
+	"TARGETS_NO_NAME" : "pas de nom",
+	
+	"TARGETS_NO_DESCRIPTION" : "pas de description",
+	
+	"TARGETS_TARGETS_NEW_MESSAGE" : "Vous êtes sur le point de créer une nouvelle cible de déploiement.",
+	
+	"TARGETS_TARGETS_NEW_MESSAGE_2" : "Veuillez, selectionner un modèle pour les propriétés de votre cible.",
+	
+	"TARGETS_BLANK" : "Vide",
+	
+	"TARGETS_AMAZON_WEB_SERVICES" : "Amazon Web Services",
+	
+	"TARGETS_APACHE_JCLOUDS" : "Apache JClouds",
+	
+	"TARGETS_DOCKER" : "Docker",
+	
+	"TARGETS_EMBEDDED" : "Embedded",
+	
+	"TARGETS_IN_MEMORY" : "In-Memory",
+	
+	"TARGETS_MICROSOFT_AZURE" : "Microsoft Azure",
+	
+	"TARGETS_OPENSTACK" : "Openstack",
+	
+	"TARGETS_VMWARE" : "VMWare",
+	
+	"TARGETS_VALIDATE" : "Valider"
 	
 }
