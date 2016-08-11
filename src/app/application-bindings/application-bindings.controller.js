@@ -13,7 +13,7 @@
     $scope.appName = $routeParams.appName;
     $scope.status = [];
     $scope.appBindingData = {
-        name : '<strong>' + $routeParams.appName + '</strong>'
+       name: '<strong>' + $routeParams.appName + '</strong>'
     };
 
     $scope.hasBindings = hasBindings;

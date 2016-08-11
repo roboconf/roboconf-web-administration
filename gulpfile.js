@@ -212,7 +212,9 @@ function prepareDist() {
   var devJs = gulp.src([ './target/dev.config/**/*.js' ])
     .pipe( copy('./target/dist', {'prefix': 2}));
 
-  return merge( html, favicon, tpl, misc, img, css, minifyJs, devJs, i18n );
+  var flags = gulp.src( './target/dev/dependencies/flag-icon-css/flags/**' ).pipe( gulp.dest( './target/dist/lib/flag-icon-css/flags/' ));
+
+  return merge( html, favicon, tpl, misc, img, css, minifyJs, devJs, i18n, flags );
 }
 
 function completeDist() {

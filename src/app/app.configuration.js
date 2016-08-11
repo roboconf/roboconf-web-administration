@@ -16,23 +16,23 @@
     // Required because the upload form MAY target another domain.
     $sceDelegateProvider.resourceUrlWhitelist(['self', '**']);
   }
-  
+
   translation.$inject = ['$translateProvider'];
   function translation($translateProvider) {
-	  
-	// Choose a sanitize strategy for security issues
-	$translateProvider.useSanitizeValueStrategy(null);
-	
-	// Load json files
-	$translateProvider.useStaticFilesLoader({
-		    prefix: 'i18n/',
-		    suffix: '.json'
-			});
-	// Tell the module what language to use by default
-	$translateProvider.preferredLanguage('en_US');
-	
-	// Tell the module to store the language in the local storage
+
+    // Choose a sanitize strategy for security issues
+    $translateProvider.useSanitizeValueStrategy(null);
+
+    // Load json files
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'i18n/',
+      suffix: '.json'
+    });
+    // Tell the module what language to use by default
+    $translateProvider.preferredLanguage('en_US');
+
+    // Tell the module to store the language in the local storage
     $translateProvider.useLocalStorage();
-	
+
   }
 })();

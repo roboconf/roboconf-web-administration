@@ -41,11 +41,11 @@
      * A list of children components for editedInstance.
      */
     $scope.possibleComponents = {};
-    
+
     // For internationalization
     $scope.instNewData = {
-    		editedInstName : '<strong>' + $scope.editedInstance.name + '</strong>',
-    		appName : '<strong>' + '::' + $routeParams.appName + '</strong>'
+       editedInstName: '',
+       appName: '<strong>' + '::' + $routeParams.appName + '</strong>'
     };
 
     // Function declarations
@@ -205,6 +205,7 @@
       if ($scope.mode === 'edit') {
         $scope.editedInstance.name = $scope.oldName;
         $scope.editedInstance.component = $scope.oldComponent;
+        $scope.instNewData.editedInstName = '<strong>' + $scope.editedInstance.name + '</strong>';
 
       } else if ($scope.mode === 'new') {
         // Parent? It is a child node.

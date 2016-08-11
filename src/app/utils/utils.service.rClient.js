@@ -80,13 +80,13 @@
               .withHttpConfig({transformRequest: angular.identity})
               .customPOST(formData, '', undefined, {'Mime-Type': 'multipart/form-data', 'Content-Type': undefined});
     }
-    
+
     function savePreferences(key, value) {
-    	return Restangular.one('/preferences?key=' + key + '&value=' + value).post();
+        return Restangular.one('/preferences?key=' + key + '&value=' + value).post();
     }
-    
+
     function getPreferences() {
-    	return Restangular.one('preferences').getList();
+        return Restangular.one('preferences').getList();
     }
 
     function listTargets() {

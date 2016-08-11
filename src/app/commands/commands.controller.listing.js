@@ -16,7 +16,7 @@
     $scope.commands = [];
     $scope.status = [];
     $scope.commandData = {
-        name : '<strong>' + $routeParams.appName + '</strong>'
+       name: '<strong>' + $routeParams.appName + '</strong>'
     };
 
     // Function declarations

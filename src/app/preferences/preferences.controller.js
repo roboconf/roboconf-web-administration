@@ -9,11 +9,11 @@
   function preferencesController(rClient, rPrefs, $scope, $timeout, $translate) {
 
     // Fields
-	$scope.setLang = setLang;
-	
-	function setLang(langKey) {
-		$translate.use(langKey);
-		//rClient.savePreferences('langkey', langKey);
-	}
+    $scope.setLang = setLang;
+
+    function setLang(langKey) {
+       $translate.use(langKey);
+       //rClient.savePreferences('langkey', langKey);
+    }
   }
 })();

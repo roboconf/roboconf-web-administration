@@ -19,8 +19,8 @@
     $scope.details = 'LIFECYCLE';
     // For internationalization
     $scope.instData = {
-        	name : '<strong>' + $routeParams.appName + '</strong>',
-        	installer : ''
+       name: '<strong>' + $routeParams.appName + '</strong>',
+       installer: ''
     };
 
     // Menu actions
@@ -88,7 +88,7 @@
       var isRoot = false;
       if (instance && instance.component && instance.component.installer) {
         isRoot = instance.component.installer.toLowerCase() === 'target';
-        $scope.instData.installer = '<strong>' + instance.component.installer.toLowerCase() + '</strong>'
+        $scope.instData.installer = '<strong>' + instance.component.installer.toLowerCase() + '</strong>';
       }
 
       var parentNotDeployed = isParentNotDeployed(node);

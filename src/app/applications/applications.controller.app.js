@@ -28,7 +28,7 @@
         }
     };
     $scope.appData = {
-    	name : '<strong>' + $routeParams.appName + '</strong>'
+       name: '<strong>' + $routeParams.appName + '</strong>'
     };
 
     $scope.deleteApplication = deleteApplication;
@@ -117,6 +117,6 @@
       var style = 'cursor ' + rUtils.findRandomAvatar(app);
       return style.trim();
     }
-   
+
   }
 })();

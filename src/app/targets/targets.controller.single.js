@@ -15,7 +15,7 @@
     $scope.stats = [];
     $scope.target = {};
     $scope.targetData = {
-        id : '<strong>' + $routeParams.targetId + '</strong>'
+       id: '<strong>' + $routeParams.targetId + '</strong>'
     };
 
     // Function declarations
