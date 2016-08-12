@@ -20,7 +20,6 @@ describe('Error Directive', function() {
     var blockContent = angular.element(directive.find('.block-content')[0]);
 
     expect(blockContent).to.exist;
-    //blockContent.text().should.contain('Deployment Manager');
     blockContent.text().should.contain('ERRORS_MESSAGE');
   });
 });

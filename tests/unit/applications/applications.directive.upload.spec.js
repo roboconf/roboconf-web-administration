@@ -22,7 +22,6 @@ describe('Application Upload Directive', function() {
     var form = angular.element(directive.find('#new-app-form')[0]);
 
     expect(form).to.exist;
-    //form.text().should.contain('ZIP file');
     form.text().should.contain('APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE');
   });
 });
