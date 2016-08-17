@@ -28,11 +28,11 @@
       prefix: 'i18n/',
       suffix: '.json'
     });
+
     // Tell the module what language to use by default
     $translateProvider.preferredLanguage('en_US');
 
     // Tell the module to store the language in the local storage
     $translateProvider.useLocalStorage();
-
   }
 })();

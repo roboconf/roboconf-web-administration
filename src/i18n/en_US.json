@@ -292,7 +292,7 @@
 	
 	"INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT" : "life cycle management",
 	
-	"INSTANCES_DELETE" : "Do you really want to delete this instance and its children?",
+	"INSTANCES_DELETE_INSTANCE_CHILDREN" : "Do you really want to delete this instance and its children?",
 	
 	"INSTANCES_DELETE_CONFIRM" : "Confirm",
 	
@@ -415,6 +415,8 @@
 	"PREFERENCES_ENGLISH" : "English",
 	
 	"PREFERENCES_FRENCH" : "French",
+	
+	"PREFERENCES_PLEASE_SELECT_LANGUAGE" : "Please, select your language.",
 	
 	
 	"SCHEDULING_SCHEDULER" : "Scheduler",

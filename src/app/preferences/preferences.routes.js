@@ -12,6 +12,11 @@
     .when('/preferences', {
       templateUrl: 'templates/preferences/_preferences.html',
       controller: 'PreferencesController'
+    })
+
+    .when('/preferences/language', {
+      templateUrl: 'templates/preferences/_preferences-language.html',
+      controller: 'PreferencesController'
     });
   }
 })();

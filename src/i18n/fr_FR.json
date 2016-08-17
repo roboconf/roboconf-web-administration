@@ -21,7 +21,7 @@
 	
 	"APPLICATIONS_CANCEL" : "Annuler",
 	
-	"APPLICATIONS_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} trouvée.",
+	"APPLICATIONS_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} n'a été trouvée.",
 	
 	"APPLICATIONS_DIRECTIVE_REPLACE_IMAGE" : "Cliquer pour remplacer cette image",
 	
@@ -29,7 +29,7 @@
 	
 	"APPLICATIONS_DIRECTIVE_DEPLOYED_INSTANCES" : "Certaines instances sont déployées. Pas de problèmes à remonter.",
 	
-	"APPLICATIONS_DIRECTIVE_INSTANCES_WITH_PROBLEMS" : "Certaines instances ont peut être rencontrées des problèmes.",
+	"APPLICATIONS_DIRECTIVE_INSTANCES_WITH_PROBLEMS" : "Des instances semblent avoir rencontré des problèmes.",
 	
 	"APPLICATIONS_DIRECTIVE_QUICK_ACCESS" : "Accès rapide",
 	
@@ -37,7 +37,7 @@
 	
 	"APPLICATIONS_DIRECTIVE_ACCES_APPLICATION_PAGE" : "Accéder à la page de l'application",
 	
-	"APPLICATIONS_DIRECTIVE_TEMPLATE_NAME" : "Nom du Template",
+	"APPLICATIONS_DIRECTIVE_TEMPLATE_NAME" : "Nom du modèle",
 	
 	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER" : "Qualificatif du Template",
 	
@@ -45,7 +45,7 @@
 	
 	"APPLICATIONS_DIRECTIVE_YES" : "Oui",
 	
-	"APPLICATIONS_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les Exports externes ",
+	"APPLICATIONS_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes ",
 	
 	"APPLICATIONS_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles par d'autres applications",
 	
@@ -55,7 +55,7 @@
 	
 	"APPLICATIONS_DELETE_DELETE" : "L'application {{name}} n'a aucune instance déployée.",
 	
-	"APPLICATIONS_DELETE_DELETE_2" : "Vous pouvez la supprimer si vous voulez.",
+	"APPLICATIONS_DELETE_DELETE_2" : "Vous pouvez la supprimer si vous le souhaitez.",
 	
 	"APPLICATIONS_DELETE_CONFIRM" : "Confirmer la suppression de cette application",
 	
@@ -105,7 +105,7 @@
 	
 	"APPLICATIONS_TEMPLATE_YES" : "Oui",
 	
-	"APPLICATIONS_TEMPLATE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes:",
+	"APPLICATIONS_TEMPLATE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes : ",
 	
 	"APPLICATIONS_TEMPLATE_TEMPLATE" : "Modèle",
 	
@@ -145,7 +145,7 @@
 	
 	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION_2" : "Vous pouvez déployer un nouveau modèle d'application en téléchargeant un fichier ZIP.",
 	
-	"APPLICATIONS_TEMPLATE_LIST_UPLOAD" : "Télécharger votre premier modèle d'application.",
+	"APPLICATIONS_TEMPLATE_LIST_UPLOAD" : "Téléverser votre premier modèle d'application.",
 	
 	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_FILE" : "Selectionner un fichier",
 	
@@ -224,29 +224,29 @@
 	
 	"INSTANCES_INCLUDES_STOP_INSTANCE" : "Arrêter cette instance",
 	
-	"INSTANCES_INCLUDES_START_INSTANCE" : "Start this instance",
+	"INSTANCES_INCLUDES_START_INSTANCE" : "Démarrer cette instance",
 	
 	"INSTANCES_INCLUDES_UNDEPLOYED_IT" : "Annuler le déploiement de cette instance",
 	
 	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYED_STARTED" : "L'instance a démarré. Elle ne peut qu'être stoppée.",
 	
-	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYED_STOPPED" : "L'instance est arrêtée. Elle peut soit être redémarrée ou en mode sans déploiement",
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYED_STOPPED" : "L'instance est arrêtée. Elle peut être soit redémarrée ou non déployée",
 	
 	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYING" : "L'instance va être déployée par l'installeur {{installer}} de Roboconf.",
 	
-	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYING_2" : "Cela peut prendre quelques temps.",
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_DEPLOYING_2" : "Cela peut prendre un peu de temps.",
 	
 	"INSTANCES_INCLUDES_PARENT_INSTANCE_NO_DEPLOYED" : "Son instance parent n'est pas déployée.",
 	
 	"INSTANCES_INCLUDES_DESCRIPTION_APP_NOT_DEPLOYED_NO_ACTION" : "L'instance n'est pas déployée. Vous devez déployer et redémarrer son instance parent avant de mettre à jour son état.",
 	
-	"INSTANCES_INCLUDES_DEPLOY_START_IT" : "Déployer et Démarrer l'instance",
+	"INSTANCES_INCLUDES_DEPLOY_START_IT" : "Déployer et démarrer l'instance",
 	
 	"INSTANCES_INCLUDES_DESCRIPTION_APP_NOT_DEPLOYED" : "L'instance n'est pas déployée. Elle ne peut qu'être déployée.",
 	
-	"INSTANCES_INCLUDES_IP_ADDRESS" : "Adresse IP:",
+	"INSTANCES_INCLUDES_IP_ADDRESS" : "Adresse IP :",
 	
-	"INSTANCES_INCLUDES_MACHINE_ID" : "Identifiant Machine:",
+	"INSTANCES_INCLUDES_MACHINE_ID" : "Identifiant Machine :",
 	
 	"INSTANCES_INCLUDES_UNDEPLOY_INSTANCE" : "Annuler le déploiement de cette instance",
 	
@@ -256,7 +256,7 @@
 	
 	"INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_DEPLOYING_2" : "Cela peut prendre quelques temps.",
 	
-	"INSTANCES_INCLUDES_APP_ROOT_PROBLEM" : "L'état de l'instance est indéterminée.",
+	"INSTANCES_INCLUDES_APP_ROOT_PROBLEM" : "L'état de l'instance est indéterminé.",
 	
 	"INSTANCES_INCLUDES_APP_ROOT_PROBLEM_2" : "C'est à dire que le gestionnaire de déploiement de Roboconf ne reçoit pas de signal venant de l'agent associé pendant plus de 2 minutes. Cela peut être expliqué par un problème de réseau du côté de gestionnaire de déploiement, du côté de l'agent, du côté de serveur de messagerie, ou une erreur du serveur de messagerie lui même (assurez vous qu'il fonctionne toujours).",
 	
@@ -268,9 +268,9 @@
 	
 	"INSTANCES_INCLUDES_DESCRIPTION_APP_STARTING" : "L'instance va être démarrée par l'installeur {{installer}} de Roboconf.",
 	
-	"INSTANCES_INCLUDES_DESCRIPTION_APP_STARTING_2" : "Cela peut prendre quelques temps.",
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STARTING_2" : "Cela peut prendre un peu de temps.",
 	
-	"INSTANCES_INCLUDES_DESCRIPTION_APP_STOPPING" : "L'instance va être arrêtée par l'installeur {{installer}} de Roboconf.",
+	"INSTANCES_INCLUDES_DESCRIPTION_APP_STOPPING" : "L'instance va être désinstallée par l'installeur {{installer}} de Roboconf.",
 	
 	"INSTANCES_INCLUDES_DESCRIPTION_APP_STOPPING_2" : "Cela peut prendre quelques temps.",
 	
@@ -292,7 +292,7 @@
 	
 	"INSTANCES_INCLUDES_LIFE_CYCLE_MANAGEMENT" : "gestion du cycle de vie",
 	
-	"INSTANCES_DELETE" : "Voulez-vous supprimer cette instance et ses enfants ?",
+	"INSTANCES_DELETE_INSTANCE_CHILDREN" : "Voulez-vous supprimer cette instance et ses enfants ?",
 	
 	"INSTANCES_DELETE_CONFIRM" : "Confirmer",
 	
@@ -318,7 +318,7 @@
 	
 	"INSTANCES_REQUIRED" : "(obligatoire)",
 	
-	"INSTANCES_INSTANCE_NAME_UNIQUE" : "Le nom de l'instance doit être unique parmi les autres",
+	"INSTANCES_INSTANCE_NAME_UNIQUE" : "Le nom de l'instance doit être unique au sein de l'application",
 	
 	"INSTANCES_NEW_OK" : "OK",
 	
@@ -384,13 +384,13 @@
 	"COMMANDS_EXECUTE" : "exécute",
 	
 	
-	"ERRORS_MESSAGE" : "Une erreur apparaît : communication avec le serveur échoué.",
+	"ERRORS_MESSAGE" : "Une erreur apparaît : la communication avec le serveur a échoué.",
 	
-	"ERRORS_MESSAGE_2" : "Assurez vous que le gestionnaire de déploiement est démarré ou que les paramètres de connexion sont corrects dans",
+	"ERRORS_MESSAGE_2" : "Assurez-vous que le gestionnaire de déploiement est démarré ou que les paramètres de connexion sont corrects dans",
 	
 	"ERRORS_PREFERENCES" : "preferences",
 	
-	"ERRORS_OOPS" : "Ouups",
+	"ERRORS_OOPS" : "Oups",
 	
 	
 	"MENU_APPLICATIONS" : "Applications",
@@ -415,6 +415,8 @@
 	"PREFERENCES_ENGLISH" : "Anglais",
 	
 	"PREFERENCES_FRENCH" : "Français",
+	
+	"PREFERENCES_PLEASE_SELECT_LANGUAGE" : "Veuillez selectionner votre langue.",
 	
 	
 	"SCHEDULING_SCHEDULER" : "Planificateur",
@@ -534,9 +536,9 @@
 	
 	"TARGETS_DOCKER" : "Docker",
 	
-	"TARGETS_EMBEDDED" : "Embedded",
+	"TARGETS_EMBEDDED" : "Embarqué",
 	
-	"TARGETS_IN_MEMORY" : "In-Memory",
+	"TARGETS_IN_MEMORY" : "En mémoire",
 	
 	"TARGETS_MICROSOFT_AZURE" : "Microsoft Azure",
 	
