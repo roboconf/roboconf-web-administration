@@ -10,7 +10,7 @@
 
     $routeProvider
     .when('/preferences', {
-      templateUrl: 'templates/preferences/_preferences.html',
+      templateUrl: 'templates/preferences/_preferences-language.html',
       controller: 'PreferencesController'
     })
 
