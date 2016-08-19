@@ -25,7 +25,7 @@
 		</span>
 		
 		<div ng-show="showLinks">
-			<strong>{{'APPLICATIONS_TEMPLATE_DIRECTIVE_QUICK_ACCESS' | translate}}</strong>
+			<strong>{{'COMMON_QUICK_ACCESS' | translate}}</strong>
 			<ul>
 				<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{'APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE' | translate}}</a></li>
 			</ul>
@@ -38,16 +38,16 @@
 		
 		<strong>{{'APPLICATIONS_TEMPLATE_DIRECTIVE_QUALIFIER' | translate}}</strong> {{ app.qualifier }}<br />
 		<span ng-show="app.extDep">
-			<strong>{{'APPLICATIONS_TEMPLATE_DIRECTIVE_EXTERNAL_DEPENDENCIES' | translate}}</strong>: {{'APPLICATIONS_TEMPLATE_YES' | translate}}
+			<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong>: {{'COMMON_YES' | translate}}
 		</span>
 		<br ng-show="app.extDep" />
 		<span ng-show="app.eep">
-			<strong>{{'APPLICATIONS_TEMPLATE_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS' | translate}}</strong> {{ app.eep }}
+			<strong>{{'COMMON_PREFIX_FOR_EXTERNAL_EXPORTS' | translate}}</strong> {{ app.eep }}
 		</span>
 	</div>
 	
 	<div ng-show="app.extVars && ! showLinks" class="app-variables">
-		{{'APPLICATIONS_TEMPLATE_DIRECTIVE_VISIBLE_VARIABLES' | translate}}
+		{{'COMMON_DIRECTIVE_VISIBLE_VARIABLES' | translate}}
 		<ul class="nice-list">
 			<li ng-repeat="(k,v) in app.extVars">&raquo; &nbsp; {{ k }} <strong>as</strong> {{ v }}</li>
 		</ul>

@@ -10,7 +10,7 @@
 
 <div class="menu">
 	<ul>
-		<li><a href="#/scheduler">{{'SCHEDULING_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/scheduler">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
 		<li class="active"><a href="#/scheduler/new">{{'SCHEDULING_NEW_SCHEDULED_JOB' | translate}}</a></li>
 	</ul>
 </div>
@@ -32,7 +32,7 @@
 
 		<!-- App name -->
 		<div class="form-group" ng-class="{'has-error': newJobForm.appname.$invalid && newJobForm.appname.$dirty}">
-			<label for="appname" class="control-label">{{'SCHEDULING_APPLICATION_NAME' | translate}}</label>
+			<label for="appname" class="control-label">{{'COMMON_APPLICATION_NAME' | translate}}</label>
 			<span class="r-help" ng-show="newJobForm.appname.$error.required">({{'SCHEDULING_REQUIRED' | translate}})</span><br />
 			<select name="appname" class="form-control" required
 					ng-model="job.app"

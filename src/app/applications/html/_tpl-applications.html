@@ -10,9 +10,9 @@
 	
 <div class="menu">
 	<ul>
-		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{'APPLICATIONS_TEMPLATE_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
 		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}</a></li>
-		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">{{'APPLICATIONS_TEMPLATE_DELETE' | translate}}</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -28,12 +28,12 @@
 			<strong>{{'APPLICATIONS_TEMPLATE_QUALIFIER' | translate}}</strong> {{ app.qualifier }}<br />
 			
 			<span ng-show="app.extDep">
-				<strong>{{'APPLICATIONS_TEMPLATE_EXTERNAL_DEPENDENCIES' | translate}}</strong>: {{'APPLICATIONS_TEMPLATE_YES' | translate}}
+				<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong>: {{'COMMON_YES' | translate}}
 			</span>
 			
 			<br ng-show="app.eep && app.extDep" />
 			<span ng-show="app.eep">
-				<strong>{{'APPLICATIONS_TEMPLATE_PREFIX_FOR_EXTERNAL_EXPORTS' | translate}}</strong> {{ app.eep }}
+				<strong>{{'COMMON_PREFIX_FOR_EXTERNAL_EXPORTS' | translate}}</strong> {{ app.eep }}
 			</span>
 			
 			<br /><br />

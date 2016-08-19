@@ -3,15 +3,15 @@
 
 <div class="content">
 	<h1>
-		{{'APPLICATIONS' | translate }}
+		{{'COMMON_APPLICATIONS' | translate }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="! invoked" />
 	</h1>
 </div>
 	
 <div class="menu">
 	<ul>
-		<li class="active"><a href="#/">{{'APPLICATIONS' | translate }}</a></li>
-		<li><a href="#/applications/new">{{'APPLICATIONS_NEW' | translate }}</a></li>
+		<li class="active"><a href="#/">{{'COMMON_APPLICATIONS' | translate }}</a></li>
+		<li><a href="#/applications/new">{{'COMMON_NEW_APPLICATION' | translate }}</a></li>
 	</ul>
 </div>
 
@@ -22,12 +22,12 @@
 	
 	<!-- No application? -->
 	<div class="block" ng-show="! error && invoked && apps.length == 0">
-		<p class="block-title">{{'APPLICATIONS_APP_LIST_WELCOME' | translate}}</p>
+		<p class="block-title">{{'COMMON_WELCOME' | translate}}</p>
 
 		<div class="block-content">
 			<p>
 				{{'APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED' | translate}}<br />
-				{{'APPLICATIONS_APP_LIST_YOU_CAN' | translate}} <a href="#/applications/new" class="welcome">{{'APPLICATIONS_APP_LIST_CREATE_APPLICATION' | translate}}</a>
+				{{'COMMON_YOU_CAN' | translate}} <a href="#/applications/new" class="welcome">{{'APPLICATIONS_APP_LIST_CREATE_APPLICATION' | translate}}</a>
 			</p>
 		</div>
 	</div>

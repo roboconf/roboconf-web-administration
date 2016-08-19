@@ -1,27 +1,27 @@
 {
-	"APPLICATIONS" : "Applications",
+	"COMMON_APPLICATIONS" : "Applications",
 	
-	"APPLICATIONS_NEW" : "Nouvelle Application",
+	"COMMON_NEW_APPLICATION" : "Nouvelle Application",
 	
-	"APPLICATIONS_OVERVIEW"     : "Aperçu",
+	"COMMON_OVERVIEW"     : "Aperçu",
 	
-	"APPLICATIONS_INSTANCES"    : "Instances",
+	"COMMON_INSTANCES"    : "Instances",
 	
-	"APPLICATIONS_COMMANDS" : "Commandes",
+	"COMMON_COMMANDS" : "Commandes",
 	
-	"APPLICATIONS_TARGET" : "Cibles",
+	"COMMON_TARGET_ASSOCIATIONS" : "Cibles",
 	
-	"APPLICATIONS_SCHEDULED_JOBS" : "Tâches planifiées",
+	"COMMON_SCHEDULED_JOBS" : "Tâches planifiées",
 	
-	"APPLICATIONS_BINDINGS"    : "Liaisons avec d'autres applications ",
+	"COMMON_APPLICATIONS_BINDINGS"    : "Liaisons avec d'autres applications ",
 	
-	"APPLICATIONS_DELETE" : "Supprimer",
+	"COMMON_DELETE" : "Supprimer",
 	
-	"APPLICATIONS_UPLOAD" : "Téléverser",
+	"COMMON_UPLOAD" : "Téléverser",
 	
-	"APPLICATIONS_CANCEL" : "Annuler",
+	"COMMON_CANCEL" : "Annuler",
 	
-	"APPLICATIONS_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} n'a été trouvée.",
+	"COMMON_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} n'a été trouvée.",
 	
 	"APPLICATIONS_DIRECTIVE_REPLACE_IMAGE" : "Cliquer pour remplacer cette image",
 	
@@ -31,7 +31,7 @@
 	
 	"APPLICATIONS_DIRECTIVE_INSTANCES_WITH_PROBLEMS" : "Des instances semblent avoir rencontré des problèmes.",
 	
-	"APPLICATIONS_DIRECTIVE_QUICK_ACCESS" : "Accès rapide",
+	"COMMON_QUICK_ACCESS" : "Accès rapide",
 	
 	"APPLICATIONS_DIRECTIVE_MANAGE_INSTANCES" : "Gérer les instances",
 	
@@ -41,13 +41,13 @@
 	
 	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER" : "Qualificatif du Template",
 	
-	"APPLICATIONS_DIRECTIVE_EXTERNAL_DEPENDENCIES" : "Dépendances Externes",
+	"COMMON_EXTERNAL_DEPENDENCIES" : "Dépendances Externes",
 	
-	"APPLICATIONS_DIRECTIVE_YES" : "Oui",
+	"COMMON_YES" : "Oui",
 	
-	"APPLICATIONS_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes ",
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes ",
 	
-	"APPLICATIONS_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles par d'autres applications",
+	"COMMON_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles par d'autres applications",
 	
 	"APPLICATIONS_DIRECTIVE_AS" : "comme",
 	
@@ -59,17 +59,17 @@
 	
 	"APPLICATIONS_DELETE_CONFIRM" : "Confirmer la suppression de cette application",
 	
-	"APPLICATIONS_APP_LIST_WELCOME" : "Bienvenue",
+	"COMMON_WELCOME" : "Bienvenue",
 	
 	"APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED" : "Aucune appplication créée jusqu'à présent.",
 	
-	"APPLICATIONS_APP_LIST_YOU_CAN" : "Vous pouvez",
+	"COMMON_YOU_CAN" : "Vous pouvez",
 	
 	"APPLICATIONS_APP_LIST_CREATE_APPLICATION" : "créer votre première application.",
 	
-	"APPLICATIONS_NAME" : "Nom de l'application",
+	"COMMON_APPLICATION_NAME" : "Nom de l'application",
 	
-	"APPLICATIONS_REQUIRED" : "(obligatoire)",
+	"COMMON_REQUIRED" : "(obligatoire)",
 	
 	"APPLICATIONS_DESCRIPTION" : "Description",
 	
@@ -85,27 +85,27 @@
 	
 	"APPLICATIONS_SUBMIT" : "Soumettre",
 	
-	"APPLICATIONS_NEW_YOU_CAN" : "Vous pouvez",
+	"COMMON_YOU_CAN" : "Vous pouvez",
 	
 	"APPLICATIONS_COMPLETE_APPLICATION_CREATION" : "compléter la création de votre nouvelle application",
 	
 	"APPLICATIONS_TEMPLATE_APPLICATION" : "Modèles d'application",
 	
-	"APPLICATIONS_TEMPLATE_OVERVIEW" : "Aperçu",
+	"COMMON_OVERVIEW" : "Aperçu",
 	
 	"APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS" : "Applications Associées",
 	
-	"APPLICATIONS_TEMPLATE_DELETE" : "Supprimer",
+	"COMMON_DELETE" : "Supprimer",
 	
 	"APPLICATIONS_TEMPLATE_TEMPLATE_NAME" : "Nom du modèle:",
 	
 	"APPLICATIONS_TEMPLATE_QUALIFIER" : "Qualificatif:",
 	
-	"APPLICATIONS_TEMPLATE_EXTERNAL_DEPENDENCIES" : "Dépendances Externes",
+	"COMMON_EXTERNAL_DEPENDENCIES" : "Dépendances Externes",
 	
-	"APPLICATIONS_TEMPLATE_YES" : "Oui",
+	"COMMON_YES" : "Oui",
 	
-	"APPLICATIONS_TEMPLATE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes : ",
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes : ",
 	
 	"APPLICATIONS_TEMPLATE_TEMPLATE" : "Modèle",
 	
@@ -125,21 +125,21 @@
 	
 	"APPLICATIONS_TEMPLATE_ONE_OR_SEVERAL_ASSOCIATED_APPLICATIONS" : "une ou plusieurs applications sont associées à ce modèle.",
 	
-	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUICK_ACCESS" : "Accès Rapide",
+	"COMMON_QUICK_ACCESS" : "Accès Rapide",
 	
 	"APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE" : "Accéder à la page du modèle d'application",
 	
 	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUALIFIER" : "Qualificatif:",
 	
-	"APPLICATIONS_TEMPLATE_DIRECTIVE_EXTERNAL_DEPENDENCIES" : "Dépendances externes",
+	"COMMON_EXTERNAL_DEPENDENCIES" : "Dépendances externes",
 	
-	"APPLICATIONS_TEMPLATE_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes:",
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Préfixe pour les exports externes:",
 	
-	"APPLICATIONS_TEMPLATE_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles aux autres applications:",
+	"COMMON_DIRECTIVE_VISIBLE_VARIABLES" : "Variables visibles aux autres applications:",
 	
 	"APPLICATIONS_TEMPLATE_LIST_NEW_APPLICATION" : "Nouveau modèle d'application",
 	
-	"APPLICATIONS_TEMPLATE_LIST_WELCOME" : "Bienvenue",
+	"COMMON_WELCOME" : "Bienvenue",
 	
 	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION" : "Aucun modèle d'application n'a été déployé jusqu'à présent.",
 	
@@ -153,7 +153,7 @@
 	
 	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_RESET" : "Initialiser",
 	
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_UPLOAD" : "Téléverser",
+	"COMMON_UPLOAD" : "Téléverser",
 	
 	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE" : "Selectionner un fichier ZIP contenant le modèle d'application à déployer.",
 	
@@ -170,21 +170,21 @@
 	
 	"INSTANCES_NEW" : "Nouvelle Application",
 	
-	"INSTANCES_OVERVIEW"     : "Aperçu",
+	"COMMON_OVERVIEW"     : "Aperçu",
 	
-	"INSTANCES_INSTANCES"    : "Instances",
+	"COMMON_INSTANCES"    : "Instances",
 	
-	"INSTANCES_COMMANDS" : "Commandes",
+	"COMMON_COMMANDS" : "Commandes",
 	
-	"INSTANCES_TARGET" : "Cibles",
+	"COMMON_TARGET_ASSOCIATIONS" : "Cibles",
 	
-	"INSTANCES_SCHEDULED_JOBS" : "Tâches planifiées",
+	"COMMON_SCHEDULED_JOBS" : "Tâches planifiées",
 	
-	"INSTANCES_BINDINGS"    : "Liaisons avec d'autres applications ",
+	"COMMON_APPLICATIONS_BINDINGS"    : "Liaisons avec d'autres applications ",
 	
-	"INSTANCES_DELETE" : "Supprimer",
+	"COMMON_DELETE" : "Supprimer",
 	
-	"INSTANCES_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} trouvée.",
+	"COMMON_NO_FOUND_APPLICATION" : "Aucune application nommée {{ name }} trouvée.",
 	
 	"INSTANCES_NO_INSTANCES" : "Pas d'Instance",
 	
@@ -296,7 +296,7 @@
 	
 	"INSTANCES_DELETE_CONFIRM" : "Confirmer",
 	
-	"INSTANCES_DELETE_CANCEL" : "Annuler",
+	"COMMON_CANCEL" : "Annuler",
 	
 	"INSTANCES_NEW_INSTANCES" : "Nouvelle(s) pour",
 	
@@ -316,13 +316,13 @@
 	
 	"INSTANCES_INSTANCE_NAME" : "Nom de l'instance",
 	
-	"INSTANCES_REQUIRED" : "(obligatoire)",
+	"COMMON_REQUIRED" : "(obligatoire)",
 	
 	"INSTANCES_INSTANCE_NAME_UNIQUE" : "Le nom de l'instance doit être unique au sein de l'application",
 	
 	"INSTANCES_NEW_OK" : "OK",
 	
-	"INSTANCES_NEW_CANCEL" : "Annuler",
+	"COMMON_CANCEL" : "Annuler",
 	
 	"INSTANCES_NEW_ACTION_DELETE" : "Cette action va supprimer {{editedInstName}} et tous ses enfants.",
 	
@@ -330,7 +330,7 @@
 	
 	"INSTANCES_NEW_SHOW_EXISTING_VALIDATE" : "Valider",
 	
-	"INSTANCES_NEW_SHOW_EXISTING_CANCEL" : "Annuler",
+	"COMMON_CANCEL" : "Annuler",
 	
 	"INSTANCES_NEW_CANCEL_CREATION" : "Annuler la création",
 	
@@ -342,7 +342,7 @@
 	
 	"INSTANCES_NEW_RESET_FORM_CONFIRM" : "Confirmer",
 	
-	"INSTANCES_NEW_RESET_FORM_CANCEL" : "Annuler",
+	"COMMON_CANCEL" : "Annuler",
 	
 	"INSTANCES_NEW_FINISH" : "Finir",
 	
@@ -364,7 +364,7 @@
 	
 	"APPLICATIONS_TARGETS_NONE" : "aucun",
 	
-	"APPLICATIONS_TARGETS_CANCEL" : "Annuler",
+	"COMMON_CANCEL" : "Annuler",
 	
 	"APPLICATIONS_TARGETS_EDIT" : "Editer",
 	
@@ -393,7 +393,7 @@
 	"ERRORS_OOPS" : "Oups",
 	
 	
-	"MENU_APPLICATIONS" : "Applications",
+	"COMMON_APPLICATIONS" : "Applications",
 	
 	"MENU_APPLICATIONS_TEMPLATES" : "Modèles d'application",
 	
@@ -421,11 +421,11 @@
 	
 	"SCHEDULING_SCHEDULER" : "Planificateur",
 	
-	"SCHEDULING_SCHEDULED_JOBS" : "Tâches planifiées",
+	"COMMON_SCHEDULED_JOBS" : "Tâches planifiées",
 	
 	"SCHEDULING_PROPERTIES" : "Propriétés",
 	
-	"SCHEDULING_DELETE" : "Supprimer",
+	"COMMON_DELETE" : "Supprimer",
 	
 	"SCHEDULING_DELETE_MESSAGE" : "Vous pouvez supprimer cette tâche si vous voulez.",
 	
@@ -439,7 +439,7 @@
 	
 	"SCHEDULING_JOB_NAME" : "Nom de la tâche",
 	
-	"SCHEDULING_APPLICATION_NAME" : "Nom de l'application",
+	"COMMON_APPLICATION_NAME" : "Nom de l'application",
 	
 	"SCHEDULING_COMMAND_NAME" : "Nom de la commande",
 	
@@ -469,7 +469,7 @@
 	
 	"SCHEDULING_EDIT" : "Editer",
 	
-	"SCHEDULING_CANCEL" : "Annuler",
+	"COMMON_CANCEL" : "Annuler",
 	
 	
 	"TARGETS_DEPLOYMENT_TARGETS" : "Cibles de déploiement",
@@ -478,7 +478,7 @@
 	
 	"TARGETS_USAGE" : "Usage",
 	
-	"TARGETS_DELETE" : "Supprimer",
+	"COMMON_DELETE" : "Supprimer",
 	
 	"TARGETS_TARGET" : "La cible",
 	
@@ -492,7 +492,7 @@
 	
 	"TARGETS_SAVE" : "Enregistrer",
 	
-	"TARGETS_CANCEL" : "Annuler",
+	"COMMON_CANCEL" : "Annuler",
 	
 	"TARGETS_EDIT_PROPERTIES" : "Editer les propriétés",
 	
@@ -508,7 +508,7 @@
 	
 	"TARGETS_USING" : "Utilisant",
 	
-	"TARGETS_YES" : "oui",
+	"COMMON_YES" : "oui",
 	
 	"TARGETS_NEW_DEPLOYMENT_TARGET" : "Nouvelle cible de  déploiement",
 	

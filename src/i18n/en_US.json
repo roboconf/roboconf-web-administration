@@ -1,27 +1,27 @@
 {
-	"APPLICATIONS" : "Applications",
+	"COMMON_APPLICATIONS" : "Applications",
 	
-	"APPLICATIONS_NEW" : "New Application",
+	"COMMON_NEW_APPLICATION" : "New Application",
 	
-	"APPLICATIONS_OVERVIEW"     : "Overview",
+	"COMMON_OVERVIEW"     : "Overview",
 	
-	"APPLICATIONS_INSTANCES"    : "Instances",
+	"COMMON_INSTANCES"    : "Instances",
 	
-	"APPLICATIONS_COMMANDS" : "Commands",
+	"COMMON_COMMANDS" : "Commands",
 	
-	"APPLICATIONS_TARGET" : "Target Associations",
+	"COMMON_TARGET_ASSOCIATIONS" : "Target Associations",
 	
-	"APPLICATIONS_SCHEDULED_JOBS" : "Scheduled Jobs",
+	"COMMON_SCHEDULED_JOBS" : "Scheduled Jobs",
 	
-	"APPLICATIONS_BINDINGS"    : "Applications Bindings",
+	"COMMON_APPLICATIONS_BINDINGS"    : "Applications Bindings",
 	
-	"APPLICATIONS_DELETE" : "Delete",
+	"COMMON_DELETE" : "Delete",
 	
-	"APPLICATIONS_UPLOAD" : "Upload",
+	"COMMON_UPLOAD" : "Upload",
 	
-	"APPLICATIONS_CANCEL" : "Cancel",
+	"COMMON_CANCEL" : "Cancel",
 	
-	"APPLICATIONS_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
+	"COMMON_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
 	
 	"APPLICATIONS_DIRECTIVE_REPLACE_IMAGE" : "Click to replace this image",
 	
@@ -31,7 +31,7 @@
 	
 	"APPLICATIONS_DIRECTIVE_INSTANCES_WITH_PROBLEMS" : "Some instances may have encountered problems.",
 	
-	"APPLICATIONS_DIRECTIVE_QUICK_ACCESS" : "Quick access",
+	"COMMON_QUICK_ACCESS" : "Quick access",
 	
 	"APPLICATIONS_DIRECTIVE_MANAGE_INSTANCES" : "Manage the instances",
 	
@@ -41,13 +41,13 @@
 	
 	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER" : "Template Qualifier",
 	
-	"APPLICATIONS_DIRECTIVE_EXTERNAL_DEPENDENCIES" : "External Dependencies",
+	"COMMON_EXTERNAL_DEPENDENCIES" : "External Dependencies",
 	
-	"APPLICATIONS_DIRECTIVE_YES" : "yes",
+	"COMMON_YES" : "yes",
 	
-	"APPLICATIONS_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports",
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports",
 	
-	"APPLICATIONS_DIRECTIVE_VISIBLE_VARIABLES" : "Variables made visible to other applications",
+	"COMMON_DIRECTIVE_VISIBLE_VARIABLES" : "Variables made visible to other applications",
 	
 	"APPLICATIONS_DIRECTIVE_AS" : "as",
 	
@@ -59,17 +59,17 @@
 	
 	"APPLICATIONS_DELETE_CONFIRM" : "Confirm the Deletion of this Application",
 	
-	"APPLICATIONS_APP_LIST_WELCOME" : "Welcome",
+	"COMMON_WELCOME" : "Welcome",
 	
 	"APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED" : "No application has been created so far.",
 	
-	"APPLICATIONS_APP_LIST_YOU_CAN" : "You can",
+	"COMMON_YOU_CAN" : "You can",
 	
 	"APPLICATIONS_APP_LIST_CREATE_APPLICATION" : "create your first application.",
 	
-	"APPLICATIONS_NAME" : "Application name",
+	"COMMON_APPLICATION_NAME" : "Application name",
 	
-	"APPLICATIONS_REQUIRED" : "(required)",
+	"COMMON_REQUIRED" : "(required)",
 	
 	"APPLICATIONS_DESCRIPTION" : "Description",
 	
@@ -85,27 +85,27 @@
 	
 	"APPLICATIONS_SUBMIT" : "Submit",
 	
-	"APPLICATIONS_NEW_YOU_CAN" : "You can",
+	"COMMON_YOU_CAN" : "You can",
 	
 	"APPLICATIONS_COMPLETE_APPLICATION_CREATION" : "complete the creation of your new application",
 	
 	"APPLICATIONS_TEMPLATE_APPLICATION" : "Application Templates",
 	
-	"APPLICATIONS_TEMPLATE_OVERVIEW" : "Overview",
+	"COMMON_OVERVIEW" : "Overview",
 	
 	"APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS" : "Associated Applications",
 	
-	"APPLICATIONS_TEMPLATE_DELETE" : "Delete",
+	"COMMON_DELETE" : "Delete",
 	
 	"APPLICATIONS_TEMPLATE_TEMPLATE_NAME" : "Template name:",
 	
 	"APPLICATIONS_TEMPLATE_QUALIFIER" : "Qualifier:",
 	
-	"APPLICATIONS_TEMPLATE_EXTERNAL_DEPENDENCIES" : "External Dependencies",
+	"COMMON_EXTERNAL_DEPENDENCIES" : "External Dependencies",
 	
-	"APPLICATIONS_TEMPLATE_YES" : "Yes",
+	"COMMON_YES" : "Yes",
 	
-	"APPLICATIONS_TEMPLATE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports:",
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports:",
 	
 	"APPLICATIONS_TEMPLATE_TEMPLATE" : "Template",
 	
@@ -125,21 +125,21 @@
 	
 	"APPLICATIONS_TEMPLATE_ONE_OR_SEVERAL_ASSOCIATED_APPLICATIONS" : "One or several applications are associated with this template.",
 	
-	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUICK_ACCESS" : "Quick Access",
+	"COMMON_QUICK_ACCESS" : "Quick Access",
 	
 	"APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE" : "Access the application template's page",
 	
 	"APPLICATIONS_TEMPLATE_DIRECTIVE_QUALIFIER" : "Qualifier:",
 	
-	"APPLICATIONS_TEMPLATE_DIRECTIVE_EXTERNAL_DEPENDENCIES" : "External Dependencies",
+	"COMMON_EXTERNAL_DEPENDENCIES" : "External Dependencies",
 	
-	"APPLICATIONS_TEMPLATE_DIRECTIVE_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports:",
+	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS" : "Prefix for External Exports:",
 	
-	"APPLICATIONS_TEMPLATE_DIRECTIVE_VISIBLE_VARIABLES" : "Variables made visible to other applications:",
+	"COMMON_DIRECTIVE_VISIBLE_VARIABLES" : "Variables made visible to other applications:",
 	
 	"APPLICATIONS_TEMPLATE_LIST_NEW_APPLICATION" : "New Application Template",
 	
-	"APPLICATIONS_TEMPLATE_LIST_WELCOME" : "Welcome",
+	"COMMON_WELCOME" : "Welcome",
 	
 	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION" : "No application template has been deployed so far.",
 	
@@ -153,7 +153,7 @@
 	
 	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_RESET" : "Reset",
 	
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_UPLOAD" : "Upload",
+	"COMMON_UPLOAD" : "Upload",
 	
 	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE" : "Select a ZIP file containing the application template to deploy.",
 	
@@ -170,21 +170,21 @@
 	
 	"INSTANCES_NEW" : "New Application",
 	
-	"INSTANCES_OVERVIEW"     : "Overview",
+	"COMMON_OVERVIEW"     : "Overview",
 	
-	"INSTANCES_INSTANCES"    : "Instances",
+	"COMMON_INSTANCES"    : "Instances",
 	
-	"INSTANCES_COMMANDS" : "Commands",
+	"COMMON_COMMANDS" : "Commands",
 	
-	"INSTANCES_TARGET" : "Target Associations",
+	"COMMON_TARGET_ASSOCIATIONS" : "Target Associations",
 	
-	"INSTANCES_SCHEDULED_JOBS" : "Scheduled Jobs",
+	"COMMON_SCHEDULED_JOBS" : "Scheduled Jobs",
 	
-	"INSTANCES_BINDINGS"    : "Applications Bindings",
+	"COMMON_APPLICATIONS_BINDINGS"    : "Applications Bindings",
 	
-	"INSTANCES_DELETE" : "Delete",
+	"COMMON_DELETE" : "Delete",
 	
-	"INSTANCES_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
+	"COMMON_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
 	
 	"INSTANCES_NO_INSTANCES" : "No Instance",
 	
@@ -296,7 +296,7 @@
 	
 	"INSTANCES_DELETE_CONFIRM" : "Confirm",
 	
-	"INSTANCES_DELETE_CANCEL" : "Cancel",
+	"COMMON_CANCEL" : "Cancel",
 	
 	"INSTANCES_NEW_INSTANCES" : "New Instance(s) for",
 	
@@ -316,13 +316,13 @@
 	
 	"INSTANCES_INSTANCE_NAME" : "Instance name",
 	
-	"INSTANCES_REQUIRED" : "(required)",
+	"COMMON_REQUIRED" : "(required)",
 	
 	"INSTANCES_INSTANCE_NAME_UNIQUE" : "The instance name must be unique among its siblings.",
 	
 	"INSTANCES_NEW_OK" : "OK",
 	
-	"INSTANCES_NEW_CANCEL" : "Cancel",
+	"COMMON_CANCEL" : "Cancel",
 	
 	"INSTANCES_NEW_ACTION_DELETE" : "This action will delete {{editedInstName}} and all its children.",
 	
@@ -330,7 +330,7 @@
 	
 	"INSTANCES_NEW_SHOW_EXISTING_VALIDATE" : "Validate",
 	
-	"INSTANCES_NEW_SHOW_EXISTING_CANCEL" : "Cancel",
+	"COMMON_CANCEL" : "Cancel",
 	
 	"INSTANCES_NEW_CANCEL_CREATION" : "Cancel creation",
 	
@@ -342,7 +342,7 @@
 	
 	"INSTANCES_NEW_RESET_FORM_CONFIRM" : "Confirm",
 	
-	"INSTANCES_NEW_RESET_FORM_CANCEL" : "Cancel",
+	"COMMON_CANCEL" : "Cancel",
 	
 	"INSTANCES_NEW_FINISH" : "Finish",
 	
@@ -364,7 +364,7 @@
 	
 	"APPLICATIONS_TARGETS_NONE" : "none",
 	
-	"APPLICATIONS_TARGETS_CANCEL" : "Cancel",
+	"COMMON_CANCEL" : "Cancel",
 	
 	"APPLICATIONS_TARGETS_EDIT" : "Edit",
 	
@@ -393,7 +393,7 @@
 	"ERRORS_OOPS" : "Oops",
 	
 	
-	"MENU_APPLICATIONS" : "Applications",
+	"COMMON_APPLICATIONS" : "Applications",
 	
 	"MENU_APPLICATIONS_TEMPLATES" : "Application Templates",
 	
@@ -421,11 +421,11 @@
 	
 	"SCHEDULING_SCHEDULER" : "Scheduler",
 	
-	"SCHEDULING_SCHEDULED_JOBS" : "Scheduled Jobs",
+	"COMMON_SCHEDULED_JOBS" : "Scheduled Jobs",
 	
 	"SCHEDULING_PROPERTIES" : "Properties",
 	
-	"SCHEDULING_DELETE" : "Delete",
+	"COMMON_DELETE" : "Delete",
 	
 	"SCHEDULING_DELETE_MESSAGE" : "You can delete this job if you want.",
 	
@@ -439,7 +439,7 @@
 	
 	"SCHEDULING_JOB_NAME" : "Job Name",
 	
-	"SCHEDULING_APPLICATION_NAME" : "Application Name",
+	"COMMON_APPLICATION_NAME" : "Application Name",
 	
 	"SCHEDULING_COMMAND_NAME" : "Command Name",
 	
@@ -469,7 +469,7 @@
 	
 	"SCHEDULING_EDIT" : "Edit",
 	
-	"SCHEDULING_CANCEL" : "Cancel",
+	"COMMON_CANCEL" : "Cancel",
 	
 	
 	"TARGETS_DEPLOYMENT_TARGETS" : "Deployment Targets",
@@ -478,7 +478,7 @@
 	
 	"TARGETS_USAGE" : "Usage",
 	
-	"TARGETS_DELETE" : "Delete",
+	"COMMON_DELETE" : "Delete",
 	
 	"TARGETS_TARGET" : "Target",
 	
@@ -492,7 +492,7 @@
 	
 	"TARGETS_SAVE" : "Save",
 	
-	"TARGETS_CANCEL" : "Cancel",
+	"COMMON_CANCEL" : "Cancel",
 	
 	"TARGETS_EDIT_PROPERTIES" : "Edit the Properties",
 	
@@ -508,7 +508,7 @@
 	
 	"TARGETS_USING" : "Using",
 	
-	"TARGETS_YES" : "yes",
+	"COMMON_YES" : "yes",
 	
 	"TARGETS_NEW_DEPLOYMENT_TARGET" : "New Deployment Target",
 	
