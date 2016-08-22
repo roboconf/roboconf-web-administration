@@ -261,3 +261,4 @@ gulp.task('no-dev-config', function () {
 gulp.task('prepare-embed', [ 'clean-dist', 'no-dev-config' ], prepareDist);
 gulp.task('complete-embed', [ 'prepare-embed' ], completeDist);
 gulp.task('embed', [ 'prepare-embed', 'complete-embed' ]);
+gulp.task('clean', [ 'clean-dist', 'clean-dev' ]);
