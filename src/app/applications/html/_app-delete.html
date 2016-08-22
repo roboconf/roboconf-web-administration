@@ -3,20 +3,20 @@
 
 <div class="content">
 	<h1>
-		Applications &raquo; {{ app.name }}
+		{{'COMMON_APPLICATIONS' | translate}} &raquo; {{ app.name }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/app/{{ app.name }}/overview">Overview</a></li>
-		<li><a href="#/app/{{ app.name }}/instances">Instances</a></li>
-		<li><a href="#/app/{{ app.name }}/commands">Commands</a></li>
-		<li><a href="#/app/{{ app.name }}/targets">Target Associations</a></li>
-		<li><a href="#/app/{{ app.name }}/jobs">Scheduled Jobs</a></li>
-		<li><a href="#/app/{{ app.name }}/application-bindings">Application Bindings</a></li>
-		<li class="active"><a href="#/app/{{ app.name }}/delete">Delete</a></li>
+		<li><a href="#/app/{{ app.name }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ app.name }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -27,18 +27,16 @@
 
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
-		<div ng-show="app.info && app.info !== 'nd'">
-			Application <strong>{{ app.name }}</strong> still has deployed instances. It cannot be deleted.
-		</div>
+		<div ng-show="app.info && app.info !== 'nd'" translate="{{'APPLICATIONS_DELETE_NO_DELETE' | translate:appData}}"></div>
 		
-		<div ng-show="! app.info || app.info === 'nd'">
-			Application <strong>{{ app.name }}</strong> does not have any deployed instance.<br />
-			You can delete it if you want.
+		<div ng-show="! app.info || app.info === 'nd'" translate="{{'APPLICATIONS_DELETE_DELETE' | translate:appData}}">
+			<br />
+			{{'APPLICATIONS_DELETE_DELETE_2' | translate}}
 			
 			<br /><br />
-			<button class="btn btn-danger" ng-click="deleteApplication( app )">Confirm the Deletion of this Application</button>
+			<button class="btn btn-danger" ng-click="deleteApplication( app )">{{'APPLICATIONS_DELETE_CONFIRM' | translate}}</button>
 		</div>
 	</div>
 	
-	<div ng-show="responseStatus === 404">No application called <strong>{{ app.name }}</strong> was found.</div>
+	<div ng-show="responseStatus === 404" translate="{{'COMMON_NO_FOUND_APPLICATION' | translate:appData}}"></div>
 </div>

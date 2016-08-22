@@ -3,16 +3,16 @@
 
 <div class="content">
 	<h1>
-		Application Templates &raquo; {{ app.name }}
+		{{'APPLICATIONS_TEMPLATE_APPLICATION' | translate}} &raquo; {{ app.name }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 	
 <div class="menu">
 	<ul>
-		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">Overview</a></li>
-		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">Associated Applications</a></li>
-		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">Delete</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
+		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -24,20 +24,20 @@
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
 		<div ng-show="app.apps.length > 0">
-			<strong>Template name:</strong> {{ app.name }}<br />
-			<strong>Qualifier:</strong> {{ app.qualifier }}<br />
+			<strong>{{'APPLICATIONS_TEMPLATE_TEMPLATE_NAME' | translate}}</strong> {{ app.name }}<br />
+			<strong>{{'APPLICATIONS_TEMPLATE_QUALIFIER' | translate}}</strong> {{ app.qualifier }}<br />
 			
 			<span ng-show="app.extDep">
-				<strong>External Dependencies</strong>: yes
+				<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong>: {{'COMMON_YES' | translate}}
 			</span>
 			
 			<br ng-show="app.eep && app.extDep" />
 			<span ng-show="app.eep">
-				<strong>Prefix for External Exports:</strong> {{ app.eep }}
+				<strong>{{'COMMON_PREFIX_FOR_EXTERNAL_EXPORTS' | translate}}</strong> {{ app.eep }}
 			</span>
 			
 			<br /><br />
-			<strong>Associated applications:</strong><br />
+			<strong>{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}:</strong><br />
 			
 			<ul class="nice-list">
 				<li ng-repeat="a in app.apps"> &raquo; &nbsp; <a href="#/app/{{ a }}/overview">{{ a }}</a></li>
@@ -45,13 +45,10 @@
 		</div>
 		
 		<div ng-show="app.apps.length === 0">
-			Template <strong>{{ app.name }}</strong> with qualifier <strong>{{ app.qualifier }}</strong>
-			is not associated with any application.
+			{{'APPLICATIONS_TEMPLATE_TEMPLATE' | translate}} <strong>{{ app.name }}</strong> {{'APPLICATIONS_TEMPLATE_WITH_QUALIFIER' | translate}} <strong>{{ app.qualifier }}</strong>
+			{{'APPLICATIONS_TEMPLATE_NOT_ASSOCIATED_WITH_APPLICATION' | translate}}
 		</div>
 	</div>
 	
-	<div ng-show="responseStatus === 404">
-		No application template called <strong>{{ app.name }}</strong> 
-		was found with the qualifier <strong>{{ app.qualifier }}</strong>.
-	</div>
+	<div ng-show="responseStatus === 404" translate="{{'APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND' | translate:appTplData}}"></div>
 </div>

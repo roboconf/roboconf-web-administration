@@ -1,15 +1,13 @@
 <img src="img/state-problem.jpg" alt="Undetermined" />
-<p>The following actions can be undertaken.</p>
+<p>{{'INSTANCES_INCLUDES_ACTIONS' | translate}}</p>
 
 <ul>
-	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">Undeploy it</a></li>
+	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">{{'INSTANCES_INCLUDES_UNDEPLOYED_IT' | translate}}</a></li>
 </ul>
 
 <br />
-<strong>Description</strong>
+<strong>{{'INSTANCES_INCLUDES_DESCRIPTION_TITLE' | translate}}</strong>
 <br />
 
-The instance's state is undetermined.<br />
-It means Roboconf's Deployment Manager has not received a heartbeat from the associated agent for more than 2 minutes.
-This can be explained by a network issue on the Deployment Manager's side, a network on the agent's side, a network issue
-with the messaging server, or an error with messaging server itself (make sure it is still running).
+{{'INSTANCES_INCLUDES_APP_ROOT_PROBLEM' | translate}}<br />
+{{'INSTANCES_INCLUDES_APP_ROOT_PROBLEM_2' | translate}}<br />

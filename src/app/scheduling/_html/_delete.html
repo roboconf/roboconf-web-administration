@@ -3,16 +3,16 @@
 
 <div class="content">
 	<h1>
-		Scheduler &raquo; {{ job.name }}
+		{{'SCHEDULING_SCHEDULER' | translate}} &raquo; {{ job.name }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/scheduler">Scheduled Jobs</a></li>
-		<li><a href="#/scheduler/job/{{ job.id }}">Properties</a></li>
-		<li class="active"><a href="#/scheduler/job/{{ job.id }}/delete">Delete</a></li>
+		<li><a href="#/scheduler">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/scheduler/job/{{ job.id }}">{{'SCHEDULING_PROPERTIES' | translate}}</a></li>
+		<li class="active"><a href="#/scheduler/job/{{ job.id }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -24,12 +24,12 @@
 	<!-- Target Details -->
 	<div ng-show="responseStatus === 0">
 		<div>
-			You can delete this job if you want.
+			{{'SCHEDULING_DELETE_MESSAGE' | translate}}
 			
 			<br /><br />
-			<button class="btn btn-danger" ng-click="deleteJob()">Confirm the Deletion of this Job</button>
+			<button class="btn btn-danger" ng-click="deleteJob()">{{'SCHEDULING_DELETE_CONFIRM' | translate}}</button>
 		</div>
 	</div>
 
-	<div ng-show="responseStatus === 404">No job with this ID was found (<strong>{{ job.id }}</strong>).</div>
+	<div ng-show="responseStatus === 404">{{'SCHEDULING_NO_FOUND_JOB' | translate}} (<strong>{{ job.id }}</strong>).</div>
 </div>

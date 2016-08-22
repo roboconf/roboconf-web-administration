@@ -3,16 +3,16 @@
 
 <div class="content">
 	<h1>
-		Scheduler &raquo; {{ job.name }}
+		{{'SCHEDULING_SCHEDULER' | translate}} &raquo; {{ job.name }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/scheduler">Scheduled Jobs</a></li>
-		<li class="active"><a href="#/scheduler/job/{{ job.id }}">Properties</a></li>
-		<li><a href="#/scheduler/job/{{ job.id }}/delete">Delete</a></li>
+		<li><a href="#/scheduler">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
+		<li class="active"><a href="#/scheduler/job/{{ job.id }}">{{'SCHEDULING_PROPERTIES' | translate}}</a></li>
+		<li><a href="#/scheduler/job/{{ job.id }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -26,15 +26,15 @@
 
 		<!-- Job name -->
 		<div class="form-group" ng-class="{'has-error': newJobForm.jobname.$invalid && newJobForm.jobname.$dirty}">
-			<label for="name" class="control-label">Job name</label>
-			<span class="r-help" ng-show="newJobForm.name.$error.required">(required)</span><br />
+			<label for="name" class="control-label">{{'SCHEDULING_JOB_NAME' | translate}}</label>
+			<span class="r-help" ng-show="newJobForm.name.$error.required">({{'SCHEDULING_REQUIRED' | translate}})</span><br />
 			<input type="text" class="form-control" name="name" placeholder="a name" ng-model="job.name" ng-readonly="! editMode" required>
 		</div>
 
 		<!-- App name -->
 		<div class="form-group" ng-class="{'has-error': newJobForm.appname.$invalid && newJobForm.appname.$dirty}">
-			<label for="appname" class="control-label">Application name</label>
-			<span class="r-help" ng-show="newJobForm.appname.$error.required">(required)</span><br />
+			<label for="appname" class="control-label">{{'COMMON_APPLICATION_NAME' | translate}}</label>
+			<span class="r-help" ng-show="newJobForm.appname.$error.required">({{'SCHEDULING_REQUIRED' | translate}})</span><br />
 			<select name="appname" class="form-control" required
 					ng-model="job.app"
 					ng-options="app.name for app in apps track by app.name"
@@ -47,8 +47,8 @@
 
 		<!-- Command name -->
 		<div class="form-group" ng-class="{'has-error': newJobForm.cmdname.$invalid && newJobForm.cmdname.$dirty}">
-			<label for="cmdname" class="control-label">Command name</label>
-			<span class="r-help" ng-show="newJobForm.cmdname.$error.required">(required)</span><br />
+			<label for="cmdname" class="control-label">{{'SCHEDULING_COMMAND_NAME' | translate}}</label>
+			<span class="r-help" ng-show="newJobForm.cmdname.$error.required">({{'SCHEDULING_REQUIRED' | translate}})</span><br />
 			<select name="cmdname" class="form-control" required
 					ng-model="job.cmdName"
 					ng-options="cmd for cmd in cmdNames"
@@ -61,7 +61,7 @@
 		<!-- CRON (read-only) -->
 		<div class="form-group" ng-hide="editMode">
 			<label>
-				The <a href="https://fr.wikipedia.org/wiki/Cron">CRON expression</a> for the schedule.
+				{{'SCHEDULING_THE' | translate}} <a href="https://fr.wikipedia.org/wiki/Cron">{{'SCHEDULING_CRON_EXPRESSION' | translate}}</a> {{'SCHEDULING_FOR_THE_SCHEDULE' | translate}}
 			</label>
 			<br />
 			<input type="text" class="form-control" ng-model="job.cron" required readonly>
@@ -70,11 +70,11 @@
 		<!-- CRON (edition) -->
 		<div class="form-group" ng-show="editMode">
 			<label>
-				Please, type in a <a href="https://fr.wikipedia.org/wiki/Cron">CRON expression</a> to setup the schedule.
-				<span class="r-help" ng-show="newJobForm.cron.$error.required">(required)</span>
-				<span class="r-help" ng-show="job.cron && cronIsInvalid()">(must contain either between 6 and 7 fields)</span>
+				{{'SCHEDULING_PLEASE' | translate}} <a href="https://fr.wikipedia.org/wiki/Cron">{{'SCHEDULING_CRON_EXPRESSION' | translate}}</a> {{'SCHEDULING_SETUP_SCHEDULE' | translate}}
+				<span class="r-help" ng-show="newJobForm.cron.$error.required">({{'SCHEDULING_REQUIRED' | translate}})</span>
+				<span class="r-help" ng-show="job.cron && cronIsInvalid()">({{'SCHEDULING_CONTAIN_FIELDS' | translate}})</span>
 				<br />
-				You can use <a href="" ng-click="showCronEditor = true">our simplified CRON editor</a>.
+				{{'SCHEDULING_YOU_CAN_USE' | translate}} <a href="" ng-click="showCronEditor = true">{{'SCHEDULING_SIMPLIFIED_CRON_EDITOR' | translate}}</a>.
 			</label>
 			
 			<input type="text" class="form-control" name="cron" 
@@ -83,19 +83,20 @@
 		</div>
 		
 		<div class="form-group">
-			<label ng-show="showCronEditor"><a href="" ng-click="showCronEditor = false">Hide</a> our simplified CRON editor.</label>
+
+			<label ng-show="showCronEditor"><a href="" ng-click="showCronEditor = false">{{'SCHEDULING_HIDE' | translate}}</a> {{'SCHEDULING_SIMPLIFIED_CRON_EDITOR' | translate}}.</label>
 			<!--
 			<cron-selection output="job.cron" config="cronEditorConfig" ng-show="showCronEditor"></cron-selection>
 			 -->
 		</div>
 	
 		<p id="new-job-error" class="bg-danger" ng-show="errorMessage">{{ errorMessage }}</p>
-		<button type="submit" class="btn btn-default pull-right" ng-hide="editMode" ng-click="startEdit()">Edit</button>
+		<button type="submit" class="btn btn-default pull-right" ng-hide="editMode" ng-click="startEdit()">{{'SCHEDULING_EDIT' | translate}}</button>
 		<button type="submit" class="btn btn-default pull-right" ng-disabled="! newJobForm.$valid" ng-show="editMode" ng-click="completeEdit()">
-			Submit
+			{{'SCHEDULING_SUBMIT' | translate}}
 		</button>
-		<button type="submit" class="btn btn-default pull-right" ng-show="editMode" ng-click="cancelEdit()">Cancel</button>
+		<button type="submit" class="btn btn-default pull-right" ng-show="editMode" ng-click="cancelEdit()">{{'COMMON_CANCEL' | translate}}</button>
 	</form>
 	
-	<div ng-show="responseStatus === 404">No job with this ID was found (<strong>{{ job.id }}</strong>).</div>
+	<div ng-show="responseStatus === 404">{{'SCHEDULING_NO_FOUND_JOB' | translate}} (<strong>{{ job.id }}</strong>).</div>
 </div>

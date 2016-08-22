@@ -42,6 +42,12 @@
      */
     $scope.possibleComponents = {};
 
+    // For internationalization
+    $scope.instNewData = {
+       editedInstName: '',
+       appName: '<strong>' + '::' + $routeParams.appName + '</strong>'
+    };
+
     // Function declarations
     $scope.ok = ok;
     $scope.cancel = cancel;
@@ -199,6 +205,7 @@
       if ($scope.mode === 'edit') {
         $scope.editedInstance.name = $scope.oldName;
         $scope.editedInstance.component = $scope.oldComponent;
+        $scope.instNewData.editedInstName = '<strong>' + $scope.editedInstance.name + '</strong>';
 
       } else if ($scope.mode === 'new') {
         // Parent? It is a child node.

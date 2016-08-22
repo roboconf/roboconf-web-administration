@@ -1,17 +1,18 @@
-<strong>IP Address:</strong> {{ selectedInstance.data["ip.address"] }}<br />
-<strong>Machine ID:</strong> {{ selectedInstance.data["machine.id"] }}<br />
+<strong>{{'INSTANCES_INCLUDES_IP_ADDRESS' | translate}}</strong> {{ selectedInstance.data["ip.address"] }}<br />
+<strong>{{'INSTANCES_INCLUDES_MACHINE_ID' | translate}}</strong> {{ selectedInstance.data["machine.id"] }}<br />
 
 <img src="img/state-root-deployed-started.jpg" alt="Deployed and Started" />
-<p>The following actions can be undertaken.</p>
+<p>{{'INSTANCES_INCLUDES_ACTIONS' | translate}}</p>
 
 <ul>
-	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">Undeploy this instance</a></li>
-	<li><a href="" ng-click="createChildInstance()">Create a child instance</a></li>
+	<li><a href="" ng-click="changeState( 'NOT_DEPLOYED' )">{{'INSTANCES_INCLUDES_UNDEPLOY_INSTANCE' | translate}}</a></li>
+	<li><a href="" ng-click="createChildInstance()">{{'INSTANCES_INCLUDES_CREATE_CHILD' | translate}}</a></li>
 </ul>
 
 <br />
-<strong>Description</strong>
+<strong>{{'INSTANCES_INCLUDES_DESCRIPTION_TITLE' | translate}}</strong>
 <br />
 
-The instance is deployed. It can only be undeployed.<br />
-The life cycle of this instance is handled by Roboconf's <strong>{{ selectedInstance.component.installer }}</strong> installer.
+{{'INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_DEPLOYED_STARTED' | translate}}<br />
+<span translate="{{'INSTANCES_INCLUDES_DESCRIPTION_CYCLE' | translate}}"/>
+

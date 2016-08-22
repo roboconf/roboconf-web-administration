@@ -10,6 +10,10 @@
 
     // Fields
     $scope.responseStatus = -1;
+    $scope.appTplData = {
+       name: '<strong>' + $routeParams.appName + '</strong>',
+       qualifier: '<strong>' + $routeParams.tplQualifier + '</strong>'
+    };
 
     $scope.deleteApplicationTemplate = deleteApplicationTemplate;
     $scope.findIconStyle = rUtils.findRandomAvatar;
