@@ -9,3 +9,6 @@ before_script:
 script: 
   - npm install
   - gulp embed
+
+after_success:
+  - ./package-and-upload.sh snapshot

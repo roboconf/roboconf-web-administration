@@ -60,6 +60,9 @@ angular.module('roboconf.preferences')
 > However, an error will be thrown with the **embed** task if this directory exists.  
 > This file is only here for development, not for building.
 
+5. Since Roboconf 0.8, you will also have to enable CORS on the DM's side.  
+Just edit the **etc/net.roboconf.dm.rest.services.configuration.cfg** file.
+
 
 ## Gulp Tasks
 
