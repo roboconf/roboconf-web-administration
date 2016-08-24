@@ -7,7 +7,7 @@
 A web application to interact with Roboconf's Deployment Manager.  
 User documentation can be found on Roboconf's web site.
 
-<img src="http://roboconf.net/resources/img/readme_web_admin.png" alt="Roboconf Web Administration Overview" width="600" />
+<img src="http://roboconf.net/resources/img/nn-0.4-web-admin-app-listing.png" alt="Roboconf Web Administration Overview" width="600" />
 
 <hr />
 
