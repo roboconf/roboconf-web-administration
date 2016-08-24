@@ -7,19 +7,19 @@
 A web application to interact with Roboconf's Deployment Manager.  
 User documentation can be found on Roboconf's web site.
 
-<img src="http://roboconf.net/resources/img/readme_web_admin.png" alt="Roboconf Web Administration Overview" />
+<img src="http://roboconf.net/resources/img/readme_web_admin.png" alt="Roboconf Web Administration Overview" width="600" />
 
 <hr />
 
-<img src="http://roboconf.net/resources/img/nn-0.4-web-admin-instance-state.png" alt="Instances" />
+<img src="http://roboconf.net/resources/img/nn-0.4-web-admin-instance-state.png" alt="Instances" width="600" />
 
 <hr />
 
-<img src="http://roboconf.net/resources/img/nn-0.5-deployment-target-associations.png" alt="Deployment Targets" />
+<img src="http://roboconf.net/resources/img/nn-0.5-deployment-target-associations.png" alt="Deployment Targets" width="600" />
 
 <hr />
 
-<img src="http://roboconf.net/resources/img/nn-0.7-scheduling-for-commands.jpg" alt="Scheduling jobs..." />
+<img src="http://roboconf.net/resources/img/nn-0.7-scheduling-for-commands.jpg" alt="Scheduling jobs..." width="600" />
 
 
 ## Developer Guide
