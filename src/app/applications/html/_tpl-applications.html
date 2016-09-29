@@ -45,10 +45,14 @@
 		</div>
 		
 		<div ng-show="app.apps.length === 0">
-			{{'APPLICATIONS_TEMPLATE_TEMPLATE' | translate}} <strong>{{ app.name }}</strong> {{'APPLICATIONS_TEMPLATE_WITH_QUALIFIER' | translate}} <strong>{{ app.qualifier }}</strong>
+			{{'APPLICATIONS_TEMPLATE_TEMPLATE' | translate}} <strong>{{ app.name }}</strong>
+			{{'APPLICATIONS_TEMPLATE_WITH_QUALIFIER' | translate}} <strong>{{ app.qualifier }}</strong>
 			{{'APPLICATIONS_TEMPLATE_NOT_ASSOCIATED_WITH_APPLICATION' | translate}}
 		</div>
 	</div>
 	
-	<div ng-show="responseStatus === 404" translate="{{'APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND' | translate:appTplData}}"></div>
+	<div 	ng-show="responseStatus === 404" 
+			translate="APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND"
+			translate-values="{ name: app.name, qualifier: app.qualifier }">
+	</div>
 </div>

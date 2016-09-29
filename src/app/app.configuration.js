@@ -34,5 +34,8 @@
 
     // Tell the module to store the language in the local storage
     $translateProvider.useLocalStorage();
+
+    // Error handling
+    $translateProvider.useMissingTranslationHandlerLog();
   }
 })();

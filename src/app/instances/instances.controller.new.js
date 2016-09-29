@@ -42,12 +42,6 @@
      */
     $scope.possibleComponents = {};
 
-    // For internationalization
-    $scope.instNewData = {
-       editedInstName: '',
-       appName: '<strong>' + '::' + $routeParams.appName + '</strong>'
-    };
-
     // Function declarations
     $scope.ok = ok;
     $scope.cancel = cancel;

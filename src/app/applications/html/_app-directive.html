@@ -3,7 +3,7 @@
 	<p class="block-title">
 		<a href="#/app/{{ app.name }}/instances">{{ app.name }}</a>
 		<span
-				class="block-annotation" title="Delete this application"
+				class="block-annotation" title="{{ 'APPLICATIONS_DELETE_THIS_APP' | translate }}"
 				ng-show="showLinks && (! app.info || app.info === 'nd')" ng-click="deleteApplication( app )">
 			<span aria-hidden="true">x</span>
 		</span>
@@ -11,7 +11,7 @@
 	
 	<p class="app-avatar">
  		<img id="img-id" alt="application's icon"
- 				title="{{showLinks? '':'APPLICATIONS_DIRECTIVE_REPLACE_IMAGE' | translate }}"
+ 				title="{{showLinks? '' : ('APPLICATIONS_DIRECTIVE_REPLACE_IMAGE' | translate)}}"
  				ng-src="{{ findIcon( app )}}" 
  				ng-class="findIconStyle( app )" 
  				ng-click="selectFile()" />

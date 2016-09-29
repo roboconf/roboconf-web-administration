@@ -33,6 +33,7 @@
     "ng-cropper": "~0.4.1",
     "angular-quartz-cron": "1.0.2",
     "angular-translate": "2.11.1",
+    "angular-translate-handler-log": "2.11.1",
     "angular-translate-loader-static-files": "2.11.1",
     "angular-translate-storage-local": "2.11.1",
     "angular-translate-storage-cookie": "~2.11.1",

@@ -1,6 +1,10 @@
 {
 	"COMMON_APPLICATIONS" : "Applications",
 	
+	"COMMON_CLOSE" : "Close",
+	
+	"COMMON_DEFAULT" : "Default",
+	
 	"COMMON_NEW_APPLICATION" : "New Application",
 	
 	"COMMON_OVERVIEW"     : "Overview",
@@ -21,7 +25,7 @@
 	
 	"COMMON_CANCEL" : "Cancel",
 	
-	"COMMON_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
+	"COMMON_NO_FOUND_APPLICATION" : "No application called <strong>{{ name }}</strong> was found.",
 	
 	"APPLICATIONS_DIRECTIVE_REPLACE_IMAGE" : "Click to replace this image",
 	
@@ -51,9 +55,9 @@
 	
 	"APPLICATIONS_DIRECTIVE_AS" : "as",
 	
-	"APPLICATIONS_DELETE_NO_DELETE" : "Application {{name}} still has deployed instances. It cannot be deleted.",
+	"APPLICATIONS_DELETE_NO_DELETE" : "Application <strong>{{name}}</strong> still has deployed instances. It cannot be deleted.",
 	
-	"APPLICATIONS_DELETE_DELETE" : "Application {{name}} does not have any deployed instance.",
+	"APPLICATIONS_DELETE_DELETE" : "Application <strong>{{name}}</strong> does not have any deployed instance.",
 	
 	"APPLICATIONS_DELETE_DELETE_2" : "You can delete it if you want.",
 	
@@ -113,11 +117,11 @@
 	
 	"APPLICATIONS_TEMPLATE_NOT_ASSOCIATED_WITH_APPLICATION" : "is not associated with any application.",
 	
-	"APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND" : "No application template called {{name}} was found with the qualifier {{qualifier}}",
+	"APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND" : "No application template called <strong>{{name}}</strong> was found with the qualifier <strong>{{qualifier}}</strong>.",
 	
-	"APPLICATIONS_TEMPLATE_DELETE_NO_DELETE" : "Template {{name}} with qualifier {{qualifier}} still has associated applications. It cannot be deleted.",
+	"APPLICATIONS_TEMPLATE_DELETE_NO_DELETE" : "Template <strong>{{name}}</strong> with qualifier <strong>{{qualifier}}</strong> still has associated applications. It cannot be deleted.",
 	
-	"APPLICATIONS_TEMPLATE_DELETE_DELETE" : "Template {{name}} with qualifier {{qualifier}} is not associated with any application. You can delete it if you want.",
+	"APPLICATIONS_TEMPLATE_DELETE_DELETE" : "Template <strong>{{name}}</strong> with qualifier <strong>{{qualifier}}</strong> is not associated with any application. You can delete it if you want.",
 	
 	"APPLICATIONS_TEMPLATE_DELETE_CONFIRM" : "Confirm the Deletion of this Application Template",
 	
@@ -184,9 +188,9 @@
 	
 	"COMMON_DELETE" : "Delete",
 	
-	"COMMON_NO_FOUND_APPLICATION" : "No application called {{ name }} was found.",
+	"APPLICATIONS_DELETE_THIS_APP" : "Delete this application",
 	
-	"INSTANCES_NO_INSTANCES" : "No Instance",
+	"INSTANCES_NO_INSTANCE" : "No Instance",
 	
 	"INSTANCES_NO_INSTANCE_CREATED" : "No instance has been created so far.",
 	
@@ -326,7 +330,7 @@
 	
 	"INSTANCES_NEW_ACTION_DELETE" : "This action will delete {{editedInstName}} and all its children.",
 	
-	"INSTANCES_SELECT_AN_EXISTING_INSTANCE_BELOW" : "select an existing instance in the list below",
+	"INSTANCES_SELECT_AN_EXISTING_INSTANCE_BELOW" : "Select an existing instance in the list below.",
 	
 	"INSTANCES_NEW_SHOW_EXISTING_VALIDATE" : "Validate",
 	
@@ -547,5 +551,4 @@
 	"TARGETS_VMWARE" : "VMWare",
 	
 	"TARGETS_VALIDATE" : "Validate"
-
 }

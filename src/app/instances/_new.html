@@ -21,7 +21,7 @@
 <div class="content short-content">
 
 	<!-- Information Message -->
-	<span translate="{{'INSTANCES_NEW_INFORMATION_MESSAGE' | translate:instNewData}}"/>
+	<span translate="INSTANCES_NEW_INFORMATION_MESSAGE" translate-values="{ name: appName }"></span>
 	<br /><br />
 	
 	<!-- Error message -->
@@ -60,7 +60,8 @@
 		<div class="block-content" style="margin-bottom: -6px;" ng-show="! rootNode">
 			<p class="pull-left">
 				{{'INSTANCES_NO_INSTANCE_CREATED' | translate}}<br />
-				{{'INSTANCES_OR_YOU_CAN' | translate}} <a href="" ng-click="askToSelectInstance()">{{'INSTANCES_SELECT_AN_EXISTING_INSTANCE' | translate}}</a> {{'INSTANCES_TO_COMPLETE' | translate}}
+				{{'INSTANCES_OR_YOU_CAN' | translate}} <a href="" ng-click="askToSelectInstance()">{{'INSTANCES_SELECT_AN_EXISTING_INSTANCE' | translate}}</a>
+				{{'INSTANCES_TO_COMPLETE' | translate}}
 			</p>
 			
 			<p class="editor-actions pull-right">
@@ -99,8 +100,7 @@
 	
 	<!-- Confirm the deletion of an instance -->
 	<div ng-show="editedInstance && mode === 'delete'">
-		<span translate="{{'INSTANCES_NEW_ACTION_DELETE' | translate:instNewData}}"></span> &nbsp;
-		
+		<span translate="INSTANCES_NEW_ACTION_DELETE" translate-values="{ name: appName }"></span> &nbsp;
 		<button type="button" class="btn btn-default" ng-click="deleteInstance( true )">{{'INSTANCES_DELETE_CONFIRM' | translate}}</button>
 		<button type="button" class="btn btn-default" ng-click="deleteInstance( false )">{{'COMMON_CANCEL' | translate}}</button>
 	</div>

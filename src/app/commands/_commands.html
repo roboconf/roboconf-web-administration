@@ -12,7 +12,7 @@
 	<ul>
 		<li><a href="#/app/{{ appName }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
 		<li><a href="#/app/{{ appName }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
-		<li class="active"><a href="#/app/{{ appName }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ appName }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
 		<li><a href="#/app/{{ appName }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
 		<li><a href="#/app/{{ appName }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
 		<li><a href="#/app/{{ appName }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
@@ -37,7 +37,7 @@
 			<p ng-repeat="s in status" ng-class="s.ok ? 'bg-success' : 'bg-danger'">
 				{{ s.msg }}
 					
-				<button type="button" class="close" aria-label="Close" ng-click="removeStatus( status, s )">
+				<button type="button" class="close" aria-label="{{ COMMON_CLOSE | translate }}" ng-click="removeStatus( status, s )">
 					<span aria-hidden="true" >&times;</span>
 				</button>
 			</p>
@@ -63,5 +63,5 @@
 		</table>
 	</div>
 	
-	<div ng-show="responseStatus === 404" translate="{{'COMMON_NO_FOUND_APPLICATION' | translate:commandData}}"></div>
+	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: appName }"></div>
 </div>

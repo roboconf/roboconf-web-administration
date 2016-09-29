@@ -12,7 +12,7 @@
 	<ul>
 		<li><a href="#/app/{{ app.name }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
 		<li><a href="#/app/{{ app.name }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
-		<li><a href="#/app/{{ app.name }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
 		<li><a href="#/app/{{ app.name }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
 		<li><a href="#/app/{{ app.name }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
 		<li><a href="#/app/{{ app.name }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
@@ -27,16 +27,17 @@
 
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
-		<div ng-show="app.info && app.info !== 'nd'" translate="{{'APPLICATIONS_DELETE_NO_DELETE' | translate:appData}}"></div>
+		<div ng-show="app.info && app.info !== 'nd'" translate="APPLICATIONS_DELETE_NO_DELETE" translate-values="{ name: app.name }"></div>
 		
-		<div ng-show="! app.info || app.info === 'nd'" translate="{{'APPLICATIONS_DELETE_DELETE' | translate:appData}}">
+		<div ng-show="! app.info || app.info === 'nd'">
+			<span translate="APPLICATIONS_DELETE_DELETE" translate-values="{ name: app.name }"></span>
 			<br />
-			{{'APPLICATIONS_DELETE_DELETE_2' | translate}}
+			<span translate="APPLICATIONS_DELETE_DELETE_2"></span>
 			
 			<br /><br />
 			<button class="btn btn-danger" ng-click="deleteApplication( app )">{{'APPLICATIONS_DELETE_CONFIRM' | translate}}</button>
 		</div>
 	</div>
 	
-	<div ng-show="responseStatus === 404" translate="{{'COMMON_NO_FOUND_APPLICATION' | translate:appData}}"></div>
+	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: app.name }"></div>
 </div>

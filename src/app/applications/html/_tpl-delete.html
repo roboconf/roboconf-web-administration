@@ -23,14 +23,17 @@
 
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
-		<div ng-show="app.apps.length > 0" translate="{{'APPLICATIONS_TEMPLATE_DELETE_NO_DELETE' | translate:appTplData}}"></div>
+		<div ng-show="app.apps.length > 0" translate="APPLICATIONS_TEMPLATE_DELETE_NO_DELETE" translate-values="{ name: app.name, qualifier: app.qualifier }"></div>
 		
-		<div ng-show="app.apps.length === 0" translate="{{'APPLICATIONS_TEMPLATE_DELETE_DELETE' | translate}}">
-			
+		<div ng-show="app.apps.length === 0">
+			<span translate="APPLICATIONS_TEMPLATE_DELETE_DELETE" translate-values="{ name: app.name, qualifier: app.qualifier }"></span>
 			<br /><br />
 			<button class="btn btn-danger" ng-click="deleteApplicationTemplate( app )">{{'APPLICATIONS_TEMPLATE_DELETE_CONFIRM' | translate}}</button>
 		</div>
 	</div>
 	
-	<div ng-show="responseStatus === 404" translate="{{'APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND' | translate}}"></div>
+	<div 	ng-show="responseStatus === 404" 
+			translate="APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND"
+			translate-values="{ name: app.name, qualifier: app.qualifier }">
+	</div>
 </div>

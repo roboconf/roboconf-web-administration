@@ -17,11 +17,6 @@
     $scope.askToDelete = false;
     $scope.orderingCriteria = 'instance.name';
     $scope.details = 'LIFECYCLE';
-    // For internationalization
-    $scope.instData = {
-       name: '<strong>' + $routeParams.appName + '</strong>',
-       installer: ''
-    };
 
     // Menu actions
     $scope.menuActions = [

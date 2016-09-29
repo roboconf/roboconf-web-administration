@@ -24,5 +24,8 @@
 	<!-- Application Details -->
 	<rbcf-single-tpl ng-show="responseStatus === 0"></rbcf-single-tpl>
 	
-	<div ng-show="responseStatus === 404" translate="{{'APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND' | translate}}"></div>
+	<div 	ng-show="responseStatus === 404" 
+			translate="APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND"
+			translate-values="{ name: app.name, qualifier: app.qualifier }">
+	</div>
 </div>

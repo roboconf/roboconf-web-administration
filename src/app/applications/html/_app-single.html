@@ -12,7 +12,7 @@
 	<ul>
 		<li class="active"><a href="#/app/{{ app.name }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
 		<li><a href="#/app/{{ app.name }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
-		<li><a href="#/app/{{ app.name }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>  
+		<li><a href="#/app/{{ app.name }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>  
 		<li><a href="#/app/{{ app.name }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
 		<li><a href="#/app/{{ app.name }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
 		<li><a href="#/app/{{ app.name }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
@@ -45,6 +45,5 @@
 		</div>
 	</div>
 
- 	<div ng-show="responseStatus === 404" translate="{{'COMMON_NO_FOUND_APPLICATION' | translate: appData}}"></div> 
- 	
+ 	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: app.name }"></div>
 </div>

@@ -11,7 +11,7 @@
 	<ul>
 		<li><a href="#/app/{{ appName }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
 		<li><a href="#/app/{{ appName }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/commands">{{'APPLICATIONS_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ appName }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
 		<li class="active"><a href="#/app/{{ appName }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
 		<li><a href="#/app/{{ appName }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
 		<li><a href="#/app/{{ appName }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
@@ -25,7 +25,7 @@
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
 	
 	<!-- No application? -->
-	<div ng-show="responseStatus === 404" translate="{{'COMMON_NO_FOUND_APPLICATION' | translate:appTargetData}}"></div>
+	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: appName }"></div>
 	
 	<div ng-show="associations.length > 0">
 		{{'APPLICATIONS_TARGETS_ASSOCIATE' | translate}}<br /><br />
@@ -34,7 +34,7 @@
 			<div class="form-group hovered-line" ng-repeat="a in associations">
 			
 				<label class="col-sm-4 rbcf-padfix">
-					{{ a.path === '' ? 'Default' : a.path }}
+					{{ a.path === '' ? ('COMMON_DEFAULT' | translate) : a.path }}
 				</label>
 
 				<div class="col-sm-5">

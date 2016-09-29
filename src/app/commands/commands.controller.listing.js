@@ -15,9 +15,6 @@
     $scope.searchVisible = true;
     $scope.commands = [];
     $scope.status = [];
-    $scope.commandData = {
-       name: '<strong>' + $routeParams.appName + '</strong>'
-    };
 
     // Function declarations
     $scope.loadCommands = loadCommands;
