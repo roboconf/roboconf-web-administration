@@ -328,7 +328,7 @@
 	
 	"COMMON_CANCEL" : "Cancel",
 	
-	"INSTANCES_NEW_ACTION_DELETE" : "This action will delete {{editedInstName}} and all its children.",
+	"INSTANCES_NEW_ACTION_DELETE" : "This action will delete this instance and all its children.",
 	
 	"INSTANCES_SELECT_AN_EXISTING_INSTANCE_BELOW" : "Select an existing instance in the list below.",
 	
