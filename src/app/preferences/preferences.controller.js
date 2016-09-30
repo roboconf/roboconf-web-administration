@@ -13,15 +13,14 @@
 
     // Functions
     $scope.setLang = setLang;
-    $scope.formatLang = formatLang
+    $scope.formatLang = formatLang;
 
     function setLang(langKey) {
-       $translate.use(langKey);
-       //rClient.savePreferences('langkey', langKey);
+      $translate.use(langKey);
     }
 
     function formatLang(lang) {
-        return lang === 'fr_FR'? 'French' : 'English';
+      return lang === 'fr_FR' ? 'French' : 'English';
     }
   }
 })();

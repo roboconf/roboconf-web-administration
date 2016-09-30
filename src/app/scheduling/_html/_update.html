@@ -11,7 +11,7 @@
 <div class="menu">
 	<ul>
 		<li><a href="#/scheduler">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
-		<li class="active"><a href="#/scheduler/job/{{ job.id }}">{{'SCHEDULING_PROPERTIES' | translate}}</a></li>
+		<li class="active"><a href="#/scheduler/job/{{ job.id }}">{{'COMMON_PROPERTIES' | translate}}</a></li>
 		<li><a href="#/scheduler/job/{{ job.id }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
@@ -83,16 +83,16 @@
 		</div>
 		
 		<div class="form-group">
-			<label ng-show="showCronEditor"><a href="" ng-click="showCronEditor = false">{{'SCHEDULING_HIDE' | translate}}</a> {{'SCHEDULING_SIMPLIFIED_CRON_EDITOR' | translate}}.</label>
+			<label ng-show="showCronEditor"><a href="" ng-click="showCronEditor = false">{{'COMMON_HIDE' | translate}}</a> {{'SCHEDULING_SIMPLIFIED_CRON_EDITOR' | translate}}.</label>
 			<!--
 			<cron-selection output="job.cron" config="cronEditorConfig" ng-show="showCronEditor"></cron-selection>
 			 -->
 		</div>
 	
 		<p id="new-job-error" class="bg-danger" ng-show="errorMessage">{{ errorMessage }}</p>
-		<button type="submit" class="btn btn-default pull-right" ng-hide="editMode" ng-click="startEdit()">{{'SCHEDULING_EDIT' | translate}}</button>
+		<button type="submit" class="btn btn-default pull-right" ng-hide="editMode" ng-click="startEdit()">{{'COMMON_EDIT' | translate}}</button>
 		<button type="submit" class="btn btn-default pull-right" ng-disabled="! newJobForm.$valid" ng-show="editMode" ng-click="completeEdit()">
-			{{'SCHEDULING_SUBMIT' | translate}}
+			{{'COMMON_SUBMIT' | translate}}
 		</button>
 		<button type="submit" class="btn btn-default pull-right" ng-show="editMode" ng-click="cancelEdit()">{{'COMMON_CANCEL' | translate}}</button>
 	</form>

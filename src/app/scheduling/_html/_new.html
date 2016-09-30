@@ -67,7 +67,7 @@
 		</div>
 		
 		<div class="form-group">
-			<label ng-show="showCronEditor"><a href="" ng-click="showCronEditor = false">{{'SCHEDULING_HIDE' | translate}}</a> {{'SCHEDULING_SIMPLIFIED_CRON_EDITOR' | translate}}.</label>
+			<label ng-show="showCronEditor"><a href="" ng-click="showCronEditor = false">{{'COMMON_HIDE' | translate}}</a> {{'SCHEDULING_SIMPLIFIED_CRON_EDITOR' | translate}}.</label>
 			<!--
 			<cron-selection output="job.cron" config="cronEditorConfig" ng-show="showCronEditor"></cron-selection>
 			 -->
@@ -76,7 +76,7 @@
 	
 		<p id="new-job-error" class="bg-danger" ng-show="errorMessage">{{ errorMessage }}</p>
 		<button type="submit" class="btn btn-default pull-right" ng-disabled="! newJobForm.$valid" ng-click="createOrUpdateJob()">
-			{{'SCHEDULING_SUBMIT' | translate}}
+			{{'COMMON_SUBMIT' | translate}}
 		</button>
 	</form>
 

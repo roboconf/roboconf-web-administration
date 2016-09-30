@@ -24,7 +24,7 @@
 		</div>
 		
 		<div class="form-group" ng-class="{'has-error': newAppForm.description.$invalid && newAppForm.description.$dirty}">
-			<label for="description" class="control-label">{{'APPLICATIONS_DESCRIPTION' | translate}}</label>
+			<label for="description" class="control-label">{{'COMMON_DESCRIPTION' | translate}}</label>
 			<span class="r-help" ng-show="newAppForm.description.$error.required">{{'COMMON_REQUIRED' | translate}}</span><br />
 			<textarea class="form-control" rows="5" placeholder="a description" name="description" ng-model="app.description" required></textarea>
 		</div>
@@ -44,7 +44,7 @@
 	
 		<p id="new-application-error" class="bg-danger" ng-show="errorMessage">{{ errorMessage }}</p>
 		<button type="submit" class="btn btn-default pull-right" ng-show="fromExisting" ng-disabled="! newAppForm.$valid" ng-click="createNewApplication( app )">
-			{{'APPLICATIONS_SUBMIT' | translate}}
+			{{'COMMON_SUBMIT' | translate}}
 		</button>
 	</form>
 	

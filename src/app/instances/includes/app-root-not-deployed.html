@@ -16,9 +16,9 @@
 <rbcf-delete-instance ng-show="askToDelete"></rbcf-delete-instance>
 
 <br />
-<strong>{{'INSTANCES_INCLUDES_DESCRIPTION_TITLE' | translate}}</strong>
+<strong>{{'COMMON_DESCRIPTION' | translate}}</strong>
 <br />
 {{'INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_NOT_DEPLOYED' | translate}}
 <br/>
 {{'INSTANCES_INCLUDES_DESCRIPTION_APP_ROOT_NOT_DEPLOYED_2' | translate }}
-<span translate="{{'INSTANCES_INCLUDES_DESCRIPTION_CYCLE' | translate:instData}}" />
+<span translate="INSTANCES_INCLUDES_DESCRIPTION_CYCLE" translate-values="{ installer: selectedInstance.component.installer }" />

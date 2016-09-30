@@ -94,14 +94,14 @@
 		</div>
 
 		<p class="text-danger" ng-show="newInstanceForm.name.$error.instance">{{'INSTANCES_INSTANCE_NAME_UNIQUE' | translate}}</p>
-		<button type="button" class="btn btn-default pull-right" ng-disabled="! newInstanceForm.$valid" ng-click="ok()">{{'INSTANCES_NEW_OK' | translate}}</button>
+		<button type="button" class="btn btn-default pull-right" ng-disabled="! newInstanceForm.$valid" ng-click="ok()">{{'COMMON_OK' | translate}}</button>
 		<button type="button" class="btn btn-default pull-right" ng-click="cancel()">{{'COMMON_CANCEL' | translate}}</button>
 	</form>
 	
 	<!-- Confirm the deletion of an instance -->
 	<div ng-show="editedInstance && mode === 'delete'">
 		<span translate="INSTANCES_NEW_ACTION_DELETE" translate-values="{ name: appName }"></span> &nbsp;
-		<button type="button" class="btn btn-default" ng-click="deleteInstance( true )">{{'INSTANCES_DELETE_CONFIRM' | translate}}</button>
+		<button type="button" class="btn btn-default" ng-click="deleteInstance( true )">{{'COMMON_CONFIRM' | translate}}</button>
 		<button type="button" class="btn btn-default" ng-click="deleteInstance( false )">{{'COMMON_CANCEL' | translate}}</button>
 	</div>
 	
@@ -116,7 +116,7 @@
 					ng-options="inst.path for inst in (existingInstances | rbcfRootInstancesFilter) track by inst.path" required>
 			</select>
 		</div>
-		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( true )">{{'INSTANCES_NEW_SHOW_EXISTING_VALIDATE' | translate}}</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( true )">{{'COMMON_VALIDATE' | translate}}</button>
 		<button type="button" class="btn btn-default pull-right" ng-click="selectInstance( false )">{{'COMMON_CANCEL' | translate}}</button>
 	</div>
 	
@@ -135,7 +135,7 @@
 	<div ng-show="mode === 'reset'">
 		{{'INSTANCES_NEW_RESET_FORM_MESSAGE' | translate}} &nbsp;
 		
-		<button type="button" class="btn btn-default" ng-click="reset( true )">{{'INSTANCES_NEW_RESET_FORM_CONFIRM' | translate}}</button>
+		<button type="button" class="btn btn-default" ng-click="reset( true )">{{'COMMON_CONFIRM' | translate}}</button>
 		<button type="button" class="btn btn-default" ng-click="reset( false )">{{'COMMON_CANCEL' | translate}}</button>
 	</div>
 	
