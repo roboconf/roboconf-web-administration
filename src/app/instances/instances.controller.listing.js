@@ -83,7 +83,6 @@
       var isRoot = false;
       if (instance && instance.component && instance.component.installer) {
         isRoot = instance.component.installer.toLowerCase() === 'target';
-        $scope.instData.installer = '<strong>' + instance.component.installer.toLowerCase() + '</strong>';
       }
 
       var parentNotDeployed = isParentNotDeployed(node);
