@@ -86,7 +86,7 @@ To use them, simply type them in your shell. Use...
 * **gulp watch-dev** to develop and test the application locally (http://localhost:8000).
 * **gulp clean-dev** to delete the generated content in the **dev** directory (it preserves Bower dependencies).
 * **gulp lint** to verify quality rules in the JS scripts.
-* **gulp unit-tests** to run unit tests with Mocha (coverage report under **target/coverage**).
+* **gulp test** to run unit tests with Mocha (coverage report under **target/coverage**).
 * **gulp dist** to create the final distribution (minimal dependencies, minification, etc).
 * **gulp clean-dist** to delete the **dist** directory.
 * **gulp watch-dist** to test the distribution locally (http://localhost:8000).

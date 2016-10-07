@@ -54,7 +54,7 @@ gulp.task('lint', function() {
 /*
  * Tasks for UNIT tests.
  */
-gulp.task('unit-tests', function () {
+gulp.task('test', function () {
   var karma = require('gulp-karma');
 
   gulp.src('./invalid-dir')
@@ -187,7 +187,7 @@ gulp.task('clean-dist', function(done) {
   del( 'target/dist', done );
 });
 
-gulp.task('prepare-dist', [ 'clean-dist', 'lint', 'check_i18n', 'unit-tests' ], prepareDist);
+gulp.task('prepare-dist', [ 'clean-dist', 'lint', 'check_i18n', 'test' ], prepareDist);
 gulp.task('dist', [ 'prepare-dist' ], completeDist);
 
 gulp.task('watch-dist', [ 'dist' ], function () {
@@ -270,241 +270,18 @@ gulp.task('clean', [ 'clean-dist', 'clean-dev' ]);
 /*
  * i18n verifications.
  */
+var qual = require('angular-translate-quality');
 gulp.task('check_i18n', function() {
 
-  var fs = require('fs');
-  var glob = require('glob');
-  var allKeys = [];
-
-  // Analyze each file
-  glob( './src/i18n/*.json', function(er, files) {
-
-    files.forEach( function(val) {
-      var content = fs.readFileSync(val).toString();
-      var filename = val.replace('./src/i18n/', '');
-      gutil.log('Analyzing ' + filename + '...');
-
-      var res = verify_i18n_one( content );
-      if (res.failure) {
-        throw new gutil.PluginError({
-          plugin: 'check_i18n',
-          message: 'There are errors related to i18n in ' + val + '.'
-        });
-      }
-
-      var keySet = new Set(res.keys);
-      allKeys.push({
-        file: filename,
-        set: keySet,
-        all: res.all
-      });
-    });
-
-    var err = new gutil.PluginError({
-      plugin: 'check_i18n',
-      message: 'There are global errors related to i18n.'
-    });
-
-    if (! verify_i18n_all(allKeys)) {
-      throw err;
-    }
-
-    if (! verify_i18n_in_code(allKeys)) {
-      throw err;
-    }
-  })
-});
-
-
-function verify_i18n_in_code(allKeys) {
-
-  var failure = false;
-  if (allKeys.length > 1) {
-
-    var fs = require('fs');
-    var glob = require('glob');
-    var refKeys = allKeys[0].set;
-    glob( './src/app/**/*.html', function(er, files) {
-
-      files.forEach( function(val) {
-        var content = fs.readFileSync(val).toString();
-
-        // Do not mix translate directives and filters
-        if (content.match( /.*translate\s*=\s*"[^|]*\|\s*translate.*"/g )) {
-          failure = output_i18n_error('Do NOT mix the translate directive and the translate filter. File in error: ' + val);
-        }
-
-        // Verify all the keys are correctly declared in the JSon files
-        var keysToVerify = [];
-        var patterns = [
-                         /translate\s*=\s*"(\S+)"/g,
-                         /'(\S+)'\s*\|\s*translate/g ];
-
-        patterns.forEach( function(pattern) {
-          var m;
-          while (( m = pattern.exec(content))) {
-            keysToVerify.push(m[1]);
-          }
-        });
-
-        keysToVerify.forEach( function(key) {
-          if (! refKeys.has(key)) {
-            failure = output_i18n_error('An unknown i18n key is referenced in ' + val + '. Key name: ' + key);
-          }
-        });
-      });
-    });
-  }
-
-  return ! failure;
-}
-
-
-function verify_i18n_all(allKeys) {
-
-  var failure = false;
-  if (allKeys.length > 1) {
-    var refSet = allKeys[0];
-    for (var i=1; i<allKeys.length; i++) {
-
-      // Verify keys are the same
-      var missingKeySet = refSet.set.difference( allKeys[i].set);
-      if (missingKeySet.length > 0) {
-        missingKeySet.forEach( function(key) {
-          failure = output_i18n_error('Key present in ' + refSet.file + ' is missing in ' + allKeys[i].file + '. Key: ' + key);
-        });
-      }
-
-      var extraKeySet = allKeys[i].set.difference( refSet.set);
-      if (extraKeySet.length > 0) {
-        extraKeySet.forEach( function(key) {
-          failure = output_i18n_error('Extra key present in ' + allKeys[i].file + '. It was not found in ' + refSet.file + '. Key: ' + key);
-        });
-      }
-
-      // Values must contain the same number of mark-ups
-      refSet.set.forEach( function(val) {
-        var refValue = refSet.all[val];
-        var cmpValue = allKeys[i].all[val];
-        if (! cmpValue) {
-          return;
-        }
-
-        var regex = /<([^>]+)>/;
-        var refCpl = regex.exec(refValue);
-        var cmpCpl = regex.exec(cmpValue);
-        if (! refCpl && !! cmpCpl) {
-          failure = output_i18n_error('A mark-up was found for ' + val + ' in ' + allKeys[i].file + ' but it was not found in ' + refSet.file);
-
-        } else if (!! refCpl && ! cmpCpl) {
-          failure = output_i18n_error('A mark-up was expected for ' + val + ' in ' + allKeys[i].file + '. See ' + refSet.file);
-
-        } else if (!! refCpl && !! cmpCpl && refCpl.length !== cmpCpl.length) {
-          failure = output_i18n_error('The same number of mark-ups was expected for ' + val + ' in ' + allKeys[i].file + ' and ' + refSet.file);
-        }
-      });
-    }
-  }
-
-  return ! failure;
-}
-
-
-function verify_i18n_one(content) {
-
-  var lineCpt = 0;
-  var failure = false;
-  var keyArray = [];
-  var keyValues = {};
-
-  // Per-line verifications
-  content.split('\n').forEach( function(val) {
-
-    // Increment the line number
-    lineCpt ++;
-
-    // Trailing spaces
-    if( val.match( /.*\s+$/ )) {
-      failure = output_i18n_error('Trailing spaces must be removed.', lineCpt);
-    }
-
-    // Process other lines
-    if( val.trim().length === 0 ) {
-      return;
-    }
-
-    // Verify the syntax
-    if (val === '{' || val === '}') {
-      return;
-    }
-
-    var regex = /\t"([^"]+)": "([^"]+)",?/;
-    if( ! val.match( regex )) {
-      failure = output_i18n_error('Lines must match the following pattern: "\tkey": "value". ' + val, lineCpt);
-      return failure;
-    }
-
-    // Keys must be in upper case
-    var cpl = regex.exec(val);
-    var key = cpl ? cpl[1] : '';
-    if (! key.match( /^[A-Z_0-9]+$/ )) {
-      failure = output_i18n_error('i18n keys must all be in upper case (only underscores are accepted as special characters). Key: ' + key, lineCpt);
-    }
-
-    var value = cpl[2];
-    keyValues[key] = value;
-
-    // Keys must be unique
-    if (keyArray.indexOf(key) !== -1) {
-      failure = output_i18n_error('Duplicate key: ' + key, lineCpt);
-    } else {
-      keyArray.push(key);
-    }
-
-    // Keys must be sorted alphabetically
-    var keyLength = keyArray.length;
-    if (keyLength > 1 && key.localeCompare( keyArray[ keyLength - 2 ]) < 0 ) {
-      failure = output_i18n_error('i18n keys must be sorted alphabetically. Key ' + key + ' breaks this rule.', lineCpt);
-    }
-
-    // Mark-ups must be closed correctly in values
-    var valueCopy = value;
-    var valueCopyLength = valueCopy.length;
-    do {
-      var cpl = /<([^/>]+)>/.exec(valueCopy);
-      if (! cpl) {
-        break;
-      }
-
-      var markup = cpl[1];
-      if ( valueCopy.indexOf( '</' + markup + '>' ) === -1) {
-        failure = output_i18n_error('A HTML tag is not closed correctly. Tag: ' + markup + '. Key: ' + key, lineCpt);
-      }
-
-      valueCopyLength = valueCopy.length;
-      valueCopy = valueCopy.replace( '<' + markup + '>', '' );
-      valueCopy = valueCopy.replace( '</' + markup + '>', '' );
-
-    } while( valueCopy.length !== valueCopyLength );
-
-    // Search for closed mark-ups, without opening ones
-    var cpl = /<\/([^>]+)>/.exec(valueCopy);
-    if (!! cpl) {
-      failure = output_i18n_error('A HTML tag has no opening match. Tag: ' + cpl[1] + '. Key: ' + key, lineCpt);
-    }
+  var res = qual.validate({
+    loc_i18n: './src/i18n/**/',
+    loc_html: './src/app/**/'
   });
 
-  return {failure: failure, keys: keyArray, all: keyValues};
-}
-
-
-function output_i18n_error(msg, line) {
-
-  if (line) {
-    gutil.log( line + ': ' + msg );
-  } else {
-    gutil.log( msg );
+  if (! res) {
+    throw new gutil.PluginError({
+      plugin: 'check_i18n',
+      message: 'Errors were found about internationalization.'
+    });
   }
-
-  return true;
-}
+});
