@@ -17,8 +17,7 @@
 
     $scope.cronEditorConfig = {
       allowMultiple: true,
-      // FIXME: "angular-cron-jobs" does need this field to be set
-      options: {}
+      quartz: true
     };
 
     // Function declarations
@@ -27,7 +26,6 @@
     $scope.loadCommands = loadCommands;
     $scope.deleteJob = deleteJob;
     $scope.createOrUpdateJob = createOrUpdateJob;
-    $scope.cronIsInvalid = cronIsInvalid;
     $scope.startEdit = startEdit;
     $scope.cancelEdit = cancelEdit;
     $scope.completeEdit = completeEdit;
@@ -78,19 +76,6 @@
       });
     }
 
-    function cronIsInvalid() {
-
-      // We just verify we have the right number of fields.
-      // This is very basic.
-      var invalid = true;
-      if ($scope.job.cron) {
-        var count = countCronSeparators($scope.job.cron);
-        invalid = count < 4 || count > 6;
-      }
-
-      return invalid;
-    }
-
     function createOrUpdateJob() {
 
       // Post the value
@@ -138,11 +123,6 @@
     function completeEdit() {
       $scope.editMode = false;
       $scope.jobBackup = null;
-    }
-
-    // Internal functions
-    function countCronSeparators(cron) {
-      return (cron.match(/ /g) || []).length;
     }
   }
 })();

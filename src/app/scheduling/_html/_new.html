@@ -56,7 +56,7 @@
 			<label>
 				{{'SCHEDULING_PLEASE' | translate}} <a href="https://fr.wikipedia.org/wiki/Cron">{{'SCHEDULING_CRON_EXPRESSION' | translate}}</a> {{'SCHEDULING_SETUP_SCHEDULE' | translate}}
 				<span class="r-help" ng-show="newJobForm.cron.$error.required">({{'SCHEDULING_REQUIRED' | translate}})</span>
-				<span class="r-help" ng-show="job.cron && cronIsInvalid()">({{'SCHEDULING_CONTAIN_FIELDS' | translate}})</span>
+				<span class="r-help" ng-show="job.cron">({{'SCHEDULING_CONTAIN_FIELDS' | translate}})</span>
 				<br />
 				{{'SCHEDULING_YOU_CAN_USE' | translate}} <a href="" ng-click="showCronEditor = true">{{'SCHEDULING_SIMPLIFIED_CRON_EDITOR' | translate}}</a>.
 			</label>
@@ -68,10 +68,7 @@
 		
 		<div class="form-group">
 			<label ng-show="showCronEditor"><a href="" ng-click="showCronEditor = false">{{'COMMON_HIDE' | translate}}</a> {{'SCHEDULING_SIMPLIFIED_CRON_EDITOR' | translate}}.</label>
-			<!--
-			<cron-selection output="job.cron" config="cronEditorConfig" ng-show="showCronEditor"></cron-selection>
-			 -->
-			 <quartz-cron-selection output="job.cron" config="cronEditorConfig" ng-show="showCronEditor"></quartz-cron-selection>
+			<cron-selection ng-model="job.cron" config="cronEditorConfig" ng-show="showCronEditor"></cron-selection>
 		</div>
 	
 		<p id="new-job-error" class="bg-danger" ng-show="errorMessage">{{ errorMessage }}</p>
