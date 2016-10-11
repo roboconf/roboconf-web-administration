@@ -33,11 +33,20 @@
     // Initial actions
     if ($routeParams.jobId) {
       loadJob($routeParams.jobId);
+
     } else {
       $scope.responseStatus = 0;
+      if ($routeParams.appName) {
+        $scope.job.app = {
+          name: $routeParams.appName
+        };
+
+        loadCommands();
+      }
     }
 
     loadApplications();
+    
 
     // Functions
     function loadJob(jobId) {

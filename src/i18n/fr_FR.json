@@ -194,6 +194,7 @@
 
 	"SCHEDULING_COMMAND_NAME": "Nom de la commande",
 	"SCHEDULING_CONTAIN_FIELDS": "doit contenir entre 6 et 7 champs",
+	"SCHEDULING_CREATE_A_NEW_ONE": "créer un nouveau ici",
 	"SCHEDULING_CRON_EXPRESSION": "expression CRON ",
 	"SCHEDULING_DELETE_CONFIRM": "Confirmer la suppression de cette tâche",
 	"SCHEDULING_DELETE_MESSAGE": "Vous pouvez supprimer cette tâche si vous voulez.",

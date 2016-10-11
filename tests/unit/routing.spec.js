@@ -36,6 +36,7 @@ describe('Routing', function() {
       // Scheduling
       expect($route.routes['/scheduler'].controller).to.equal('ScheduleListingController');
       expect($route.routes['/scheduler/new'].controller).to.equal('ScheduleUpdateController');
+      expect($route.routes['/scheduler/new/:appName'].controller).to.equal('ScheduleUpdateController');
       expect($route.routes['/scheduler/job/:jobId'].controller).to.equal('ScheduleUpdateController');
       expect($route.routes['/scheduler/job/:jobId/delete'].controller).to.equal('ScheduleUpdateController');
       expect($route.routes['/app/:appName/jobs'].controller).to.equal('ScheduleListingController');

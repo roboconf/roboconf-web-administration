@@ -36,7 +36,7 @@
 			<span class="r-help" ng-show="newJobForm.appname.$error.required">({{'SCHEDULING_REQUIRED' | translate}})</span><br />
 			<select name="appname" class="form-control" required
 					ng-model="job.app"
-					ng-options="app.name for app in apps"
+					ng-options="app.name for app in apps track by app.name"
 					ng-change="loadCommands()">
 			</select>
 		</div>

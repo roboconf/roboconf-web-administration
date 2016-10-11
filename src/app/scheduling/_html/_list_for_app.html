@@ -25,7 +25,11 @@
 	<rbcf-error-message ng-show="responseStatus > 0"></rbcf-error-message>
 
 	<!-- Jobs -->
-	<div ng-show="responseStatus === 0 && jobs.length === 0">{{'SCHEDULING_NO_SCHEDULED_JOB' | translate}}</div>
+	<div ng-show="responseStatus === 0 && jobs.length === 0">
+		{{'SCHEDULING_NO_SCHEDULED_JOB' | translate}}
+		<br />
+		{{'COMMON_YOU_CAN' | translate}} <a href="#/scheduler/new/{{ appName }}">{{'SCHEDULING_CREATE_A_NEW_ONE' | translate}}</a>.
+	</div>
 	
 	<div ng-show="responseStatus === 0 && jobs.length > 0">
 		{{'SCHEDULING_LIST_APP_SCHEDULED_JOBS' | translate}}

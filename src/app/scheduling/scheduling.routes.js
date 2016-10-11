@@ -18,6 +18,11 @@
       templateUrl: 'templates/scheduling/_html/_new.html',
       controller: 'ScheduleUpdateController'
     })
+    
+    .when('/scheduler/new/:appName', {
+      templateUrl: 'templates/scheduling/_html/_new.html',
+      controller: 'ScheduleUpdateController'
+    })
 
     .when('/scheduler/job/:jobId', {
       templateUrl: 'templates/scheduling/_html/_update.html',

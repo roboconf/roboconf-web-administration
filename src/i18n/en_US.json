@@ -200,6 +200,7 @@
 
 	"SCHEDULING_COMMAND_NAME": "Command Name",
 	"SCHEDULING_CONTAIN_FIELDS": "must contain either between 6 and 7 fields",
+	"SCHEDULING_CREATE_A_NEW_ONE": "create a new one here",
 	"SCHEDULING_CRON_EXPRESSION": "CRON expression",
 	"SCHEDULING_DELETE_CONFIRM": "Confirm the Deletion of this Job",
 	"SCHEDULING_DELETE_MESSAGE": "You can delete this job if you want.",
