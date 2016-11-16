@@ -46,7 +46,7 @@
     }
 
     loadApplications();
-    
+
 
     // Functions
     function loadJob(jobId) {

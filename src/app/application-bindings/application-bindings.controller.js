@@ -14,14 +14,16 @@
     $scope.status = [];
 
     $scope.hasBindings = hasBindings;
-    $scope.disableSaveButton = disableSaveButton;
+    $scope.formatBoundApplications = formatBoundApplications;
+    $scope.editBinding = editBinding;
     $scope.saveBindings = saveBindings;
+    $scope.cancelEditing = cancelEditing;
     $scope.removeStatus = rUtils.removeArrayItem;
 
     // Initial actions
     rClient.listApplicationBindings($scope.appName).then(function(bindings) {
       $scope.responseStatus = 0;
-      buildApplicationLists(bindings.plain());
+      $scope.bindings = bindings.plain();
 
     }, function(response) {
       $scope.responseStatus = response.status;
@@ -30,78 +32,91 @@
     // Function definitions
     function hasBindings() {
       return $scope.responseStatus === 0 &&
-        ! $.isEmptyObject($scope.mapping);
+        ! $.isEmptyObject($scope.bindings);
     }
 
 
-    function buildApplicationLists(bindings) {
+    function formatBoundApplications(arrayOfApps) {
 
-      var mapping = {};
-      Object.keys(bindings).forEach(function(val, index, arr) {
-        mapping[val] = {};
-        mapping[val].status = 0;
-        mapping[val].def = bindings[val];
-        mapping[val].curr = bindings[val];
-        mapping[val].key = val;
-        mapping[val].apps = [];
-      });
-
-      rClient.listApplications().then(function(apps) {
-        apps.forEach(function(val, index, arr) {
-          if (bindings.hasOwnProperty(val.tplEep)) {
-            mapping[val.tplEep].apps.push(val.name);
+      var res = '';
+      arrayOfApps.forEach(function(appBinding, index, arr) {
+        if (appBinding.bound) {
+          if (res !== '') {
+            res += ', ';
           }
-        });
 
-        $scope.mapping = mapping;
+          res += appBinding.name;
+        }
       });
+
+      return res === '' ? '-' : res;
     }
 
 
-    function disableSaveButton() {
+    function editBinding(arrayOfApps, event, externalImportPrefix) {
 
-      for (var property in $scope.mapping) {
-        var m = $scope.mapping[property];
-        if (m.curr !== m.def) {
-          return false;
-        }
+      // We use a temporary (working) property
+      $scope.editedPrefix = externalImportPrefix;
+      $scope.editedBinding = arrayOfApps;
+      if (arrayOfApps) {
+        $scope.editedBinding.forEach(function(val, index, arr) {
+          val.wbound = val.bound;
+        });
       }
 
-      return true;
+      if (event) {
+        event.preventDefault();
+      }
     }
 
 
     function saveBindings() {
 
-      for (var property in $scope.mapping) {
-        var m = $scope.mapping[property];
-        if (m.curr !== m.def) {
-          updateBinding(m);
+      // Apply the editing choice to the right property
+      $scope.editedBinding.forEach(function(val, index, arr) {
+        val.bound = val.wbound;
+      });
+
+      // Prepare the data to send
+      var prefix = $scope.editedPrefix;
+      var appNames = [];
+      $scope.editedBinding.forEach(function(val, index, arr) {
+        if (val.bound) {
+          appNames.push(val.name);
         }
-      }
-    }
+      });
 
-
-    function updateBinding(currentMapping) {
-
-      rClient.bindApplications($scope.appName, currentMapping.key, currentMapping.curr).then(function() {
-        currentMapping.status = 1;
-        currentMapping.def = currentMapping.curr;
+      // REST invocation
+      rClient.updateApplicationBindings($scope.appName, prefix, appNames).then(function() {
         $scope.status.push({
           ok: true,
-          msg: 'Binding for prefix "' + currentMapping.key + '" was successfully saved.'
+          msg: 'Bindings for prefix "' + prefix + '" were successfully saved.'
         });
 
       }, function(response) {
-        currentMapping.status = -1;
         $scope.status.push({
           ok: false,
-          msg: 'An error occurred while saving the binding for prefix "' + currentMapping.key + '".'
+          msg: 'An error occurred while saving the bindings for prefix "' + prefix + '".'
         });
 
         // Keep it for debug
         console.log(response);
       });
+
+      // No more binding is being edited and remove the working property
+      cancelEditing();
+    }
+
+
+    function cancelEditing() {
+
+      // Remove the editing property
+      $scope.editedBinding.forEach(function(val, index, arr) {
+        delete val.wbound;
+      });
+
+      // No more binding is being edited
+      editBinding(null);
     }
   }
 })();
