@@ -20,12 +20,19 @@
 	<!-- Error message -->
 	<rbcf-error-message ng-show="responseStatus > 0"></rbcf-error-message>
 	
+	<!-- Introduction -->
+	<div ng-show="responseStatus === 0 && mode !== 'editor'">
+		<label>
+			{{ 'COMMON_UPLOAD' | translate }}
+			<a href="" ng-click="setMode( 'upload' )">{{ 'TARGETS_NEW_ZIP_ARCHIVE' | translate }}</a>
+			{{ 'COMMON_OR' | translate }}
+			<a href="" ng-click="setMode( 'list' )">{{ 'TARGETS_NEW_SELECT_TEMPLATE' | translate }}</a>
+			{{ 'TARGETS_NEW_FOR_YOUR_TP' | translate }}
+		</label>
+	</div>
+	
 	<!-- Template Selection -->
-	<div ng-show="responseStatus === 0 && ! showEditor">
-		{{'TARGETS_TARGETS_NEW_MESSAGE' | translate}}<br />
-		{{'TARGETS_TARGETS_NEW_MESSAGE_2' | translate}}
-		
-		<br /><br />
+	<div ng-show="responseStatus === 0 && mode === 'list'">
 		<select class="form-control" ng-model="tpl">
 			<option>{{'TARGETS_BLANK' | translate}}</option>
 			<option>{{'TARGETS_AMAZON_WEB_SERVICES' | translate}}</option>
@@ -43,16 +50,25 @@
 			<button class="btn btn-default pull-right" type="submit" ng-click="selectTpl()">{{'COMMON_VALIDATE' | translate}}</button>
 		</div>
 	</div>
+	
+	<!-- Upload -->
+	<div ng-show="responseStatus === 0 && mode === 'upload'">
+		<rbcf-zip-upload ng-show="responseStatus === 0 && ! showEditor" data-restpath="/targets/archive"></rbcf-zip-upload>
+		<p id="upload-result-details">
+			{{ 'TARGETS_NEW_ACCESS_LIST' | translate }}
+		</p>
+	</div>
 
 	<!-- Editor -->
-	<div ng-show="showEditor">
+	<div ng-show="responseStatus === 0 && mode === 'editor'">
 		<div class="target-data">
 			<textarea rows="20" cols="8" id="target-properties"></textarea>
 		</div>
 
 		<br />
-		<div>
-			<button class="btn btn-default pull-right" type="submit" ng-click="save()">{{'COMMON_SAVE' | translate}}</button>
+		<div class="pull-right">
+			<button class="btn btn-default" type="submit" ng-click="save()">{{'COMMON_SAVE' | translate}}</button>
+			<button class="btn btn-default" type="submit" ng-click="setMode( 'list' )">{{'COMMON_CANCEL' | translate}}</button>
 		</div>
 	</div>
 </div>

@@ -26,8 +26,7 @@
 
 
 	"APPLICATIONS_FIRST": "d'abord",
-	"APPLICATIONS_PLEASE": "Veuillez",
-	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE": "selectionner un modèle existant",
+	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE": "Selectionner un modèle existant",
 	"APPLICATIONS_TARGETS_ASSOCIATE": "Cette page permet d'associer des instances de machine avec des cibles de déploiement.",
 	"APPLICATIONS_TARGETS_DEFAULT": "défaut",
 	"APPLICATIONS_TARGETS_NONE": "aucun",
@@ -50,15 +49,11 @@
 	"APPLICATIONS_TEMPLATE_TEMPLATE": "Modèle",
 	"APPLICATIONS_TEMPLATE_UPLOAD_AVAILABLE_APPLICATION_TEMPLATES": "lister les modèles d'application disponibles.",
 	"APPLICATIONS_TEMPLATE_UPLOAD_CREATE_NEW_APPLICATION": "créer une nouvelle application",
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_CHANGE": "Changer",
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_RESET": "Initialiser",
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_FILE": "Selectionner un fichier",
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE": "Selectionner un fichier ZIP contenant le modèle d'application à déployer.",
 	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE": "Nouveau modèle d'application",
 	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE_2": "téléverser un nouveau modèle d'application",
 	"APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN": "Vous pouvez...",
 	"APPLICATIONS_TEMPLATE_WITH_QUALIFIER": "avec le qualificatif",
-	"APPLICATIONS_TO_CREATE_AN_APPLICATION": "pour créer une application ou",
+	"APPLICATIONS_TO_CREATE_AN_APPLICATION": "pour créer une application",
 	"APPLICATIONS_UPLOAD_NEW_TEMPLATE": "télécharger un nouveau modèle",
 
 
@@ -88,6 +83,7 @@
 	"COMMON_NEW_APPLICATION": "Nouvelle Application",
 	"COMMON_NO_FOUND_APPLICATION": "Aucune application nommée <strong>{{ name }}</strong> trouvée.",
 	"COMMON_OK": "OK",
+	"COMMON_OR": "ou",
 	"COMMON_OVERVIEW": "Aperçu",
 	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS": "Préfixe pour les exports externes :",
 	"COMMON_PROPERTIES": "Propriétés",
@@ -228,7 +224,11 @@
 	"TARGETS_IN_MEMORY": "En mémoire",
 	"TARGETS_MICROSOFT_AZURE": "Microsoft Azure",
 	"TARGETS_NAME": "Nom",
+	"TARGETS_NEW_ACCESS_LIST": "Vous pouvez <a href="/#/targets">retrouver la liste des cibles de déploiement ici</a>.",
 	"TARGETS_NEW_DEPLOYMENT_TARGET": "Nouvelle cible de  déploiement",
+	"TARGETS_NEW_FOR_YOUR_TP": "pour remplir les propriétés.",
+	"TARGETS_NEW_SELECT_TEMPLATE": "sélectionner un modèle",
+	"TARGETS_NEW_ZIP_ARCHIVE": "une archive ZIP",
 	"TARGETS_NO_DESCRIPTION": "pas de description",
 	"TARGETS_NO_FOUND_TARGET_ID": "Aucune cible avec l'identifiant {{id}} n'a été trouvée.",
 	"TARGETS_NO_NAME": "pas de nom",
@@ -237,11 +237,19 @@
 	"TARGETS_QUALIFIER": "Qualificatif",
 	"TARGETS_REFERENCING": "Référençant",
 	"TARGETS_TARGET": "La cible",
-	"TARGETS_TARGETS_NEW_MESSAGE": "Vous êtes sur le point de créer une nouvelle cible de déploiement.",
-	"TARGETS_TARGETS_NEW_MESSAGE_2": "Veuillez, selectionner un modèle pour les propriétés de votre cible.",
 	"TARGETS_TARGET_USAGE_MESSAGE": "Cett cible n'est référencée ou utilisée par aucune application.",
 	"TARGETS_TEMPLATE": "Modèle",
 	"TARGETS_USAGE": "Usage",
 	"TARGETS_USING": "Utilisant",
-	"TARGETS_VMWARE": "VMWare"
+	"TARGETS_VMWARE": "VMWare",
+
+
+	"UTILS_UPLOAD_DIRECTIVE_CHANGE": "Changer",
+	"UTILS_UPLOAD_DIRECTIVE_FAILURE": "L'envoi a échoué. Le serveur n'est pas accessible ou l'archive est invalide.",
+	"UTILS_UPLOAD_DIRECTIVE_NOT_AVAILABLE": "indisponible",
+	"UTILS_UPLOAD_DIRECTIVE_REASON": "Raison :",
+	"UTILS_UPLOAD_DIRECTIVE_RESET": "Réinitialiser",
+	"UTILS_UPLOAD_DIRECTIVE_SELECT_FILE": "Selectionner un fichier",
+	"UTILS_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE": "Selectionner une archive ZIP à envoyer.",
+	"UTILS_UPLOAD_DIRECTIVE_SUCCESS": "L'envoi s'est bien passé."
 }

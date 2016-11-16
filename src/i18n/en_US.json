@@ -23,11 +23,10 @@
 	"APPLICATIONS_DIRECTIVE_NO_DEPLOYED_INSTANCE": "No instance is deployed.",
 	"APPLICATIONS_DIRECTIVE_REPLACE_IMAGE": "Click to replace this image",
 	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER": "Template Qualifier:",
+
+
 	"APPLICATIONS_FIRST": "first",
-	"APPLICATIONS_PLEASE": "Please",
-	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE": "select an existing template",
-
-
+	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE": "Select an existing template",
 	"APPLICATIONS_TARGETS_ASSOCIATE": "This page allows to associate machine instances with deployment targets.",
 	"APPLICATIONS_TARGETS_DEFAULT": "default",
 	"APPLICATIONS_TARGETS_NONE": "none",
@@ -52,15 +51,11 @@
 	"APPLICATIONS_TEMPLATE_TEMPLATE": "Template",
 	"APPLICATIONS_TEMPLATE_UPLOAD_AVAILABLE_APPLICATION_TEMPLATES": "list the available application templates.",
 	"APPLICATIONS_TEMPLATE_UPLOAD_CREATE_NEW_APPLICATION": "create a new application",
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_CHANGE": "Change",
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_RESET": "Reset",
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_FILE": "Select file",
-	"APPLICATIONS_TEMPLATE_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE": "Select a ZIP file containing the application template to deploy.",
 	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE": "New Application Template",
 	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE_2": "upload a new application template",
 	"APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN": "You can...",
 	"APPLICATIONS_TEMPLATE_WITH_QUALIFIER": "with qualifier",
-	"APPLICATIONS_TO_CREATE_AN_APPLICATION": "to create an application or",
+	"APPLICATIONS_TO_CREATE_AN_APPLICATION": "to create an application",
 	"APPLICATIONS_UPLOAD_NEW_TEMPLATE": "upload a new template",
 
 
@@ -90,6 +85,7 @@
 	"COMMON_NEW_APPLICATION": "New Application",
 	"COMMON_NO_FOUND_APPLICATION": "No application called <strong>{{ name }}</strong> was found.",
 	"COMMON_OK": "OK",
+	"COMMON_OR": "or",
 	"COMMON_OVERVIEW": "Overview",
 	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS": "Prefix for External Exports:",
 	"COMMON_PROPERTIES": "Properties",
@@ -234,7 +230,11 @@
 	"TARGETS_IN_MEMORY": "In-Memory",
 	"TARGETS_MICROSOFT_AZURE": "Microsoft Azure",
 	"TARGETS_NAME": "Name",
+	"TARGETS_NEW_ACCESS_LIST": "You can <a href="/#/targets">access the list of targets here</a>.",
 	"TARGETS_NEW_DEPLOYMENT_TARGET": "New Deployment Target",
+	"TARGETS_NEW_FOR_YOUR_TP": "for your target properties.",
+	"TARGETS_NEW_SELECT_TEMPLATE": "select a template",
+	"TARGETS_NEW_ZIP_ARCHIVE": "a ZIP archive",
 	"TARGETS_NO_DESCRIPTION": "no description",
 	"TARGETS_NO_FOUND_TARGET_ID": "No target with the ID {{id}} was found.",
 	"TARGETS_NO_NAME": "No name",
@@ -243,11 +243,19 @@
 	"TARGETS_QUALIFIER": "Qualifier",
 	"TARGETS_REFERENCING": "Referencing",
 	"TARGETS_TARGET": "Target",
-	"TARGETS_TARGETS_NEW_MESSAGE": "You are about to create a new deployment target.",
-	"TARGETS_TARGETS_NEW_MESSAGE_2": "Please, select a template for your target properties.",
 	"TARGETS_TARGET_USAGE_MESSAGE": "This target is not used or referenced by any application.",
 	"TARGETS_TEMPLATE": "Template",
 	"TARGETS_USAGE": "Usage",
 	"TARGETS_USING": "Using",
-	"TARGETS_VMWARE": "VMWare"
+	"TARGETS_VMWARE": "VMWare",
+
+
+	"UTILS_UPLOAD_DIRECTIVE_CHANGE": "Change",
+	"UTILS_UPLOAD_DIRECTIVE_FAILURE": "The upload failed. The server is either offline or the archive is invalid.",
+	"UTILS_UPLOAD_DIRECTIVE_NOT_AVAILABLE": "not available",
+	"UTILS_UPLOAD_DIRECTIVE_REASON": "Reason:",
+	"UTILS_UPLOAD_DIRECTIVE_RESET": "Reset",
+	"UTILS_UPLOAD_DIRECTIVE_SELECT_FILE": "Select file",
+	"UTILS_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE": "Select a ZIP file to upload.",
+	"UTILS_UPLOAD_DIRECTIVE_SUCCESS": "The upload was successful."
 }
