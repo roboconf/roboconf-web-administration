@@ -30,7 +30,8 @@
       updateTarget: updateTarget,
 
       listApplicationBindings: listApplicationBindings,
-      bindApplications: bindApplications,
+      updateApplicationBindings: updateApplicationBindings,
+
       findTargetAssociations: findTargetAssociations,
       associateTarget: associateTarget,
       dissociateTarget: dissociateTarget,
@@ -121,8 +122,14 @@
       return Restangular.one('app/' + appName + '/bind').get();
     }
 
-    function bindApplications(appName, bTplName, bAppName) {
-      return Restangular.one('app/' + appName + '/bind?bound-tpl=' + bTplName + '&bound-app=' + bAppName).post();
+    function updateApplicationBindings(appName, bTplName, bAppNames) {
+
+      var path = 'app/' + appName + '/bind-x?bound-tpl=' + bTplName;
+      bAppNames.forEach(function(val, index, arr) {
+        path += '&app=' + val;
+      });
+
+      return Restangular.one(path).post();
     }
 
     function findTargetAssociations(appName) {

@@ -35,9 +35,9 @@
 		</tr>
 		<tr ng-repeat="t in targets">
 			<td>{{ t.id }}</td>
-			<td><a href="#target/{{ t.id }}">{{ t.name ? t.name : 'TARGETS_NO_NAME' | translate }}</a></td>
+			<td><a href="#target/{{ t.id }}">{{ t.name ? t.name : ('TARGETS_NO_NAME' | translate)}}</a></td>
 			<td>{{ t.handler }}</td>
-			<td>{{ t.desc ? t.desc : 'TARGETS_NO_DESCRIPTION' | translate }}</td>
+			<td>{{ t.desc ? t.desc : ('TARGETS_NO_DESCRIPTION' | translate)}}</td>
 		</tr>
 	</table>
 </div>

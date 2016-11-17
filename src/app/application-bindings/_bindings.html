@@ -36,33 +36,53 @@
 		{{'APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES' | translate}}<br />
 		{{'APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2' | translate}}<br /><br />
 
-		<form class="form-horizontal">
-			<div class="form-group" ng-repeat="(key,value) in mapping">
-				<label class="col-sm-2 rbcf-padfix">{{ key }}</label>
-				<div class="col-sm-10">
-					<select class="form-control"
-							required
-							ng-model="value.curr"
-							ng-options="a for a in value.apps">
-					</select>
-				</div>
-			</div>
-			
-			<button 
-					class="btn btn-default pull-right" type="submit" 
-					ng-disabled="disableSaveButton()"
-					ng-model="mapping"
-					ng-click="saveBindings()">{{'COMMON_SAVE' | translate}}</button>
-
-			<div class="status-panel status-panel-bottom">
-				<p ng-repeat="s in status" ng-class="s.ok ? 'bg-success' : 'bg-danger'">
-					{{ s.msg }}
+		<!-- List all the bindings -->
+		<table class="table table-hover table-rbcf">
+			<tr>
+				<th>{{ 'APPLICATIONS_BINDINGS_TH_PREFIX' | translate }}</th>
+				<th>{{ 'APPLICATIONS_BINDINGS_TH_APP' | translate }}</th>
+				<th>&nbsp;</th>
+			</tr>
+			<tr ng-repeat="(externalImportPrefix,arrayOfApps) in bindings">
+				<td>
+					{{ externalImportPrefix }}
+				</td>
+				<td>
+					<span ng-show="editedBinding !== arrayOfApps">{{ formatBoundApplications(arrayOfApps) }}</span>
 					
-					<button type="button" class="close" aria-label="{{'COMMON_CLOSE' | translate}}" ng-click="removeStatus( status, s )">
-						<span aria-hidden="true" >&times;</span>
-					</button>
-				</p>
-			</div>
-		</form>
+					<div ng-show="editedBinding === arrayOfApps">
+						<div class="checkbox bindings-box" ng-repeat="appBinding in editedBinding">
+							<label>
+								<input type="checkbox" ng-model="appBinding.wbound">
+								<span class="checkbox-text">{{ appBinding.name }}</span>
+							</label>
+						</div>
+					</div>
+				</td>
+				<td>
+					<a href="#" ng-click="editBinding(arrayOfApps, $event, externalImportPrefix)" ng-show="! editedBinding">
+						{{'APPLICATIONS_BINDINGS_EDIT_THIS_BINDING' | translate}}
+					</a>
+				</td>
+			</tr>
+		</table>
+		
+		<div ng-show="!! editedBinding" class="pull-right">
+			<button class="btn btn-default" type="submit" ng-click="saveBindings()">{{'COMMON_SAVE' | translate}}</button>
+			<button class="btn btn-default" type="submit" ng-click="cancelEditing()">{{'COMMON_CANCEL' | translate}}</button>
+		</div>
+		<div class="clearfix"></div>
 	</div>
+
+	<!-- Display notifications -->
+	<div class="status-panel status-panel-bottom">
+		<p ng-repeat="s in status" ng-class="s.ok ? 'bg-success' : 'bg-danger'">
+			{{ s.msg }}
+					
+			<button type="button" class="close" aria-label="{{'COMMON_CLOSE' | translate}}" ng-click="removeStatus( status, s )">
+				<span aria-hidden="true" >&times;</span>
+			</button>
+		</p>
+	</div>
+
 </div>

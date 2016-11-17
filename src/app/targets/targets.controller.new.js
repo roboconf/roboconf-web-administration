@@ -10,11 +10,12 @@
 
     // Fields
     $scope.responseStatus = 0;
-    $scope.showEditor = false;
     $scope.tpl = '';
+    $scope.mode = 'upload';
 
     // Function declarations
     $scope.selectTpl = selectTpl;
+    $scope.setMode = setMode;
     $scope.save = save;
 
     // Functions
@@ -31,6 +32,10 @@
       }
     }
 
+    function setMode(mode) {
+      $scope.mode = mode;
+    }
+
     function save() {
       rClient.newTarget($scope.editor.getValue()).then(function(id) {
         $window.location = '#/target/' + id + '/properties';
@@ -43,14 +48,16 @@
     function showEditor(content) {
 
       var txtArea = $('#target-properties').get(0);
-      $scope.editor = CodeMirror.fromTextArea(txtArea, {
-        mode: 'properties',
-        lineNumbers: true,
-        lineWrapping: true
-      });
+      if (! $scope.editor) {
+        $scope.editor = CodeMirror.fromTextArea(txtArea, {
+          mode: 'properties',
+          lineNumbers: true,
+          lineWrapping: true
+        });
+      }
 
       $scope.editor.setValue(content);
-      $scope.showEditor = true;
+      $scope.mode = 'editor';
 
       setTimeout(function() {
         $scope.editor.refresh();

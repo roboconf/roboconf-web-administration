@@ -2,22 +2,22 @@
   'use strict';
 
   angular
-  .module('roboconf.applications')
+  .module('roboconf.utils')
   .directive('rbcfZipUpload', rbcfZipUpload);
 
   function rbcfZipUpload() {
     return {
       restrict: 'E',
-      templateUrl: 'templates/applications/html/_tpl-upload-directive.html',
+      templateUrl: 'templates/utils/html/_upload-directive.html',
       controller: rbcfZipUploadController
     };
   }
 
-  rbcfZipUploadController.$inject = ['rPrefs', '$scope', 'rShare'];
-  function rbcfZipUploadController(rPrefs, $scope, rShare) {
+  rbcfZipUploadController.$inject = ['rPrefs', '$scope', 'rShare', '$attrs'];
+  function rbcfZipUploadController(rPrefs, $scope, rShare, $attrs) {
 
     // Fields and functions
-    $scope.restUrl = rPrefs.getUrl() + '/applications/templates';
+    $scope.restUrl = rPrefs.getUrl() + $attrs.restpath;
     $scope.uploadZip = uploadZip;
     $scope.reset = reset;
 
@@ -27,13 +27,17 @@
     // Functions
     function reset() {
       $scope.progress = 0;
-      $('#upload-result').html('');
+      $scope.reason = null;
+
+      $('#upload-result-details').hide();
+      $('#upload-result-ok').hide();
+      $('.upload-result-ko').hide();
     }
 
     function uploadZip() {
 
       // Prepare the data to submit
-      var formObj = $('#new-app-form')[0];
+      var formObj = $('#new-upload-form')[0];
       var formData = new FormData(formObj);
 
       // Create an ajax request
@@ -70,8 +74,7 @@
     }
 
     function onSuccessfulUpload(data, textStatus, jqXHR) {
-      var content = 'The application was succesfully uploaded.';
-      $('#upload-result').html(content);
+      $('#upload-result-ok').show();
       $('#upload-result-details').fadeIn();
 
       // Store the newly uploaded template for other controllers.
@@ -88,14 +91,10 @@
         details = angular.fromJson(jqXHR.responseText);
       }
 
-      var content =
-        'The upload failed. The server is either offline, or your settings are incorrect, or the archive is invalid.';
-
+      $('.upload-result-ko').show();
       if (details && details.reason) {
-        content += '<br />Reason: ' + details.reason.toLowerCase();
+        $scope.reason = details.reason.toLowerCase();
       }
-
-      $('#upload-result').html(content);
     }
   }
 })();

@@ -31,8 +31,11 @@
 		
 		<div class="form-group">
 			<label>
-				{{'APPLICATIONS_PLEASE' | translate}}, <a href="" ng-click="showFromExisting()">{{'APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE' | translate}}</a> {{'APPLICATIONS_TO_CREATE_AN_APPLICATION' | translate}}
-				   <a href="" ng-click="showUpload()">{{'APPLICATIONS_UPLOAD_NEW_TEMPLATE' | translate}}</a> {{'APPLICATIONS_FIRST' | translate}}.
+				<a href="" ng-click="showFromExisting()">{{'APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE' | translate}}</a> 
+				{{'APPLICATIONS_TO_CREATE_AN_APPLICATION' | translate}}
+				{{ 'COMMON_OR' | translate }}
+				<a href="" ng-click="showUpload()">{{'APPLICATIONS_UPLOAD_NEW_TEMPLATE' | translate}}</a> 
+				{{'APPLICATIONS_FIRST' | translate}}.
 			</label>
 			
 			<select class="form-control" id="applicationTemplate" required
@@ -49,7 +52,7 @@
 	</form>
 	
 	<!-- No nested form, keep the ZIP upload after the form -->
-	<rbcf-zip-upload ng-show="! fromExisting"></rbcf-zip-upload>
+	<rbcf-zip-upload ng-show="! fromExisting" data-restpath="/applications/templates"></rbcf-zip-upload>
 	<p id="upload-result-details">
 		{{'COMMON_YOU_CAN' | translate}} <a href="" ng-click="completeCreation()">{{'APPLICATIONS_COMPLETE_APPLICATION_CREATION' | translate}}</a>.
 	</p>

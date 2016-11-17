@@ -9,6 +9,7 @@
   function applicationsUploadController($scope) {
 
     // Fields
+    $scope.restpath = '/applications/templates';
     $scope.resetUploadForm = resetUploadForm;
 
     // Function definitions
