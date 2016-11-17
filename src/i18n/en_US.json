@@ -1,10 +1,14 @@
 {
 	"APPLICATIONS_APP_LIST_CREATE_APPLICATION": "create your first application.",
 	"APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED": "No application has been created so far.",
+
+	"APPLICATIONS_BINDINGS_EDIT_THIS_BINDING": "Edit this binding",
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT": "This application does not import any external variable.",
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT_2": "There is no binding to define between this application and others.",
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES": "The following prefixes match properties exported by other applications.",
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2": "Select which ones this application should be bound to.",
+	"APPLICATIONS_BINDINGS_TH_APP": "Bound Applications",
+	"APPLICATIONS_BINDINGS_TH_PREFIX": "External Import Prefix",
 
 
 	"APPLICATIONS_COMPLETE_APPLICATION_CREATION": "complete the creation of your new application",

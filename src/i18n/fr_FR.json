@@ -1,10 +1,14 @@
 {
 	"APPLICATIONS_APP_LIST_CREATE_APPLICATION": "créer votre première application.",
 	"APPLICATIONS_APP_LIST_NO_APPLICATION_CREATED": "Aucune appplication créée jusqu'à présent.",
+
+	"APPLICATIONS_BINDINGS_EDIT_THIS_BINDING": "Éditer ce lien",
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT": "Cette application n'importe aucune variable externe.",
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_NO_IMPORT_2": "Il n'y a aucune liaison à définir entre cette application et les autres.",
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES": "Les préfixes suivants correspondent aux propriétés exportées par d'autres applications.",
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2": "Selectionner une application à laquelle cette application sera liée.",
+	"APPLICATIONS_BINDINGS_TH_APP": "Applications Liées",
+	"APPLICATIONS_BINDINGS_TH_PREFIX": "Préfixe d'Import Externe",
 
 
 	"APPLICATIONS_COMPLETE_APPLICATION_CREATION": "compléter la création de votre nouvelle application",

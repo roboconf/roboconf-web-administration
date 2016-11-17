@@ -39,8 +39,8 @@
 		<!-- List all the bindings -->
 		<table class="table table-hover table-rbcf">
 			<tr>
-				<th>External Import Prefix</th>
-				<th>Bound Applications</th>
+				<th>{{ 'APPLICATIONS_BINDINGS_TH_PREFIX' | translate }}</th>
+				<th>{{ 'APPLICATIONS_BINDINGS_TH_APP' | translate }}</th>
 				<th>&nbsp;</th>
 			</tr>
 			<tr ng-repeat="(externalImportPrefix,arrayOfApps) in bindings">
@@ -61,7 +61,7 @@
 				</td>
 				<td>
 					<a href="#" ng-click="editBinding(arrayOfApps, $event, externalImportPrefix)" ng-show="! editedBinding">
-						Edit This Binding
+						{{'APPLICATIONS_BINDINGS_EDIT_THIS_BINDING' | translate}}
 					</a>
 				</td>
 			</tr>
