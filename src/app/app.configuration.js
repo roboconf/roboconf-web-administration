@@ -2,20 +2,18 @@
   'use strict';
 
   angular.module('roboconf')
-  .run(configureRun)
   .config(configureCors)
-  .config(translation);
+  .config(translation)
+  .run(configureRestangular)
+  .run(configureTranslation);
 
-  configureRun.$inject = ['Restangular', 'rPrefs'];
-  function configureRun(Restangular, rPrefs) {
-    Restangular.setBaseUrl(rPrefs.getUrl());
-  }
 
   configureCors.$inject = ['$sceDelegateProvider'];
   function configureCors($sceDelegateProvider) {
     // Required because the upload form MAY target another domain.
     $sceDelegateProvider.resourceUrlWhitelist(['self', '**']);
   }
+
 
   translation.$inject = ['$translateProvider'];
   function translation($translateProvider) {
@@ -29,13 +27,31 @@
       suffix: '.json'
     });
 
-    // Tell the module what language to use by default
-    $translateProvider.preferredLanguage('en_US');
-
-    // Tell the module to store the language in the local storage
-    $translateProvider.useLocalStorage();
-
     // Error handling
     $translateProvider.useMissingTranslationHandlerLog();
+
+    // Default language
+    $translateProvider.preferredLanguage('en_US');
+  }
+
+
+  configureRestangular.$inject = ['Restangular', 'rPrefs'];
+  function configureRestangular(Restangular, rPrefs) {
+    Restangular.setBaseUrl(rPrefs.getUrl());
+  }
+
+
+  configureTranslation.$inject = ['$translate', 'rClient'];
+  function configureTranslation($translate, rClient) {
+
+    // Get the server settings
+    rClient.getPreferences('user.language').then(function(lang) {
+      var langSetting = lang[0].value === 'FR' ? 'fr_FR' : 'en_US';
+      $translate.use(langSetting);
+
+    }, function() {
+      //$translate.preferredLanguage('en_US');
+      $translate.use('en_US');
+    });
   }
 })();
