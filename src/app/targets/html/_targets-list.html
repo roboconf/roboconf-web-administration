@@ -33,7 +33,7 @@
 			<th>{{'TARGETS_HANDLER' | translate}}</th>
 			<th>{{'COMMON_DESCRIPTION' | translate}}</th>
 		</tr>
-		<tr ng-repeat="t in targets">
+		<tr ng-repeat="t in targets | filter:searchFilter | orderBy:'name'">
 			<td>{{ t.id }}</td>
 			<td><a href="#target/{{ t.id }}">{{ t.name ? t.name : ('TARGETS_NO_NAME' | translate)}}</a></td>
 			<td>{{ t.handler }}</td>
