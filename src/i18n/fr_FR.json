@@ -98,7 +98,7 @@
 	"COMMON_SUBMIT": "Envoyer",
 	"COMMON_TARGET_ASSOCIATIONS": "Cibles",
 	"COMMON_UPLOAD": "Téléverser",
-	"COMMON_VALIDATE": "Valider"
+	"COMMON_VALIDATE": "Valider",
 	"COMMON_WELCOME": "Bienvenue",
 	"COMMON_YES": "Oui",
 	"COMMON_YOU_CAN": "Vous pouvez",
@@ -179,7 +179,7 @@
 
 	"MENU_APPLICATIONS_TEMPLATES": "Modèles d'application",
 	"MENU_DEPLOYMENT_TARGETS": "Cibles de déploiement",
-	"MENU_PREFERENCES": "Préferences" ,
+	"MENU_PREFERENCES": "Préferences",
 	"MENU_SCHEDULER": "Planificateur",
 	"MENU_WEB_SITE": "Site Web",
 
@@ -228,7 +228,7 @@
 	"TARGETS_IN_MEMORY": "En mémoire",
 	"TARGETS_MICROSOFT_AZURE": "Microsoft Azure",
 	"TARGETS_NAME": "Nom",
-	"TARGETS_NEW_ACCESS_LIST": "Vous pouvez <a href="/#/targets">retrouver la liste des cibles de déploiement ici</a>.",
+	"TARGETS_NEW_ACCESS_LIST": "retrouver la liste des cibles de déploiement ici.",
 	"TARGETS_NEW_DEPLOYMENT_TARGET": "Nouvelle cible de  déploiement",
 	"TARGETS_NEW_FOR_YOUR_TP": "pour remplir les propriétés.",
 	"TARGETS_NEW_SELECT_TEMPLATE": "sélectionner un modèle",

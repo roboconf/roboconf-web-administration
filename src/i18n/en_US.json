@@ -172,7 +172,7 @@
 	"INSTANCES_NEW_FINISH": "Finish",
 	"INSTANCES_NEW_INFORMATION_MESSAGE": "This page allows you to create a new instance for the {{appName}} application.",
 	"INSTANCES_NEW_INSTANCES": "New Instance(s) for",
-	"INSTANCES_NEW_RESET_FORM": "Reset the form" ,
+	"INSTANCES_NEW_RESET_FORM": "Reset the form",
 	"INSTANCES_NEW_RESET_FORM_MESSAGE": "You are about to reset everything. All the new instances will be dropped.",
 	"INSTANCES_NO_INSTANCE": "No Instance",
 	"INSTANCES_NO_INSTANCE_CREATED": "No instance has been created so far.",
@@ -185,7 +185,7 @@
 
 	"MENU_APPLICATIONS_TEMPLATES": "Application Templates",
 	"MENU_DEPLOYMENT_TARGETS": "Deployment Targets",
-	"MENU_PREFERENCES": "Preferences" ,
+	"MENU_PREFERENCES": "Preferences",
 	"MENU_SCHEDULER": "Scheduler",
 	"MENU_WEB_SITE": "Web Site",
 
@@ -234,7 +234,7 @@
 	"TARGETS_IN_MEMORY": "In-Memory",
 	"TARGETS_MICROSOFT_AZURE": "Microsoft Azure",
 	"TARGETS_NAME": "Name",
-	"TARGETS_NEW_ACCESS_LIST": "You can <a href="/#/targets">access the list of targets here</a>.",
+	"TARGETS_NEW_ACCESS_LIST": "access the list of targets here.",
 	"TARGETS_NEW_DEPLOYMENT_TARGET": "New Deployment Target",
 	"TARGETS_NEW_FOR_YOUR_TP": "for your target properties.",
 	"TARGETS_NEW_SELECT_TEMPLATE": "select a template",
