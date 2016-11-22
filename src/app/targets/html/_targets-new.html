@@ -55,7 +55,7 @@
 	<div ng-show="responseStatus === 0 && mode === 'upload'">
 		<rbcf-zip-upload ng-show="responseStatus === 0 && ! showEditor" data-restpath="/targets/archive"></rbcf-zip-upload>
 		<p id="upload-result-details">
-			{{ 'TARGETS_NEW_ACCESS_LIST' | translate }}
+			{{ 'COMMON_YOU_CAN' | translate }} <a href="/#/targets">{{ 'TARGETS_NEW_ACCESS_LIST' | translate }}</a>
 		</p>
 	</div>
 

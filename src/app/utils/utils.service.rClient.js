@@ -86,8 +86,14 @@
         return Restangular.one('/preferences?key=' + key + '&value=' + value).post();
     }
 
-    function getPreferences() {
-        return Restangular.one('preferences').getList();
+    function getPreferences(key) {
+
+        var path = 'preferences';
+        if (key) {
+          path += '?key=' + key;
+        }
+
+        return Restangular.one(path).getList();
     }
 
     function listTargets() {
