@@ -15,6 +15,7 @@
     $scope.possibleTargets = [];
     $scope.enhancedPossibleTargets = [];
     $scope.defaultTarget = null;
+    $scope.filterAssociations = '!/';
 
     // Scope functions
     $scope.formatTarget = formatTarget;
@@ -32,7 +33,8 @@
           editable: false,
           selectedId: val.desc ? val.desc.id : -1,
           name: val.desc ? val.desc.name : '',
-          handler: val.desc ? val.desc.handler : ''
+          handler: val.desc ? val.desc.handler : '',
+          component: val.component
         };
 
         obj.oldId = obj.selectedId;
