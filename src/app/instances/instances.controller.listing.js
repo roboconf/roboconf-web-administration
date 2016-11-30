@@ -14,7 +14,7 @@
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.template = '';
-    $scope.askToDelete = false;
+    $scope.deletionAsked = false;
     $scope.orderingCriteria = 'instance.name';
     $scope.details = 'LIFECYCLE';
 
@@ -60,6 +60,7 @@
     $scope.replicateInstance = replicateInstance;
     $scope.deleteInstance = deleteInstance;
     $scope.showDetailsSection = showDetailsSection;
+    $scope.askToDelete = askToDelete;
 
     // Initial actions
     loadInstances();
@@ -112,10 +113,14 @@
       }
     }
 
+    function askToDelete() {
+      $scope.deletionAsked = true;
+    }
+
     function deleteInstance() {
 
       rClient.deleteInstance($scope.appName, $scope.selectedInstance.path).then(function() {
-        $scope.askToDelete = false;
+        $scope.deletionAsked = false;
         var node = findNode($scope.selectedInstance);
         var array = node.parent ? node.parent.children : $scope.rootNodes;
         var index = array.indexOf(node);
