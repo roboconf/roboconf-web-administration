@@ -233,4 +233,69 @@ describe('Roboconf Utilities :: buildInstancesTree', function() {
     result[0].children[0].children[0].should.have.property('instance', instance_child111);
     result[0].children[0].children[0].should.have.property('children').with.length(0);
   });
+
+
+  it('should update the tree correctly', function() {
+
+    var instance_root1 = { name: 'toto', path: '/toto' };
+    var instance_child11 = { name: 'child11', path: '/toto/child11' };
+    var instance_child111 = { name: 'child111', path: '/toto/child11/child111' };
+    var instance_child12 = { name: 'child12', path: '/toto/child12' };
+    var instance_root2 = { name: 'titi', path: '/titi' };
+    var instance_child21 = { name: 'titi', path: '/titi/child21' };
+    var instance_child22 = { name: 'titi', path: '/titi/child22' };
+
+    var input = [
+                 instance_root1,
+                 instance_child11,
+                 instance_child21,
+                 instance_child111,
+                 instance_root2,
+                 instance_child12,
+                 instance_child22
+                ];
+
+    var result = rutils.buildInstancesTree(input);
+
+    // Add new instances and verify they appear at the right place
+    var instance_addition_1 = { name: 'add_1', path: '/titi/child21/add_1' };
+    var instance_addition_2 = { name: 'add_2', path: '/toto/child11/child111/add_2' };
+    var instance_addition_3 = { name: 'add_3', path: '/add_3' };
+
+    input = [instance_addition_1, instance_addition_2, instance_addition_3];
+    result = rutils.buildInstancesTree(input, null, null, result);
+
+    // Verify everything is at the right place
+    result.should.have.length(3);
+    result[0].should.have.property('instance', instance_root1);
+    result[0].should.have.property('children').with.length(2);
+    result[1].should.have.property('instance', instance_root2);
+    result[1].should.have.property('children').with.length(2);
+    result[2].should.have.property('instance', instance_addition_3);
+    result[2].should.have.property('children').with.length(0);
+
+    // Check children of the first root
+    result[0].children[0].should.have.property('instance', instance_child11);
+    result[0].children[0].should.have.property('children').with.length(1);
+    result[0].children[1].should.have.property('instance', instance_child12);
+    result[0].children[1].should.have.property('children').with.length(0);
+
+    // Check the descendants of the first child
+    result[0].children[0].children[0].should.have.property('instance', instance_child111);
+    result[0].children[0].children[0].should.have.property('children').with.length(1);
+
+    result[0].children[0].children[0].children[0].should.have.property('instance', instance_addition_2);
+    result[0].children[0].children[0].children[0].should.have.property('children').with.length(0);
+
+    // Check the second root instance
+    result[1].children[0].should.have.property('instance', instance_child21);
+    result[1].children[0].should.have.property('children').with.length(1);
+
+    result[1].children[0].children[0].should.have.property('instance', instance_addition_1);
+    result[1].children[0].children[0].should.have.property('children').with.length(0);
+
+    result[1].children[1].should.have.property('instance', instance_child22);
+    result[1].children[1].should.have.property('children').with.length(0);
+  });
+
 });

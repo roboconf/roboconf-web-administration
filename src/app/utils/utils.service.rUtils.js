@@ -12,14 +12,17 @@
     var service = {
         endsWith: endsWith,
         startsWith: startsWith,
-        buildInstancesTree: buildInstancesTree,
         findPosition: findPosition,
         showRightBlock: showRightBlock,
         hideRightBlock: hideRightBlock,
         findInstancePath: findInstancePath,
         findRandomAvatar: findRandomAvatar,
         findIcon: findIcon,
-        removeArrayItem: removeArrayItem
+        removeArrayItem: removeArrayItem,
+
+        buildInstancesTree: buildInstancesTree,
+        findInstanceNode: findInstanceNode,
+        deleteInstanceNode: deleteInstanceNode
     };
 
     return service;
@@ -66,29 +69,59 @@
       }, 1000);
     }
 
-    function buildInstancesTree(instances, filterInstancePath, fn) {
+
+    /**
+     * Builds or updates a tree of instances.
+     * <p>
+     * This without a doubt the most complex function of all the
+     * web administration.
+     * </p>
+     *
+     * @param {instances} an array of instances
+     * @param {filterInstancePath} a filter for instance path
+     * @param {fn} a function that returns an object with a 'path' property
+     * @param {rootInstances} a tree of instances (will be created if null)
+     */
+    function buildInstancesTree(instances, filterInstancePath, fn, rootNodes) {
 
       if (!fn) {
         fn = createInstanceNode;
-        // fn must return an object with a 'path' property
       }
 
-      var rootInstances = [];
+      var myMap = {};
+      if (! angular.isArray(rootNodes)) {
+        rootNodes = [];
+      }
+
+      // Index the existing nodes
+      var nodesToCheck = [].concat(rootNodes);
+      while (nodesToCheck.length > 0) {
+        var curr = nodesToCheck.shift();
+        if (curr.instance.path) {
+          myMap[curr.instance.path] = curr;
+        }
+
+        if (curr.children) {
+          nodesToCheck = nodesToCheck.concat(curr.children);
+        }
+      }
+
+      // Add the new instances
       if (angular.isArray(instances)) {
-
-        var myMap = {};
-        instances.filter(function(val, index, array) {
+        instances.filter(function(val) {
           // Filter time: no need to put useless data in the result
-          return ! filterInstancePath || (val.path === filterInstancePath ||
+          return ! filterInstancePath || (
+              val.path === filterInstancePath ||
               filterInstancePath.indexOf(val.path + '/') === 0 ||
-              val.path.indexOf(filterInstancePath + '/') === 0);
+              val.path.indexOf(filterInstancePath + '/') === 0
+          );
 
-        }).map(function(val, index, array) {
+        }).map(function(val) {
           // Reference time: associate an instance with its path
           myMap[val.path] = fn(val);
           return val;
 
-        }).forEach(function(val, index, array) {
+        }).forEach(function(val) {
           // Association time: for every instance, find its parent
           var current = myMap[val.path],
           parentPath = val.path.replace(/\/([^/]+)$/g, ''),
@@ -98,13 +131,43 @@
             parent.children.push(current);
             current.parent = parent;
           } else {
-            rootInstances.push(current);
+            rootNodes.push(current);
           }
         });
       }
 
       // When there is a filter, the result should contain at most 1 root node.
-      return rootInstances;
+      return rootNodes;
+    }
+
+    function findInstanceNode(instancePath, rootNodes) {
+
+      var nodesToCheck = [].concat(rootNodes);
+      while (nodesToCheck.length > 0) {
+        var curr = nodesToCheck.shift();
+        if (curr.instance.path === instancePath) {
+          return curr;
+
+        } else if (curr.children) {
+          nodesToCheck = nodesToCheck.concat(curr.children);
+        }
+      }
+
+      return null;
+    }
+
+    function deleteInstanceNode(instancePath, rootNodes) {
+
+      var node = findInstanceNode(instancePath, rootNodes);
+      if (node) {
+        var array = node.parent ? node.parent.children : rootNodes;
+        for (var i = 0; i < array.length; i++) {
+          if (array[i] === node) {
+            array.splice(i, 1);
+            break;
+          }
+        }
+      }
     }
 
     function findPosition(instancePath) {
