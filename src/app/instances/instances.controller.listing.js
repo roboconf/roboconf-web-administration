@@ -120,7 +120,7 @@
     }
 
     function askToDelete() {
-      $scope.deletionAsked = true;
+      $scope.deletionAsked = ! $scope.deletionAsked;
     }
 
     function deleteInstance() {
@@ -213,6 +213,10 @@
             var node = rUtils.findInstanceNode(instancePath, $scope.rootNodes);
             if (node) {
               node.instance.status = obj.inst.status;
+              node.instance.data['ip.address'] = obj.inst.data['ip.address'];
+              if ($scope.selectedInstance && $scope.selectedInstance.path === instancePath) {
+                showInstance(node, 0);
+              }
             }
           }
 
