@@ -68,8 +68,14 @@
 
     // Initial actions
     loadInstances();
+
+    // Manage the web socket
     var webSocket = rWebSocket.newWebSocket();
     webSocket.onmessage = onWebSocketMessage;
+    $scope.$on('$routeChangeStart', function(event) {
+      webSocket.close();
+    });
+
 
     // Functions
     function loadInstances() {
