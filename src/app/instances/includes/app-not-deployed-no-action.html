@@ -5,10 +5,10 @@
 </p>
 
 <ul>
-	<li><a href="" ng-click="askToDelete = true">{{'INSTANCES_INCLUDES_DELETE_INSTANCE' | translate}}</a></li>
+	<li><a href="" ng-click="askToDelete()">{{'INSTANCES_INCLUDES_DELETE_INSTANCE' | translate}}</a></li>
 </ul>
 
-<rbcf-delete-instance ng-show="askToDelete"></rbcf-delete-instance>
+<rbcf-delete-instance ng-show="deletionAsked"></rbcf-delete-instance>
 
 <br />
 <strong>{{'COMMON_DESCRIPTION' | translate}}</strong>

@@ -5,8 +5,12 @@
   .module('roboconf.instances')
   .controller('InstancesListingController', instancesListingController);
 
-  instancesListingController.$inject = ['$scope', 'rUtils', '$routeParams', 'rShare', '$window', 'rClient'];
-  function instancesListingController($scope, rUtils, $routeParams, rShare, $window, rClient) {
+  instancesListingController.$inject = [
+    '$scope', 'rUtils', '$routeParams',
+    'rShare', '$window', 'rClient', 'rWebSocket'
+  ];
+
+  function instancesListingController($scope, rUtils, $routeParams, rShare, $window, rClient, rWebSocket) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -14,7 +18,7 @@
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.template = '';
-    $scope.askToDelete = false;
+    $scope.deletionAsked = false;
     $scope.orderingCriteria = 'instance.name';
     $scope.details = 'LIFECYCLE';
 
@@ -60,9 +64,12 @@
     $scope.replicateInstance = replicateInstance;
     $scope.deleteInstance = deleteInstance;
     $scope.showDetailsSection = showDetailsSection;
+    $scope.askToDelete = askToDelete;
 
     // Initial actions
     loadInstances();
+    var webSocket = rWebSocket.newWebSocket();
+    webSocket.onmessage = onWebSocketMessage;
 
     // Functions
     function loadInstances() {
@@ -112,33 +119,26 @@
       }
     }
 
+    function askToDelete() {
+      $scope.deletionAsked = ! $scope.deletionAsked;
+    }
+
     function deleteInstance() {
 
       rClient.deleteInstance($scope.appName, $scope.selectedInstance.path).then(function() {
-        $scope.askToDelete = false;
-        var node = findNode($scope.selectedInstance);
-        var array = node.parent ? node.parent.children : $scope.rootNodes;
-        var index = array.indexOf(node);
-        if (index) {
-          array.splice(index, 1);
-        }
-
-        hideInstance();
+        $scope.deletionAsked = false;
+        // The instance will be deleted once notified by the web socket.
       });
     }
 
     function changeState(newState) {
       rClient.changeInstanceState($scope.appName, $scope.selectedInstance.path, newState);
-      $scope.selectedInstance.status = 'CUSTOM';
     }
 
     function performAll(action, useInstance) {
 
       var path = useInstance ? $scope.selectedInstance.path : null;
       rClient.performActionOnInstance($scope.appName, path, action).then($scope.loadInstances);
-      if (useInstance) {
-        $scope.selectedInstance.status = 'CUSTOM';
-      }
     }
 
     function formatStatus(status) {
@@ -193,62 +193,45 @@
         ! rUtils.startsWith($scope.selectedInstance.path, instancePath + '/');
     }
 
-    function findNode(inst) {
+    function onWebSocketMessage(event) {
 
-      var nodesToCheck = [].concat($scope.rootNodes);
-      while (nodesToCheck.length > 0) {
-        var curr = nodesToCheck.shift();
-        if (curr.instance.path === inst.path) {
-          return curr;
+      if (event.data) {
+        var obj = JSON.parse(event.data);
+        if (obj.app && obj.app.name === $scope.appName && obj.inst) {
+          var instancePath = obj.inst.path;
 
-        } else if (curr.children) {
-          nodesToCheck = nodesToCheck.concat(curr.children);
-        }
-      }
-
-      return null;
-    }
-
-
-    // LEGACY: regularly poll the server.
-    // FIXME: to be replaced by a web socket in a next version.
-    $scope.refresh = true;
-    function updateFromServer() {
-
-      // Do not refresh anything if we moved to another page.
-      if (!$scope.refresh) {
-        return;
-      }
-
-      // Refresh the list of instances
-      rClient.listInstances($scope.appName).then(function(instances) {
-
-        // Reload the instances
-        $scope.rootNodes = rUtils.buildInstancesTree(instances);
-
-        // Update the selected instance, unless we switched to another page
-        if (!$scope.stopRefresh && $scope.selectedInstance) {
-          var node = findNode($scope.selectedInstance);
-          if (node) {
-            showInstance(node, 0);
-          } else {
-            hideInstance();
+          // Deletion
+          if (obj.event === 'DELETED') {
+            rUtils.deleteInstanceNode(instancePath, $scope.rootNodes);
+            if ($scope.selectedInstance && $scope.selectedInstance.path === instancePath) {
+              hideInstance();
+            }
           }
+
+          // Change
+          else if (obj.event === 'CHANGED') {
+            var node = rUtils.findInstanceNode(instancePath, $scope.rootNodes);
+            if (node) {
+              node.instance.status = obj.inst.status;
+              node.instance.data['ip.address'] = obj.inst.data['ip.address'];
+              if ($scope.selectedInstance && $scope.selectedInstance.path === instancePath) {
+                showInstance(node, 0);
+              }
+            }
+          }
+
+          // Creation
+          else if (obj.event === 'CREATED') {
+            var instancesToAdd = [obj.inst];
+            rUtils.buildInstancesTree(instancesToAdd, null, null, $scope.rootNodes);
+          }
+
+          // When doing demos with several web browsers, the view is updated
+          // only in the foreground browser. To force the refresh every time,
+          // even in background, we must force the refreshment.
+          $scope.$apply();
         }
-
-        // Refresh in 5 seconds
-        $scope.updateFromServer();
-      });
+      }
     }
-
-    $scope.updateFromServer = function() {
-      setTimeout(updateFromServer, 5000);
-    };
-
-    // Run it at the beginning
-    $scope.updateFromServer();
-    $scope.$on('$locationChangeStart', function(event) {
-      $scope.refresh = false;
-  });
   }
 })();

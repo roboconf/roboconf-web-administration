@@ -149,14 +149,14 @@
     function associateTarget(appName, targetId, instPath) {
       var path = 'targets/' + targetId + '/associations?bind=true&name=' + appName;
       if (instPath) {
-        path += '&instance-path=' + instPath;
+        path += '&elt=' + instPath;
       }
 
       return Restangular.one(path).post();
     }
 
     function dissociateTarget(appName, targetId, instPath) {
-      var path = 'targets/' + targetId + '/associations?bind=false&name=' + appName + '&instance-path=' + instPath;
+      var path = 'targets/' + targetId + '/associations?bind=false&name=' + appName + '&elt=' + instPath;
       return Restangular.one(path).post();
     }
 

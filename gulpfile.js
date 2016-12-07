@@ -275,8 +275,7 @@ gulp.task('check_i18n', function() {
 
   var res = qual.validate({
     loc_i18n: './src/i18n/**/',
-    loc_html: './src/app/**/',
-    cb: console.log
+    loc_html: './src/app/**/'
   });
 
   if (! res) {
