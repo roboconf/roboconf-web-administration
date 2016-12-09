@@ -1,7 +1,7 @@
 
 <div class="block">
 	<p class="block-title">
-		<a href="#/app/{{ app.name }}/instances">{{ app.name }}</a>
+		<a href="#/app/{{ app.name }}/instances">{{ app.displayName }}</a>
 		<span
 				class="block-annotation" title="{{ 'APPLICATIONS_DELETE_THIS_APP' | translate }}"
 				ng-show="showLinks && (! app.info || app.info === 'nd')" ng-click="deleteApplication( app )">

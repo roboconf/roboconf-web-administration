@@ -10,7 +10,6 @@
 
     // Fields
     $scope.responseStatus = -1;
-    $scope.appName = $routeParams.appName;
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.commands = [];
@@ -22,12 +21,20 @@
     $scope.removeStatus = rUtils.removeArrayItem;
 
     // Initial actions
-    loadCommands();
+    rClient.findApplication($routeParams.appName).then(function(app) {
+      $scope.app = app;
+      if (app.fake) {
+        $scope.responseStatus = 404;
+      } else {
+        $scope.responseStatus = 0;
+        loadCommands();
+      }
+    });
 
     // Functions
     function loadCommands() {
 
-      rClient.listCommands($scope.appName).then(function(commands) {
+      rClient.listCommands($routeParams.appName).then(function(commands) {
         $scope.responseStatus = 0;
         $scope.commands = commands;
 
@@ -38,7 +45,7 @@
 
     function execute(cmd) {
 
-      rClient.executeCommand($scope.appName, cmd).then(function() {
+      rClient.executeCommand($routeParams.appName, cmd).then(function() {
         $scope.status.splice(0, 0, {
           msg: 'Command \'' + cmd + '\' was successfully launched.',
           ok: true

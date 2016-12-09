@@ -3,7 +3,7 @@
 
 <div class="content">
 	<h1>
-		{{'COMMON_APPLICATIONS' | translate}} &raquo; {{ app.name }}
+		{{'COMMON_APPLICATIONS' | translate}} &raquo; {{ app.displayName }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
@@ -25,12 +25,15 @@
 	<!-- Error message -->
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
 
+	<!-- Not found? -->
+	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{name: app.displayName}"></div>
+
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
-		<div ng-show="app.info && app.info !== 'nd'" translate="APPLICATIONS_DELETE_NO_DELETE" translate-values="{ name: app.name }"></div>
+		<div ng-show="app.info && app.info !== 'nd'" translate="APPLICATIONS_DELETE_NO_DELETE" translate-values="{name: app.displayName}"></div>
 		
 		<div ng-show="! app.info || app.info === 'nd'">
-			<span translate="APPLICATIONS_DELETE_DELETE" translate-values="{ name: app.name }"></span>
+			<span translate="APPLICATIONS_DELETE_DELETE" translate-values="{name: app.displayName}"></span>
 			<br />
 			<span translate="APPLICATIONS_DELETE_DELETE_2"></span>
 			
@@ -39,5 +42,5 @@
 		</div>
 	</div>
 	
-	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: app.name }"></div>
+	
 </div>

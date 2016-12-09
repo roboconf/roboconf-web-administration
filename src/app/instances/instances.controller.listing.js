@@ -14,7 +14,6 @@
 
     // Fields
     $scope.responseStatus = -1;
-    $scope.appName = $routeParams.appName;
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.template = '';
@@ -67,7 +66,15 @@
     $scope.askToDelete = askToDelete;
 
     // Initial actions
-    loadInstances();
+    rClient.findApplication($routeParams.appName).then(function(app) {
+      $scope.app = app;
+      if (app.fake) {
+        $scope.responseStatus = 404;
+      } else {
+        $scope.responseStatus = 0;
+        loadInstances();
+      }
+    });
 
     // Manage the web socket
     var webSocket = rWebSocket.newWebSocket();
@@ -79,7 +86,7 @@
 
     // Functions
     function loadInstances() {
-      rClient.listInstances($scope.appName).then(function(instances) {
+      rClient.listInstances($routeParams.appName).then(function(instances) {
         $scope.responseStatus = 0;
         $scope.rootNodes = rUtils.buildInstancesTree(instances);
 
@@ -114,7 +121,7 @@
     function createChildInstance() {
       if ($scope.selectedInstance) {
         rShare.feedLastItem($scope.selectedInstance);
-        $window.location = '#/app/' + $scope.appName + '/instances/new';
+        $window.location = '#/app/' + $routeParams.appName + '/instances/new';
       }
     }
 
@@ -131,20 +138,20 @@
 
     function deleteInstance() {
 
-      rClient.deleteInstance($scope.appName, $scope.selectedInstance.path).then(function() {
+      rClient.deleteInstance($routeParams.appName, $scope.selectedInstance.path).then(function() {
         $scope.deletionAsked = false;
         // The instance will be deleted once notified by the web socket.
       });
     }
 
     function changeState(newState) {
-      rClient.changeInstanceState($scope.appName, $scope.selectedInstance.path, newState);
+      rClient.changeInstanceState($routeParams.appName, $scope.selectedInstance.path, newState);
     }
 
     function performAll(action, useInstance) {
 
       var path = useInstance ? $scope.selectedInstance.path : null;
-      rClient.performActionOnInstance($scope.appName, path, action).then($scope.loadInstances);
+      rClient.performActionOnInstance($scope.app.name, path, action).then($scope.loadInstances);
     }
 
     function formatStatus(status) {
@@ -203,7 +210,7 @@
 
       if (event.data) {
         var obj = JSON.parse(event.data);
-        if (obj.app && obj.app.name === $scope.appName && obj.inst) {
+        if (obj.app && obj.app.name === $routeParams.appName && obj.inst) {
           var instancePath = obj.inst.path;
 
           // Deletion

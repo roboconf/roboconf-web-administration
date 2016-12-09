@@ -31,7 +31,7 @@ describe('Instances Controller :: Listings', function() {
     expect(ctrl).to.exist;
     expect(scope.searchVisible).to.be.true;
     expect(scope.searchFilter).to.equal('');
-    expect(scope.appName).to.equal('test');
+    expect(scope.app.name).to.equal('test');
     expect(scope.rootNodes).to.be.empty;
     done();
   });

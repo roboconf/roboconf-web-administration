@@ -53,8 +53,8 @@
         tplQualifier: app.tpl.qualifier
       };
 
-      rClient.newApplication(newApp).then(function() {
-        $window.location = '#/app/' + newApp.name + '/overview';
+      rClient.newApplication(newApp).then(function(createdApp) {
+        $window.location = '#/app/' + createdApp.name + '/overview';
 
       }, function(response) {
         $scope.errorMessage = 'An error occured. ' + response.data.reason;

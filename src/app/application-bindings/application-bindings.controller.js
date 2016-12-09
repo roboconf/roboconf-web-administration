@@ -10,7 +10,6 @@
 
     // Fields
     $scope.responseStatus = -1;
-    $scope.appName = $routeParams.appName;
     $scope.status = [];
 
     $scope.hasBindings = hasBindings;
@@ -21,7 +20,12 @@
     $scope.removeStatus = rUtils.removeArrayItem;
 
     // Initial actions
-    rClient.listApplicationBindings($scope.appName).then(function(bindings) {
+    rClient.findApplication($routeParams.appName).then(function(app) {
+      $scope.app = app;
+      $scope.responseStatus = app.fake ? 404 : 0;
+    });
+
+    rClient.listApplicationBindings($routeParams.appName).then(function(bindings) {
       $scope.responseStatus = 0;
       $scope.bindings = bindings.plain();
 
@@ -87,7 +91,7 @@
       });
 
       // REST invocation
-      rClient.updateApplicationBindings($scope.appName, prefix, appNames).then(function() {
+      rClient.updateApplicationBindings($routeParams.appName, prefix, appNames).then(function() {
         $scope.status.push({
           ok: true,
           msg: 'Bindings for prefix "' + prefix + '" were successfully saved.'

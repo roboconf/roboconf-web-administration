@@ -10,20 +10,32 @@
 
     // Fields
     $scope.responseStatus = -1;
-    $scope.appName = $routeParams.appName;
     $scope.searchFilter = '';
     $scope.searchVisible = true;
     $scope.jobs = [];
 
     // Initial actions
-    loadSchedules();
+    if (! $routeParams.appName) {
+      loadSchedules();
+
+    } else {
+      rClient.findApplication($routeParams.appName).then(function(app) {
+        $scope.app = app;
+        if (app.fake) {
+          $scope.responseStatus = 404;
+        } else {
+          $scope.responseStatus = 0;
+          loadSchedules();
+        }
+      });
+    }
 
     // Functions
     function loadSchedules() {
 
       var p;
-      if ($scope.appName) {
-        p = rClient.listScheduledJobs($scope.appName);
+      if ($routeParams.appName) {
+        p = rClient.listScheduledJobs($routeParams.appName);
       } else {
         p = rClient.listScheduledJobs();
       }

@@ -10,7 +10,6 @@
 
     // Fields
     $scope.responseStatus = -1;
-    $scope.appName = $routeParams.appName;
     $scope.associations = [];
     $scope.possibleTargets = [];
     $scope.enhancedPossibleTargets = [];
@@ -24,7 +23,13 @@
     $scope.findTargetsList = findTargetsList;
 
     // Initial actions
-    rClient.findTargetAssociations($scope.appName).then(function(associations) {
+    rClient.findApplication($routeParams.appName).then(function(app) {
+      $scope.app = app;
+      $scope.responseStatus = app.fake ? 404 : 0;
+    });
+
+
+    rClient.findTargetAssociations($routeParams.appName).then(function(associations) {
       $scope.responseStatus = 0;
 
       associations.forEach(function(val, index, arr) {
@@ -49,7 +54,8 @@
       $scope.responseStatus = response.status;
     });
 
-    rClient.findPossibleTargets($scope.appName).then(function(possibleTargets) {
+
+    rClient.findPossibleTargets($routeParams.appName).then(function(possibleTargets) {
       $scope.responseStatus = 0;
       $scope.possibleTargets = possibleTargets;
 
@@ -76,7 +82,7 @@
         fct = rClient.dissociateTarget;
       }
 
-      fct($scope.appName, a.selectedId, a.path).then(function() {
+      fct($routeParams.appName, a.selectedId, a.path).then(function() {
         a.editable = false;
         a.oldId = a.selectedId;
 
