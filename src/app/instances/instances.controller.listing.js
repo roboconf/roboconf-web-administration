@@ -158,17 +158,17 @@
       var result = '';
 
       switch (status) {
-      case 'NOT_DEPLOYED': result = 'not deployed'; break;
-      case 'STARTING': result = 'starting'; break;
-      case 'DEPLOYING': result = 'being deployed'; break;
-      case 'UNDEPLOYING': result = 'being undeployed'; break;
-      case 'STOPPING': result = 'stopping'; break;
-      case 'UNRESOLVED': result = 'waiting for its dependencies to be resolved'; break;
-      case 'DEPLOYED_STOPPED': result = 'deployed but stopped'; break;
-      case 'DEPLOYED_STARTED': result = 'deployed and started'; break;
-      case 'PROBLEM': result = 'undetermined'; break;
-      case 'WAITING_FOR_ANCESTOR': result = 'waiting for an ancestor to resolve its dependencies'; break;
-      case 'CUSTOM': result = 'being updated...'; break;
+      case 'NOT_DEPLOYED': result = 'STATUS_NOT_DEPLOYED'; break;
+      case 'STARTING': result = 'STATUS_STARTING'; break;
+      case 'DEPLOYING': result = 'STATUS_DEPLOYING_2'; break;
+      case 'UNDEPLOYING': result = 'STATUS_UNDEPLOYING_2'; break;
+      case 'STOPPING': result = 'STATUS_STOPPING'; break;
+      case 'UNRESOLVED': result = 'STATUS_UNRESOLVED_2'; break;
+      case 'DEPLOYED_STOPPED': result = 'STATUS_DEPLOYED_AND_STOPPED'; break;
+      case 'DEPLOYED_STARTED': result = 'STATUS_DEPLOYED_AND_STARTED'; break;
+      case 'PROBLEM': result = 'STATUS_UNDETERMINED'; break;
+      case 'WAITING_FOR_ANCESTOR': result = 'STATUS_WAITING_ANCESTOR_2'; break;
+      case 'CUSTOM': result = 'STATUS_CUSTOM'; break;
       }
 
       return result;

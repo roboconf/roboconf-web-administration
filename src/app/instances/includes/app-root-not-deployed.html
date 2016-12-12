@@ -1,16 +1,16 @@
-<img src="img/state-root-not-deployed.jpg" alt="Not Deployed" />
-<p>{{"INSTANCES_INCLUDES_ACTIONS" | translate}}</p>
+<img src="img/state-root-not-deployed.jpg" alt="{{ 'STATUS_NOT_DEPLOYED' | translate }}" />
+<p>{{'INSTANCES_INCLUDES_ACTIONS' | translate}}</p>
 
 <ul>
-	<li><a href="" ng-click="changeState( 'DEPLOYED_STARTED' )">{{"INSTANCES_INCLUDES_DEPLOY_INSTANCE" | translate}}</a></li>
-	<li><a href="" ng-click="performAll( 'deploy-all', true )">{{"INSTANCES_INCLUDES_DEPLOY_START" | translate}}</a></li>
+	<li><a href="" ng-click="changeState( 'DEPLOYED_STARTED' )">{{'INSTANCES_INCLUDES_DEPLOY_INSTANCE' | translate}}</a></li>
+	<li><a href="" ng-click="performAll( 'deploy-all', true )">{{'INSTANCES_INCLUDES_DEPLOY_START' | translate}}</a></li>
 </ul>
 <ul>
-	<li><a href="" ng-click="createChildInstance()">{{"INSTANCES_INCLUDES_CREATE_CHILD" | translate}}</a></li>
-	<li><a href="" ng-click="replicateInstance()">{{"INSTANCES_INCLUDES_REPLICATE_INSTANCE" | translate}}</a></li>
+	<li><a href="" ng-click="createChildInstance()">{{'INSTANCES_INCLUDES_CREATE_CHILD' | translate}}</a></li>
+	<li><a href="" ng-click="replicateInstance()">{{'INSTANCES_INCLUDES_REPLICATE_INSTANCE' | translate}}</a></li>
 </ul>
 <ul>
-	<li><a href="" ng-click="askToDelete()">{{"INSTANCES_INCLUDES_DELETE_INSTANCE" | translate}}</a></li>
+	<li><a href="" ng-click="askToDelete()">{{'INSTANCES_INCLUDES_DELETE_INSTANCE' | translate}}</a></li>
 </ul>
 
 <rbcf-delete-instance ng-show="deletionAsked"></rbcf-delete-instance>

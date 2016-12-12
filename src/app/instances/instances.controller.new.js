@@ -265,7 +265,7 @@
 
     function findArticle(node) {
       return node.component && node.component.name &&
-        -1 !== 'aeiouAEIOU'.indexOf(node.component.name.charAt(0)) ? 'an' : 'a';
+        -1 !== 'aeiouAEIOU'.indexOf(node.component.name.charAt(0)) ? 'COMMON_AN' : 'COMMON_A';
     }
 
     // Internal functions

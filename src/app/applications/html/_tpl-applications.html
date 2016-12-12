@@ -34,7 +34,7 @@
 			<strong>{{'APPLICATIONS_TEMPLATE_QUALIFIER' | translate}}</strong> {{ app.qualifier }}<br />
 			
 			<span ng-show="app.extDep">
-				<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong>: {{'COMMON_YES' | translate}}
+				<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong> {{'COMMON_YES' | translate}}
 			</span>
 			
 			<br ng-show="app.eep && app.extDep" />
@@ -43,7 +43,7 @@
 			</span>
 			
 			<br /><br />
-			<strong>{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}:</strong><br />
+			<strong>{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}</strong><br />
 			
 			<ul class="nice-list">
 				<li ng-repeat="a in app.apps"> &raquo; &nbsp; <a href="#/app/{{ a }}/overview">{{ a }}</a></li>

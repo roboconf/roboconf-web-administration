@@ -36,18 +36,18 @@
 		&nbsp;
 		<span class="glyphicon glyphicon-remove" ng-click="askToDeleteInstance( node )"></span>
 	</p>
-	<p class="editor-actions pull-right" ng-show="! node.progress && ! node.writable && ! editedInstance" title="This instance already exists">
-		[ Read Only ] &nbsp;
+	<p class="editor-actions pull-right" ng-show="! node.progress && ! node.writable && ! editedInstance" title="{{'INSTANCES_NEW_TITLE_EXISTS' | translate}}">
+		{{'COMMON_READ_ONLY' | translate}} &nbsp;
 		<span class="glyphicon glyphicon-plus" ng-click="createInstance( node )"></span>
 	</p>
-	<p class="editor-actions pull-right text-success" ng-show="node.progress === 'ok'" title="This instance was sucessfully created">
+	<p class="editor-actions pull-right text-success" ng-show="node.progress === 'ok'" title="{{'INSTANCES_NEW_TITLE_OK' | translate}}">
 		<span class="glyphicon glyphicon-ok"></span>
 	</p>
-	<p class="editor-actions pull-right text-danger" ng-show="node.progress === 'ko'" title="This instance could not be created">
+	<p class="editor-actions pull-right text-danger" ng-show="node.progress === 'ko'" title="{{'INSTANCES_NEW_TITLE_KO' | translate}}">
 		<span class="glyphicon glyphicon-exclamation-sign"></span>
 	</p>
     <p class="clearfix">
-		<strong>{{ node.name }}</strong> is {{ findArticle( node )}} <strong>{{ node.component.name }}</strong>.
+		<strong>{{ node.name }}</strong> {{'COMMON_IS' | translate}} {{ findArticle( node ) | translate }} <strong>{{ node.component.name }}</strong>.
 	</p>
     <ul>
         <li ng-repeat="node in node.children" ng-include="'display-tmpl'" ng-class="editedInstance === node ? 'selected' : ''"></li>

@@ -40,7 +40,7 @@
 			<p ng-repeat="s in status" ng-class="s.ok ? 'bg-success' : 'bg-danger'">
 				{{ s.msg }}
 					
-				<button type="button" class="close" aria-label="{{ COMMON_CLOSE | translate }}" ng-click="removeStatus( status, s )">
+				<button type="button" class="close" aria-label="{{ 'COMMON_CLOSE' | translate }}" ng-click="removeStatus( status, s )">
 					<span aria-hidden="true" >&times;</span>
 				</button>
 			</p>

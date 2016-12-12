@@ -13,14 +13,14 @@
 			</li>
 			
 			<li class="underlined" ng-show="searchVisible">
-				<a href="" title="Filter..." onclick="toggleSearchInput()">
+				<a href="" title="{{ 'MENU_ITEM_FILTER' | translate }}" onclick="toggleSearchInput()">
 					<span class="glyphicon glyphicon-search"></span>
 				</a>
 			</li>
 			
 			<!-- Menu navigation -->
 			<li class="dropdown underlined">
-				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Browse...">
+				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="{{ 'MENU_ITEM_BROWSE' | translate }}">
 					<span class="glyphicon glyphicon-th-list"></span>
 				</a>
 				<ul class="dropdown-menu" role="menu">
@@ -35,7 +35,7 @@
 
 			<!-- Actions (visible only when some actions were registered) -->
 			<li class="dropdown underlined" ng-show="menuActions && menuActions.length > 0">
-				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Actions...">
+				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="{{ 'MENU_ITEM_ACTIONS' | translate }}">
 					<span class="glyphicon glyphicon-wrench"></span>
 					<span class="caret"></span>
 				</a>
@@ -49,7 +49,7 @@
 			
 			<!-- Help -->
 			<li class="dropdown underlined" >
-				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Help..." >
+				<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="{{ 'MENU_ITEM_HELP' | translate }}" >
 					<span class="glyphicon glyphicon-question-sign"></span>
 				</a>
 				<ul class="dropdown-menu" role="menu">

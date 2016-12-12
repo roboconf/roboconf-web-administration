@@ -2,7 +2,7 @@
 <p ng-show="! selectedInstance.exports">{{'INSTANCES_INCLUDES_NO_EXPORTED_VARIABLE' | translate}}</p>
 <p ng-show="selectedInstance.exports">{{'INSTANCES_INCLUDES_EXPORTED_VARIABLES' | translate}}</p>
 <ul>
-	<li ng-repeat="(key,value) in selectedInstance.exports"><strong>{{ key }}</strong>: {{ value }}</li>
+	<li ng-repeat="(key,value) in selectedInstance.exports"><strong>{{ key }}</strong> {{ 'COMMON_COLON' | translate }} {{ value }}</li>
 </ul>
 
 <br />

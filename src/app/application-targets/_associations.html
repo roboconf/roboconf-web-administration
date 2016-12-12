@@ -29,9 +29,11 @@
 
 	<div ng-show="associations.length > 0">
 		{{'APPLICATIONS_TARGETS_ASSOCIATE' | translate}}<br />
-		You can specify <a href="" ng-click="filterAssociations = '!/'">per component</a>
-		or <a href="" ng-click="filterAssociations = '!@'">
-		per instance</a> associations.<br /><br />
+		{{ 'APPLICATIONS_TARGETS_YOU_CAN_SPECIFY' | translate }}
+
+		<a href="" ng-click="filterAssociations = '!/'">{{ 'APPLICATIONS_TARGETS_PER_COMPONENT' | translate }}</a>
+		{{ 'COMMON_OR' | translate }}
+		<a href="" ng-click="filterAssociations = '!@'">{{ 'APPLICATIONS_TARGETS_PER_INSTANCE' | translate }}</a>.<br /><br />
 	
 		<form class="form-horizontal">
 			<div class="form-group hovered-line" ng-repeat="a in associations | filter:filterAssociations">
@@ -51,7 +53,7 @@
 					<span ng-show="! a.editable" style="display: inline-block" class="rbcf-padfix">
 						<a href="#/target/{{ a.selectedId }}" ng-if="a.selectedId !== -1">{{ formatTarget(a) }}</a>
 						<span ng-if="a.path !== '' && a.selectedId === -1 && ! a.component">{{'APPLICATIONS_TARGETS_DEFAULT' | translate}}</span>
-						<span ng-if="a.path !== '' && a.selectedId === -1 && !! a.component">@{{ a.component }}</span>
+						<span ng-if="a.path !== '' && a.selectedId === -1 && !! a.component">{{ '@' + a.component }}</span>
 						<span ng-if="a.path === '' && a.selectedId === -1">{{'APPLICATIONS_TARGETS_NONE' | translate}}</span>
 					</span>
 				</div>

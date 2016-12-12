@@ -3,14 +3,14 @@
 	<p class="block-title">
 		<a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">{{ app.displayName }}</a>
 		<span
-				class="block-annotation" title="Delete this application"
+				class="block-annotation" title="{{'APPLICATIONS_DELETE_THIS_APP' | translate}}"
 				ng-show="showLinks && app.apps.length === 0" ng-click="deleteApplication( app )">
 			<span aria-hidden="true">x</span>
 		</span>
 	</p>
 	
 	<p class="app-avatar">
-		<img ng-src="{{ findIcon( app )}}" alt="application's icon" ng-class="findIconStyle( app )" />
+		<img ng-src="{{ findIcon( app )}}" alt="{{ 'COMMON_ICON' | translate }}" ng-class="findIconStyle( app )" />
 	</p>
 	
 	<div class="app-links">
@@ -38,7 +38,7 @@
 		
 		<strong>{{'APPLICATIONS_TEMPLATE_QUALIFIER' | translate}}</strong> {{ app.qualifier }}<br />
 		<span ng-show="app.extDep">
-			<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong>: {{'COMMON_YES' | translate}}
+			<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong> {{'COMMON_YES' | translate}}
 		</span>
 		<br ng-show="app.extDep" />
 		<span ng-show="app.eep">
@@ -49,7 +49,7 @@
 	<div ng-show="app.extVars && ! showLinks" class="app-variables">
 		{{'COMMON_DIRECTIVE_VISIBLE_VARIABLES' | translate}}
 		<ul class="nice-list">
-			<li ng-repeat="(k,v) in app.extVars">&raquo; &nbsp; {{ k }} <strong>as</strong> {{ v }}</li>
+			<li ng-repeat="(k,v) in app.extVars">&raquo; &nbsp; {{ k }} <strong>{{'COMMON_AS' | translate}}</strong> {{ v }}</li>
 		</ul>
 	</div>
 	
