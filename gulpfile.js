@@ -11,6 +11,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var del = require('del');
+var fs = require('fs');
 var inject = require('gulp-inject');
 var copy = require('gulp-copy');
 var merge = require('merge-stream');
@@ -273,12 +274,56 @@ gulp.task('clean', [ 'clean-dist', 'clean-dev' ]);
 var qual = require('angular-translate-quality');
 gulp.task('check_i18n', function() {
 
-  var res = qual.validate({
+  // A call back to search keys in JS files when they are not found in HTML files.
+  var external_keys_cb = function(errorCallback, notFoundKeys) {
+
+    var found = [];
+    var jsFiles = ['instances.controller.listing.js', 'instances.controller.new.js'];
+    jsFiles.forEach(function(f) {
+      var content = fs.readFileSync('./src/app/instances/' + f).toString();
+      notFoundKeys.forEach(function(key) {
+        if (content.indexOf(key) !== -1) {
+          found.push(key);
+        }
+      });
+    });
+
+    var errors = false;
+    notFoundKeys.forEach(function(key) {
+      if (found.indexOf(key) === -1) {
+        errorCallback('Key ' + key + ' was not found anywhere.');
+        errors = true;
+      }
+    });
+
+    return errors;
+  };
+
+  // Validation options.
+  var options = {
     loc_i18n: './src/i18n/**/',
     loc_html: './src/app/**/',
+    fail_on_warning: true,
+    external_keys_cb: external_keys_cb,
+    forbidden_patterns: {},
     exclusions: ['...', 'Roboconf', 'x', '-', '.']
-  });
+  };
 
+  options.forbidden_patterns.en_US = [
+    {regex: '\\s[,.;:?!]', msg: '[EN] All the punctuation marks refuse any preceding white space character.'},
+    {regex: '[,.;:?!]([^.\\s]|\\s{2,})', msg: '[EN] All the punctuation marks accept a single white space after.'},
+    {regex: '\\.\\.\\.(\\S|\\s{2,})', msg: '[EN] Dots accept a single white space after.'}
+  ];
+  
+  options.forbidden_patterns.fr_FR = [
+    {regex: '\\s[,.]', msg: '[FR] Commas and dots do not accept any preceding white space character.'},
+    {regex: '\\S[;:?!]', msg: '[FR] All the punctuation marks (except commas and full stops) accept a single white space before.'},
+    {regex: '[,.;:?!]([^.\\s]|\\s{2,})', msg: '[FR] All the punctuation marks accept a single white space after.'},
+    {regex: '\\.\\.\\.(\\S|\\s{2,})', msg: '[FR] Dots accept a single white space after.'}
+  ];
+
+  // Fail the task if an error was found.
+  var res = qual.validate(options);
   if (! res) {
     throw new gutil.PluginError({
       plugin: 'check_i18n',
