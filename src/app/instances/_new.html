@@ -3,25 +3,25 @@
 
 <div class="content">
 	<h1>
-		{{'INSTANCES_NEW_INSTANCES' | translate}}{{ ::appName }}
+		{{'INSTANCES_NEW_INSTANCES' | translate}} {{ app.displayName }}
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/app/{{ appName }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
-		<li class="active"><a href="#/app/{{ appName }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ app.name }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
 <div class="content short-content">
 
 	<!-- Information Message -->
-	<span translate="INSTANCES_NEW_INFORMATION_MESSAGE" translate-values="{ name: appName }"></span>
+	<span translate="INSTANCES_NEW_INFORMATION_MESSAGE" translate-values="{ name: app.name }"></span>
 	<br /><br />
 	
 	<!-- Error message -->
@@ -36,18 +36,18 @@
 		&nbsp;
 		<span class="glyphicon glyphicon-remove" ng-click="askToDeleteInstance( node )"></span>
 	</p>
-	<p class="editor-actions pull-right" ng-show="! node.progress && ! node.writable && ! editedInstance" title="This instance already exists">
-		[ Read Only ] &nbsp;
+	<p class="editor-actions pull-right" ng-show="! node.progress && ! node.writable && ! editedInstance" title="{{'INSTANCES_NEW_TITLE_EXISTS' | translate}}">
+		{{'COMMON_READ_ONLY' | translate}} &nbsp;
 		<span class="glyphicon glyphicon-plus" ng-click="createInstance( node )"></span>
 	</p>
-	<p class="editor-actions pull-right text-success" ng-show="node.progress === 'ok'" title="This instance was sucessfully created">
+	<p class="editor-actions pull-right text-success" ng-show="node.progress === 'ok'" title="{{'INSTANCES_NEW_TITLE_OK' | translate}}">
 		<span class="glyphicon glyphicon-ok"></span>
 	</p>
-	<p class="editor-actions pull-right text-danger" ng-show="node.progress === 'ko'" title="This instance could not be created">
+	<p class="editor-actions pull-right text-danger" ng-show="node.progress === 'ko'" title="{{'INSTANCES_NEW_TITLE_KO' | translate}}">
 		<span class="glyphicon glyphicon-exclamation-sign"></span>
 	</p>
     <p class="clearfix">
-		<strong>{{ node.name }}</strong> is {{ findArticle( node )}} <strong>{{ node.component.name }}</strong>.
+		<strong>{{ node.name }}</strong> {{'COMMON_IS' | translate}} {{ findArticle( node ) | translate }} <strong>{{ node.component.name }}</strong>.
 	</p>
     <ul>
         <li ng-repeat="node in node.children" ng-include="'display-tmpl'" ng-class="editedInstance === node ? 'selected' : ''"></li>
@@ -100,7 +100,7 @@
 	
 	<!-- Confirm the deletion of an instance -->
 	<div ng-show="editedInstance && mode === 'delete'">
-		<span translate="INSTANCES_NEW_ACTION_DELETE" translate-values="{ name: appName }"></span> &nbsp;
+		<span translate="INSTANCES_NEW_ACTION_DELETE" translate-values="{ name: app.name }"></span> &nbsp;
 		<button type="button" class="btn btn-default" ng-click="deleteInstance( true )">{{'COMMON_CONFIRM' | translate}}</button>
 		<button type="button" class="btn btn-default" ng-click="deleteInstance( false )">{{'COMMON_CANCEL' | translate}}</button>
 	</div>

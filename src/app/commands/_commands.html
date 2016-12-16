@@ -3,20 +3,20 @@
 
 <div class="content">
 	<h1>
-		{{'COMMON_APPLICATIONS' | translate}} &raquo; {{ appName }}
+		{{'COMMON_APPLICATIONS' | translate}} &raquo; {{ app.displayName }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/app/{{ appName }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
-		<li class="active"><a href="#/app/{{ appName }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ app.name }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -24,6 +24,9 @@
 
 	<!-- Error message -->
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+
+	<!--  No application? -->
+	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: app.name }"></div>
 
 	<!-- Commands -->
 	<div ng-show="responseStatus === 0 && commands.length === 0">{{'COMMANDS_NO_COMMAND_AVAILABLE' | translate}}</div>
@@ -37,7 +40,7 @@
 			<p ng-repeat="s in status" ng-class="s.ok ? 'bg-success' : 'bg-danger'">
 				{{ s.msg }}
 					
-				<button type="button" class="close" aria-label="{{ COMMON_CLOSE | translate }}" ng-click="removeStatus( status, s )">
+				<button type="button" class="close" aria-label="{{ 'COMMON_CLOSE' | translate }}" ng-click="removeStatus( status, s )">
 					<span aria-hidden="true" >&times;</span>
 				</button>
 			</p>
@@ -62,6 +65,4 @@
 			</tr>
 		</table>
 	</div>
-	
-	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: appName }"></div>
 </div>

@@ -424,22 +424,22 @@ describe('Instances Controller :: New Instance(s)', function() {
   it('should find the right article', function(done) {
 
     var node = {};
-    expect(scope.findArticle(node)).to.equal('a');
+    expect(scope.findArticle(node)).to.equal('COMMON_A');
 
     node.component = {};
-    expect(scope.findArticle(node)).to.equal('a');
+    expect(scope.findArticle(node)).to.equal('COMMON_A');
 
     node.component.name = 'apache';
-    expect(scope.findArticle(node)).to.equal('an');
+    expect(scope.findArticle(node)).to.equal('COMMON_AN');
 
     node.component.name = 'Apache';
-    expect(scope.findArticle(node)).to.equal('an');
+    expect(scope.findArticle(node)).to.equal('COMMON_AN');
 
     node.component.name = 'mysql';
-    expect(scope.findArticle(node)).to.equal('a');
+    expect(scope.findArticle(node)).to.equal('COMMON_A');
 
     node.component.name = 'Mysql';
-    expect(scope.findArticle(node)).to.equal('a');
+    expect(scope.findArticle(node)).to.equal('COMMON_A');
 
     done();
   });

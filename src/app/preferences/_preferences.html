@@ -8,70 +8,7 @@
 		{{'PREFERENCES_MANAGE_SETTINGS_PREFERENCES' | translate}}<br />
 	</p>
 	
-    <!--<div class="menu">
-		<ul>
-			<li>
-				<a role="button" data-toggle="dropdown"> {{'PREFERENCES_LANGUAGES' | translate}}
-					
-					<ul class="dropdown-menu" role="menu">
-    					<li><a href="#/" ng-click="setLang('en_US')"><span class="flag-icon flag-icon-gb"></span> {{'PREFERENCES_ENGLISH' | translate}}</a></li>
-    					<li><a href="#/" ng-click="setLang('fr_FR')"><span class="flag-icon flag-icon-fr"></span> {{'PREFERENCES_FRENCH' | translate}}</a></li>
-    				</ul>
-    			</a>
-    		</li>
-  		</ul>
-	</div>-->
-	
 	<div class="menu">
-		<ul>
-			<li class="active"><a href="#/preferences/language">{{'PREFERENCES_LANGUAGES' | translate}}</a></li>
-		</ul>
+		{{'PREFERENCES_NO_PREF' | translate}}
 	</div>
-	
-	<!-- <div class="content short-content" ng-show="showLang">
-		{{'PREFERENCES_PLEASE_SELECT_LANGUAGE' | translate}}
-
-        Rework this part
-        We should have a dropdown menu, with languages as items, and the current one being selected.
-        This can be achieved with a HTML "select" tag and Angular's "ng-options". See "applications/app-new.html" for an example.
-		<select class="form-control" 
-				ng-model="key"
-				ng-options="formatLang( key ) for key in langKeys"
-				ng-click="setLang(key)">
-
-		</select>
-		<ul>
-			<li><a href="#/" ng-click="setLang('en_US')"><span class="flag-icon flag-icon-gb"></span> {{'PREFERENCES_ENGLISH' | translate}}</a></li>
-			<li><a href="#/" ng-click="setLang('fr_FR')"><span class="flag-icon flag-icon-fr"></span> {{'PREFERENCES_FRENCH' | translate}}</a></li>
-		</ul>
-		
-	</div>
- -->
-	<!--
-	<form role="form">
-	
-		<!-- REST Server -> 
-		<div class="block">
-			<p class="block-title">REST Server</p>
-			
-			<div class="block-content">
-				<p>
-					Specify the location (URL and port) of the REST API exposed by Roboconf's deployment manager.<br />
-					Example: http://localhost:8181/roboconf-dm
-				</p>
-				
-				<input list="datalist-id" type="text" class="form-control" ng-model="selectedUrl">
-				<datalist id="datalist-id">
-					<option ng-repeat="url in urls" value="{{url}}"></option>
-				</datalist>
-					
-				<button type="submit" class="btn btn-default" id="prefs-save-btn" ng-click="saveUrl( selectedUrl )">
-					<span ng-hide="showConfirmation">Save</span>
-					<span ng-show="showConfirmation">Saved <span id="rprefs-ok" class="glyphicon glyphicon-ok"></span></span>
-				</button>
-				<br /><br />
-			</div>
-		</div>
-	</form>
-	-->
 </div>

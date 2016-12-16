@@ -1,7 +1,7 @@
 
 <div class="block">
 	<p class="block-title">
-		<a href="#/app/{{ app.name }}/instances">{{ app.name }}</a>
+		<a href="#/app/{{ app.name }}/instances">{{ app.displayName }}</a>
 		<span
 				class="block-annotation" title="{{ 'APPLICATIONS_DELETE_THIS_APP' | translate }}"
 				ng-show="showLinks && (! app.info || app.info === 'nd')" ng-click="deleteApplication( app )">
@@ -10,7 +10,7 @@
 	</p>
 	
 	<p class="app-avatar">
- 		<img id="img-id" alt="application's icon"
+ 		<img id="img-id" alt="{{ 'COMMON_ICON' | translate }}"
  				title="{{showLinks? '' : ('APPLICATIONS_DIRECTIVE_REPLACE_IMAGE' | translate)}}"
  				ng-src="{{ findIcon( app )}}" 
  				ng-class="findIconStyle( app )" 
@@ -60,7 +60,7 @@
 	</p>
 	
 	<div ng-show="app.extVars && ! showLinks" class="app-variables">
-		{{'COMMON_DIRECTIVE_VISIBLE_VARIABLES' | translate}}:
+		{{'COMMON_DIRECTIVE_VISIBLE_VARIABLES' | translate}}
 		<ul class="nice-list">
 			<li ng-repeat="(k,v) in app.extVars">&raquo; &nbsp; {{ k }} <strong>{{'APPLICATIONS_DIRECTIVE_AS' | translate}}</strong> {{ v }}</li>
 		</ul>

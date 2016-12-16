@@ -17,6 +17,8 @@
       deleteApplicationTemplate: deleteApplicationTemplate,
       newApplication: newApplication,
 
+      findApplication: findApplication,
+
       uploadIcon: uploadIcon,
       savePreferences: savePreferences,
       getPreferences: getPreferences,
@@ -58,6 +60,21 @@
     // Functions
     function listApplications() {
       return Restangular.all('applications').getList();
+    }
+
+    function findApplication(appName) {
+      return Restangular.all('applications?name=' + appName).getList().then(function(apps) {
+        if (apps && apps.length > 0) {
+          return apps[0];
+        }
+
+        var app = {
+          name: appName,
+          fake: true
+        };
+
+        return app;
+      });
     }
 
     function listApplicationTemplates() {
@@ -204,7 +221,7 @@
     }
 
     function listInstances(appName) {
-      return Restangular.all('app/' + appName + '/children?all-children=true').getList();
+      return Restangular.all('app/' + appName + '/instances?all-children=true').getList();
     }
 
     function deleteInstance(appName, instancePath) {

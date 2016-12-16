@@ -9,7 +9,6 @@
   function instancesNewController(rClient, $scope, $routeParams, rUtils, rShare, $window) {
 
     // Fields
-    $scope.appName = $routeParams.appName;
     $scope.error = false;
 
     /*
@@ -59,13 +58,22 @@
     $scope.showGlobalButtons = showGlobalButtons;
 
     // Initial actions
-    var startingPassedInstance = rShare.eatLastItem();
-    if (startingPassedInstance && startingPassedInstance.path) {
-      $scope.selectedInstance = startingPassedInstance;
-      loadInstances().then(function() {
-        selectInstance(true);
-      });
-    }
+    rClient.findApplication($routeParams.appName).then(function(app) {
+      $scope.app = app;
+      if (app.fake) {
+        $scope.responseStatus = 404;
+        return;
+      }
+
+      $scope.responseStatus = 0;
+      var startingPassedInstance = rShare.eatLastItem();
+      if (startingPassedInstance && startingPassedInstance.path) {
+        $scope.selectedInstance = startingPassedInstance;
+        loadInstances().then(function() {
+          selectInstance(true);
+        });
+      }
+    });
 
     // Functions
     function showGlobalButtons() {
@@ -96,7 +104,7 @@
       $scope.mode = null;
       if (confirm) {
         hardReset();
-        $window.location = '#/app/' + $scope.appName + '/instances';
+        $window.location = '#/app/' + $routeParams.appName + '/instances';
       }
     }
 
@@ -154,6 +162,7 @@
           var oldName = $scope.rootNode.name;
           $scope.rootNode.name = 'Copy of ' + oldName;
           var nodesToCheck = [$scope.rootNode];
+
           while (nodesToCheck.length > 0) {
             var curr = nodesToCheck.shift();
             curr.writable = true;
@@ -256,7 +265,7 @@
 
     function findArticle(node) {
       return node.component && node.component.name &&
-        -1 !== 'aeiouAEIOU'.indexOf(node.component.name.charAt(0)) ? 'an' : 'a';
+        -1 !== 'aeiouAEIOU'.indexOf(node.component.name.charAt(0)) ? 'COMMON_AN' : 'COMMON_A';
     }
 
     // Internal functions
@@ -270,7 +279,7 @@
 
     function findComponents(componentName) {
 
-      rClient.listChildrenComponents($scope.appName, componentName).then(function(components) {
+      rClient.listChildrenComponents($routeParams.appName, componentName).then(function(components) {
         $scope.possibleComponents = components;
         $scope.error = false;
 
@@ -285,7 +294,7 @@
     }
 
     function loadInstances(fn) {
-      return rClient.listInstances($scope.appName).then(function(instances) {
+      return rClient.listInstances($routeParams.appName).then(function(instances) {
         $scope.error = false;
         $scope.existingInstances = instances;
 
@@ -305,7 +314,7 @@
 
     function postNewInstance(instancePath, node, newInst) {
       node.progress = 'in progress';
-      rClient.postNewInstance($scope.appName, instancePath, newInst).then(function() {
+      rClient.postNewInstance($routeParams.appName, instancePath, newInst).then(function() {
         node.progress = 'ok';
 
       }, function(response) {

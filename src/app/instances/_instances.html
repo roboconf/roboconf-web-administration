@@ -3,20 +3,20 @@
 
 <div class="content">
 	<h1>
-		{{'COMMON_APPLICATIONS' | translate}} &raquo; {{ appName }}
+		{{'COMMON_APPLICATIONS' | translate}} &raquo; {{ app.displayName }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
 
 <div class="menu">
 	<ul>
-		<li><a href="#/app/{{ appName }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
-		<li class="active"><a href="#/app/{{ appName }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
-		<li><a href="#/app/{{ appName }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
+		<li class="active"><a href="#/app/{{ app.name }}/instances">{{'COMMON_INSTANCES' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/commands">{{'COMMON_COMMANDS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/targets">{{'COMMON_TARGET_ASSOCIATIONS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/jobs">{{'COMMON_SCHEDULED_JOBS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/application-bindings">{{'COMMON_APPLICATIONS_BINDINGS' | translate}}</a></li>
+		<li><a href="#/app/{{ app.name }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -26,7 +26,7 @@
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
 	
 	<!-- No application? -->
-	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: appName }"></div>
+	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: app.name }"></div>
 	
 	<!-- No instance? -->
 	<div class="block" ng-show="responseStatus === 0 && rootNodes.length == 0">
@@ -42,7 +42,7 @@
 	<!-- A dynamic template to build a tree with AngularJS -->
 	<script type="text/ng-template" id="my-tmpl">
     <p ng-click="showInstance( childNode, 1000 )" ng-class="selectedInstance === childNode.instance ? 'r-red' : ''">
-		<strong>{{ childNode.instance.name }}</strong> is {{ formatStatus( childNode.instance.status )}}.
+		<strong>{{ childNode.instance.name }}</strong> {{'COMMON_IS' | translate}} {{ formatStatus( childNode.instance.status ) | translate }}
 	</p>
     <ul>
         <li class="listing" ng-repeat="childNode in childNode.children" ng-include="'my-tmpl'"></li>
@@ -56,10 +56,10 @@
 
 			<p class="block-title" ng-click="showInstance( rootNode, 1000 )">
 				{{ rootNode.instance.name }}
-				<span class="block-annotation">{{ formatStatus( rootNode.instance.status )}}</span>
+				<span class="block-annotation">{{ formatStatus( rootNode.instance.status ) | translate }}</span>
 			</p>
 			<div class="block-content" ng-show="rootNode.children.length === 0">
-				{{"INSTANCES_ROOT_INSTANCE_NO_CHILD" | translate}}
+				{{'INSTANCES_ROOT_INSTANCE_NO_CHILD' | translate}}
 			</div>
 
 			<ul>
@@ -76,9 +76,9 @@
 		<div>
 			<h3>{{ selectedInstance.name }}</h3>
 			
-			<strong>{{"INSTANCES_INSTANCE_PATH" | translate}}</strong> {{ selectedInstance.path }}<br />
-			<strong>{{"INSTANCES_INSTANCE_STATUS" | translate}}</strong> {{ formatStatus( selectedInstance.status )}}<br />
-			<strong>{{"INSTANCES_COMPONENT" | translate}}</strong> {{ selectedInstance.component.name }}
+			<strong>{{'INSTANCES_INSTANCE_PATH' | translate}}</strong> {{ selectedInstance.path }}<br />
+			<strong>{{'INSTANCES_INSTANCE_STATUS' | translate}}</strong> {{ formatStatus( selectedInstance.status )}}<br />
+			<strong>{{'INSTANCES_COMPONENT' | translate}}</strong> {{ selectedInstance.component.name }}
 			
 			<div class="instance-actions" ng-include="'templates/instances/includes/life-cycle.html'" ng-show="details === 'LIFECYCLE'"></div>
 			<div class="instance-actions" ng-include="'templates/instances/includes/exported-variables.html'" ng-show="details === 'EXPORTS'"></div>

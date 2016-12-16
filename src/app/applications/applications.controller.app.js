@@ -37,29 +37,12 @@
     $scope.cropImage = cropImage;
 
     // Initial actions
-    findApplication($routeParams.appName);
+    rClient.findApplication($routeParams.appName).then(function(app) {
+      $scope.app = app;
+      $scope.responseStatus = app.fake ? 404 : 0;
+    });
 
     // Function definitions
-    function findApplication(appName) {
-
-      rClient.listApplications().then(function(applications) {
-        $scope.responseStatus = 0;
-        $scope.app = applications.filter(function(val, index, arr) {
-          return val.name === appName;
-        }).pop();
-
-        if (!$scope.app) {
-          $scope.responseStatus = 404;
-          $scope.app = {
-            name: $routeParams.appName
-          };
-        }
-
-      }, function(response) {
-        $scope.responseStatus = response.status;
-      });
-    }
-
     function deleteApplication() {
       rClient.deleteApplication($routeParams.appName).then(function() {
           $window.location = '#/';

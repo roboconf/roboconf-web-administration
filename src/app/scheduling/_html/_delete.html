@@ -31,5 +31,5 @@
 		</div>
 	</div>
 
-	<div ng-show="responseStatus === 404">{{'SCHEDULING_NO_FOUND_JOB' | translate}} (<strong>{{ job.id }}</strong>).</div>
+	<div ng-show="responseStatus === 404">{{'SCHEDULING_NO_FOUND_JOB' | translate}} <strong>{{ '(' + job.id + ')' }}</strong>.</div>
 </div>

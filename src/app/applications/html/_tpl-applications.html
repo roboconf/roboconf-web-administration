@@ -3,7 +3,7 @@
 
 <div class="content">
 	<h1>
-		{{'APPLICATIONS_TEMPLATE_APPLICATION' | translate}} &raquo; {{ app.name }}
+		{{'APPLICATIONS_TEMPLATE_APPLICATION' | translate}} &raquo; {{ app.displayName }}
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
@@ -20,15 +20,21 @@
 
 	<!-- Error message -->
 	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+	
+	<!-- Not found? -->
+	<div 	ng-show="responseStatus === 404" 
+			translate="APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND"
+			translate-values="{ name: app.name, qualifier: app.qualifier }">
+	</div>
 
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
 		<div ng-show="app.apps.length > 0">
-			<strong>{{'APPLICATIONS_TEMPLATE_NAME' | translate}}</strong> {{ app.name }}<br />
+			<strong>{{'APPLICATIONS_TEMPLATE_NAME' | translate}}</strong> {{ app.displayName }}<br />
 			<strong>{{'APPLICATIONS_TEMPLATE_QUALIFIER' | translate}}</strong> {{ app.qualifier }}<br />
 			
 			<span ng-show="app.extDep">
-				<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong>: {{'COMMON_YES' | translate}}
+				<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong> {{'COMMON_YES' | translate}}
 			</span>
 			
 			<br ng-show="app.eep && app.extDep" />
@@ -37,7 +43,7 @@
 			</span>
 			
 			<br /><br />
-			<strong>{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}:</strong><br />
+			<strong>{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}</strong><br />
 			
 			<ul class="nice-list">
 				<li ng-repeat="a in app.apps"> &raquo; &nbsp; <a href="#/app/{{ a }}/overview">{{ a }}</a></li>
@@ -49,10 +55,5 @@
 			{{'APPLICATIONS_TEMPLATE_WITH_QUALIFIER' | translate}} <strong>{{ app.qualifier }}</strong>
 			{{'APPLICATIONS_TEMPLATE_NOT_ASSOCIATED_WITH_APPLICATION' | translate}}
 		</div>
-	</div>
-	
-	<div 	ng-show="responseStatus === 404" 
-			translate="APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND"
-			translate-values="{ name: app.name, qualifier: app.qualifier }">
 	</div>
 </div>
