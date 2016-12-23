@@ -61,6 +61,10 @@ describe('Routing', function() {
       // Instances
       expect($route.routes['/app/:appName/instances'].controller).to.equal('InstancesListingController');
       expect($route.routes['/app/:appName/instances/new'].controller).to.equal('InstancesNewController');
+
+      // Web extensions
+      expect($route.routes['/web-extensions'].controller).to.equal('WebExtensionsListingController');
+      expect($route.routes['/web-extensions/:ext'].controller).to.equal('WebExtensionsListingController');
     });
   });
 });

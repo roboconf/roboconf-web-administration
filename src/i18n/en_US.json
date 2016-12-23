@@ -199,6 +199,7 @@
 	"MENU_ITEM_HELP": "Help...",
 	"MENU_PREFERENCES": "Preferences",
 	"MENU_SCHEDULER": "Scheduler",
+	"MENU_WEB_EXTENSIONS": "Web Extensions",
 	"MENU_WEB_SITE": "Web Site",
 
 
@@ -287,5 +288,8 @@
 	"UTILS_UPLOAD_DIRECTIVE_RESET": "Reset",
 	"UTILS_UPLOAD_DIRECTIVE_SELECT_FILE": "Select file",
 	"UTILS_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE": "Select a ZIP file to upload.",
-	"UTILS_UPLOAD_DIRECTIVE_SUCCESS": "The upload was successful."
+	"UTILS_UPLOAD_DIRECTIVE_SUCCESS": "The upload was successful.",
+
+	"WEB_EXT_COMMON_INTRO": "Web extensions are registered on the DM's side as preferences. <br />The web console can then pick them up and display them.",
+	"WEB_EXT_COMMON_NOT_FOUND": "No extension named <strong>{{ name }}</strong> was found."
 }

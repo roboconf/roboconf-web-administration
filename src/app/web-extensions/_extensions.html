@@ -1,0 +1,33 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+	<h1>
+		{{'MENU_WEB_EXTENSIONS' | translate}}
+		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
+	</h1>
+</div>
+
+<div class="menu">
+	<ul>
+		<li ng-repeat="ext in extensions" ng-class="ext.name.toLowerCase() === selectedExtension.name.toLowerCase() ? 'active' : ''">
+			<a href="#/web-extensions/{{ ext.name.toLowerCase() }}">{{ ext.name }}</a>
+		</li>
+	</ul>
+</div>
+
+<div class="content short-content">
+	
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0"></rbcf-error-message>
+
+	<!-- Details -->
+	<div ng-show="responseStatus  === 0 && ! name" translate="WEB_EXT_COMMON_INTRO">
+	</div>
+
+	<div ng-show="responseStatus  === 0 && !! name && ! selectedExtension" translate="WEB_EXT_COMMON_NOT_FOUND" translate-values="{name: name}">
+	</div>
+	
+	<div ng-show="responseStatus  === 0 && !! name && !! selectedExtension" ng-bind-html="embeddedContent">
+	</div>
+</div>
