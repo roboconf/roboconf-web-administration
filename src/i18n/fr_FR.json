@@ -287,7 +287,7 @@
 	"UTILS_UPLOAD_DIRECTIVE_RESET": "Réinitialiser",
 	"UTILS_UPLOAD_DIRECTIVE_SELECT_FILE": "Selectionner un fichier",
 	"UTILS_UPLOAD_DIRECTIVE_SELECT_ZIP_FILE": "Sélectionner une archive ZIP à envoyer.",
-	"UTILS_UPLOAD_DIRECTIVE_SUCCESS": "L'envoi s'est bien passé."
+	"UTILS_UPLOAD_DIRECTIVE_SUCCESS": "L'envoi s'est bien passé.",
 
 	"WEB_EXT_COMMON_INTRO": "Les extensions web sont enregistrées au niveau du DM en tant que préférences. <br />La console web récupère leur contenu et les affiche ici.",
 	"WEB_EXT_COMMON_NOT_FOUND": "Aucune extension nommée <strong>{{ name }}</strong> n'a été trouvée."
