@@ -9,10 +9,13 @@
   function webExtensionsListingController($scope, $routeParams, $http, $sce, rClient, rPrefs) {
 
     // Fields
-    $scope.extensions = [];
-    $scope.name = $routeParams.ext;
     $scope.selectedExtension = null;
     $scope.embeddedContent = '';
+    $scope.extensions = [];
+
+    var routingPath = splitRoutingPath($routeParams.ext);
+    $scope.name = routingPath.ext;
+    $scope.appName = routingPath.appName;
 
     // Initial actions
     rClient.getPreferences('web.extensions').then(function(prefs) {
@@ -28,7 +31,7 @@
           };
 
           $scope.extensions.push(obj);
-          if ($routeParams.ext && $routeParams.ext.toLowerCase() === obj.name.toLowerCase()) {
+          if ($scope.name && $scope.name.toLowerCase() === obj.name.toLowerCase()) {
             $scope.selectedExtension = obj;
             getEmbeddedContent(obj);
           }
@@ -44,9 +47,21 @@
 
       var urlSegments = rPrefs.getUrl().split('/');
       var fullUrl = urlSegments[0] + '//' + urlSegments[2] + ext.url;
+      if ($scope.appName) {
+        fullUrl += $scope.appName;
+      }
+
       $http.get(fullUrl).then(function(response) {
         $scope.embeddedContent = $sce.trustAsHtml(response.data);
       });
+    }
+
+    function splitRoutingPath(rawExt) {
+      var index = rawExt.indexOf('/');
+      return {
+        ext: index > 0 ? rawExt.substring(0, index) : rawExt,
+        appName: index > 0 ? rawExt.substring(index) : null
+      };
     }
   }
 })();

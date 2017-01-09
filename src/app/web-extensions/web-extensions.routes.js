@@ -14,7 +14,7 @@
       controller: 'WebExtensionsListingController'
     })
 
-    .when('/web-extensions/:ext', {
+    .when('/web-extensions/:ext*', {
       templateUrl: 'templates/web-extensions/_extensions.html',
       controller: 'WebExtensionsListingController'
     });
