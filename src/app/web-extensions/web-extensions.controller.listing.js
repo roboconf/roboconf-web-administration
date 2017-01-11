@@ -57,6 +57,10 @@
     }
 
     function splitRoutingPath(rawExt) {
+      if (! rawExt) {
+        rawExt = '';
+      }
+
       var index = rawExt.indexOf('/');
       return {
         ext: index > 0 ? rawExt.substring(0, index) : rawExt,
