@@ -226,8 +226,10 @@
             var node = rUtils.findInstanceNode(instancePath, $scope.rootNodes);
             if (node) {
               node.instance.status = obj.inst.status;
-              if (obj.inst.data) {
+              if (obj.inst.data && obj.inst.data['ip.address']) {
                 node.instance.data['ip.address'] = obj.inst.data['ip.address'];
+              } else {
+                delete node.instance.data['ip.address'];
               }
 
               if ($scope.selectedInstance && $scope.selectedInstance.path === instancePath) {
