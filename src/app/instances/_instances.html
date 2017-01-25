@@ -77,7 +77,7 @@
 			<h3>{{ selectedInstance.name }}</h3>
 			
 			<strong>{{'INSTANCES_INSTANCE_PATH' | translate}}</strong> {{ selectedInstance.path }}<br />
-			<strong>{{'INSTANCES_INSTANCE_STATUS' | translate}}</strong> {{ formatStatus( selectedInstance.status )}}<br />
+			<strong>{{'INSTANCES_INSTANCE_STATUS' | translate}}</strong> {{ formatStatus( selectedInstance.status ) | translate }}<br />
 			<strong>{{'INSTANCES_COMPONENT' | translate}}</strong> {{ selectedInstance.component.name }}
 			
 			<div class="instance-actions" ng-include="'templates/instances/includes/life-cycle.html'" ng-show="details === 'LIFECYCLE'"></div>

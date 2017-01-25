@@ -194,7 +194,15 @@ gulp.task('dist', [ 'prepare-dist' ], completeDist);
 gulp.task('watch-dist', [ 'dist' ], function () {
   var watch = require('gulp-watch');
   var webserver = require('gulp-webserver');
+
+  // Run a web server
   gulp.src('./target/dist').pipe( webserver());
+
+  // Watch changes in our SRC directory and update the DIST one
+  gulp.watch( 'src/**/*', function() {
+    prepareDist();
+    completeDist();
+  });
 });
 
 
