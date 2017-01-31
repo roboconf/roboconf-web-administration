@@ -84,3 +84,7 @@ curl -X PUT -T $ZIP -u ${BINTRAY_USER}:${BINTRAY_API_KEY} \
 echo
 echo "$(</tmp/curl-output.txt)"
 echo
+
+if [[ "$(</tmp/curl-output.txt)" != *success* ]]; then
+	exit 1
+fi
