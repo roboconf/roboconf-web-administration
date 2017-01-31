@@ -79,7 +79,7 @@ curl -X PUT -T $ZIP -u ${BINTRAY_USER}:${BINTRAY_API_KEY} \
 	-H "X-Bintray-Override:1" \
 	-H "X-Bintray-Explode:0" \
 	-# -o "/tmp/curl-output.txt" \
-	${BINTRAY_URL}/content/roboconf/roboconf-web-administration/all/
+	${BINTRAY_URL}/content/roboconf/roboconf-web-administration/$1/
 
 echo
 echo "$(</tmp/curl-output.txt)"
