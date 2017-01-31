@@ -74,7 +74,7 @@ echo
 
 curl -X PUT -T $ZIP -u ${BINTRAY_USER}:${BINTRAY_API_KEY} \
 	-H "X-Bintray-Package:archives" \
-	-H "X-Bintray-Version:all" \
+	-H "X-Bintray-Version:$1" \
 	-H "X-Bintray-Publish:1" \
 	-H "X-Bintray-Override:1" \
 	-H "X-Bintray-Explode:0" \
