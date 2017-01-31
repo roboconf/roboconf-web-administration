@@ -228,13 +228,15 @@
               node.instance.status = obj.inst.status;
               if (obj.inst.data && obj.inst.data['ip.address']) {
                 node.instance.data['ip.address'] = obj.inst.data['ip.address'];
-              } else {
+              } else if (node.instance.data) {
                 delete node.instance.data['ip.address'];
               }
 
               if ($scope.selectedInstance && $scope.selectedInstance.path === instancePath) {
                 showInstance(node, 0);
               }
+            } else {
+              console.log('Node ' + instancePath + ' was not found (web socket callback for instance).');
             }
           }
 
