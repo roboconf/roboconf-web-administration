@@ -226,10 +226,19 @@
             var node = rUtils.findInstanceNode(instancePath, $scope.rootNodes);
             if (node) {
               node.instance.status = obj.inst.status;
-              if (obj.inst.data && obj.inst.data['ip.address']) {
-                node.instance.data['ip.address'] = obj.inst.data['ip.address'];
-              } else if (node.instance.data) {
-                delete node.instance.data['ip.address'];
+              if (obj.inst.data) {
+
+                // Update the machine's fields
+                var fields = ['machine.id', 'ip.address'];
+                fields.forEach(function(field) {
+                  if (obj.inst.data[field]) {
+                    node.instance.data[field] = obj.inst.data[field];
+                  } else {
+                    delete node.instance.data[field];
+                  }
+                });
+                // End of update
+
               }
 
               if ($scope.selectedInstance && $scope.selectedInstance.path === instancePath) {
