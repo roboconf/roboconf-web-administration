@@ -98,6 +98,7 @@
 	"COMMON_OK": "OK",
 	"COMMON_OR": "ou",
 	"COMMON_OVERVIEW": "Aperçu",
+	"COMMON_PASSWORD": "Mot de passe :",
 	"COMMON_PREFIX_FOR_EXTERNAL_EXPORTS": "Préfixe pour les exports externes :",
 	"COMMON_PROPERTIES": "Propriétés",
 	"COMMON_QUICK_ACCESS": "Accès Rapide",
@@ -108,6 +109,7 @@
 	"COMMON_SUBMIT": "Envoyer",
 	"COMMON_TARGET_ASSOCIATIONS": "Cibles",
 	"COMMON_UPLOAD": "Téléverser",
+	"COMMON_USERNAME": "Nom d'utilisateur :",
 	"COMMON_VALIDATE": "Valider",
 	"COMMON_WELCOME": "Bienvenue",
 	"COMMON_YES": "Oui",
@@ -190,12 +192,17 @@
 	"INSTANCES_TO_COMPLETE": "à compléter.",
 
 
+	"LOGIN_FAILED": "L'authentification a échoué.",
+	"LOGIN_LOGIN": "Connexion",
+
+
 	"MENU_APPLICATIONS_TEMPLATES": "Modèles d'application",
 	"MENU_DEPLOYMENT_TARGETS": "Cibles de déploiement",
 	"MENU_ITEM_ACTIONS": "Actions...",
 	"MENU_ITEM_BROWSE": "Naviguer...",
 	"MENU_ITEM_FILTER": "Filtrer...",
 	"MENU_ITEM_HELP": "Aide...",
+	"MENU_LOGOUT": "Déconnexion",
 	"MENU_PREFERENCES": "Préferences",
 	"MENU_SCHEDULER": "Planificateur",
 	"MENU_WEB_EXTENSIONS": "Extensions Web",

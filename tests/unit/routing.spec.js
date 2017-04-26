@@ -65,6 +65,9 @@ describe('Routing', function() {
       // Web extensions
       expect($route.routes['/web-extensions'].controller).to.equal('WebExtensionsListingController');
       expect($route.routes['/web-extensions/:ext*'].controller).to.equal('WebExtensionsListingController');
+
+      // Login
+      expect($route.routes['/login'].controller).to.equal('LoginController');
     });
   });
 });

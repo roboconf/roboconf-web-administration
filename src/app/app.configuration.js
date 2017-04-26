@@ -37,21 +37,38 @@
 
   configureRestangular.$inject = ['Restangular', 'rPrefs'];
   function configureRestangular(Restangular, rPrefs) {
+
+    // Base URL
     Restangular.setBaseUrl(rPrefs.getUrl());
+
+    // Default HTTP fields
+    Restangular.setDefaultHttpFields({
+      withCredentials: true
+    });
   }
 
 
-  configureTranslation.$inject = ['$translate', 'rClient'];
-  function configureTranslation($translate, rClient) {
+  configureTranslation.$inject = ['$translate', 'rClient', '$window', '$location'];
+  function configureTranslation($translate, rClient, $window, $location) {
 
     // Get the server settings
     rClient.getPreferences('user.language').then(function(lang) {
       var langSetting = lang[0].value === 'FR' ? 'fr_FR' : 'en_US';
       $translate.use(langSetting);
 
-    }, function() {
-      //$translate.preferredLanguage('en_US');
+    }, function(error) {
       $translate.use('en_US');
+    });
+
+    // Should we login?
+    rClient.getPreferences('test').then(function() {
+      // nothing
+
+    }, function(error) {
+      var curr = $location.path() === '/login' ? '%2F' : encodeURIComponent($location.path());
+      if (403 === error.status) {
+        $window.location = '#/login?redirect=' + curr;
+      }
     });
   }
 })();

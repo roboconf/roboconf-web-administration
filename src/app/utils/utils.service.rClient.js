@@ -5,8 +5,8 @@
   .module('roboconf.utils')
   .service('rClient', rClient);
 
-  rClient.$inject = ['Restangular'];
-  function rClient(Restangular) {
+  rClient.$inject = ['Restangular', '$http'];
+  function rClient(Restangular, $http) {
 
     // Fields
     var service = {
@@ -18,6 +18,8 @@
       newApplication: newApplication,
 
       findApplication: findApplication,
+      login: login,
+      logout: logout,
 
       uploadIcon: uploadIcon,
       savePreferences: savePreferences,
@@ -261,6 +263,14 @@
       }
 
       return Restangular.one(path).post('', newInst);
+    }
+
+    function login(username, password) {
+      return Restangular.one('auth/e').post('', undefined, {}, { 'u': username, 'p': password });
+    }
+
+    function logout() {
+      return Restangular.one('auth/s').post();
     }
   }
 }());

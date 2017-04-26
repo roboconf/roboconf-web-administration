@@ -1,0 +1,32 @@
+
+<rbcf-menu></rbcf-menu>
+
+<div class="content">
+</div>
+	
+<div class="menu">
+	<ul>
+		<li class="active"><a href="#/">{{'LOGIN_LOGIN' | translate}}</a></li>
+	</ul>
+</div>
+
+<div class="content short-content">
+
+	<form novalidate name="loginForm">
+		<div class="form-group" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty}">
+			<label for="username" class="control-label">{{'COMMON_USERNAME' | translate}}</label>
+			<span class="r-help" ng-show="loginForm.username.$error.required">{{'COMMON_REQUIRED' | translate}}</span><br />
+			<input type="text" class="form-control" id="username" placeholder="Username" ng-model="username" required>
+		</div>
+		<div class="form-group" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty}">
+			<label for="password" class="control-label">{{'COMMON_PASSWORD' | translate}}</label>
+			<span class="r-help" ng-show="loginForm.password.$error.required">{{'COMMON_REQUIRED' | translate}}</span><br />
+			<input type="password" class="form-control" id="password" placeholder="password" ng-model="password" required>
+		</div>
+			
+		<p class="error-msg bg-danger" ng-show="responseStatus > 0">{{'LOGIN_FAILED' | translate}}</p>
+		<button type="submit" class="btn btn-default pull-right" ng-disabled="! loginForm.$valid" ng-click="login(username, password)">
+			{{'COMMON_SUBMIT' | translate}}
+		</button>
+	</form>
+</div>

@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('roboconf.menu', []);
+angular.module('roboconf.menu', ['ngCookies']);

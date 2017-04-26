@@ -23,6 +23,7 @@
   "dependencies": {
     "jquery": "~2.0.3",
     "angular": "1.4.12",
+    "angular-cookies": "1.4.12",
     "angular-route": "1.4.12",
     "bootstrap": "~3.3.1",
     "font-awesome": "~4.0.3",

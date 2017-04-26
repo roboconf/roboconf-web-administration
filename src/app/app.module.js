@@ -13,5 +13,6 @@ angular.module('roboconf', [
     'roboconf.scheduling',
     'roboconf.targets',
     'roboconf.web-extensions',
+    'roboconf.login',
     'pascalprecht.translate'
 ]);

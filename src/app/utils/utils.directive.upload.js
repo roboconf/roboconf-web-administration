@@ -45,6 +45,7 @@
         // This is to follow upload progression
         xhr: function() {
           var xhr = new window.XMLHttpRequest();
+          xhr.withCredentials = true;
           xhr.upload.addEventListener('progress', uploadListener, false);
           return xhr;
         },
