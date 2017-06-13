@@ -92,6 +92,7 @@ To use them, simply type them in your shell. Use...
 * **gulp watch-dist** to test the distribution locally (http://localhost:8000).
 * **gulp embed** to create a minimal distribution, without running tests or quality checks.
 * **gulp clean** combines **gulp clean-dist** and **gulp clean-dev**.
+* **check_i18n** verifies the internationalization.
 
 Other tasks do not aim at being invoked manually.
 

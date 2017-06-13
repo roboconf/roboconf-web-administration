@@ -13,7 +13,7 @@
     "express": "~3.4.7"
   },
   "devDependencies": {
-    "angular-translate-quality": "^1.1.0",
+    "angular-translate-quality": "1.2.0",
     "chai": "^2.3.0",
     "collections": "^5.0.4",
     "del": "^1.1.1",

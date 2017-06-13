@@ -43,11 +43,19 @@
 			</span>
 			
 			<br /><br />
-			<strong>{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS_COLON' | translate}}</strong><br />
 			
-			<ul class="nice-list">
-				<li ng-repeat="a in app.apps"> &raquo; &nbsp; <a href="#/app/{{ a }}/overview">{{ a }}</a></li>
-			</ul>
+			<table class="table table-hover table-rbcf">
+				<tr>
+					<th>{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}</th>
+					<th>-</th>
+					<th>-</th>
+				</tr>
+				<tr ng-repeat="a in app.apps | orderBy:'name'">
+					<td>{{ a }}</td>
+					<td><a href="#/app/{{ a }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></td>
+					<td><a href="#/app/{{ a }}/instances">{{'COMMON_INSTANCES' | translate}}</a></td>
+				</tr>
+			</table>
 		</div>
 		
 		<div ng-show="app.apps.length === 0">
