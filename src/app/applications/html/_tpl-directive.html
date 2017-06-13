@@ -1,7 +1,7 @@
 
 <div class="block">
 	<p class="block-title">
-		<a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">{{ app.displayName }}</a>
+		<a href="#/tpl/{{ app.name }}/{{ app.version }}/applications">{{ app.displayName }}</a>
 		<span
 				class="block-annotation" title="{{'APPLICATIONS_DELETE_THIS_APP' | translate}}"
 				ng-show="showLinks && app.apps.length === 0" ng-click="deleteApplication( app )">
@@ -27,7 +27,7 @@
 		<div ng-show="showLinks">
 			<strong>{{'COMMON_QUICK_ACCESS' | translate}}</strong>
 			<ul>
-				<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{'APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE' | translate}}</a></li>
+				<li><a href="#/tpl/{{ app.name }}/{{ app.version }}/overview">{{'APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE' | translate}}</a></li>
 			</ul>
 		</div>
 	</div>
@@ -36,7 +36,7 @@
 		<span class="formatted">{{ app.desc }}</span>
 		<br /><br />
 		
-		<strong>{{'APPLICATIONS_TEMPLATE_QUALIFIER' | translate}}</strong> {{ app.qualifier }}<br />
+		<strong>{{'APPLICATIONS_TEMPLATE_VERSION' | translate}}</strong> {{ app.version }}<br />
 		<span ng-show="app.extDep">
 			<strong>{{'COMMON_EXTERNAL_DEPENDENCIES' | translate}}</strong> {{'COMMON_YES' | translate}}
 		</span>

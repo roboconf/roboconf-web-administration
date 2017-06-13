@@ -53,7 +53,7 @@
     function deleteApplication(appOrTpl) {
 
       var promise = $scope.isTpl ?
-        rClient.deleteApplicationTemplate(appOrTpl.name, appOrTpl.qualifier) :
+        rClient.deleteApplicationTemplate(appOrTpl.name, appOrTpl.version) :
         rClient.deleteApplication(appOrTpl.name);
 
       promise.then(function() {

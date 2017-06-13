@@ -10,9 +10,9 @@
 	
 <div class="menu">
 	<ul>
-		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
-		<li><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/applications">{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}</a></li>
-		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.qualifier }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.version }}/overview">{{'COMMON_OVERVIEW' | translate}}</a></li>
+		<li><a href="#/tpl/{{ app.name }}/{{ app.version }}/applications">{{'APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS' | translate}}</a></li>
+		<li class="active"><a href="#/tpl/{{ app.name }}/{{ app.version }}/delete">{{'COMMON_DELETE' | translate}}</a></li>
 	</ul>
 </div>
 
@@ -23,10 +23,10 @@
 
 	<!-- Application Details -->
 	<div ng-show="responseStatus === 0">
-		<div ng-show="app.apps.length > 0" translate="APPLICATIONS_TEMPLATE_DELETE_NO_DELETE" translate-values="{ name: app.name, qualifier: app.qualifier }"></div>
+		<div ng-show="app.apps.length > 0" translate="APPLICATIONS_TEMPLATE_DELETE_NO_DELETE" translate-values="{ name: app.name, version: app.version }"></div>
 		
 		<div ng-show="app.apps.length === 0">
-			<span translate="APPLICATIONS_TEMPLATE_DELETE_DELETE" translate-values="{ name: app.name, qualifier: app.qualifier }"></span>
+			<span translate="APPLICATIONS_TEMPLATE_DELETE_DELETE" translate-values="{ name: app.name, version: app.version }"></span>
 			<br /><br />
 			<button class="btn btn-danger" ng-click="deleteApplicationTemplate( app )">{{'APPLICATIONS_TEMPLATE_DELETE_CONFIRM' | translate}}</button>
 		</div>
@@ -34,6 +34,6 @@
 	
 	<div 	ng-show="responseStatus === 404" 
 			translate="APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND"
-			translate-values="{ name: app.name, qualifier: app.qualifier }">
+			translate-values="{ name: app.name, version: app.version }">
 	</div>
 </div>

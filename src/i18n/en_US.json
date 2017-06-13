@@ -26,7 +26,7 @@
 	"APPLICATIONS_DIRECTIVE_MANAGE_INSTANCES": "Manage the instances",
 	"APPLICATIONS_DIRECTIVE_NO_DEPLOYED_INSTANCE": "No instance is deployed.",
 	"APPLICATIONS_DIRECTIVE_REPLACE_IMAGE": "Click to replace this image",
-	"APPLICATIONS_DIRECTIVE_TEMPLATE_QUALIFIER": "Template Qualifier:",
+	"APPLICATIONS_DIRECTIVE_TEMPLATE_VERSION": "Template Version:",
 
 
 	"APPLICATIONS_FIRST": "first.",
@@ -40,10 +40,11 @@
 
 
 	"APPLICATIONS_TEMPLATE_APPLICATION": "Application Templates",
-	"APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS": "Associated Applications:",
+	"APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS": "Associated Applications",
+	"APPLICATIONS_TEMPLATE_ASSOCIATED_APPLICATIONS_COLON": "Associated Applications:",
 	"APPLICATIONS_TEMPLATE_DELETE_CONFIRM": "Confirm the Deletion of this Application Template",
-	"APPLICATIONS_TEMPLATE_DELETE_DELETE": "Template <strong>{{name}}</strong> with qualifier <strong>{{qualifier}}</strong> is not associated with any application. You can delete it if you want.",
-	"APPLICATIONS_TEMPLATE_DELETE_NO_DELETE": "Template <strong>{{name}}</strong> with qualifier <strong>{{qualifier}}</strong> still has associated applications. It cannot be deleted.",
+	"APPLICATIONS_TEMPLATE_DELETE_DELETE": "Template <strong>{{name}}</strong> with version <strong>{{version}}</strong> is not associated with any application. You can delete it if you want.",
+	"APPLICATIONS_TEMPLATE_DELETE_NO_DELETE": "Template <strong>{{name}}</strong> with version <strong>{{version}}</strong> still has associated applications. It cannot be deleted.",
 	"APPLICATIONS_TEMPLATE_DIRECTIVE_ACCESS_APPLICATION_TEMPLATE_PAGE": "Access the application template's page",
 	"APPLICATIONS_TEMPLATE_LIST_NEW_APPLICATION": "New Application Template",
 	"APPLICATIONS_TEMPLATE_LIST_NO_DEPLOYED_APPLICATION": "No application template has been deployed so far.",
@@ -52,16 +53,16 @@
 	"APPLICATIONS_TEMPLATE_NAME": "Template name:",
 	"APPLICATIONS_TEMPLATE_NOT_ASSOCIATED_WITH_APPLICATION": "is not associated with any application.",
 	"APPLICATIONS_TEMPLATE_NO_ASSOCIATED_APPLICATIONS": "No associated application.",
-	"APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND": "No application template called <strong>{{name}}</strong> was found with the qualifier <strong>{{qualifier}}</strong>.",
+	"APPLICATIONS_TEMPLATE_NO_TEMPLATE_FOUND": "No application template called <strong>{{name}}</strong> was found with the <strong>{{version}}</strong> version.",
 	"APPLICATIONS_TEMPLATE_ONE_OR_SEVERAL_ASSOCIATED_APPLICATIONS": "One or several applications are associated with this template.",
-	"APPLICATIONS_TEMPLATE_QUALIFIER": "Qualifier:",
+	"APPLICATIONS_TEMPLATE_VERSION": "Version:",
 	"APPLICATIONS_TEMPLATE_TEMPLATE": "Template",
 	"APPLICATIONS_TEMPLATE_UPLOAD_AVAILABLE_APPLICATION_TEMPLATES": "list the available application templates.",
 	"APPLICATIONS_TEMPLATE_UPLOAD_CREATE_NEW_APPLICATION": "create a new application",
 	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE": "New Application Template",
 	"APPLICATIONS_TEMPLATE_UPLOAD_NEW_APPLICATION_TEMPLATE_2": "upload a new application template",
 	"APPLICATIONS_TEMPLATE_UPLOAD_YOU_CAN": "You can...",
-	"APPLICATIONS_TEMPLATE_WITH_QUALIFIER": "with qualifier",
+	"APPLICATIONS_TEMPLATE_WITH_VERSION": "with version",
 	"APPLICATIONS_TO_CREATE_AN_APPLICATION": "to create an application",
 	"APPLICATIONS_UPLOAD_NEW_TEMPLATE": "upload a new template",
 

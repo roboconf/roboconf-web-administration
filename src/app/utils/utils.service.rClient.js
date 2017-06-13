@@ -87,8 +87,8 @@
       return Restangular.one('applications/' + appName).remove();
     }
 
-    function deleteApplicationTemplate(tplName, tplQualifier) {
-      return Restangular.one('applications/templates/' + tplName + '/' + tplQualifier).remove();
+    function deleteApplicationTemplate(tplName, tplVersion) {
+      return Restangular.one('applications/templates/' + tplName + '/' + tplVersion).remove();
     }
 
     function newApplication(newApp) {

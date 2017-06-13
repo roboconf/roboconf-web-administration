@@ -50,7 +50,7 @@
         name: app.name,
         desc: app.description,
         tplName: app.tpl.name,
-        tplQualifier: app.tpl.qualifier
+        tplVersion: app.tpl.version
       };
 
       rClient.newApplication(newApp).then(function(createdApp) {
@@ -63,7 +63,7 @@
     }
 
     function formatTpl(tpl) {
-      return tpl.name + ' - ' + tpl.qualifier;
+      return tpl.name + ' - ' + tpl.version;
     }
 
     function resetErrorMessage() {

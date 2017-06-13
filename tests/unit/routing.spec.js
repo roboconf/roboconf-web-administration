@@ -18,16 +18,16 @@ describe('Routing', function() {
 
       // Single applications
       expect($route.routes['/app/:appName/overview'].controller).to.equal('SingleApplicationController');
-      expect($route.routes['/tpl/:tplName/:tplQualifier/overview'].controller)
+      expect($route.routes['/tpl/:tplName/:tplVersion/overview'].controller)
       .to.equal('SingleApplicationTemplateController');
 
       // Application deletions
       expect($route.routes['/app/:appName/delete'].controller).to.equal('SingleApplicationController');
-      expect($route.routes['/tpl/:tplName/:tplQualifier/delete'].controller)
+      expect($route.routes['/tpl/:tplName/:tplVersion/delete'].controller)
       .to.equal('SingleApplicationTemplateController');
 
       // Template associations
-      expect($route.routes['/tpl/:tplName/:tplQualifier/applications'].controller)
+      expect($route.routes['/tpl/:tplName/:tplVersion/applications'].controller)
       .to.equal('SingleApplicationTemplateController');
 
       // Commands

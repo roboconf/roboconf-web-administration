@@ -47,17 +47,17 @@
       controller: 'SingleApplicationController'
     })
 
-    .when('/tpl/:tplName/:tplQualifier/overview', {
+    .when('/tpl/:tplName/:tplVersion/overview', {
       templateUrl: 'templates/applications/html/_tpl-single.html',
       controller: 'SingleApplicationTemplateController'
     })
 
-    .when('/tpl/:tplName/:tplQualifier/delete', {
+    .when('/tpl/:tplName/:tplVersion/delete', {
       templateUrl: 'templates/applications/html/_tpl-delete.html',
       controller: 'SingleApplicationTemplateController'
     })
 
-    .when('/tpl/:tplName/:tplQualifier/applications', {
+    .when('/tpl/:tplName/:tplVersion/applications', {
       templateUrl: 'templates/applications/html/_tpl-applications.html',
       controller: 'SingleApplicationTemplateController'
     });
