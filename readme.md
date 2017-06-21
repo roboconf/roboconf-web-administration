@@ -87,7 +87,7 @@ To use them, simply type them in your shell. Use...
 
 * **gulp lint** to verify quality rules in the JS scripts.
 * **gulp test** to run unit tests with Mocha (coverage report under **target/coverage**).
-* **check_i18n** verifies the internationalization.
+* **gulp check_i18n** verifies the internationalization.
 
 **Development**
 
