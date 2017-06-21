@@ -4,6 +4,7 @@ describe('Instances Controller :: Listings', function() {
 
   beforeEach(module('roboconf.utils'));
   beforeEach(module('roboconf.instances'));
+  beforeEach(module('pascalprecht.translate'));
 
   // Create the controller with a new scope
   var ctrl, scope, httpBackend;

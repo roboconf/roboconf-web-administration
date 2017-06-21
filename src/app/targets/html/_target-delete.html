@@ -3,7 +3,10 @@
 
 <div class="content">
 	<h1>
-		{{'TARGETS_DEPLOYMENT_TARGETS' | translate}} &raquo; {{ targetAlias }}
+		{{'TARGETS_DEPLOYMENT_TARGETS' | translate}} &raquo; 
+		<span ng-show="responseStatus !== -1">
+			{{target.name ? target.name : ('TARGETS_NO_NAME' | translate)}}
+		</span>
 		<img src="img/spinner.gif" class="spinner" alt="..." ng-show="responseStatus === -1" />
 	</h1>
 </div>
@@ -25,11 +28,11 @@
 	<!-- Target Details -->
 	<div ng-show="responseStatus === 0">
 		<div ng-show="stats.length > 0">
-			{{'TARGETS_TARGET' | translate}} <strong>{{ targetAlias }}</strong> {{'TARGETS_DELETE_NO_DELETE' | translate}}
+			{{'TARGETS_TARGET' | translate}} <strong>{{target.name ? target.name : ('TARGETS_NO_NAME' | translate)}}</strong> {{'TARGETS_DELETE_NO_DELETE' | translate}}
 		</div>
 		
 		<div ng-show="stats.length === 0">
-			{{'TARGETS_TARGET' | translate}} <strong>{{ targetAlias }}</strong> {{'TARGETS_DELETE_DELETE' | translate}}
+			{{'TARGETS_TARGET' | translate}} <strong>{{target.name ? target.name : ('TARGETS_NO_NAME' | translate)}}</strong> {{'TARGETS_DELETE_DELETE' | translate}}
 			
 			<br /><br />
 			<button class="btn btn-danger" ng-click="deleteTarget( targetId )">{{'TARGETS_DELETE_CONFIRM' | translate}}</button>

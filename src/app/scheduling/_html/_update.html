@@ -87,7 +87,10 @@
 			<cron-selection ng-model="job.cron" config="cronEditorConfig" ng-show="showCronEditor"></cron-selection>
 		</div>
 	
-		<p id="new-job-error" class="bg-danger" ng-show="errorMessage">{{ errorMessage }}</p>
+		<p class="bg-danger" ng-show="errorCode === 1">{{ 'SCHEDULING_IMPOSSIBLE_LISTING_APP' | translate }}</p>
+		<p class="bg-danger" ng-show="errorCode === 2">{{ 'SCHEDULING_IMPOSSIBLE_UPDATE' | translate }}</p>
+		<p class="bg-danger" ng-show="errorCode === 3">{{ 'SCHEDULING_IMPOSSIBLE_LISTING_CMD' | translate }}</p>
+		
 		<button type="submit" class="btn btn-default pull-right" ng-hide="editMode" ng-click="startEdit()">{{'COMMON_EDIT' | translate}}</button>
 		<button type="submit" class="btn btn-default pull-right" ng-disabled="! newJobForm.$valid" ng-show="editMode" ng-click="completeEdit()">
 			{{'COMMON_SUBMIT' | translate}}

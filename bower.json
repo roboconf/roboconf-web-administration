@@ -25,6 +25,7 @@
     "angular": "1.4.12",
     "angular-cookies": "1.4.12",
     "angular-route": "1.4.12",
+    "angular-sanitize": "1.4.12",
     "bootstrap": "~3.3.1",
     "font-awesome": "~4.0.3",
     "restangular": "1.5.1",
@@ -33,9 +34,9 @@
     "codemirror": "~5.7.0",
     "ng-cropper": "~0.4.1",
     "angular-cron-jobs": "3.2.0",
-    "angular-translate": "2.11.1",
-    "angular-translate-handler-log": "2.11.1",
-    "angular-translate-loader-static-files": "2.11.1",
+    "angular-translate": "2.15.1",
+    "angular-translate-handler-log": "2.15.1",
+    "angular-translate-loader-static-files": "2.15.1",
     "flag-icon-css": "2.3.1"
   },
   "devDependencies": {

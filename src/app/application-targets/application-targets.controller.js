@@ -5,8 +5,8 @@
   .module('roboconf.application-targets')
   .controller('ApplicationTargetsController', applicationTargetsController);
 
-  applicationTargetsController.$inject = ['rClient', '$scope', '$routeParams', 'rUtils'];
-  function applicationTargetsController(rClient, $scope, $routeParams, $window, rUtils) {
+  applicationTargetsController.$inject = ['rClient', '$scope', '$routeParams', '$window', '$translate', 'rUtils'];
+  function applicationTargetsController(rClient, $scope, $routeParams, $window, $translate, rUtils) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -21,6 +21,12 @@
     $scope.saveAssociation = saveAssociation;
     $scope.cancelAssociation = cancelAssociation;
     $scope.findTargetsList = findTargetsList;
+
+    // Cache some values for i18n (not perfect, but more efficient than querying values every time)
+    var i18n = {};
+    $translate(['TARGETS_NO_NAME', 'COMMON_DEFAULT']).then(function(translatedValues) {
+      i18n = translatedValues;
+    });
 
     // Initial actions
     rClient.findApplication($routeParams.appName).then(function(app) {
@@ -60,7 +66,7 @@
       $scope.possibleTargets = possibleTargets;
 
       $scope.enhancedPossibleTargets = possibleTargets.slice();
-      $scope.enhancedPossibleTargets.splice(0, 0, { name: 'default', id: -1 });
+      $scope.enhancedPossibleTargets.splice(0, 0, { name: i18n.COMMON_DEFAULT, id: -1 });
 
     }, function(response) {
       $scope.responseStatus = response.status;
@@ -69,7 +75,7 @@
     // Function definitions
     function formatTarget(t) {
       if (t) {
-        return (t.name ? t.name : 'no name') + (t.handler ? '  (' + t.handler + ')' : '');
+        return (t.name ? t.name : i18n.TARGETS_NO_NAME) + (t.handler ? '  (' + t.handler + ')' : '');
       } else {
         return '';
       }

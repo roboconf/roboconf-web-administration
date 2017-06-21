@@ -1,9 +1,38 @@
 'use strict';
 
+// Load the exact translations...
+var json = {};
+$.getJSON('base/src/i18n/en_US.json').then(function(data) {
+  json = data;
+});
+
+// ... and mock the translation provider
+var own_translate = function(translation, args) {
+  return {
+    then: function(callback) {
+
+      // Basic implementation, without 1 substitution for simple strings.
+      // Translating arrays is straight-forward.
+      var res = json;
+      if (! Array.isArray(translation)) {
+        res = res[translation];
+        if (args) {
+          var key = Object.keys(args)[0];
+          res = res.replace('{{' + key + '}}', args[key]);
+        }
+      }
+
+      return callback(res);
+    }
+  };
+};
+
+
 describe('Instances Controller :: New Instance(s)', function() {
 
   beforeEach(module('roboconf.utils'));
   beforeEach(module('roboconf.instances'));
+  beforeEach(module('pascalprecht.translate'));
 
   // Create the controller with a new scope
   var ctrl, scope, httpBackend, whenThings;
@@ -16,9 +45,13 @@ describe('Instances Controller :: New Instance(s)', function() {
     whenThings = $httpBackend.when('GET', /.*/g);
     whenThings.respond([]);
 
+    // Mock the translate provider
+
     // Create a scope and instantiate our controller.
     scope = $rootScope.$new();
-    ctrl = $controller('InstancesNewController', {$scope: scope, $routeParams: {appName: 'test'}});
+    ctrl = $controller(
+        'InstancesNewController',
+        {$scope: scope, $routeParams: {appName: 'test'}, $translate: own_translate});
 
     // Do not forget to invoke httpBackend.flush() to "speed up" asynchronous calls.
     // Since there are asynchronous calls (and promises),
@@ -675,6 +708,7 @@ describe('Instances Controller :: New Instance(s) with initialization', function
 
   beforeEach(module('roboconf.utils'));
   beforeEach(module('roboconf.instances'));
+  beforeEach(module('pascalprecht.translate'));
 
   var scope, httpBackend, whenThings;
   var instances = [
@@ -689,7 +723,9 @@ describe('Instances Controller :: New Instance(s) with initialization', function
 
       scope = $rootScope.$new();
       rShare.feedLastItem(instances[0]);
-      $controller('InstancesNewController', {$scope: scope, $routeParams: {appName: 'test'}});
+      $controller(
+          'InstancesNewController',
+          {$scope: scope, $routeParams: {appName: 'test'}, $translate: own_translate});
     });
 
     whenThings.respond(instances);
@@ -722,7 +758,9 @@ describe('Instances Controller :: New Instance(s) with initialization', function
       scope = $rootScope.$new();
       instances[0].copy = true;
       rShare.feedLastItem(instances[0]);
-      $controller('InstancesNewController', {$scope: scope, $routeParams: {appName: 'test'}});
+      $controller(
+          'InstancesNewController',
+          {$scope: scope, $routeParams: {appName: 'test'}, $translate: own_translate});
     });
 
     whenThings.respond(instances);
@@ -754,7 +792,9 @@ describe('Instances Controller :: New Instance(s) with initialization', function
 
       scope = $rootScope.$new();
       rShare.feedLastItem({not: 'an instance'});
-      $controller('InstancesNewController', {$scope: scope, $routeParams: {appName: 'test'}});
+      $controller(
+          'InstancesNewController',
+          {$scope: scope, $routeParams: {appName: 'test'}, $translate: own_translate});
     });
 
     expect(scope.mode).to.not.be.defined;
@@ -773,7 +813,9 @@ describe('Instances Controller :: New Instance(s) with initialization', function
 
       scope = $rootScope.$new();
       rShare.feedLastItem({path: '/not/a/known/path'});
-      $controller('InstancesNewController', {$scope: scope, $routeParams: {appName: 'test'}});
+      $controller(
+          'InstancesNewController',
+          {$scope: scope, $routeParams: {appName: 'test'}, $translate: own_translate});
     });
 
     whenThings.respond(instances);

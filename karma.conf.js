@@ -18,16 +18,19 @@ module.exports = function(config) {
     files: [].concat(
             // Our client dependencies (Angular, etc)
             wiredep({devDependencies: true})['js'],
-            
+
             // Our module definitions
             'src/app/**/*.module.js',
-            
+
             // Our JS files
             'src/app/**/*.js',
-            
+
             // Load our directives for tests pre-processing
             'src/app/**/*.html',
             
+            // JSon files
+            { pattern: 'src/i18n/*.json', included: false, served: true },
+
             // Load our unit tests in last
             'tests/unit/**/*.spec.js'
     ),
@@ -39,9 +42,8 @@ module.exports = function(config) {
 
 
     // test results reporter to use
-    // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['mocha', 'coverage'],
 
 
     // pre-process matching files before serving them to the browser
@@ -52,10 +54,16 @@ module.exports = function(config) {
     },
     
     
-    // configure the reporter
+    // configure the COVERAGE reporter
     coverageReporter: {
       type: 'html',
       dir: 'target/coverage/'
+    },
+    
+    
+    // configure the MOCHA reporter 
+    mochaReporter: {
+      showDiff: true
     },
     
 

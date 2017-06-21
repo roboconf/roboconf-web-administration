@@ -5,8 +5,8 @@
   .module('roboconf.application-bindings')
   .controller('ApplicationBindingsController', applicationBindingsController);
 
-  applicationBindingsController.$inject = ['rClient', '$scope', '$routeParams', 'rUtils'];
-  function applicationBindingsController(rClient, $scope, $routeParams, rUtils) {
+  applicationBindingsController.$inject = ['rClient', '$scope', '$routeParams', '$translate', 'rUtils'];
+  function applicationBindingsController(rClient, $scope, $routeParams, $translate, rUtils) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -92,19 +92,20 @@
 
       // REST invocation
       rClient.updateApplicationBindings($routeParams.appName, prefix, appNames).then(function() {
-        $scope.status.push({
-          ok: true,
-          msg: 'Bindings for prefix "' + prefix + '" were successfully saved.'
+        $translate('APPLICATIONS_BINDINGS_CTRL_OK', { prefix: prefix }).then(function(translatedValue) {
+          $scope.status.push({
+            ok: true,
+            msg: translatedValue
+          });
         });
 
       }, function(response) {
-        $scope.status.push({
-          ok: false,
-          msg: 'An error occurred while saving the bindings for prefix "' + prefix + '".'
+        $translate('APPLICATIONS_BINDINGS_CTRL_KO', { prefix: prefix }).then(function(translatedValue) {
+          $scope.status.push({
+            ok: false,
+            msg: translatedValue
+          });
         });
-
-        // Keep it for debug
-        console.log(response);
       });
 
       // No more binding is being edited and remove the working property

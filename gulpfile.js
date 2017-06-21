@@ -55,20 +55,12 @@ gulp.task('lint', function() {
 /*
  * Tasks for UNIT tests.
  */
-gulp.task('test', function () {
-  var karma = require('gulp-karma');
-
-  gulp.src('./invalid-dir')
-  .pipe(karma({
-    configFile: 'karma.conf.js',
-    action: 'run',
-    showStack: true
-  }))
-  .on('error', function(err) {
-    // Make sure failed tests cause gulp to exit non-zero
-    console.log(err);
-    this.emit('end'); // instead of erroring the stream, end it
-  })
+var Server = require('karma').Server;
+gulp.task('test', function(done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 
@@ -286,9 +278,15 @@ gulp.task('check_i18n', function() {
   var external_keys_cb = function(errorCallback, notFoundKeys) {
 
     var found = [];
-    var jsFiles = ['instances.controller.listing.js', 'instances.controller.new.js'];
+    var jsFiles = [
+      'instances/instances.controller.listing.js',
+      'instances/instances.controller.new.js',
+      'commands/commands.controller.listing.js',
+      'application-bindings/application-bindings.controller.js'
+    ];
+
     jsFiles.forEach(function(f) {
-      var content = fs.readFileSync('./src/app/instances/' + f).toString();
+      var content = fs.readFileSync('./src/app/' + f).toString();
       notFoundKeys.forEach(function(key) {
         if (content.indexOf(key) !== -1) {
           found.push(key);
@@ -312,6 +310,7 @@ gulp.task('check_i18n', function() {
     loc_i18n: './src/i18n/**/',
     loc_html: './src/app/**/',
     fail_on_warning: true,
+    ignore_order: true,
     external_keys_cb: external_keys_cb,
     forbidden_patterns: {},
     exclusions: ['...', 'Roboconf', 'x', '-', '.']

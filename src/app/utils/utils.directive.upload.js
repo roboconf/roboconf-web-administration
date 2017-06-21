@@ -27,7 +27,7 @@
     // Functions
     function reset() {
       $scope.progress = 0;
-      $scope.reason = null;
+      $scope.reason = '';
 
       $('#upload-result-details').hide();
       $('#upload-result-ok').hide();
@@ -94,7 +94,10 @@
 
       $('.upload-result-ko').show();
       if (details && details.reason) {
-        $scope.reason = details.reason.toLowerCase();
+        // Only case in the web console where we display messages
+        // received from the server. We must force the refreshment.
+        $scope.reason = details.reason;
+        $scope.$apply();
       }
     }
   }

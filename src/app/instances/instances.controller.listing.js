@@ -6,11 +6,11 @@
   .controller('InstancesListingController', instancesListingController);
 
   instancesListingController.$inject = [
-    '$scope', 'rUtils', '$routeParams',
+    '$scope', 'rUtils', '$routeParams', '$translate',
     'rShare', '$window', 'rClient', 'rWebSocket'
   ];
 
-  function instancesListingController($scope, rUtils, $routeParams, rShare, $window, rClient, rWebSocket) {
+  function instancesListingController($scope, rUtils, $routeParams, $translate, rShare, $window, rClient, rWebSocket) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -21,28 +21,33 @@
     $scope.orderingCriteria = 'instance.name';
     $scope.details = 'LIFECYCLE';
 
+    // Get translations for menus
+    var i18n = $translate.instant([
+      'INSTANCES_MENU_NEW_INST', 'INSTANCES_MENU_DEPLOY_AND_START_ALL', 'INSTANCES_MENU_STOP_ALL',
+      'INSTANCES_MENU_UNDEPLOY_ALL', 'INSTANCES_MENU_SORT_BY_NAME', 'INSTANCES_MENU_SORT_BY_STATE']);
+
     // Menu actions
     $scope.menuActions = [
-      {title: 'Create a New Instance', link: '#/app/' + $routeParams.appName + '/instances/new'},
+      {title: i18n.INSTANCES_MENU_NEW_INST, link: '#/app/' + $routeParams.appName + '/instances/new'},
       {title: 'separator'},
-      {title: 'Deploy and Start All', fn: function() {
+      {title: i18n.INSTANCES_MENU_DEPLOY_AND_START_ALL, fn: function() {
         performAll('deploy-all', false);
       }},
-      {title: 'Stop All', fn: function() {
+      {title: i18n.INSTANCES_MENU_STOP_ALL, fn: function() {
         performAll('stop-all', false);
       }},
-      {title: 'Undeploy All', link: '', fn: function() {
+      {title: i18n.INSTANCES_MENU_UNDEPLOY_ALL, link: '', fn: function() {
         performAll('undeploy-all', false);
       }},
       {title: 'separator'},
-      {title: 'Sort by name', link: '', fn: function() {
+      {title: i18n.INSTANCES_MENU_SORT_BY_NAME, link: '', fn: function() {
         if ($scope.orderingCriteria === 'instance.name') {
           $scope.orderingCriteria = '-instance.name';
         } else {
           $scope.orderingCriteria = 'instance.name';
         }
       }},
-      {title: 'Sort by state', link: '', fn: function() {
+      {title: i18n.INSTANCES_MENU_SORT_BY_STATE, link: '', fn: function() {
         if ($scope.orderingCriteria === 'instance.status') {
           $scope.orderingCriteria = '-instance.status';
         } else {

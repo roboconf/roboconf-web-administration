@@ -13,7 +13,7 @@
     $scope.job = {};
     $scope.apps = [];
     $scope.cmdNames = [];
-    $scope.errorMessage = null;
+    $scope.errorCode = -1;
 
     $scope.cronEditorConfig = {
       allowMultiple: true,
@@ -74,7 +74,7 @@
         $scope.apps = apps;
 
       }, function() {
-        $scope.errorMessage = 'Applications could not be listed.';
+        $scope.errorCode = 1;
       });
     }
 
@@ -99,13 +99,7 @@
             $window.location = '#/scheduler/job/' + wrappedJobId.s;
 
       }, function(response) {
-
-          $scope.errorMessage = 'An error occured.';
-          if (response.data && response.data.reason) {
-            $scope.errorMessage += ' ' + response.data.reason;
-          } else {
-            $scope.errorMessage += ' The CRON expression is most likely incorrect.';
-          }
+          $scope.errorCode = 2;
       });
     }
 
@@ -115,7 +109,7 @@
         $scope.cmdNames = cmdNames;
 
       }, function() {
-        $scope.errorMessage = 'Application commands could not be listed.';
+        $scope.errorMessage = 3;
       });
     }
 

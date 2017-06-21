@@ -52,7 +52,7 @@
 					
 					<span ng-show="! a.editable" style="display: inline-block" class="rbcf-padfix">
 						<a href="#/target/{{ a.selectedId }}" ng-if="a.selectedId !== -1">{{ formatTarget(a) }}</a>
-						<span ng-if="a.path !== '' && a.selectedId === -1 && ! a.component">{{'APPLICATIONS_TARGETS_DEFAULT' | translate}}</span>
+						<span ng-if="a.path !== '' && a.selectedId === -1 && ! a.component">{{'COMMON_DEFAULT' | translate}}</span>
 						<span ng-if="a.path !== '' && a.selectedId === -1 && !! a.component">{{ '@' + a.component }}</span>
 						<span ng-if="a.path === '' && a.selectedId === -1">{{'APPLICATIONS_TARGETS_NONE' | translate}}</span>
 					</span>

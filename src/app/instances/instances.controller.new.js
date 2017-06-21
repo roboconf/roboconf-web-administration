@@ -5,8 +5,8 @@
   .module('roboconf.instances')
   .controller('InstancesNewController', instancesNewController);
 
-  instancesNewController.$inject = ['rClient', '$scope', '$routeParams', 'rUtils', 'rShare', '$window'];
-  function instancesNewController(rClient, $scope, $routeParams, rUtils, rShare, $window) {
+  instancesNewController.$inject = ['rClient', '$scope', '$routeParams', 'rUtils', 'rShare', '$window', '$translate'];
+  function instancesNewController(rClient, $scope, $routeParams, rUtils, rShare, $window, $translate) {
 
     // Fields
     $scope.error = false;
@@ -56,6 +56,12 @@
     $scope.hardReset = hardReset;
     $scope.createThemAll = createThemAll;
     $scope.showGlobalButtons = showGlobalButtons;
+
+    // Cache i18n values used in JS code
+    var i18n = {};
+    $translate(['INSTANCE_BASE_NAME', 'INSTANCE_ROOT_BASE_NAME']).then(function(translatedValues) {
+      i18n = translatedValues;
+    });
 
     // Initial actions
     rClient.findApplication($routeParams.appName).then(function(app) {
@@ -160,15 +166,17 @@
         // Case of replication: update the root node
         if ($scope.selectedInstance.copy) {
           var oldName = $scope.rootNode.name;
-          $scope.rootNode.name = 'Copy of ' + oldName;
-          var nodesToCheck = [$scope.rootNode];
+          $translate('COMMON_COPY_OF', {name: oldName}).then(function(newName) {
+            $scope.rootNode.name = newName;
+            var nodesToCheck = [$scope.rootNode];
 
-          while (nodesToCheck.length > 0) {
-            var curr = nodesToCheck.shift();
-            curr.writable = true;
-            curr.path = curr.path.replace('/' + oldName, '/Copy of ' + oldName);
-            nodesToCheck = nodesToCheck.concat(curr.children);
-          }
+            while (nodesToCheck.length > 0) {
+              var curr = nodesToCheck.shift();
+              curr.writable = true;
+              curr.path = curr.path.replace('/' + oldName, '/' + newName);
+              nodesToCheck = nodesToCheck.concat(curr.children);
+            }
+          });
         }
       }
 
@@ -178,7 +186,7 @@
 
     function createInstance(parentNode) {
       $scope.mode = 'new';
-      var instName = parentNode ? 'instance' : 'root-instance';
+      var instName = parentNode ? i18n.INSTANCE_BASE_NAME : i18n.INSTANCE_ROOT_BASE_NAME;
       var node = {name: instName, writable: true};
       $scope.editedInstance = node;
 

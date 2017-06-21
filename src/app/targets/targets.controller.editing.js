@@ -12,7 +12,6 @@
     $scope.responseStatus = -1;
 
     $scope.targetId = $routeParams.targetId;
-    $scope.targetAlias = $scope.targetId;
     $scope.targetProperties = '';
     $scope.targetPropertiesBackup = '';
 
@@ -26,7 +25,7 @@
 
     // Functions
     rClient.findTarget($scope.targetId).then(function(bean) {
-      $scope.targetAlias = bean.name ? bean.name : 'no name';
+      $scope.target = bean;
       $scope.responseStatus = 0;
 
       var txtArea = $('#target-properties').get(0);

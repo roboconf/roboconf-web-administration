@@ -9,9 +9,17 @@
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2": "Select which ones this application should be bound to.",
 	"APPLICATIONS_BINDINGS_TH_APP": "Bound Applications",
 	"APPLICATIONS_BINDINGS_TH_PREFIX": "External Import Prefix",
+	"APPLICATIONS_BINDINGS_CTRL_OK": "Bindings for prefix '{{prefix}}' were successfully saved.",
+	"APPLICATIONS_BINDINGS_CTRL_KO": "An error occurred while saving the bindings for prefix '{{prefix}}'.",
 
 
 	"APPLICATIONS_COMPLETE_APPLICATION_CREATION": "complete the creation of your new application",
+	"APPLICATIONS_CREATION_FAILED": "The application could not be created.",
+	"APPLICATIONS_CREATION_404": "The application template was not found.",
+	"APPLICATIONS_CREATION_403": "An application with this name already exists.",
+	"APPLICATIONS_CREATION_401": "A problem must have occurred in the DM (example: messaging error).",
+
+
 	"APPLICATIONS_DELETE_CONFIRM": "Confirm the Deletion of this Application",
 	"APPLICATIONS_DELETE_DELETE": "Application <strong>{{name}}</strong> does not have any deployed instance.",
 	"APPLICATIONS_DELETE_DELETE_2": "You can delete it if you want.",
@@ -32,7 +40,6 @@
 	"APPLICATIONS_FIRST": "first.",
 	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE": "Select an existing template",
 	"APPLICATIONS_TARGETS_ASSOCIATE": "This page allows to associate machine instances with deployment targets.",
-	"APPLICATIONS_TARGETS_DEFAULT": "default",
 	"APPLICATIONS_TARGETS_NONE": "none",
 	"APPLICATIONS_TARGETS_PER_COMPONENT": "per component",
 	"APPLICATIONS_TARGETS_PER_INSTANCE": "per instance",
@@ -72,6 +79,8 @@
 	"COMMANDS_COMMAND_NAME": "Command Name",
 	"COMMANDS_EXECUTE": "execute",
 	"COMMANDS_NO_COMMAND_AVAILABLE": "No command is available for this application.",
+	"COMMANDS_EXECUTION_OK": "Command '{{cmd}}' was successfully launched.",
+	"COMMANDS_EXECUTION_KO": "Command '{{cmd}}' could not be launched. An error occurred.",
 
 
 	"COMMON_A": "a",
@@ -115,12 +124,17 @@
 	"COMMON_WELCOME": "Welcome",
 	"COMMON_YES": "yes",
 	"COMMON_YOU_CAN": "You can",
+	"COMMON_COPY_OF": "Copy of {{name}}",
 
 
 	"ERRORS_MESSAGE": "An error occurred: communication with the server failed.",
 	"ERRORS_MESSAGE_2": "Make sure the Deployment Manager is started or that the connection settings are correct in the",
 	"ERRORS_OOPS": "Oops",
 	"ERRORS_PREFERENCES": "preferences",
+
+
+	"INSTANCE_BASE_NAME": "instance",
+	"INSTANCE_ROOT_BASE_NAME": "root-instance",
 
 
 	"INSTANCES_COMPONENT": "Component:",
@@ -193,6 +207,14 @@
 	"INSTANCES_TO_COMPLETE": "to complete.",
 
 
+	"INSTANCES_MENU_NEW_INST": "Create a New Instance",
+	"INSTANCES_MENU_DEPLOY_AND_START_ALL": "Deploy and Start All",
+	"INSTANCES_MENU_STOP_ALL": "Stop All",
+	"INSTANCES_MENU_UNDEPLOY_ALL": "Undeploy All",
+	"INSTANCES_MENU_SORT_BY_NAME": "Sort by name",
+	"INSTANCES_MENU_SORT_BY_STATE": "Sort by state",
+
+
 	"LOGIN_FAILED": "Authentication failed.",
 	"LOGIN_LOGIN": "Login",
 
@@ -234,6 +256,9 @@
 	"SCHEDULING_SIMPLIFIED_CRON_EDITOR_2": "our simplified CRON editor.",
 	"SCHEDULING_THE": "The",
 	"SCHEDULING_YOU_CAN_USE": "You can use",
+	"SCHEDULING_IMPOSSIBLE_LISTING_APP": "Applications could not be listed.",
+	"SCHEDULING_IMPOSSIBLE_LISTING_CMD": "Application commands could not be listed.",
+	"SCHEDULING_IMPOSSIBLE_UPDATE": "An error occurred. Verify the parameters and the CRON expression.",
 
 
 	"STATUS_CUSTOM": "being updated...",

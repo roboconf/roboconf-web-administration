@@ -83,16 +83,24 @@ Just edit the **etc/net.roboconf.dm.rest.services.configuration.cfg** file.
 This section lists the Gulp tasks you can use.  
 To use them, simply type them in your shell. Use...
 
-* **gulp watch-dev** to develop and test the application locally (http://localhost:8000).
-* **gulp clean-dev** to delete the generated content in the **dev** directory (it preserves Bower dependencies).
+**Checks**
+
 * **gulp lint** to verify quality rules in the JS scripts.
 * **gulp test** to run unit tests with Mocha (coverage report under **target/coverage**).
-* **gulp dist** to create the final distribution (minimal dependencies, minification, etc).
-* **gulp clean-dist** to delete the **dist** directory.
-* **gulp watch-dist** to test the distribution locally (http://localhost:8000).
-* **gulp embed** to create a minimal distribution, without running tests or quality checks.
-* **gulp clean** combines **gulp clean-dist** and **gulp clean-dev**.
 * **check_i18n** verifies the internationalization.
+
+**Development**
+
+* **gulp watch-dev** to develop and test the application locally (http://localhost:8000).
+* **gulp watch-dist** to test the distribution locally (http://localhost:8000).
+* **gulp clean-dev** to delete the generated content in the **dev** directory (it preserves Bower dependencies).
+* **gulp clean-dist** to delete the **dist** directory.
+* **gulp clean** combines **gulp clean-dist** and **gulp clean-dev**.
+
+**Distributions**
+
+* **gulp dist** to create the final distribution (minimal dependencies, minification, etc).
+* **gulp embed** to create a minimal distribution, without running tests or quality checks.
 
 Other tasks do not aim at being invoked manually.
 

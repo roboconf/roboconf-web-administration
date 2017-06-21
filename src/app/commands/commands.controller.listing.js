@@ -5,8 +5,8 @@
   .module('roboconf.commands')
   .controller('CommandsListingController', instancesListingController);
 
-  instancesListingController.$inject = ['$scope', 'rClient', 'rUtils', '$routeParams', '$timeout'];
-  function instancesListingController($scope, rClient, rUtils, $routeParams, $timeout) {
+  instancesListingController.$inject = ['$scope', 'rClient', 'rUtils', '$routeParams', '$timeout', '$translate'];
+  function instancesListingController($scope, rClient, rUtils, $routeParams, $timeout, $translate) {
 
     // Fields
     $scope.responseStatus = -1;
@@ -46,15 +46,19 @@
     function execute(cmd) {
 
       rClient.executeCommand($routeParams.appName, cmd).then(function() {
-        $scope.status.splice(0, 0, {
-          msg: 'Command \'' + cmd + '\' was successfully launched.',
-          ok: true
+        $translate('COMMANDS_EXECUTION_OK', {cmd: cmd}).then(function(translatedValue) {
+          $scope.status.splice(0, 0, {
+            msg: translatedValue,
+            ok: true
+          });
         });
 
       }, function(response) {
-        $scope.status.splice(0, 0, {
-          msg: 'Command \'' + cmd + '\' could not be launched. An error occurred.',
-          ok: false
+        $translate('COMMANDS_EXECUTION_KO', {cmd: cmd}).then(function(translatedValue) {
+          $scope.status.splice(0, 0, {
+            msg: translatedValue,
+            ok: false
+          });
         });
 
         // Keep it for debug

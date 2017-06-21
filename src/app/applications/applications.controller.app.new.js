@@ -5,14 +5,15 @@
   .module('roboconf.applications')
   .controller('ApplicationsNewController', applicationsNewController);
 
-  applicationsNewController.$inject = ['rClient', '$scope', '$timeout', 'rShare', '$window'];
-  function applicationsNewController(rClient, $scope, $timeout, rShare, $window) {
+  applicationsNewController.$inject = ['rClient', '$scope', 'rShare', '$window'];
+  function applicationsNewController(rClient, $scope, rShare, $window) {
 
     // Fields
     $scope.appTemplates = [];
     $scope.fromExisting = true;
     $scope.app = {};
     $scope.errorMessage = '';
+    $scope.responseStatus = -1;
 
     // Functions declaration
     $scope.showFromExisting = showFromExisting;
@@ -57,17 +58,12 @@
         $window.location = '#/app/' + createdApp.name + '/overview';
 
       }, function(response) {
-        $scope.errorMessage = 'An error occured. ' + response.data.reason;
-        $timeout(resetErrorMessage, 6000);
+        $scope.responseStatus = response.status;
       });
     }
 
     function formatTpl(tpl) {
       return tpl.name + ' - ' + tpl.version;
-    }
-
-    function resetErrorMessage() {
-      $scope.errorMessage = '';
     }
 
     function completeCreation() {

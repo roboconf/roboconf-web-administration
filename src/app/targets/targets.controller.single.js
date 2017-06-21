@@ -11,7 +11,6 @@
     // Fields
     $scope.responseStatus = -1;
     $scope.targetId = $routeParams.targetId;
-    $scope.targetAlias = $scope.targetId;
     $scope.stats = [];
     $scope.target = {};
 
@@ -21,7 +20,6 @@
 
     // Initial actions
     rClient.findTarget($scope.targetId).then(function(bean) {
-      $scope.targetAlias = bean.name ? bean.name : 'no name';
       $scope.target = bean;
       $scope.responseStatus = 0;
 

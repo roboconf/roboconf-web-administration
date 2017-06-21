@@ -9,9 +9,17 @@
 	"APPLICATIONS_BINDINGS_HAS_BINDINGS_PREFIXES_2": "Selectionner une application à laquelle cette application sera liée.",
 	"APPLICATIONS_BINDINGS_TH_APP": "Applications Liées",
 	"APPLICATIONS_BINDINGS_TH_PREFIX": "Préfixe d'Import Externe",
+	"APPLICATIONS_BINDINGS_CTRL_OK": "Les associations ont été sauvegardées avec succès pour le préfixe '{{prefix}}'.",
+	"APPLICATIONS_BINDINGS_CTRL_KO": "Une erreur est survenue lors de l'enregistrement des associations pour le préfixe '{{prefix}}'.",
 
 
 	"APPLICATIONS_COMPLETE_APPLICATION_CREATION": "compléter la création de votre nouvelle application",
+	"APPLICATIONS_CREATION_FAILED": "L'application n'a pas pu être créée.",
+	"APPLICATIONS_CREATION_404": "Le modèle d'application n'a pas été trouvé.",
+	"APPLICATIONS_CREATION_403": "Une application avec le même nom existe déjà.",
+	"APPLICATIONS_CREATION_401": "Un problème est survenu dans le DM (exemple : problème de messagerie).",
+
+
 	"APPLICATIONS_DELETE_CONFIRM": "Confirmer la suppression de cette application",
 	"APPLICATIONS_DELETE_DELETE": "L'application <strong>{{name}}</strong> n'a aucune instance déployée.",
 	"APPLICATIONS_DELETE_DELETE_2": "Vous pouvez la supprimer si vous le souhaitez.",
@@ -32,7 +40,6 @@
 	"APPLICATIONS_FIRST": "d'abord.",
 	"APPLICATIONS_SELECT_AN_EXISTING_TEMPLATE": "Selectionner un modèle existant",
 	"APPLICATIONS_TARGETS_ASSOCIATE": "Cette page permet d'associer des instances de machine avec des cibles de déploiement.",
-	"APPLICATIONS_TARGETS_DEFAULT": "défaut",
 	"APPLICATIONS_TARGETS_NONE": "aucun",
 	"APPLICATIONS_TARGETS_PER_COMPONENT": "par composant",
 	"APPLICATIONS_TARGETS_PER_INSTANCE": "par instance",
@@ -72,6 +79,8 @@
 	"COMMANDS_COMMAND_NAME": "Nom de la commande",
 	"COMMANDS_EXECUTE": "exécute",
 	"COMMANDS_NO_COMMAND_AVAILABLE": "Aucune commande disponible pour cette application.",
+	"COMMANDS_EXECUTION_OK": "La commande '{{cmd}}' a été lancée avec succès.",
+	"COMMANDS_EXECUTION_KO": "La commande '{{cmd}}' n'a pas pu être lancée, une erreur est survenue.",
 
 
 	"COMMON_A": "un",
@@ -115,12 +124,17 @@
 	"COMMON_WELCOME": "Bienvenue",
 	"COMMON_YES": "Oui",
 	"COMMON_YOU_CAN": "Vous pouvez",
+	"COMMON_COPY_OF": "Copie de {{name}}",
 
 
 	"ERRORS_MESSAGE": "Une erreur apparaît : la communication avec le serveur a échoué.",
 	"ERRORS_MESSAGE_2": "Assurez-vous que le gestionnaire de déploiement est démarré ou que les paramètres de connexion sont corrects dans",
 	"ERRORS_OOPS": "Oups",
 	"ERRORS_PREFERENCES": "preferences",
+
+
+	"INSTANCE_BASE_NAME": "instance",
+	"INSTANCE_ROOT_BASE_NAME": "instance-racine",
 
 
 	"INSTANCES_COMPONENT": "Composant :",
@@ -193,6 +207,14 @@
 	"INSTANCES_TO_COMPLETE": "à compléter.",
 
 
+	"INSTANCES_MENU_NEW_INST": "Créer une Nouvelle Instance",
+	"INSTANCES_MENU_DEPLOY_AND_START_ALL": "Tout Installer et Tout Démarrer",
+	"INSTANCES_MENU_STOP_ALL": "Tout Stopper",
+	"INSTANCES_MENU_UNDEPLOY_ALL": "Tout Désinstaller",
+	"INSTANCES_MENU_SORT_BY_NAME": "Trier par nom",
+	"INSTANCES_MENU_SORT_BY_STATE": "Trier par état",
+
+
 	"LOGIN_FAILED": "L'authentification a échoué.",
 	"LOGIN_LOGIN": "Connexion",
 
@@ -234,6 +256,9 @@
 	"SCHEDULING_SIMPLIFIED_CRON_EDITOR_2": "notre éditeur de CRON simplifié.",
 	"SCHEDULING_THE": "L'",
 	"SCHEDULING_YOU_CAN_USE": "Vous pouvez utiliser",
+	"SCHEDULING_IMPOSSIBLE_LISTING_APP": "Les applications n'ont pas pu être listées.",
+	"SCHEDULING_IMPOSSIBLE_LISTING_CMD": "Les commandes Roboconf n'ont pas pu être listées.",
+	"SCHEDULING_IMPOSSIBLE_UPDATE": "Une erreur est survenue. Vérifiez les paramètres et l'expression CRON.",
 
 
 	"STATUS_CUSTOM": "en cours de rafraichissement...",
