@@ -646,4 +646,23 @@ html {
 		padding: 0 5px;
 		margin: 0;
 	}
+	
+	span.sortable:hover::after, span.sortable-selected::after {
+		content: '\0025BC';
+		font-size: 10px;
+		padding-left: 7px;
+	}
+	
+	span.sortable-up:hover::after, span.sortable-selected-up::after {
+		content: '\0025B2';
+		font-size: 10px;
+		padding-left: 7px;
+	}
+	
+	span.sortable:hover,
+	span.sortable-up:hover,
+	span.sortable-selected:hover,
+	span.sortable-selected-up:hover {
+		cursor: pointer; 
+	}
 }

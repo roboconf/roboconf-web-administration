@@ -32,6 +32,9 @@ describe('Routing', function() {
 
       // Commands
       expect($route.routes['/app/:appName/commands'].controller).to.equal('CommandsListingController');
+      expect($route.routes['/history/commands/:pageNumber?'].controller).to.equal('CommandsHistoryController');
+      expect($route.routes['/app/:appName/commands/history/:pageNumber?'].controller)
+            .to.equal('CommandsHistoryController');
 
       // Scheduling
       expect($route.routes['/scheduler'].controller).to.equal('ScheduleListingController');

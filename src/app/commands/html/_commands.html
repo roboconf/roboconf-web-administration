@@ -33,7 +33,8 @@
 	
 	<div ng-show="responseStatus === 0 && commands.length > 0">
 		{{'COMMANDS_AVAILABLE_COMMANDS' | translate}}<br />
-		{{'COMMANDS_AVAILABLE_COMMANDS_2' | translate}}
+		{{'COMMANDS_AVAILABLE_COMMANDS_2' | translate}}<br />
+		{{'COMMANDS_HISTORY_ACCESS' | translate}} <a href="#/app/{{ app.name }}/commands/history">{{'COMMON_HERE' | translate}}</a>.
 		<br /><br />
 		
 		<div class="status-panel">

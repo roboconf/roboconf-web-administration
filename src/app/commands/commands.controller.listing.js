@@ -3,10 +3,10 @@
 
   angular
   .module('roboconf.commands')
-  .controller('CommandsListingController', instancesListingController);
+  .controller('CommandsListingController', commandsListingController);
 
-  instancesListingController.$inject = ['$scope', 'rClient', 'rUtils', '$routeParams', '$timeout', '$translate'];
-  function instancesListingController($scope, rClient, rUtils, $routeParams, $timeout, $translate) {
+  commandsListingController.$inject = ['$scope', 'rClient', 'rUtils', '$routeParams', '$timeout', '$translate'];
+  function commandsListingController($scope, rClient, rUtils, $routeParams, $timeout, $translate) {
 
     // Fields
     $scope.responseStatus = -1;

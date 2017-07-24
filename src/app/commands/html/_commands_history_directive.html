@@ -1,0 +1,73 @@
+
+<div class="content short-content">
+
+	<!-- Error message -->
+	<rbcf-error-message ng-show="responseStatus > 0 && responseStatus !== 404"></rbcf-error-message>
+
+	<!--  No application? -->
+	<div ng-show="responseStatus === 404" translate="COMMON_NO_FOUND_APPLICATION" translate-values="{ name: app.name }"></div>
+
+	<!-- Commands -->
+	<div ng-show="responseStatus === 0 && items.length === 0 && pageNumber === 1">{{'COMMANDS_HISTORY_NONE_FOUND' | translate}}</div>
+	<div ng-show="responseStatus === 0 && items.length === 0 && pageNumber !== 1">
+		 {{'COMMANDS_HISTORY_NONE_TRY_PREVIOUS_PAGE_1' | translate}}
+		 <a href="#/app/{{ app.name }}/commands/history/1">{{'COMMANDS_HISTORY_NONE_TRY_PREVIOUS_PAGE_2' | translate}}</a>.
+	</div>
+	
+	<div ng-show="responseStatus === 0 && items.length > 0">
+		{{'COMMANDS_HISTORY_HERE_IS_' | translate}}
+		<br /><br />
+	
+		<table class="table table-hover table-rbcf">
+			<tr>
+				<th ng-show="showAppColumn"><span ng-class="findClass('application')" ng-click="setCriteria('application')">{{'COMMON_APPLICATION' | translate}}</span></th>
+				<th><span ng-class="findClass('command')" ng-click="setCriteria('command')">{{'COMMANDS_COMMAND_NAME' | translate}}</span></th>
+				<th><span ng-class="findClass('start')" ng-click="setCriteria('start')">{{'COMMANDS_HISTORY_START_TIME' | translate}}</span></th>
+				<th class="text-center">{{'COMMON_DURATION' | translate}}</th>
+				<th class="text-center"><span ng-class="findClass('result')" ng-click="setCriteria('result')">{{'COMMON_RESULT' | translate}}</span></th>
+				<th class="text-right"><span ng-class="findClass('origin')" ng-click="setCriteria('origin')">{{'COMMON_ORIGIN' | translate}}</span></th>
+				<th class="text-center">{{'COMMON_DETAILS' | translate}}</th>
+			</tr>
+			<tr ng-repeat="item in items">
+				<td  ng-show="showAppColumn">{{ item.app }}</td>
+				<td>{{ item.cmd }}</td>
+				<td>{{ item.start | date:datePattern }}</td>
+				<td class="text-center">{{ item.duration === 0 ? '&lt; 1' : item.duration }} {{'COMMON_MILLISECONDS' | translate}}</td>
+				<td class="text-center" ng-switch="item.result">
+					<span ng-switch-when="1">{{'COMMON_OK' | translate}}</span>
+					<span ng-switch-when="2">{{'COMMANDS_HISTORY_RESULT_WITH_SKIPPED' | translate}}</span>
+					<span ng-switch-when="2">{{'COMMON_ERROR' | translate}}</span>
+				</td>
+				<td class="text-right" ng-switch="item.origin">
+					<span ng-switch-when="1">{{'COMMANDS_HISTORY_ORIGIN_SCHEDULER' | translate}}</span>
+					<span ng-switch-when="2">{{'COMMANDS_HISTORY_ORIGIN_REST_API' | translate}}</span>
+					<span ng-switch-when="3">{{'COMMANDS_HISTORY_ORIGIN_AUNTONOMIC' | translate}}</span>
+					<span ng-switch-when="4">{{'COMMANDS_HISTORY_ORIGIN_OTHER_CMD' | translate}}</span>
+				</td>
+				<td class="text-center" ng-switch="item.origin">
+					<span ng-switch-when="1"><a href="#/scheduler/job/{{ item.details }}">{{ item.details }}</a></span>
+					<span ng-switch-when="2">-</span>
+					<span ng-switch-when="3">{{ item.details }}</span>
+					<span ng-switch-when="4">{{ item.details }}</span>
+				</td>
+			</tr>
+		</table>
+		
+		<p class="text-center">
+			<a ng-show="pageNumber > 1" href="{{ findPageLink( -1 )}}">
+				<button type="button" class="btn btn-default">&lt;</button>
+			</a>
+			&nbsp;
+			
+			<span 	ng-show="pageCount > 0" 
+					translate="COMMANDS_HISTORY_PAGINATION"
+					translate-values="{ pageNumber: pageNumber, pageCount: pageCount }">
+			</span>
+			
+			&nbsp;
+			<a ng-show="pageCount > pageNumber" href="{{ findPageLink( 1 )}}">
+				<button type="button" class="btn btn-default">&gt;</button>
+			</a>
+		</p>
+	</div>
+</div>

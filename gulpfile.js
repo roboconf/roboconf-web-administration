@@ -87,6 +87,7 @@ gulp.task('clean-dev', function( cb ) {
        './target/dev/templates',
        './target/dev/misc',
        './target/dev/img',
+       './target/dev/i18n',
        './target/dev/index.html'
        ], cb);
 });
@@ -284,6 +285,7 @@ gulp.task('check_i18n', function() {
       'instances/instances.controller.listing.js',
       'instances/instances.controller.new.js',
       'commands/commands.controller.listing.js',
+      'commands/commands.directive.history.js',
       'application-bindings/application-bindings.controller.js'
     ];
 
@@ -312,7 +314,7 @@ gulp.task('check_i18n', function() {
     loc_i18n: './src/i18n/**/',
     loc_html: './src/app/**/',
     fail_on_warning: true,
-    ignore_order: true,
+    ignore_order: false,
     external_keys_cb: external_keys_cb,
     forbidden_patterns: {},
     exclusions: ['...', 'Roboconf', 'x', '-', '.']
@@ -330,6 +332,15 @@ gulp.task('check_i18n', function() {
     {regex: '[,.;:?!]([^.\\s]|\\s{2,})', msg: '[FR] All the punctuation marks accept a single white space after.'},
     {regex: '\\.\\.\\.(\\S|\\s{2,})', msg: '[FR] Dots accept a single white space after.'}
   ];
+  
+  options.forbidden_patterns_cb = function(errorCallback, key, value, errorMsg, lineNumber, filename) {
+    var invalid = key !== 'COMMON_DATE_PATTERN';
+    if (invalid) {
+      errorCallback(lineNumber + ': ' + errorMsg);
+    }
+
+    return invalid;
+  };
 
   // Fail the task if an error was found.
   var res = qual.validate(options);

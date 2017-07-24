@@ -50,6 +50,8 @@
 
       listCommands: listCommands,
       executeCommand: executeCommand,
+      loadCommandsHistory: loadCommandsHistory,
+      getCommandsHistoryPageCount: getCommandsHistoryPageCount,
 
       listScheduledJobs: listScheduledJobs,
       postScheduledJob: postScheduledJob,
@@ -72,6 +74,7 @@
 
         var app = {
           name: appName,
+          displayName: appName,
           fake: true
         };
 
@@ -220,6 +223,27 @@
     function executeCommand(appName, cmdName) {
       var path = 'app/' + appName + '/commands/execute?command-name=' + cmdName;
       return Restangular.one(path).post();
+    }
+
+    function loadCommandsHistory(pageNumber, itemsPerPage, sortingCriteria, sortingOrder, appName) {
+
+      var path = 'history/commands?page=' + pageNumber + '&itemsPerPage=' + itemsPerPage;
+      path += '&sortingCriteria=' + sortingCriteria;
+      path += '&sortingOrder=' + sortingOrder;
+      if (appName) {
+        path += '&name=' + appName;
+      }
+
+      return Restangular.all(path).getList();
+    }
+
+    function getCommandsHistoryPageCount(itemsPerPage, appName) {
+      var path = 'history/size/commands?itemsPerPage=' + itemsPerPage;
+      if (appName) {
+        path += '&name=' + appName;
+      }
+
+      return Restangular.one(path).get();
     }
 
     function listInstances(appName) {
