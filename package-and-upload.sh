@@ -66,7 +66,7 @@ echo
 
 now=$(date +"%m/%d/%Y @ %H:%M:%S")
 cd "$DIRECTORY" \
-	&& echo "$now" > metadata.txt \
+	&& echo "Build and ZIP time: $now" > metadata.txt \
 	&& zip -rq "../$ZIP" . \
 	&& cd ..
 
