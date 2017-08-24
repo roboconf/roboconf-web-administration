@@ -69,7 +69,7 @@ echo "Done."
 
 
 
-if[ $1 = "snapshot" ]; then
+if[[ $1 = "snapshot" ]]; then
 	echo
 	echo "Resetting the snapshot version..."
 	echo
