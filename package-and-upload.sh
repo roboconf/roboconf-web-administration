@@ -64,7 +64,12 @@ echo
 echo "Zipping the content..."
 echo
 
-cd "$DIRECTORY" && zip -rq "../$ZIP" . && cd ..
+now=$(date +"%m/%d/%Y @ %H:%M:%S")
+cd "$DIRECTORY" \
+	&& echo "$now" > metadata.txt \
+	&& zip -rq "../$ZIP" . \
+	&& cd ..
+
 echo "Done."
 
 
