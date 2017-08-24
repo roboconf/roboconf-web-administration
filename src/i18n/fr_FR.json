@@ -319,6 +319,8 @@
 	"TARGETS_NAME": "Nom",
 	"TARGETS_NEW_ACCESS_LIST": "retrouver la liste des cibles de déploiement ici.",
 	"TARGETS_NEW_DEPLOYMENT_TARGET": "Nouvelle cible de  déploiement",
+	"TARGETS_NEW_ERROR": "Les propriétés de déploiement n'ont pas pu être enregistrées' (ex : archive invalide ou conflit avec une autre cible).",
+	"TARGETS_NEW_FIX_PROBLEM": "Revenir en arrière pour corriger le problème.",
 	"TARGETS_NEW_FOR_YOUR_TP": "pour remplir les propriétés.",
 	"TARGETS_NEW_SELECT_TEMPLATE": "sélectionner un modèle",
 	"TARGETS_NEW_ZIP_ARCHIVE": "une archive ZIP",

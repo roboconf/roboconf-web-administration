@@ -319,6 +319,8 @@
 	"TARGETS_NAME": "Name",
 	"TARGETS_NEW_ACCESS_LIST": "access the list of targets here.",
 	"TARGETS_NEW_DEPLOYMENT_TARGET": "New Deployment Target",
+	"TARGETS_NEW_ERROR": "The target properties could not be registered (ex: invalid archive or conflict with another target).",
+	"TARGETS_NEW_FIX_PROBLEM": "Go back to fix the problem.",
 	"TARGETS_NEW_FOR_YOUR_TP": "for your target properties.",
 	"TARGETS_NEW_SELECT_TEMPLATE": "select a template",
 	"TARGETS_NEW_ZIP_ARCHIVE": "a ZIP archive",

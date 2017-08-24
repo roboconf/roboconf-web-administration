@@ -17,6 +17,7 @@
     $scope.selectTpl = selectTpl;
     $scope.setMode = setMode;
     $scope.save = save;
+    $scope.resetError = resetError;
 
     // Functions
     function selectTpl() {
@@ -34,6 +35,10 @@
 
     function setMode(mode) {
       $scope.mode = mode;
+    }
+
+    function resetError() {
+      $scope.responseStatus = 0;
     }
 
     function save() {

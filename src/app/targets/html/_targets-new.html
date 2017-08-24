@@ -18,7 +18,11 @@
 <div class="content short-content">
 	
 	<!-- Error message -->
-	<rbcf-error-message ng-show="responseStatus > 0"></rbcf-error-message>
+	<div ng-show="responseStatus > 0">
+		{{ 'TARGETS_NEW_ERROR' | translate }}
+		<br />
+		<a href="" ng-click="resetError()">{{ 'TARGETS_NEW_FIX_PROBLEM' | translate }}</a>
+	</div>
 	
 	<!-- Introduction -->
 	<div ng-show="responseStatus === 0 && mode !== 'editor'">
