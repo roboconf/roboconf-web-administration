@@ -9,6 +9,7 @@
 # 3. ... uploads it to Bintray.
 #
 
+
 # Constants
 readonly BINTRAY_URL="https://bintray.com/api/v1"
 readonly DIRECTORY="target/dist"
@@ -66,6 +67,16 @@ echo
 cd "$DIRECTORY" && zip -rq "../$ZIP" . && cd ..
 echo "Done."
 
+
+
+if[ $1 = "snapshot" ]; then
+	echo
+	echo "Resetting the snapshot version..."
+	echo
+
+	curl -vvf -u${BINTRAY_USER}:${BINTRAY_API_KEY} \
+		-X DELETE ${BINTRAY_URL}/packages/roboconf/roboconf-web-administration/archives/versions/snapshot
+fi
 
 
 echo
