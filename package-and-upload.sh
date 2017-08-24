@@ -69,13 +69,15 @@ echo "Done."
 
 
 
-if[[ $1 = "snapshot" ]]; then
+if [ $1 = "snapshot" ]; then
 	echo
 	echo "Resetting the snapshot version..."
 	echo
 
 	curl -vvf -u${BINTRAY_USER}:${BINTRAY_API_KEY} \
 		-X DELETE ${BINTRAY_URL}/packages/roboconf/roboconf-web-administration/archives/versions/snapshot
+
+	echo "Done."
 fi
 
 
