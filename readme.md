@@ -2,24 +2,24 @@
 [![Build Status](http://travis-ci.org/roboconf/roboconf-web-administration.png?branch=master)](http://travis-ci.org/roboconf/roboconf-web-administration)
 [![License](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Join us on Gitter.im](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/roboconf/roboconf)
-[![Web site](https://img.shields.io/badge/website-roboconf.net-b23e4b.svg)](http://roboconf.net)
+[![Web site](https://img.shields.io/badge/website-roboconf.github.io-b23e4b.svg)](https://roboconf.github.io)
 
 A web application to interact with Roboconf's Deployment Manager.  
 User documentation can be found on Roboconf's web site.
 
-<img src="http://roboconf.net/resources/img/web-admin-0.4-app-listing.png" alt="Roboconf Web Administration Overview" width="600" />
+<img src="https://roboconf.github.io/resources/img/web-admin-0.4-app-listing.png" alt="Roboconf Web Administration Overview" width="600" />
 
 <hr />
 
-<img src="http://roboconf.net/resources/img/nn-0.4-web-admin-instance-state.png" alt="Instances" width="600" />
+<img src="https://roboconf.github.io/resources/img/nn-0.4-web-admin-instance-state.png" alt="Instances" width="600" />
 
 <hr />
 
-<img src="http://roboconf.net/resources/img/nn-0.5-deployment-target-associations.png" alt="Deployment Targets" width="600" />
+<img src="https://roboconf.github.io/resources/img/nn-0.5-deployment-target-associations.png" alt="Deployment Targets" width="600" />
 
 <hr />
 
-<img src="http://roboconf.net/resources/img/nn-0.7-scheduling-for-commands.jpg" alt="Scheduling jobs..." width="600" />
+<img src="https://roboconf.github.io/resources/img/nn-0.7-scheduling-for-commands.jpg" alt="Scheduling jobs..." width="600" />
 
 
 ## Developer Guide
